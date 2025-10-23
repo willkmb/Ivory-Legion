@@ -1636,7 +1636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &3864433647427219164
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2679,18 +2679,98 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueSets:
-  - Dialogues: []
-  - Dialogues: []
+  - Dialogues:
+    - name: Gisgo
+      dialogueTextContent: Set 1 - Dialogue 1
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices:
+      - choiceTextContent: Option 1 - War
+        choiceTopic: War
+        nextBranch: 1
+        rootBranch: 0
+      - choiceTextContent: Option 2 - Dock
+        choiceTopic: Dock
+        nextBranch: 2
+        rootBranch: 0
+    - name: Hannibal
+      dialogueTextContent: Set 1 - Dialogue 2
+      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      choices: []
+    - name: Gisgo
+      dialogueTextContent: Set 1 - Dialogue 3
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices: []
+    - name: Hannibal
+      dialogueTextContent: Set 1 - Dialogue 4
+      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      choices:
+      - choiceTextContent: Option 1 - War
+        choiceTopic: War
+        nextBranch: 4
+        rootBranch: 3
+      - choiceTextContent: Option 2 - Ntrl
+        choiceTopic: Fish
+        nextBranch: 4
+        rootBranch: 3
+      - choiceTextContent: Option 2 - Dock
+        choiceTopic: Dock
+        nextBranch: 4
+        rootBranch: 3
+    - name: Gisgo
+      dialogueTextContent: Set 1 - Dialogue 5
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices: []
+  - Dialogues:
+    - name: Gisgo
+      dialogueTextContent: Set 2 - Dialogue 1
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices:
+      - choiceTextContent: Option 1 - War
+        choiceTopic: War
+        nextBranch: 1
+        rootBranch: 0
+      - choiceTextContent: Option 2 - Dock
+        choiceTopic: Dock
+        nextBranch: 2
+        rootBranch: 0
+    - name: Hannibal
+      dialogueTextContent: Set 2 - Dialogue 2
+      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      choices: []
+    - name: Gisgo
+      dialogueTextContent: Set 2 - Dialogue 3
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices: []
+    - name: Hannibal
+      dialogueTextContent: Set 2 - Dialogue 4
+      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      choices:
+      - choiceTextContent: Option 1 - War
+        choiceTopic: War
+        nextBranch: 4
+        rootBranch: 3
+      - choiceTextContent: Option 2 - Ntrl
+        choiceTopic: Fish
+        nextBranch: 4
+        rootBranch: 3
+      - choiceTextContent: Option 2 - Dock
+        choiceTopic: Dock
+        nextBranch: 4
+        rootBranch: 3
+    - name: Gisgo
+      dialogueTextContent: Set 2 - Dialogue 5
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices: []
   startIndex: 0
   branchIndex: 0
-  speakerName: {fileID: 0}
-  dialogueText: {fileID: 0}
-  dialogueBox: {fileID: 0}
-  choiceRoot: {fileID: 0}
-  choiceButton: {fileID: 0}
-  cursorRoot: {fileID: 0}
-  cursor: {fileID: 0}
-  charImage: {fileID: 0}
+  speakerName: {fileID: 458584474700630780}
+  dialogueText: {fileID: 1102370536776726725}
+  dialogueBox: {fileID: 431913247581902545}
+  choiceRoot: {fileID: 9064757539264609240}
+  choiceButton: {fileID: 7364682090480881350, guid: 229068fa688c870419e0c55e7a1737a8, type: 3}
+  cursorRoot: {fileID: 8406258862392094154}
+  cursor: {fileID: 3375012534551387402, guid: 99dcf58148a01714b854c2868d48dba2, type: 3}
+  charImage: {fileID: 4288925233544835841}
 --- !u!4 &8745194092663908831
 Transform:
   m_ObjectHideFlags: 0
