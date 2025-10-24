@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Npc.AI.Movement;
-using Prefabs.Audio.Scripts;
+using Audio;
 using UnityEngine;
 using UnityEngine.AI;
 using static Interfaces.Interfaces;

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Prefabs.Audio.Scripts
+namespace Audio
 {
     public enum SfxList
     {
@@ -11,7 +11,8 @@ namespace Prefabs.Audio.Scripts
     {
         public static AudioManager instance;
 
-        public Dictionary<AudioClip, string> SfxDataBase = new Dictionary<AudioClip, string>();
+        // When used to get audio, use the file name of the audio clip to reference it
+        public Dictionary<string, AudioClip> SfxDataBase = new Dictionary<string, AudioClip>();
         
         private void Awake()
         {
@@ -19,13 +20,11 @@ namespace Prefabs.Audio.Scripts
         }
         
 
-        public void DictionarySorting(List<AudioClip> audioList)
+        public void DictionarySortingSfx(List<AudioClip> audioList)
         {
-            Debug.Log("Dictionary sorting...");
-            for (int i = 0; i < audioList.Count; i++)
+            foreach(var audioClip in audioList)
             {
-                SfxDataBase.Add(audioList[i], audioList[i].name);
-                Debug.Log(SfxDataBase.Count);
+                SfxDataBase.Add(audioClip.name, audioClip);
             }
         }
     }
