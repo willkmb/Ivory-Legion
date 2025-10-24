@@ -10,7 +10,10 @@ namespace Npc.AI.Movement
         [Header("Variables")]
         [SerializeField] private float radius;
         [SerializeField] LayerMask layerMask;
-
+        [Header("FALSE = Start Pos, TRUE = Current Pos")]
+        [SerializeField] private bool radiusOnSelf;
+        private Vector3 _radiusPosition;
+        
         //Scripts
         private NpcManager _npcManager;
         
@@ -19,12 +22,18 @@ namespace Npc.AI.Movement
         {
             _npcManager = transform.GetComponent<NpcManager>();
             _path = new NavMeshPath();
+            
+            if (radiusOnSelf) //Sets the location of the search circle to the transforms START position
+                _radiusPosition = transform.position;
         }
 
         // Gets random location within the sphere 
         public void GetRandomlocation()
         {
-            var randomPoint = Random.insideUnitSphere * radius + transform.position;
+            if (!radiusOnSelf) //Sets the location of the search circle to the transforms CURRENT position
+                _radiusPosition = transform.position;
+            
+            var randomPoint = Random.insideUnitSphere * radius + _radiusPosition;
             FireRayCastYAxis(randomPoint); // Firing Raycast to check if randomPoint is on navmesh
         }
         // ReSharper disable Unity.PerformanceAnalysis
