@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Prefabs.Audio.Scripts;
+using Audio;
 using UnityEngine;
 
 namespace Interfaces

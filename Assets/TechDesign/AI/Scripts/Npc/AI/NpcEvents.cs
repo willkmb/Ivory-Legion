@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Prefabs.Audio.Scripts;
+using Audio;
 using UnityEngine;
 using UnityEngine.Events;
 using static Interfaces.Interfaces;
