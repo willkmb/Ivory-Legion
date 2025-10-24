@@ -28,7 +28,7 @@ public class MenuScript : MonoBehaviour
         if (rotating)
         {
             float step = speed * Time.deltaTime;
-            transform.Rotate(0, step, 0);
+            transform.Rotate(0, 0, step);
             turned += step;
 
             if (turned >= rotateAmount)
