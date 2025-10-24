@@ -14,8 +14,7 @@ public class NpcTalkTrigger : MonoBehaviour
     void Start()
     {
         triggerScript = GetComponentInChildren<TriggerScript>();
-        dialogueUI = GameObject.Find("DialogueHolder");
-        dialogueUI.gameObject.SetActive(false);
+        dialogueUI.SetActive(false);
     }
 
     void Update()
@@ -40,7 +39,7 @@ public class NpcTalkTrigger : MonoBehaviour
                         string opinion = collidedWith.GetComponent<NPCtrustValue>().opinionLevel;
                         text.text = "Opinion: " + opinion;
                     }
-                    dialogueUI.gameObject.SetActive(true);
+                    dialogueUI.SetActive(true);
                     dialogueUI.GetComponent<Animation>().Play();
                     Cursor.lockState = CursorLockMode.Confined;
                     //GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().canMove = false;
@@ -48,7 +47,7 @@ public class NpcTalkTrigger : MonoBehaviour
             }
             else
             {
-                dialogueUI.gameObject.SetActive(false);
+                dialogueUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
             }
         }
