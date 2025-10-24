@@ -5,7 +5,7 @@ using TMPro;
 
 public class NpcTalkTrigger : MonoBehaviour
 {
-    TriggerScript triggerScript;
+    PlayerNearNPCTriggerScript triggerScript;
     public GameObject dialogueUI;
     Dialogue dialogue;
     Collider trigger;
@@ -13,7 +13,7 @@ public class NpcTalkTrigger : MonoBehaviour
     private GameObject collidedWith;
     void Start()
     {
-        triggerScript = GetComponentInChildren<TriggerScript>();
+        triggerScript = GetComponentInChildren<PlayerNearNPCTriggerScript>();
         dialogueUI.SetActive(false);
     }
 
