@@ -6,7 +6,7 @@ using TMPro;
 public class NpcTalkTrigger : MonoBehaviour
 {
     TriggerScript triggerScript;
-    GameObject dialogueUI;
+    public GameObject dialogueUI;
     Dialogue dialogue;
     Collider trigger;
     public bool inTrigger;
