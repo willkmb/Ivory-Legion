@@ -25,5 +25,17 @@ namespace Interfaces
         {
             public void AddSfx(List<AudioClip> audioList);
         }
+        public interface IHaveDiaSounds
+        {
+            public void AddDia(List<AudioClip> audioList);
+        }
+        public interface IHaveMusicSounds
+        {
+            public void AddMusic(List<AudioClip> audioList);
+        }
+        public interface IHaveAmbSounds
+        {
+            public void AddAmb(List<AudioClip> audioList);
+        }
     }
 }
