@@ -18,5 +18,6 @@ namespace Interfaces
         public interface INpcHuman
         {
         }
+
     }
 }
