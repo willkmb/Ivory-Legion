@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Audio // DO NOT change this name
 {
-    public class AudioTest : MonoBehaviour, Interfaces.Interfaces.IHaveSfxSounds // <- Interface to acquire void "AddSfx"
+    public class AudioTest : MonoBehaviour // <- Interface to acquire void "AddSfx"
     {
         //IMPORTANT NOTES
         //If using more than one audio source, keep track of which ones are getting audio clips added to them
@@ -23,18 +23,9 @@ namespace Audio // DO NOT change this name
 
         private void Start()
         {
-            AddSfx(audioList); //Pass through your audio clip list
             SoundTest(); // Purely here for showcase
         }
-
-
-        public void AddSfx(List<AudioClip> audioClipList)
-        {
-            AudioManager.instance.DictionarySortingSfx(audioList); 
-            //Adds audio to the SFX list
-            //this is different per scene depending how many times you call this function on load
-        }
-
+        
         private void SoundTest()
         {
             // Gets the name of the audio clip requested and outputs that clip into "out var clip"
