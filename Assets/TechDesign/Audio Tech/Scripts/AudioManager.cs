@@ -1,15 +1,18 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Audio
 {
-    public enum SfxList
-    {
-        
-    }
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager instance;
+        
+        private AudioSource _audioSource;
+        [SerializeField] private List<AudioClip> sfxList;
+        [SerializeField] private List<AudioClip> musicList;
+        [SerializeField] private List<AudioClip> ambList;
+        [SerializeField] private List<AudioClip> diaList;
 
         // When used to get audio, use the file name of the audio clip to reference it
         public Dictionary<string, AudioClip> SfxDataBase = new Dictionary<string, AudioClip>();
@@ -20,10 +23,20 @@ namespace Audio
         private void Awake()
         {
             instance ??= this;
+            
+            _audioSource  = GetComponent<AudioSource>();
+            DontDestroyOnLoad(gameObject);
         }
-        
-        
-        public void DictionarySortingSfx(List<AudioClip> audioList)
+
+        private void Start()
+        {
+            DictionarySortingSfx(sfxList);
+            DictionarySortingMusic(musicList);
+            DictionarySortingAmb(ambList);
+            DictionarySortingDia(diaList);
+        }
+
+        private void DictionarySortingSfx(List<AudioClip> audioList)
         {
             foreach(var audioClip in audioList) 
             {
@@ -31,26 +44,31 @@ namespace Audio
                 //Adds all audio Clips in the list to the sfx dictionary
             }
         }
-        public void DictionarySortingMusix(List<AudioClip> audioList)
+        private void DictionarySortingMusic(List<AudioClip> audioList)
         {
             foreach(var audioClip in audioList)
             {
                 MusicDataBase.Add(audioClip.name, audioClip);
             }
         }
-        public void DictionarySortingAmb(List<AudioClip> audioList)
+        private void DictionarySortingAmb(List<AudioClip> audioList)
         {
             foreach(var audioClip in audioList)
             {
                 AmbDataBase.Add(audioClip.name, audioClip);
             }
         }
-        public void DictionarySortingDia(List<AudioClip> audioList)
+        private void DictionarySortingDia(List<AudioClip> audioList)
         {
             foreach(var audioClip in audioList)
             {
                 DiaDataBase.Add(audioClip.name, audioClip);
             }
+        }
+        
+        public void ChangeAmb(AudioClip audioName)
+        {
+            _audioSource.clip = audioName;
         }
     }
 }
