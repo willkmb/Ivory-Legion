@@ -13,7 +13,6 @@ namespace Audio // DO NOT change this name
         //To help with the above, a good rule is only putting the list of sounds on a manager / singleton script
         
         private AudioSource _audioSource; //Where your sound is set too
-        [SerializeField] private List<AudioClip> audioList; // The list of audio related to this area, 
         public string audioName; //Most likely going to be public as scripts will change this
         
         private void Awake()
@@ -29,7 +28,7 @@ namespace Audio // DO NOT change this name
         private void SoundTest()
         {
             // Gets the name of the audio clip requested and outputs that clip into "out var clip"
-            if(AudioManager.instance.SfxDataBase.TryGetValue(audioName, out var clip)) 
+            if(AudioManager.instance.soundDataBase.TryGetValue(audioName, out var clip)) 
             {
                 _audioSource.clip = clip;
                 _audioSource.Play();

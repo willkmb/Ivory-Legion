@@ -13,23 +13,25 @@ namespace Audio
         [SerializeField] private GameObject audioPrefab;
         
         [Header("Audio Lists of Entire Game")]
-        private AudioSource _audioSource;
+        [HideInInspector] public AudioSource audioSource;
         [SerializeField] private List<AudioClip> sfxList;
         [SerializeField] private List<AudioClip> musicList;
         [SerializeField] private List<AudioClip> ambList;
         [SerializeField] private List<AudioClip> diaList;
+        
+        [Header("Audio Lists for Catalyst Audio")]
+        [SerializeField] private List<AudioClip> ambCatalystList;
 
         // When used to get audio, use the file name of the audio clip to reference it
-        public Dictionary<string, AudioClip> SfxDataBase = new Dictionary<string, AudioClip>();
-        public Dictionary<string, AudioClip> MusicDataBase = new Dictionary<string, AudioClip>();
-        public Dictionary<string, AudioClip> AmbDataBase = new Dictionary<string, AudioClip>();
-        public Dictionary<string, AudioClip> DiaDataBase = new Dictionary<string, AudioClip>();
+        public Dictionary<string, AudioClip> soundDataBase = new Dictionary<string, AudioClip>();
+        
+        public Dictionary<string, AudioClip> catalystAmbAudio = new Dictionary<string, AudioClip>();
         
         private void Awake()
         {
             instance ??= this;
             
-            _audioSource  = GetComponent<AudioSource>();
+            audioSource  = GetComponent<AudioSource>();
             DontDestroyOnLoad(gameObject);
             
             audioPoolFree = new List<GameObject>();
@@ -39,48 +41,31 @@ namespace Audio
         {
             SpawnObjectPool();
             
-            DictionarySortingSfx(sfxList);
-            DictionarySortingMusic(musicList);
-            DictionarySortingAmb(ambList);
-            DictionarySortingDia(diaList);
+            DictionarySortingSound(sfxList);
+            DictionarySortingSound(musicList);
+            DictionarySortingSound(ambList);
+            DictionarySortingSound(diaList);
+
+            DictionarySortingCatalystAmb(ambCatalystList);
         }
 
-        private void DictionarySortingSfx(List<AudioClip> audioList)
+        private void DictionarySortingSound(List<AudioClip> audioList)
         {
             foreach(var audioClip in audioList) 
             {
-                SfxDataBase.Add(audioClip.name, audioClip); 
-                //Adds all audio Clips in the list to the sfx dictionary
+                soundDataBase.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
             }
         }
-        private void DictionarySortingMusic(List<AudioClip> audioList)
+        private void DictionarySortingCatalystAmb(List<AudioClip> audioList)
         {
-            foreach(var audioClip in audioList)
+            foreach(var audioClip in audioList) 
             {
-                MusicDataBase.Add(audioClip.name, audioClip);
+                catalystAmbAudio.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
             }
         }
-        private void DictionarySortingAmb(List<AudioClip> audioList)
-        {
-            foreach(var audioClip in audioList)
-            {
-                AmbDataBase.Add(audioClip.name, audioClip);
-            }
-        }
-        private void DictionarySortingDia(List<AudioClip> audioList)
-        {
-            foreach(var audioClip in audioList)
-            {
-                DiaDataBase.Add(audioClip.name, audioClip);
-            }
-        }
-        /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// Amb changer
-        public void ChangeAmb(AudioClip audioName)
-        {
-            _audioSource.clip = audioName;
-        }
-/// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Object Pooling Functions
         private void SpawnObjectPool()
         {
@@ -92,9 +77,10 @@ namespace Audio
                 instantiate.SetActive(false);
             }
         }
-        // Call when you want to use a sfx sound, E.G Elephant movement
-        public void PlaySfxAudio(string audioName,Vector3 spawnPosition, float minVolume, float maxVolume, bool randomPitch, float minPitch, float maxPitch, int priority)
+        // Call when you want to use a sound
+        public void PlayAudio(string audioName,Vector3 spawnPosition, float minVolume, float maxVolume, bool randomPitch, float minPitch, float maxPitch, int priority, bool ambSound)
         {
+            Debug.Log(audioName + " - Played");
             GameObject audioObj = audioPoolFree[0];
             audioPoolFree.Remove(audioObj);
             audioObj.transform.position = spawnPosition;
@@ -102,10 +88,10 @@ namespace Audio
             AudioSource audioSource = audioObj.transform.GetComponent<AudioSource>();
             
             //Used later to disable the obj after x seconds, then re adds it to the free objPool
-            AudioDisablePoolObj audioDisablePoolObj = audioObj.GetComponent<AudioDisablePoolObj>();
+            AudioPlayer audioPlayer = audioObj.GetComponent<AudioPlayer>();
             
             //Gets the audio source and sets it at a random volume, if the volume never randomises set both min/max to the same value
-            audioSource.clip = SfxDataBase[audioName];
+            audioSource.clip = soundDataBase[audioName];
             var newVolume = Random.Range(minVolume, maxVolume);
             audioSource.volume = newVolume;
             
@@ -117,8 +103,12 @@ namespace Audio
            
             // Plays the audio
             audioSource.Play();
+            
+            if(ambSound)
+                 AudioAmbManager.instance.FoliageSoundChecker(audioName);
+            
             //Disables audio after x seconds, adding it back to the audioPoolFree list
-            audioDisablePoolObj.Invoke("DisableObj", audioSource.clip.length);
+            audioPlayer.Invoke("DisableObj", audioSource.clip.length);
         }
     }
 }
