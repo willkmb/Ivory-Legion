@@ -7,19 +7,21 @@ namespace Audio
 {
     public class AudioAmbArea : MonoBehaviour
     {
-        [SerializeField] private List<AudioClip> audioList;
-        public string audioName;
+        public string loopingAmbSound;
+        public List<string> ambSoundsList = new List<string>();
         private void OnTriggerEnter(Collider other)
         {
             Interfaces.Interfaces.IPlayer player = other.transform.GetComponent<Interfaces.Interfaces.IPlayer>();
             if (player != null)
             {
-                if(AudioManager.instance.SfxDataBase.TryGetValue(audioName, out var clip)) 
+                if(AudioManager.instance.soundDataBase.TryGetValue(loopingAmbSound, out var clip)) 
                 {
-                    AudioManager.instance.ChangeAmb(clip);
+                    AudioAmbManager.instance.ChangeAmb(clip);
+                    AudioAmbManager.instance.currentAmbSoundList = ambSoundsList;
                 }
             }
         }
+        
     }
 }
 
