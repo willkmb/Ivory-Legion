@@ -361,7 +361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &144759175
 RectTransform:
   m_ObjectHideFlags: 0
@@ -665,7 +665,6 @@ GameObject:
   - component: {fileID: 373265559}
   - component: {fileID: 373265558}
   - component: {fileID: 373265557}
-  - component: {fileID: 373265556}
   m_Layer: 0
   m_Name: PlayerTrigger
   m_TagString: Untagged
@@ -688,19 +687,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 972517795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &373265556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373265554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef49453d215982445a1a37bd1eae6963, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inTrigger: 0
 --- !u!65 &373265557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -831,16 +817,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732972631}
-  m_LocalRotation: {x: -0, y: -0, z: -0.12433182, w: 0.9922407}
+  m_LocalRotation: {x: -0, y: -0, z: -0.13036114, w: 0.9914666}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.27080548, y: 0.27080548, z: 0.27080548}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1434662305}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -14.284}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -14.981}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.7, y: 5.1}
+  m_AnchoredPosition: {x: -2.5000057, y: 4.9999995}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732972633
@@ -990,7 +976,6 @@ GameObject:
   - component: {fileID: 972517798}
   - component: {fileID: 972517799}
   - component: {fileID: 972517800}
-  - component: {fileID: 972517802}
   m_Layer: 0
   m_Name: Elephant
   m_TagString: Player
@@ -1075,7 +1060,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 3699986557315901247}
+  bubbleUI: {fileID: 144759174}
   inTrigger: 0
+  collidedWith: {fileID: 0}
 --- !u!54 &972517797
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1235,25 +1222,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 2.5, z: 3.5}
   m_Center: {x: 0, y: 0.3, z: -0.75}
---- !u!114 &972517802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972517791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 873212bdcd0044741b6b7ac63441447b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Lines:
-  - textContent: Line 1
-    probability: 5
-  - textContent: Line 2
-    probability: 9
-  - textContent: Line 3
-    probability: 2
 --- !u!1 &1000959075
 GameObject:
   m_ObjectHideFlags: 0
@@ -6416,7 +6384,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 67f81a72916cd954591035b371451a5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2357b76da7a0b894db3f92abdcc70ec1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7640,6 +7608,7 @@ GameObject:
   - component: {fileID: 8658231204631545770}
   - component: {fileID: 8658231204631545772}
   - component: {fileID: 8658231204631545771}
+  - component: {fileID: 8658231204631545773}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -8440,6 +8409,26 @@ MonoBehaviour:
   cursorRoot: {fileID: 8406258862392094154}
   cursor: {fileID: 3375012534551387402, guid: 99dcf58148a01714b854c2868d48dba2, type: 3}
   charImage: {fileID: 4288925233544835841}
+--- !u!114 &8658231204631545773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5377900229738206062}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873212bdcd0044741b6b7ac63441447b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lines:
+  - textContent: Line 1
+    probability: 5
+  - textContent: Line 2
+    probability: 9
+  - textContent: Line 3
+    probability: 2
+  bubble: {fileID: 144759174}
 --- !u!4 &8745194092663908831
 Transform:
   m_ObjectHideFlags: 0

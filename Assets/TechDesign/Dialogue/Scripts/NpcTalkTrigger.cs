@@ -7,10 +7,13 @@ public class NpcTalkTrigger : MonoBehaviour
 {
     TriggerScript triggerScript;
     public GameObject dialogueUI;
+    public GameObject bubbleUI;
     Dialogue dialogue;
     Collider trigger;
     public bool inTrigger;
-    private GameObject collidedWith;
+    [HideInInspector] public GameObject collidedWith;
+
+    private bool bubbleEnabled = false;
     void Start()
     {
         triggerScript = GetComponentInChildren<TriggerScript>();
@@ -29,7 +32,7 @@ public class NpcTalkTrigger : MonoBehaviour
         {
             if (inTrigger == true)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && !bubbleEnabled)
                 {
                     if(collidedWith != null)
                     {
@@ -42,7 +45,6 @@ public class NpcTalkTrigger : MonoBehaviour
                     dialogueUI.SetActive(true);
                     dialogueUI.GetComponent<Animation>().Play();
                     Cursor.lockState = CursorLockMode.Confined;
-                    //GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().canMove = false;
                 }
             }
             else
@@ -59,6 +61,12 @@ public class NpcTalkTrigger : MonoBehaviour
         {
             inTrigger = true;
             collidedWith = other.gameObject;
+            if (collidedWith.GetComponent<BubbleScript>() != null && collidedWith.GetComponent<BubbleScript>().enabled)
+            {
+                bubbleEnabled = true;
+                collidedWith.GetComponent<BubbleScript>().pickLine();
+                bubbleUI.SetActive(true);
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -68,6 +76,11 @@ public class NpcTalkTrigger : MonoBehaviour
             inTrigger = false;
             dialogue = collidedWith.GetComponent<Dialogue>();
             dialogue.branchIndex = dialogue.startIndex;
+            if(collidedWith.GetComponent<BubbleScript>() != null)
+            {
+                bubbleEnabled = false;
+                bubbleUI.SetActive(false);
+            }
             collidedWith = null;
         }
     }
