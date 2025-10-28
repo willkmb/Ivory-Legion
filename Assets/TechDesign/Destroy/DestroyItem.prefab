@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7095775728923233631}
   - component: {fileID: 5946777264177752737}
   - component: {fileID: 4426317467527116431}
+  - component: {fileID: 1015346128988537863}
   m_Layer: 0
   m_Name: DestroyItem
   m_TagString: Untagged
@@ -141,3 +142,15 @@ MonoBehaviour:
       m_Action: Interact
       m_Flags: 0
     m_Flags: 0
+--- !u!114 &1015346128988537863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6431349391544612186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73637288d5298a441beae12edc05f846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

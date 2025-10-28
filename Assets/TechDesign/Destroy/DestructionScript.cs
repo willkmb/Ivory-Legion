@@ -1,3 +1,5 @@
+using System;
+using InputManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Interfaces.Interfaces;
@@ -5,7 +7,9 @@ using static Interfaces.Interfaces;
 
 public class DestructionScript : MonoBehaviour, IInteractable
 {
-    float timer;
+    public static DestructionScript instance;
+    
+    [HideInInspector] public float timer;
     bool isDestroyed;
     bool isStartDestruct;
     GameObject player;
@@ -18,20 +22,14 @@ public class DestructionScript : MonoBehaviour, IInteractable
     //  input for getting released button
     [SerializeField] InputAction interact;
 
+    private MeshRenderer _meshRenderer;
+
     private void Awake()
     {
-        //set up input action functionality
-        interact.canceled += Destroy;
-    }
-    private void OnEnable()
-    {
-        // enables inputs
-        interact.Enable();
-    }
-    private void OnDisable()
-    {
-        // disables inputs
-        interact.Disable();
+        instance ??= this;
+        
+        isDestroyed = false;
+        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -40,15 +38,14 @@ public class DestructionScript : MonoBehaviour, IInteractable
         if (isStartDestruct) // if the player has interacted
         {
             timer += Time.deltaTime; //start timer
-            Debug.Log(timer);
-
+           
             if (timer > 2 && timer < 3)
             {
-                gameObject.GetComponent<MeshRenderer>().material = OnMaterial; // changes material to indicate correct time to release button
+                _meshRenderer.material = OnMaterial; // changes material to indicate correct time to release button
             }
             else
             {
-                gameObject.GetComponent<MeshRenderer>().material = OffMaterial; // changes material to indicate incorrect time to release button
+                _meshRenderer.material = OffMaterial; // changes material to indicate incorrect time to release button
             }
         }
     }
@@ -56,14 +53,17 @@ public class DestructionScript : MonoBehaviour, IInteractable
     // on interact, sets interaction check to true
     public void Interact()
     {
+   
         if (!isDestroyed)
         {
+            Debug.Log(isStartDestruct);
             isStartDestruct = true;
+            PlayerManager.instance.currentDestructableObject = this;
         }
     }
 
     // on interact release, destroy object if timed right
-    void Destroy(InputAction.CallbackContext context)
+    public void DestroyObj()
     {
         if (timer > 2 && timer < 3)
         {
@@ -77,14 +77,9 @@ public class DestructionScript : MonoBehaviour, IInteractable
         }
         else
         {
-            timer = 0;
-            isStartDestruct = false;
-            gameObject.GetComponent<MeshRenderer>().material = DefaultMaterial;
+             timer = 0;
+             isStartDestruct = false;
+             _meshRenderer.material = DefaultMaterial;
         }
-    }
-
-    public void Activate()
-    {
-        throw new System.NotImplementedException();
     }
 }

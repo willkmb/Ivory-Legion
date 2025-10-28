@@ -1,59 +1,111 @@
 using System.Collections;
+using InputManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SeismicSenseScript : MonoBehaviour
+namespace SeismicSense
 {
-    //public GameObject Player;
-    public GameObject seismicPulseSphere; 
-    public GameObject returnPulse;
-    public GameObject particlesObj;
-    GameObject Detectable;
-
-    public float pulseSpeed = 0.025f;
-
-    Vector3 SphereExpand;
-    Vector3 OriginalScale;
-    
-    public ParticleSystem particEffects;
-    public Material mainMat;
-    
-    bool activePulse;
-
-    [Header("Input Bindings")]  //Input Bindings
-    //  input for getting released button
-    [SerializeField] InputAction seismicSense;
-
-    private void Awake()
+    public class SeismicSenseScript : MonoBehaviour
     {
-        //set up input action functionality
-        seismicSense.performed += StartPulse;
-        seismicSense.canceled += TimerReset;
-    }
-    private void OnEnable()
-    {
-        // enables inputs
-        seismicSense.Enable();
-    }
-    private void OnDisable()
-    {
-        // disables inputs
-        seismicSense.Disable();
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        particEffects.Stop();
-        SphereExpand = new Vector3(pulseSpeed, pulseSpeed, pulseSpeed);
-        OriginalScale = seismicPulseSphere.transform.localScale;
-    }
+        public static SeismicSenseScript instance; //Singleton (can be called from other scripts to reference this one
+        
+        [Header("Pulse Items")]
+        [SerializeField] private GameObject seismicPulseSphere;
+        [SerializeField] private GameObject returnPulse;
+        [SerializeField] private GameObject particlesObj;
+        public ParticleSystem particleEffects;
+        private GameObject _detectable;
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        var particSettings = particEffects.main;
-        if (Input.GetKey(KeyCode.Space)) //When the 'Space' key is held down, the  
+        [Header("Values")] 
+        [Range(0.1f, 0.5f)] public float pulseSpeed;
+        [Range(5f, 100f)] public float rangeMax = 100f;
+        
+        // Variables
+        [HideInInspector] public bool inProgress;
+
+        // Trigger Sphere Values
+        Vector3 _sphereExpand;  // How much it expands by every frame 
+        Vector3 _originalScale;
+
+        private void Awake()
+        {
+            instance ??= this; // Setting singleton referencing 
+        }
+
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
+            particleEffects.Stop();
+            _sphereExpand = new Vector3(pulseSpeed, pulseSpeed, pulseSpeed); // Sets how much it expands by every frame
+            _originalScale = seismicPulseSphere.transform.localScale; // For resetting purposes
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (inProgress) //Start sphere expansion for detection of objs
+                SeismicSen();
+        }
+
+        public void StartPulse()
+        {
+            var particle = particleEffects.main;
+            particle.loop = true;
+            particleEffects.Play();
+        }
+
+        public void Reset()
+        {
+            var particSettings = particleEffects.main;
+
+            inProgress = false;
+            particSettings.loop = false;
+            
+            seismicPulseSphere.transform.localScale = _originalScale;
+            particlesObj.transform.localScale = _originalScale;
+        }
+        
+        // Checks whether a detectable object has entered the sphere trigger
+        private void OnTriggerEnter(Collider detectObj)
+        {
+            _detectable = detectObj.gameObject;
+            
+            if (_detectable.CompareTag("NPC"))
+            {
+                Instantiate(returnPulse, _detectable.gameObject.transform.localPosition, Quaternion.identity);
+                // Spawns a pulse emitted from the location of the detectable object
+            }
+        }
+
+        // Causes the sphere and particle effect to expand outward
+        private void SeismicSen()
+        {
+            seismicPulseSphere.transform.localScale += _sphereExpand; // Trigger sphere expansion 
+            particlesObj.transform.localScale = seismicPulseSphere.transform.localScale; // Ensure particles match up with detection
+
+            // if the scale of the sphere trigger is greater than the max range, then the sphere is returned to its original scale and cooldown is reset
+            if (seismicPulseSphere.transform.localScale.x > rangeMax)
+            {
+                inProgress = false;
+                Reset();
+                PlayerManager.instance.seismicOffCooldown = true;
+            }
+        }
+        
+        // returns the sphere and particles to their original sizes once the timer has ended
+        // private void Reset()
+        // {
+        //    // yield return new WaitForSeconds(1.5f);
+        //     seismicPulseSphere.transform.localScale = OriginalScale;
+        //     particlesObj.transform.localScale = OriginalScale;
+        //     activePulse = false;
+        //
+        //     PlayerManager.instance.seismicOffCooldown = true;
+        // }
+        
+        
+        /*var particSettings = particEffects.main;
+        if (Input.GetKey(KeyCode.Space)) //When the 'Space' key is held down, the
         {
 
             //particMain.loop = true;
@@ -62,7 +114,7 @@ public class SeismicSenseScript : MonoBehaviour
             if (!activePulse) // if the pulse isn't active, then the pulse will now start and the particle effect will loop
             {
                 particSettings.loop = true;
-                particEffects.Play();   
+                particEffects.Play();
                 activePulse = true;
             }
         }
@@ -74,75 +126,12 @@ public class SeismicSenseScript : MonoBehaviour
                 particSettings.loop = false;
                 StartCoroutine(Timer());
             }
-        }
+        }*/
 
-        if (activePulse)
-        {
-            SeismicSen();
-        }
-        */
-    }
-
-    void StartPulse(InputAction.CallbackContext context)
-    {
-        var particSettings = particEffects.main;
-        if (!activePulse) // if the pulse isn't active, then the pulse will now start and the particle effect will loop
-        {
-            particSettings.loop = true;
-            particEffects.Play();
-            activePulse = true;
-        }
-        else
-        {
-            SeismicSen();
-        }
-    }
-
-    void TimerReset(InputAction.CallbackContext context)
-    {
-        var particSettings = particEffects.main;
-        if (activePulse) // if the pulse is active, then the particle effect will stop looping and start the reset timer
-        {
-            particSettings.loop = false;
-            StartCoroutine(Timer());
-        }
-    }
-
-
-    // Checks whether a detectable object has entered the sphere trigger
-    private void OnTriggerEnter(Collider detectObj)
-    {
-        Debug.Log(detectObj.gameObject);
-        Detectable = detectObj.gameObject;
-
-        Debug.Log(Detectable.gameObject);
-
-        if (Detectable.CompareTag("NPC"))
-        {
-            Instantiate(returnPulse, Detectable.gameObject.transform.localPosition, Quaternion.identity); // Spawns a pulse emited from the location of the detectable object
-        }
-    }
-
-    // returns the sphere and particles to their original sizes once the timer has ended
-    private IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(1.5f);
-        seismicPulseSphere.transform.localScale = OriginalScale;
-        particlesObj.transform.localScale = OriginalScale;
-        activePulse = false;
-    }
-
-    // Causes the sphere and particle effect to expand outward
-    void SeismicSen()
-    {
-        float rangeMax = 100f;
-
-        seismicPulseSphere.transform.localScale += SphereExpand;
-        particlesObj.transform.localScale = seismicPulseSphere.transform.localScale;
-
-        if (seismicPulseSphere.transform.localScale.x > rangeMax) // if the scale of the sphere trigger is greater than the max range, then the sphere is returned to its original scale
-        {
-            seismicPulseSphere.transform.localScale = OriginalScale;
-        }
+        // if (activePulse)
+        // {
+        //     SeismicSen();
+        // }
     }
 }
+
