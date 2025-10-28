@@ -191,9 +191,48 @@ public class PushPullController : MonoBehaviour
             Debug.DrawRay(origin, direction * wallDistance, Color.green);
             //ENABLE "FORWARD" CONTROL IN PLAYER CONTROLLER
         }
-
     }
 
+<<<<<<< Updated upstream:Assets/TechDesign/PushPull/PushPullController.cs
+=======
+    private void ActivateCollisionBack()
+    {
+        Vector3 origin = pushedObj.transform.position;  //Finds the pushed object origin
+        Vector3 direction2 = transform.forward;          //finds the forward direction of the pushed object
+
+        if (whichSide)
+        {
+            wallDistance = halfWidth;
+        }
+        else
+        {
+            wallDistance = halfDepth;
+        }
+
+        //Raycast to check if wall is behind the pushed object
+        if (Physics.Raycast(origin, -direction2, out RaycastHit hit, wallDistance - 0.1f, collisionLayers))
+        {
+            if (hit.collider.gameObject != pushedObj)
+            {
+                Debug.DrawRay(origin, -direction2 * wallDistance, Color.red);
+                Debug.Log("Wall! STOP!");
+
+                //DISABLE "BACKWARDS" CONTROL FROM PLAYER CONTROLLER
+
+                //this will push back player for now, get rid when the disable forward is added in player controller
+                Vector3 backOff = transform.forward * 0.05f;
+                transform.position += backOff;
+            }
+        }
+        else
+        {
+            Debug.DrawRay(origin, -direction2 * wallDistance, Color.green);
+            //ENABLE "BACKWARDS" CONTROL IN PLAYER CONTROLLER
+        }
+    }
+
+
+>>>>>>> Stashed changes:Assets/TechDesign/Pull Push/PushPullController.cs
     private string GetPlayerViewSide(RaycastHit hit) //Finds the side the player is looking at
     {
         Vector3 toPlayer = (transform.position - hit.transform.position).normalized;
