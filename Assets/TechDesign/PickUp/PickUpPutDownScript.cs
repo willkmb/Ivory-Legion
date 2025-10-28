@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Interfaces.Interfaces;
 
 public class PickUpPutDownScript : MonoBehaviour, IInteractable
 {
@@ -44,5 +45,10 @@ public class PickUpPutDownScript : MonoBehaviour, IInteractable
 
             }
         }
+    }
+
+    public void Activate()
+    {
+        throw new System.NotImplementedException();
     }
 }

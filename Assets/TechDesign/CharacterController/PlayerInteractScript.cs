@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using static Interfaces.Interfaces;
 
 public class PlayerInteractScript : MonoBehaviour
 {

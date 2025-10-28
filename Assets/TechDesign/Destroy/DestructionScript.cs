@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Interfaces.Interfaces;
 
 
 public class DestructionScript : MonoBehaviour, IInteractable
@@ -80,5 +81,10 @@ public class DestructionScript : MonoBehaviour, IInteractable
             isStartDestruct = false;
             gameObject.GetComponent<MeshRenderer>().material = DefaultMaterial;
         }
+    }
+
+    public void Activate()
+    {
+        throw new System.NotImplementedException();
     }
 }

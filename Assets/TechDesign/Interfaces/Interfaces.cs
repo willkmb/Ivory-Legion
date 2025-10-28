@@ -18,6 +18,9 @@ namespace Interfaces
         public interface INpcHuman
         {
         }
-
+        public interface IInteractable
+        {
+            void Interact();
+        }
     }
 }
