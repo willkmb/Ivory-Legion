@@ -20,6 +20,26 @@ public class SeismicSenseScript : MonoBehaviour
     
     bool activePulse;
 
+    [Header("Input Bindings")]  //Input Bindings
+    //  input for getting released button
+    [SerializeField] InputAction seismicSense;
+
+    private void Awake()
+    {
+        //set up input action functionality
+        seismicSense.performed += StartPulse;
+        seismicSense.canceled += TimerReset;
+    }
+    private void OnEnable()
+    {
+        // enables inputs
+        seismicSense.Enable();
+    }
+    private void OnDisable()
+    {
+        // disables inputs
+        seismicSense.Disable();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,6 +51,7 @@ public class SeismicSenseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         var particSettings = particEffects.main;
         if (Input.GetKey(KeyCode.Space)) //When the 'Space' key is held down, the  
         {
@@ -59,7 +80,34 @@ public class SeismicSenseScript : MonoBehaviour
         {
             SeismicSen();
         }
+        */
     }
+
+    void StartPulse(InputAction.CallbackContext context)
+    {
+        var particSettings = particEffects.main;
+        if (!activePulse) // if the pulse isn't active, then the pulse will now start and the particle effect will loop
+        {
+            particSettings.loop = true;
+            particEffects.Play();
+            activePulse = true;
+        }
+        else
+        {
+            SeismicSen();
+        }
+    }
+
+    void TimerReset(InputAction.CallbackContext context)
+    {
+        var particSettings = particEffects.main;
+        if (activePulse) // if the pulse is active, then the particle effect will stop looping and start the reset timer
+        {
+            particSettings.loop = false;
+            StartCoroutine(Timer());
+        }
+    }
+
 
     // Checks whether a detectable object has entered the sphere trigger
     private void OnTriggerEnter(Collider detectObj)

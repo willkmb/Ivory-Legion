@@ -7,6 +7,8 @@ public class ItemStorage : MonoBehaviour
     public GameObject putDownPoint;
     [SerializeField] GameObject trunkPoint, hatPoint, saddlePointRight, saddlePointLeft;
 
+    [SerializeReference] InputActionAsset m_actionList;
+
     [Header("Input Bindings")]  //Input Bindings
     [SerializeField] InputAction hatOn;
     [SerializeField] InputAction swapLeft;    
@@ -26,7 +28,7 @@ public class ItemStorage : MonoBehaviour
         BagRight,
     }
 
-
+     
     private void Awake()
     {
         //set up input action functionality
@@ -39,7 +41,7 @@ public class ItemStorage : MonoBehaviour
     private void OnEnable()
     {
         //enables inputs
-        //hatOn.AddBinding("<Keyboard>/H");
+
         hatOn.Enable();
         swapLeft.Enable();
         swapRight.Enable();
@@ -50,11 +52,14 @@ public class ItemStorage : MonoBehaviour
         hatOn.Disable();
         swapLeft.Disable();
         swapRight.Disable();
+
+        
     }
 
     // passes an object into item storage to pick it up, and childs it to a storage point
     public void PickUp(GameObject thatObject)
     {
+
         if (itemsInStorage[(int)Storage.Trunk] == null)
         {
             itemsInStorage[(int)Storage.Trunk] = thatObject;
