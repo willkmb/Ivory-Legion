@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static Interfaces.Interfaces;
 
+namespace Player {
 public class PickUpPutDownScript : MonoBehaviour, IInteractable
 {
     // variables in inspector
@@ -41,14 +42,12 @@ public class PickUpPutDownScript : MonoBehaviour, IInteractable
                     transform.position = PutDownPoint.transform.position;
                     transform.parent = null;
                 }
-
-
             }
         }
     }
-
     public void Activate()
     {
         throw new System.NotImplementedException();
     }
+}
 }
