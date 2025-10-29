@@ -31,17 +31,18 @@ namespace Npc.AI
         //Enums
         [Header("Variables")]
         public NpcType npcType;
-        public NpcState npcState; 
+        public NpcState npcState;
+        [HideInInspector] public NpcState stateSaver;
 
         //Components
         [HideInInspector] public NavMeshAgent agent;
-        private AudioSource _audioSource;
         
         //Scripts
         private NpcSetLocation _npcSetLocation;
         private NpcPerformingAction _performingAction;
         [HideInInspector] public NpcSetPathWalking setPathWalking;
         private NpcRandomMovement _randomMovement;
+        private Dialogue _dialogue;
         
         // Values
         private float _agentOriginalSpeed;
@@ -59,18 +60,20 @@ namespace Npc.AI
         {
             agent = transform.GetComponent<NavMeshAgent>();
             _agentOriginalSpeed = agent.speed;
-
-            _audioSource = transform.GetComponent<AudioSource>();
             
             _npcSetLocation = transform.GetComponent<NpcSetLocation>();
             _performingAction = transform.GetComponent<NpcPerformingAction>();
             setPathWalking = transform.GetComponent<NpcSetPathWalking>();
             _randomMovement = transform.GetComponent<NpcRandomMovement>();
+            _dialogue = transform.GetComponent<Dialogue>();
         }
 
         private void Start()
         {
             NpcEvents.instance.NpcCallAllStatesEvent += StateMachine;
+
+            if (alwaysIdle)
+                npcState = NpcState.Idle;
         }
 
         // The brain of the NPC
@@ -80,6 +83,7 @@ namespace Npc.AI
             {
                 case NpcState.Idle: //NPC will not move,
                     agent.speed = 0f;
+                    stateSaver = NpcState.Idle;
                     if (!alwaysIdle)
                     {
                         var randomTime = Random.Range(minMovementCooldownTime, maxMovementCooldownTime);
@@ -88,13 +92,16 @@ namespace Npc.AI
                     }
                     break;
                 case NpcState.Walking: // NPC walks to set location(s), set by parameters
+                    stateSaver = NpcState.Walking;
                     _npcSetLocation.SetLocation(); // Gets location for the npc to walk too
                     break;
                 case NpcState.SetPathingWalking: //Selected for Npcs that walk to point A TO B with no other objective
                     // Only needs to be called once as it loops itself in a contained script
+                    stateSaver =  NpcState.SetPathingWalking;
                     setPathWalking.GetNextLocationPoint();
                     break;
                 case NpcState.PerformingAction: //E.G Animations involving jobs or trading with the shop owner
+                    stateSaver  =  NpcState.PerformingAction;
                     _performingAction.SubscribeToTimer();
                     break;
                 case NpcState.AvoidingPlayer: // When the NPC is near the player, move backwards / away to avoid collision with the player.
@@ -102,11 +109,12 @@ namespace Npc.AI
                     break;
                 case NpcState.TalkingToPlayer: //NPC will stop any movement and enter the dialogue with the player
                     agent.speed = 0f;
-                    Debug.Log("taking to the player");
+                    _dialogue.pastNpcState = stateSaver;
                     // Do talking stuff here
                     break;
                 case NpcState.RandomPathing: //Walk to a random spot with x radius to simulate that they are busy.
                     //Repeats in an infinite loop unless spoken to by player in which it will continue after the conversation
+                    stateSaver =  NpcState.RandomPathing;
                     _randomMovement.GetRandomlocation();
                     break;
                 default:

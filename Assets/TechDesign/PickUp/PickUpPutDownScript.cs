@@ -5,6 +5,8 @@ using static Interfaces.Interfaces;
 namespace Player {
 public class PickUpPutDownScript : MonoBehaviour, IInteractable
 {
+    public static PickUpPutDownScript instance;
+    
     // variables in inspector
     [SerializeField] GameObject PutDownPoint;
     public bool isHat;
@@ -12,6 +14,11 @@ public class PickUpPutDownScript : MonoBehaviour, IInteractable
     // private variables
     GameObject player;
     public bool isPickedUp;
+
+    private void Awake()
+    {
+        instance ??= this;
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +35,7 @@ public class PickUpPutDownScript : MonoBehaviour, IInteractable
             player.GetComponent<ItemStorage>().PickUp(this.gameObject);
             isPickedUp = true;
         }
-        else    // if the item is picked up (ie in trunk) then check if area is clear and put it down
+        /*else    // if the item is picked up (ie in trunk) then check if area is clear and put it down
         {
             if (player.GetComponent<ItemStorage>().itemsInStorage[0] != null)
             {
@@ -42,6 +49,23 @@ public class PickUpPutDownScript : MonoBehaviour, IInteractable
                     transform.position = PutDownPoint.transform.position;
                     transform.parent = null;
                 }
+            }
+        }*/
+    }
+
+    public void DropItems()
+    {
+        if (player.GetComponent<ItemStorage>().itemsInStorage[0] != null)
+        {
+            PutDownPoint = player.GetComponent<ItemStorage>().putDownPoint;
+            Collider[] intersecting = Physics.OverlapSphere(PutDownPoint.transform.position, 0.5f);
+            Debug.Log(intersecting.Length);
+            if (intersecting.Length == 1 || intersecting.Length == 2)
+            { 
+                player.GetComponent<ItemStorage>().itemsInStorage[0] = null;
+                isPickedUp = false;
+                transform.position = PutDownPoint.transform.position;
+                transform.parent = null;
             }
         }
     }
