@@ -1,14 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;                      //THIS IS USING THE OLD INPUT SYSTEM!!!!!!!
 
-namespace Player
+public class Elephant_2 : MonoBehaviour
 {
-    public class PlayerMovement : MonoBehaviour
-{
-    public static PlayerMovement instance;
+   
     
     [Header("References")]
     private CharacterController controller;
@@ -25,11 +22,6 @@ namespace Player
     private float moveInput;
     private float turnInput;
 
-    private void Awake()
-    {
-        instance ??= this;
-    }
-
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -37,14 +29,14 @@ namespace Player
 
     private void Update()
     {
-      //  InputManagement();
-       // Movement();
+        InputManagement();
+        Movement();
     }
-    // Move 4 directions
-    public void Movement(Vector2 input)
+
+    private void Movement()
     {
         // Get movement direction relative to camera
-        Vector3 inputDirection = new Vector3(input.x, 0, input.y).normalized;
+        Vector3 inputDirection = new Vector3(turnInput, 0, moveInput).normalized;
 
         if (inputDirection.magnitude >= 0.1f)
         {
@@ -79,12 +71,10 @@ namespace Player
         return verticalVelocity;
     }
 
-    public void InputManagement()
+    private void InputManagement()
     {
         moveInput = Input.GetAxis("Vertical");
         turnInput = Input.GetAxis("Horizontal");
     }
 }
-}
-
 

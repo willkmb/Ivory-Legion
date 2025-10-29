@@ -1,38 +1,36 @@
-using InputManager;
-using Npc.AI;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace AI
-{
 public class NpcTalkTrigger : MonoBehaviour
 {
-    public static NpcTalkTrigger instance;
-    
     TriggerScript triggerScript;
     public GameObject dialogueUI;
     Dialogue dialogue;
     Collider trigger;
     public bool inTrigger;
     private GameObject collidedWith;
-
-    private void Awake()
-    {
-        instance ??= this;
-    }
     void Start()
     {
         triggerScript = GetComponentInChildren<TriggerScript>();
         dialogueUI.SetActive(false);
     }
-    
-    public void Interact()
+
+    void Update()
+    {
+        Interact();
+    }
+
+
+    void Interact()
     {
         if (triggerScript != null)
         {
             if (inTrigger == true)
             {
-                // Start dialogue system with that NPC
+                if (Input.GetKeyDown(KeyCode.E))
+                {
                     if(collidedWith != null)
                     {
                         dialogue = collidedWith.GetComponent<Dialogue>();
@@ -40,19 +38,12 @@ public class NpcTalkTrigger : MonoBehaviour
                         TextMeshProUGUI text = collidedWith.GetComponent<NPCtrustValue>().text;
                         string opinion = collidedWith.GetComponent<NPCtrustValue>().opinionLevel;
                         text.text = "Opinion: " + opinion;
-                        
-                        // Change npc state
-                        NpcManager npcManager = collidedWith.GetComponent<NpcManager>();
-                        npcManager.npcState = NpcState.TalkingToPlayer;
-                        npcManager.StateChanger();
-                        
-                        // Playesr Inputs
-                        PlayerManager.instance.movementAllowed = false;
                     }
                     dialogueUI.SetActive(true);
                     dialogueUI.GetComponent<Animation>().Play();
                     Cursor.lockState = CursorLockMode.Confined;
                     //GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().canMove = false;
+                }
             }
             else
             {
@@ -80,5 +71,5 @@ public class NpcTalkTrigger : MonoBehaviour
             collidedWith = null;
         }
     }
-}
+
 }

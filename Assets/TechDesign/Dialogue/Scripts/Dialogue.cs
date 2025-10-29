@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
-using InputManager;
-using Npc.AI;
 
 public class Dialogue : MonoBehaviour
 {
@@ -34,10 +32,6 @@ public class Dialogue : MonoBehaviour
     public GameObject charImage;
 
     NPCtrustValue trustHolder;
-    
-    // NpcManager Memory Values etc
-    [HideInInspector] public NpcManager npcManager;
-    [HideInInspector] public NpcState pastNpcState;
 
     [System.Serializable]
     public class dialogue // same as above but for main body text
@@ -135,17 +129,6 @@ public class Dialogue : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         loadSet(); // call this whenever we want it to change to the next set of dialogue
         ShowNextBranch();
-        
-        // Change NPC state change
-        npcManager.npcState = pastNpcState;
-        if (npcManager.npcState == NpcState.SetPathingWalking)
-            npcManager.setPathWalking.currentPointNumber -= 1;
-        
-        npcManager.StateChanger();
-        
-        //Input Manager
-        PlayerManager.instance.InteractOffCoolDown();
-        PlayerManager.instance.movementAllowed = true;
     }
 
     public void UpdateNPCOpinion(string topic)

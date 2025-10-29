@@ -47,13 +47,14 @@ public class ReturnSeismicPulse : MonoBehaviour
     // Checks wether the player has entered the trigger sphere, if it has, then particle looping ends
     private void OnTriggerEnter(Collider player)
     {
-//        Debug.Log(player.gameObject);
+        Debug.Log(player.gameObject);
         PlayerChar = player.gameObject;
 
-//        Debug.Log(PlayerChar.gameObject);
+        Debug.Log(PlayerChar.gameObject);
 
         if (PlayerChar.gameObject.CompareTag("Player"))
         {
+
             var particMain = particEffects.main;
             particMain.loop = false;
 

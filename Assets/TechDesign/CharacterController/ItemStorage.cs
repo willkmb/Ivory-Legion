@@ -1,11 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player {
 public class ItemStorage : MonoBehaviour
 {
-    public static ItemStorage instance;
-    
     [Header("Points that Items are Parented to")]   //Points in space to put items
     public GameObject putDownPoint;
     [SerializeField] GameObject trunkPoint, hatPoint, saddlePointRight, saddlePointLeft;
@@ -30,17 +27,39 @@ public class ItemStorage : MonoBehaviour
         BagLeft,
         BagRight,
     }
-    
+
+     
     private void Awake()
     {
-        instance ??= this;
-        
+        //set up input action functionality
+        hatOn.performed += WearHat;
+        swapLeft.performed += SwapItemLeft;
+        swapRight.performed += SwapItemRight;
+
         itemsInStorage = new GameObject[3];
+    }
+    private void OnEnable()
+    {
+        //enables inputs
+
+        hatOn.Enable();
+        swapLeft.Enable();
+        swapRight.Enable();
+    }
+    private void OnDisable()
+    {
+        //disables inputs
+        hatOn.Disable();
+        swapLeft.Disable();
+        swapRight.Disable();
+
+        
     }
 
     // passes an object into item storage to pick it up, and childs it to a storage point
     public void PickUp(GameObject thatObject)
     {
+
         if (itemsInStorage[(int)Storage.Trunk] == null)
         {
             itemsInStorage[(int)Storage.Trunk] = thatObject;
@@ -74,11 +93,13 @@ public class ItemStorage : MonoBehaviour
                 itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                 itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
             }
+
         }
+        
     }
 
     // swaps trunk and left bag items
-    public void SwapItemLeft()
+    void SwapItemLeft(InputAction.CallbackContext context)
     {
         tempItemStorage1 = itemsInStorage[(int)Storage.Trunk];
         itemsInStorage[(int)Storage.Trunk] = itemsInStorage[(int)Storage.BagLeft];
@@ -96,10 +117,11 @@ public class ItemStorage : MonoBehaviour
             itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
             itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
         }
+
     }
 
     // swaps trunk and right bag items
-    public void SwapItemRight()
+    void SwapItemRight(InputAction.CallbackContext context)
     {
         tempItemStorage1 = itemsInStorage[(int)Storage.Trunk];
         itemsInStorage[(int)Storage.Trunk] = itemsInStorage[(int)Storage.BagRight];
@@ -117,11 +139,13 @@ public class ItemStorage : MonoBehaviour
             itemsInStorage[(int)Storage.BagRight].transform.position = saddlePointRight.transform.position;
             itemsInStorage[(int)Storage.BagRight].transform.parent = saddlePointRight.transform;
         }
+
     }
 
     // if holding a hat, put it on head
-    public void WearHat()
+    void WearHat(InputAction.CallbackContext context)
     {
+
         if (itemsInStorage[(int)Storage.Trunk] != null)
         {
             if (itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isHat == true)
@@ -244,5 +268,3 @@ public class ItemStorage : MonoBehaviour
         */
     }
 }
-}
-
