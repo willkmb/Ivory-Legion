@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Ai;
 using Npc.Marker_Points;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,7 +21,7 @@ namespace Npc.AI.Movement
         public void SetLocation()
         {
             //If there is no active points to move towards return to idle state
-            if (MarkerPointManager.instance.markerPointsHumanActive.Count <= 0)
+            if (_npcManager.markerPointZone.markerPointsHumanActive.Count <= 0)
             {
                 _npcManager.npcState = NpcState.Idle;
                 _npcManager.StateChanger();
@@ -31,14 +32,14 @@ namespace Npc.AI.Movement
             switch (_npcManager.npcType)
             {
                 case NpcType.Humanoid:
-                    var mpAmountHuman = MarkerPointManager.instance.markerPointsHumanActive.Count;
+                    var mpAmountHuman = _npcManager.markerPointZone.markerPointsHumanActive.Count;
                     var randomPointHuman = Random.Range(0, mpAmountHuman);
-                     pointObj = MarkerPointManager.instance.markerPointsHumanActive[randomPointHuman];
+                     pointObj = _npcManager.markerPointZone.markerPointsHumanActive[randomPointHuman];
                     break;
                 case NpcType.Elephant:
-                    var mpAmountElephant = MarkerPointManager.instance.markerPointsElephantActive.Count;
+                    var mpAmountElephant = _npcManager.markerPointZone.markerPointsElephantActive.Count;
                     var randomPointElephant = Random.Range(0, mpAmountElephant);
-                     pointObj = MarkerPointManager.instance.markerPointsElephantActive[randomPointElephant];
+                     pointObj = _npcManager.markerPointZone.markerPointsElephantActive[randomPointElephant];
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -86,12 +87,12 @@ namespace Npc.AI.Movement
             switch(_npcManager.npcType)
             {
                 case NpcType.Humanoid:
-                    MarkerPointManager.instance.markerPointsHumanActive.Remove(markerPoint); // Prevents other npcs going to the same location
-                    MarkerPointManager.instance.markerPointsHumanInactive.Add(markerPoint);
+                    _npcManager.markerPointZone.markerPointsHumanActive.Remove(markerPoint); // Prevents other npcs going to the same location
+                    _npcManager.markerPointZone.markerPointsHumanInactive.Add(markerPoint);
                     break;
                 case NpcType.Elephant:
-                    MarkerPointManager.instance.markerPointsElephantActive.Remove(markerPoint); // Prevents other npcs going to the same location
-                    MarkerPointManager.instance.markerPointsElephantInactive.Add(markerPoint);
+                    _npcManager.markerPointZone.markerPointsElephantActive.Remove(markerPoint); // Prevents other npcs going to the same location
+                    _npcManager.markerPointZone.markerPointsElephantInactive.Add(markerPoint);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

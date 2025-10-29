@@ -21,11 +21,11 @@ namespace Npc.Marker_Points
     {
         public static MarkerPointManager instance;
         
-        public List<GameObject> markerPointsHumanActive;
-        public List<GameObject> markerPointsHumanInactive;
-        
-        public List<GameObject> markerPointsElephantActive;
-        public List<GameObject> markerPointsElephantInactive;
+        // public List<GameObject> markerPointsHumanActive;
+        // public List<GameObject> markerPointsHumanInactive;
+        //
+        // public List<GameObject> markerPointsElephantActive;
+        // public List<GameObject> markerPointsElephantInactive;
         private void Awake()
         {
             instance ??= this;

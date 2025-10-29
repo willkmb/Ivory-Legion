@@ -63,12 +63,12 @@ namespace Npc.AI
                 switch(activeMarkerPoint.GetMpNpcTarget())
                 {
                     case MarkerNpcTarget.Human:
-                        MarkerPointManager.instance.markerPointsHumanActive.Add(activeMarkerPoint.gameObject);
-                        MarkerPointManager.instance.markerPointsHumanInactive.Remove(activeMarkerPoint.gameObject);
+                        _npcManager.markerPointZone.markerPointsHumanActive.Add(activeMarkerPoint.gameObject);
+                        _npcManager.markerPointZone.markerPointsHumanInactive.Remove(activeMarkerPoint.gameObject);
                         break;
                     case MarkerNpcTarget.Elephant:
-                        MarkerPointManager.instance.markerPointsElephantActive.Add(activeMarkerPoint.gameObject);
-                        MarkerPointManager.instance.markerPointsElephantInactive.Remove(activeMarkerPoint.gameObject);
+                        _npcManager.markerPointZone.markerPointsElephantActive.Add(activeMarkerPoint.gameObject);
+                        _npcManager.markerPointZone.markerPointsElephantInactive.Remove(activeMarkerPoint.gameObject);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

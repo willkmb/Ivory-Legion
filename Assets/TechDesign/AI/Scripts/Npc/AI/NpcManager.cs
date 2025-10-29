@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Ai;
 using Npc.AI.Movement;
 using Audio;
 using UnityEngine;
@@ -50,6 +51,9 @@ namespace Npc.AI
         public bool patrolling; // Ticked if you want the NPC to travel between points on the SetPathingWalking
         [HideInInspector] public float minMovementCooldownTime;
         [HideInInspector] public float maxMovementCooldownTime;
+        
+        [Header("Only Required if AI is 'BASE'")]
+        public MarkerPointZone markerPointZone;
         
         private void Awake()
         {
