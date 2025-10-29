@@ -12,7 +12,9 @@ public class MenuScript : MonoBehaviour
     private bool rotating;
     private int textIndex = 0;
     private string[] texts = { "Settings", "About", "Quit", "Play" };
+    private int state = 0;
     public Animation button;
+    public GameObject transition;
 
     void Update()
     {
@@ -23,6 +25,8 @@ public class MenuScript : MonoBehaviour
 
             StartCoroutine(ChangeText());
             button.Play();
+            state++;
+            if(state > 3) { state = 0; }
         }
 
         if (rotating)
@@ -35,6 +39,11 @@ public class MenuScript : MonoBehaviour
 
             if (turned >= rotateAmount)
                 rotating = false;
+        }
+
+        if (state == 0 && Input.GetKeyDown(KeyCode.P))
+        {
+            transition.GetComponent<Animation>().Play();
         }
     }
 
