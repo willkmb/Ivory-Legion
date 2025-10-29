@@ -54,7 +54,7 @@ namespace InputManager
 
         private void Start()
         {
-            moveAction = inputSystem.actions.FindAction("Move"); // Gets "MOVE" In the Inputsystem
+            moveAction = inputSystem.actions.FindAction("Move");
   
             interactAction = inputSystem.actions.FindAction("Interact");
             destroyObjAction = inputSystem.actions.FindAction("Destroy");
@@ -88,22 +88,28 @@ namespace InputManager
                             NpcTalkTrigger.instance.Interact();
                             return;
                         }
-                        
                         PlayerInteractScript.instance.CheckObjectInFront();
-                        
-                        // If not a destructable obj reset cooldown
-                        if (!destroyChargeInProgress) // Set in "PlayerInteractScript.instance.CheckObjectInFront()"
-                        {
-                            Invoke(nameof(InteractOffCoolDown), interactCooldown + interactCooldown* 0.05f);
-                            return;
-                        }
                     }
+                // Drops item if the player has one in truck
+                if (interactAction.IsPressed() && PickUpPutDownScript.instance.isPickedUp)
+                {
+                   Debug.Log("drop item");
+                    PickUpPutDownScript.instance.DropItems();
+                    Invoke(nameof(InteractOffCoolDown), interactCooldown + interactCooldown* 0.05f);
+                    return;
+                }
+                // If not a destructable obj reset cooldown, and interact is on cooldown
+                if (!destroyChargeInProgress && !PickUpPutDownScript.instance.isPickedUp && !_interactOffCooldown) // Set in "PlayerInteractScript.instance.CheckObjectInFront()"
+                {
+                    Invoke(nameof(InteractOffCoolDown), interactCooldown + interactCooldown* 0.05f);
+                    return;
+                }
                 
                 // DestroyChargeInProgress is set when an obj is interacted with - if destructable obj selected start charge
                 // If the player stops holding down the button the charge attack is cancelled
                 // And they have to interact with obj again to start the process
                 
-                if (currentDestructableObject != null  && destroyChargeInProgress)
+                if (currentDestructableObject != null  && destroyChargeInProgress && !PickUpPutDownScript.instance.isPickedUp)
                 {
                     if (!destroyObjAction.IsInProgress())
                     {

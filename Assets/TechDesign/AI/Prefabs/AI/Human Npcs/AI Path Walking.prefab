@@ -15,9 +15,11 @@ GameObject:
   - component: {fileID: 5323662316473001147}
   - component: {fileID: 1394003269791256217}
   - component: {fileID: 7991608886031019867}
+  - component: {fileID: 3124562806528550084}
+  - component: {fileID: 7212954053113446442}
   m_Layer: 3
   m_Name: AI Path Walking
-  m_TagString: npc
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,12 +150,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcType: 0
   npcState: 2
+  stateSaver: 0
   agent: {fileID: 5323662316473001147}
   setPathWalking: {fileID: 0}
   alwaysIdle: 0
   patrolling: 0
   minMovementCooldownTime: 0
   maxMovementCooldownTime: 0
+  markerPointZone: {fileID: 0}
 --- !u!114 &7991608886031019867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +178,47 @@ MonoBehaviour:
   - {fileID: 2100000, guid: fc9e9ff1d58a3ed47a45e65c8ac09a64, type: 2}
   currentPointNumber: 0
   timeToReset: 2
+--- !u!114 &3124562806528550084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565470921340350827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a358a55889dccfc48b0c7a3ade9d7652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueSets: []
+  startIndex: 0
+  branchIndex: 0
+  speakerName: {fileID: 0}
+  dialogueText: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  choiceRoot: {fileID: 0}
+  choiceButton: {fileID: 0}
+  cursorRoot: {fileID: 0}
+  cursor: {fileID: 0}
+  charImage: {fileID: 0}
+  pastNpcState: 0
+--- !u!114 &7212954053113446442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565470921340350827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc86d8c296d5e44dac570a105ed7040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trustValue: 0
+  opinionLevel: Neutral
+  likedTopics: []
+  dislikedTopics: []
+  text: {fileID: 0}
 --- !u!1 &8720399753084078490
 GameObject:
   m_ObjectHideFlags: 0

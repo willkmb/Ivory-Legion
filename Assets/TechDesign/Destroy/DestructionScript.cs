@@ -56,7 +56,7 @@ public class DestructionScript : MonoBehaviour, IInteractable
    
         if (!isDestroyed)
         {
-            Debug.Log(isStartDestruct);
+            Debug.Log(isStartDestruct + " - start destruct");
             isStartDestruct = true;
             PlayerManager.instance.currentDestructableObject = this;
         }

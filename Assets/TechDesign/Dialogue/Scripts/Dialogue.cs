@@ -36,7 +36,7 @@ public class Dialogue : MonoBehaviour
     NPCtrustValue trustHolder;
     
     // NpcManager Memory Values etc
-    [HideInInspector] public NpcManager npcManager;
+    private NpcManager _npcManager;
     [HideInInspector] public NpcState pastNpcState;
 
     [System.Serializable]
@@ -72,6 +72,8 @@ public class Dialogue : MonoBehaviour
 
     private void Start()
     {
+        _npcManager = transform.GetComponent<NpcManager>();
+        
         trustHolder = GetComponent<NPCtrustValue>();
         branchIndex = startIndex; // sets the current branch index to the start
         ShowNextBranch();
@@ -137,11 +139,11 @@ public class Dialogue : MonoBehaviour
         ShowNextBranch();
         
         // Change NPC state change
-        npcManager.npcState = pastNpcState;
-        if (npcManager.npcState == NpcState.SetPathingWalking)
-            npcManager.setPathWalking.currentPointNumber -= 1;
+        _npcManager.npcState = pastNpcState;
+        if (_npcManager.npcState == NpcState.SetPathingWalking)
+            _npcManager.setPathWalking.currentPointNumber -= 1;
         
-        npcManager.StateChanger();
+        _npcManager.StateChanger();
         
         //Input Manager
         PlayerManager.instance.InteractOffCoolDown();

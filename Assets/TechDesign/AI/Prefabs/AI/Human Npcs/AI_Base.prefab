@@ -92,10 +92,11 @@ GameObject:
   - component: {fileID: 5026178957439393021}
   - component: {fileID: 7370519835891943443}
   - component: {fileID: 4617369451465662855}
-  - component: {fileID: 913743354003265830}
+  - component: {fileID: 2700701554941396903}
+  - component: {fileID: 2922839564690337798}
   m_Layer: 3
   m_Name: AI_Base
-  m_TagString: npc
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,12 +227,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcType: 0
   npcState: 1
+  stateSaver: 0
   agent: {fileID: 5482405159696720569}
   setPathWalking: {fileID: 0}
   alwaysIdle: 0
   patrolling: 0
   minMovementCooldownTime: 0
   maxMovementCooldownTime: 0
+  markerPointZone: {fileID: 0}
 --- !u!114 &5026178957439393021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,100 +274,126 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Npc.AI.NpcPerformingAction
   timeOfAction: 0
   activeMarkerPoint: {fileID: 0}
---- !u!82 &913743354003265830
-AudioSource:
+--- !u!114 &2700701554941396903
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8293723575335677982}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a358a55889dccfc48b0c7a3ade9d7652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueSets:
+  - Dialogues:
+    - name: Gisgo
+      dialogueTextContent: Set 1 - Dialogue 1
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices:
+      - choiceTextContent: Option 1 - War
+        choiceTopic: War
+        nextBranch: 1
+        rootBranch: 0
+      - choiceTextContent: Option 2 - Dock
+        choiceTopic: Dock
+        nextBranch: 2
+        rootBranch: 0
+    - name: Hannibal
+      dialogueTextContent: Set 1 - Dialogue 2
+      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      choices: []
+    - name: Gisgo
+      dialogueTextContent: Set 1 - Dialogue 3
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices: []
+    - name: Hannibal
+      dialogueTextContent: Set 1 - Dialogue 4
+      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      choices:
+      - choiceTextContent: Option 1 - War
+        choiceTopic: War
+        nextBranch: 4
+        rootBranch: 3
+      - choiceTextContent: Option 2 - Ntrl
+        choiceTopic: Fish
+        nextBranch: 4
+        rootBranch: 3
+      - choiceTextContent: Option 2 - Dock
+        choiceTopic: Dock
+        nextBranch: 4
+        rootBranch: 3
+    - name: Gisgo
+      dialogueTextContent: Set 1 - Dialogue 5
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices: []
+  - Dialogues:
+    - name: Gisgo
+      dialogueTextContent: Set 2 - Dialogue 1
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices:
+      - choiceTextContent: Option 1 - War
+        choiceTopic: War
+        nextBranch: 1
+        rootBranch: 0
+      - choiceTextContent: Option 2 - Dock
+        choiceTopic: Dock
+        nextBranch: 2
+        rootBranch: 0
+    - name: Hannibal
+      dialogueTextContent: Set 2 - Dialogue 2
+      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      choices: []
+    - name: Gisgo
+      dialogueTextContent: Set 2 - Dialogue 3
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices: []
+    - name: Hannibal
+      dialogueTextContent: Set 2 - Dialogue 4
+      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      choices:
+      - choiceTextContent: Option 1 - War
+        choiceTopic: War
+        nextBranch: 4
+        rootBranch: 3
+      - choiceTextContent: Option 2 - Ntrl
+        choiceTopic: Fish
+        nextBranch: 4
+        rootBranch: 3
+      - choiceTextContent: Option 2 - Dock
+        choiceTopic: Dock
+        nextBranch: 4
+        rootBranch: 3
+    - name: Gisgo
+      dialogueTextContent: Set 2 - Dialogue 5
+      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      choices: []
+  startIndex: 0
+  branchIndex: 0
+  speakerName: {fileID: 0}
+  dialogueText: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  choiceRoot: {fileID: 0}
+  choiceButton: {fileID: 7364682090480881350, guid: 229068fa688c870419e0c55e7a1737a8, type: 3}
+  cursorRoot: {fileID: 0}
+  cursor: {fileID: 3375012534551387402, guid: 99dcf58148a01714b854c2868d48dba2, type: 3}
+  charImage: {fileID: 0}
+  pastNpcState: 0
+--- !u!114 &2922839564690337798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293723575335677982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc86d8c296d5e44dac570a105ed7040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trustValue: 0
+  opinionLevel: Neutral
+  likedTopics: []
+  dislikedTopics: []
+  text: {fileID: 0}
