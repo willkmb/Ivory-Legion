@@ -1,7 +1,9 @@
 using InputManager;
 using Npc.AI;
+using Player;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 namespace AI
 {
@@ -15,7 +17,8 @@ public class NpcTalkTrigger : MonoBehaviour
     Collider trigger;
     public bool inTrigger;
     private GameObject collidedWith;
-
+    private NpcManager _currentNpcManager;
+    
     private void Awake()
     {
         instance ??= this;
@@ -42,16 +45,19 @@ public class NpcTalkTrigger : MonoBehaviour
                         text.text = "Opinion: " + opinion;
                         
                         // Change npc state
-                        NpcManager npcManager = collidedWith.GetComponent<NpcManager>();
-                        npcManager.npcState = NpcState.TalkingToPlayer;
-                        npcManager.StateChanger();
+                        _currentNpcManager = collidedWith.transform.GetComponent<NpcManager>();
+                        _currentNpcManager.npcState = NpcState.TalkingToPlayer;
+                        _currentNpcManager.StateChanger();
                         
-                        // Playesr Inputs
+                        // Player Inputs
                         PlayerManager.instance.movementAllowed = false;
                     }
                     dialogueUI.SetActive(true);
                     dialogueUI.GetComponent<Animation>().Play();
-                    Cursor.lockState = CursorLockMode.Confined;
+
+                    UIInputManager.instance.EnableUIControllerInputs();
+
+                    //Cursor.lockState = CursorLockMode.Confined;
                     //GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().canMove = false;
             }
             else
@@ -68,6 +74,7 @@ public class NpcTalkTrigger : MonoBehaviour
         {
             inTrigger = true;
             collidedWith = other.gameObject;
+            Debug.Log("trigger enter");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -78,6 +85,7 @@ public class NpcTalkTrigger : MonoBehaviour
             dialogue = collidedWith.GetComponent<Dialogue>();
             dialogue.branchIndex = dialogue.startIndex;
             collidedWith = null;
+            Debug.Log("trigger exit");
         }
     }
 }
