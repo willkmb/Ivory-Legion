@@ -39,5 +39,6 @@ public class Camera_Change : MonoBehaviour
         }
 
         objectToRotate.localRotation = targetRotation;
+        hasRotated = false;
     }
 }
