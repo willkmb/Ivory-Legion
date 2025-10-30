@@ -5008,6 +5008,7 @@ GameObject:
   - component: {fileID: 5431063209324756674}
   - component: {fileID: 6550038877775154382}
   - component: {fileID: 7907373797328656713}
+  - component: {fileID: 4979036122374356444}
   - component: {fileID: 3549813695808335205}
   - component: {fileID: 3303499635637054537}
   - component: {fileID: 6011009514161748355}
@@ -5203,6 +5204,36 @@ MonoBehaviour:
   destroyChargeInProgress: 0
   currentDestructableObject: {fileID: 0}
   interactCooldown: 1
+--- !u!114 &4979036122374356444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393508817684473014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266185701416dbb43a91f7612b6d8795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigateAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6009668f-b064-48d9-82c5-252be4054d3e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateActionUp:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6e943095-ba0e-427e-8151-c942e8392434
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &3549813695808335205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5238,10 +5269,6 @@ MonoBehaviour:
     m_ActionName: 'Player/Look[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
-    m_ActionName: 'Player/Attack[/Mouse/leftButton,/Keyboard/enter]'
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: 'Player/Interact[/Keyboard/e]'
   - m_PersistentCalls:
@@ -5253,7 +5280,19 @@ MonoBehaviour:
     m_ActionId: b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba
     m_ActionName: 'Player/Next[/Keyboard/2]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4979036122374356444}
+        m_TargetAssemblyTypeName: Player.UIInputManager, Assembly-CSharp
+        m_MethodName: MoveMouse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c95b2375-e6d9-4b88-9c4c-c5e76515df4b
     m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
@@ -5300,6 +5339,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 376a183c-05f5-4a1b-94ab-7a79e6a5ac83
     m_ActionName: 'Player/Swap Hat[/XInputControllerWindows/dpad/up,/Keyboard/3,/Keyboard/h]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb772126-c418-4111-87be-15dcf5bcceeb
+    m_ActionName: 'Player/Destroy[/Keyboard/e,/XInputControllerWindows/buttonNorth,/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -5437,19 +5480,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2393508817684473014}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9995704e0dac7a343bcda9ac91cdf436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sphereRadius: 3
-  maxDistance: 3
+  sphereRadius: 2
+  maxDistance: 2
   pushableTag: Pushable
   pushableLayer:
     serializedVersion: 2
     m_Bits: 64
   interactKey: 101
-  distanceFromObj: 3
+  distanceFromObj: 2
   wallDistance: 1
   collisionLayers:
     serializedVersion: 2
