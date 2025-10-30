@@ -156,12 +156,14 @@ namespace InputManager
                         return;
                     }
 
-                    Debug.Log("Checking in front");
+                    //Debug.Log("Checking in front");
                     PlayerInteractScript.instance.CheckObjectInFront();
-                    
+
                     // If not a npc or no obj picked up, try pushing obj
-                    if(!PickUpPutDownScript.instance.isPickedUp)
+                    if (!PickUpPutDownScript.instance.isPickedUp)
+                    {
                         PushController.instance.TryPush();
+                    }
                 }
                 Invoke(nameof(InteractOffCoolDown), interactCooldown + interactCooldown * 0.05f);
             }
