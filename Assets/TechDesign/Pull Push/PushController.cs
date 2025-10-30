@@ -53,7 +53,7 @@ namespace Player
 
         public void TryPush()
         {
-           Debug.Log("Trying to push");
+           //Debug.Log("Trying to push");
             //Finds pushable object
             RaycastHit[] hits = Physics.SphereCastAll(transform.position, detectionRadius, transform.forward,
                 detectionDistance, pushableLayer);
@@ -62,6 +62,7 @@ namespace Player
             {
                 if (hit.collider.CompareTag(pushableTag)) //Checks object is pushable
                 {
+                    //Debug.Log(hit.collider.gameObject.name);
                     StartPush(hit);
                     break;
                 }
@@ -87,12 +88,13 @@ namespace Player
             //Finds if the space is blocked or if the position can be pushed to
             if (IsPathClear(pushedObj.transform.position, pushDir, pushDistance, col))
             {
+                //Debug.Log("Position clear");
                 targetPosition = proposedTarget;
                 isPushing = true;
             }
             else
             {
-                Debug.Log("Position blocked");
+                //Debug.Log("Position blocked");
             }
         }
 
