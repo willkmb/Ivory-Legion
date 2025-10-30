@@ -1314,6 +1314,144 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1700231049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1700231051}
+  - component: {fileID: 1700231050}
+  m_Layer: 0
+  m_Name: UI INPUT SYSTEM HOLDER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1700231050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700231049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2b0036cf11747224c97e35ad8e364876, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c95b2375-e6d9-4b88-9c4c-c5e76515df4b
+    m_ActionName: 'UI/Navigate[/XInputControllerWindows/dpad,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7607c7b6-cd76-4816-beef-bd0341cfe950
+    m_ActionName: 'UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 15cef263-9014-4fd5-94d9-4e4a6234a6ef
+    m_ActionName: 'UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 32b35790-4ed0-4e9a-aa41-69ac6d629449
+    m_ActionName: 'UI/Point[/Mouse/position,/XInputControllerWindows/leftStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
+    m_ActionName: 'UI/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 44b200b1-1557-4083-816c-b22cbdf77ddf
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dad70c86-b58c-4b17-88ad-f5e53adf419e
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0489e84a-4833-4c40-bfae-cea84b696689
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 24908448-c609-4bc3-a128-ea258674378a
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 965fa049-d3f0-46b5-b2c2-5400ef4ed535
+    m_ActionName: 'UI/NAVIGATION_LEFT[/XInputControllerWindows/dpad/left,/XInputControllerWindows/leftStick/left]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f0b3107f-a97e-4ff7-bede-2663293d7c6c
+    m_ActionName: 'UI/NAVIGATION_RIGHT[/XInputControllerWindows/dpad/right]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f19e767e-11ce-4208-abed-1d1a856340a1
+    m_ActionName: 'UI/NAVIGATION_UP[/XInputControllerWindows/dpad/up,/XInputControllerWindows/leftStick/up]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ead7a3e7-6b6a-4723-b7ae-6cfd645b579f
+    m_ActionName: 'UI/NAVIGATION_DOWN[/XInputControllerWindows/dpad/down,/XInputControllerWindows/leftStick/down]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 606c2c6b-5566-49cb-bc5e-82c6ad590c76
+    m_ActionName: 'UI/NAVIGATION_INTERACT[/XInputControllerWindows/buttonEast]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: UI
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!4 &1700231051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700231049}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1843748295}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1843748289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3549813695808335205, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+  m_PrefabInstance: {fileID: 6292682634230706550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1843748295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7761556556715001361, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+  m_PrefabInstance: {fileID: 6292682634230706550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1896455653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2666,6 +2804,50 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 9051307857350015597}
+    - target: {fileID: 3549813695808335205, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549813695808335205, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: b7319588-0228-489f-b4ce-ae641654ac32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549813695808335205, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionId
+      value: 376a183c-05f5-4a1b-94ab-7a79e6a5ac83
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549813695808335205, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionId
+      value: bb772126-c418-4111-87be-15dcf5bcceeb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549813695808335205, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: 'Player/Seismic Sense[/Keyboard/space,/XInputControllerWindows/buttonSouth]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549813695808335205, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionName
+      value: 'Player/Swap Hat[/XInputControllerWindows/dpad/up,/Keyboard/3,/Keyboard/h]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549813695808335205, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionName
+      value: 'Player/Destroy[/Keyboard/e,/XInputControllerWindows/buttonNorth,/Mouse/leftButton]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549813695808335205, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979036122374356444, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: navigateLeftAction.m_Name
+      value: Navigate Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979036122374356444, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: navigateRightAction.m_Name
+      value: Navigate Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979036122374356444, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: navigateInteractAction.m_Name
+      value: Navigate Interact
+      objectReference: {fileID: 0}
     - target: {fileID: 6011009514161748355, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: dialogueUI
       value: 
@@ -2710,9 +2892,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7907373797328656713, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: uiInputSystem
+      value: 
+      objectReference: {fileID: 1700231050}
+    - target: {fileID: 7907373797328656713, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: movementInputSystem
+      value: 
+      objectReference: {fileID: 1843748289}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7761556556715001361, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1700231051}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
 --- !u!223 &6395032297791052432
