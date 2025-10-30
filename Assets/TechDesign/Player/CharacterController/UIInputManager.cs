@@ -10,16 +10,18 @@ namespace Player
     {
         public static UIInputManager instance;
         public int currentDialogueBoxSelected;
-         public bool currentlyInDialogue;
+        public bool currentlyInDialogue;
+        public global::Dialogue dialogueInUse;
 
         //Action Keys
-         public InputAction navigateLeftAction;
-         public InputAction navigateRightAction;
+        public InputAction navigateLeftAction;
+        public InputAction navigateRightAction;
         [HideInInspector] public InputAction navigateUpAction;
         [HideInInspector] public InputAction navigateDownAction;
-         public InputAction navigateInteractAction;
+        public InputAction navigateInteractAction;
         
         public List<ChoiceButton> currentDialogueButtonsList;
+        public ChoiceButton currentDialogueButton;
         
         private void Awake()
         {
@@ -29,12 +31,12 @@ namespace Player
         {
             currentlyInDialogue = false;
             
-            navigateLeftAction = PlayerManager.instance.uiInputSystem.actions.FindAction("NAVIGATION_LEFT");
-            Debug.Log(navigateLeftAction);
-            navigateRightAction = PlayerManager.instance.uiInputSystem.actions.FindAction("NAVIGATION_RIGHT");
-            navigateUpAction = PlayerManager.instance.uiInputSystem.actions.FindAction("NAVIGATION_UP");
-            navigateDownAction = PlayerManager.instance.uiInputSystem.actions.FindAction("NAVIGATION_DOWN");
-            navigateInteractAction = PlayerManager.instance.uiInputSystem.actions.FindAction("NAVIGATION_INTERACT");
+            navigateLeftAction = PlayerManager.instance.movementInputSystem.actions.FindAction("NAVIGATION_LEFT");
+            Debug.Log(navigateLeftAction.bindings);
+            navigateRightAction = PlayerManager.instance.movementInputSystem.actions.FindAction("NAVIGATION_RIGHT");
+            navigateUpAction = PlayerManager.instance.movementInputSystem.actions.FindAction("NAVIGATION_UP");
+            navigateDownAction = PlayerManager.instance.movementInputSystem.actions.FindAction("NAVIGATION_DOWN");
+            navigateInteractAction = PlayerManager.instance.movementInputSystem.actions.FindAction("NAVIGATION_INTERACT");
            // navigateActionUp = PlayerManager.instance.inputSystem.actions.FindAction("Point/Up");
            
            navigateLeftAction.performed += DialogueLeftMovement;
@@ -51,28 +53,33 @@ namespace Player
         {
             foreach (ChoiceButton choice in currentDialogueButtonsList)
             {
-                choice.Unselected();
+                choice.Unselected(); // Rests Visuals
             }
         }
 
         private void DialogueInteraction(InputAction.CallbackContext context)
         {
             Debug.Log("Dialogue Interaction");
-            ChoiceButton choiceButton = currentDialogueButtonsList[currentDialogueBoxSelected];
-            choiceButton.Interacted();
+            if (currentlyInDialogue)
+            {
+                //When interact is pressed, select the current dialogue box as the players dialogue choice
+                currentDialogueButton = currentDialogueButtonsList[currentDialogueBoxSelected];
+                currentDialogueButton.Interacted(); // Then continue onto next dialogue branch
+            }
         }
         private void DialogueLeftMovement(InputAction.CallbackContext context)
         {
            Debug.Log("Left Movement");
+           // Select Dialogue box to the left
             if (currentlyInDialogue)
             { 
-                UnSelectDialogueBoxes();
+                UnSelectDialogueBoxes(); // Resets UI Input variables to allow player movement again
 
                 if (currentDialogueBoxSelected > 0)
                     currentDialogueBoxSelected -= 1; 
                 
-                ChoiceButton choiceButton = currentDialogueButtonsList[currentDialogueBoxSelected];
-                choiceButton.Selected();
+                currentDialogueButton = currentDialogueButtonsList[currentDialogueBoxSelected];
+                currentDialogueButton.Selected(); // Changes visuals such as size
             }
         }
 
@@ -81,13 +88,13 @@ namespace Player
            Debug.Log("Right Movement");
             if (currentlyInDialogue)
             {
-                UnSelectDialogueBoxes();
+                UnSelectDialogueBoxes();     // Resets UI Input variables to allow player movement again
                 
                 if (currentDialogueBoxSelected < currentDialogueButtonsList.Count - 1)
                     currentDialogueBoxSelected += 1; 
                 
-                ChoiceButton choiceButton = currentDialogueButtonsList[currentDialogueBoxSelected];
-                choiceButton.Selected();
+                currentDialogueButton = currentDialogueButtonsList[currentDialogueBoxSelected];
+                currentDialogueButton.Selected(); // Changes visuals such as size
             }
         }
         
