@@ -7,6 +7,8 @@ using TMPro;
 using System.Linq;
 using InputManager;
 using Npc.AI;
+using Player;
+using Player.Dialogue;
 
 public class Dialogue : MonoBehaviour
 {
@@ -38,6 +40,9 @@ public class Dialogue : MonoBehaviour
     // NpcManager Memory Values etc
     private NpcManager _npcManager;
     [HideInInspector] public NpcState pastNpcState;
+    
+    //Input Stuff
+    private ChoiceButton _tempChoiceButton;
 
     [System.Serializable]
     public class dialogue // same as above but for main body text
@@ -97,6 +102,8 @@ public class Dialogue : MonoBehaviour
             speakerName.text = DialogueSets[DialogueStage].Dialogues[branchIndex].name; //  sets the speakers name to the field defined in dialogues class
             charImage.GetComponent<Image>().sprite = DialogueSets[DialogueStage].Dialogues[branchIndex].image; // change the characters image
 
+            UIInputManager.instance.currentDialogueButtonsList.Clear();
+            
             foreach (Transform child in choiceRoot.transform) // destroy previous choices
             {
                 Destroy(child.gameObject);
@@ -117,9 +124,13 @@ public class Dialogue : MonoBehaviour
 
                     int next = choice.nextBranch;
                     Button.GetComponent<Button>().onClick.AddListener(() => { branchIndex = next; UpdateNPCOpinion(choice.choiceTopic);  ShowNextBranch(); }); // adds the functionality of the button withought having to manually do it in inspector and calls advance branch method.
+                    
+                    // Adds to a list which is accessed by the UI Input Manager - For controller UI movements
+                     if (!UIInputManager.instance.currentDialogueButtonsList.Contains(Button.transform.GetComponent<ChoiceButton>()) && Button != null)
+                         UIInputManager.instance.currentDialogueButtonsList.Add(Button.transform.GetComponent<ChoiceButton>());
                 }
             }
-          
+            UIInputManager.instance.currentlyInDialogue = true;
             GameObject cursorObj = null;
             if (branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1) cursorObj = Instantiate(cursor, cursorRoot.transform); //if on the last dialogue in the list, spawn arrow that closes dialogue
             if (cursorObj != null) { cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { HideDialogue(); }); return; } // set the action of the button to close dialogue 
@@ -145,9 +156,12 @@ public class Dialogue : MonoBehaviour
         
         _npcManager.StateChanger();
         
-        //Input Manager
+        //Input Manager(s)
         PlayerManager.instance.InteractOffCoolDown();
         PlayerManager.instance.movementAllowed = true;
+        UIInputManager.instance.currentDialogueButtonsList.Clear();
+        UIInputManager.instance.currentlyInDialogue = false;
+        _tempChoiceButton = null;
     }
 
     public void UpdateNPCOpinion(string topic)
