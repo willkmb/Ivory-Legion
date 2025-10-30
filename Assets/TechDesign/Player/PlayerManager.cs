@@ -1,3 +1,4 @@
+using System;
 using AI;
 using Player;
 using SeismicSense;
@@ -10,7 +11,7 @@ namespace InputManager
     {
         public static PlayerManager instance;
         
-        public PlayerInput inputSystem;
+        public PlayerInput movementInputSystem;
         
         //Action Keys
         [HideInInspector] public InputAction moveAction;
@@ -55,16 +56,16 @@ namespace InputManager
 
         private void Start()
         {
-            moveAction = inputSystem.actions.FindAction("Move");
+            moveAction = movementInputSystem.actions.FindAction("Move");
   
-            interactAction = inputSystem.actions.FindAction("Interact");
-            destroyObjAction = inputSystem.actions.FindAction("Destroy");
+            interactAction = movementInputSystem.actions.FindAction("Interact");
+            destroyObjAction = movementInputSystem.actions.FindAction("Destroy");
             
-            swapItemLeftAction = inputSystem.actions.FindAction("Previous");
-            swapItemRightAction = inputSystem.actions.FindAction("Next");
-            swapHatAction = inputSystem.actions.FindAction("Swap Hat");
+            swapItemLeftAction = movementInputSystem.actions.FindAction("Previous");
+            swapItemRightAction = movementInputSystem.actions.FindAction("Next");
+            swapHatAction = movementInputSystem.actions.FindAction("Swap Hat");
             
-            seismicSenseAction = inputSystem.actions.FindAction("Seismic Sense");
+            seismicSenseAction = movementInputSystem.actions.FindAction("Seismic Sense");
 
             interactAction.performed += PickUpInteraction; // <- added by Emily, instead of interactAction.IsPressed() for interaction functionality
                 // may be worth putting other single input code in separate callbackcontext functions? 
@@ -72,7 +73,6 @@ namespace InputManager
         // ReSharper disable Unity.PerformanceAnalysis - Ignore This 
         private void Update()
         {
-            
             // Movement
             if (movementAllowed)
                 if (moveAction.IsPressed())
@@ -83,31 +83,6 @@ namespace InputManager
             // Interactions
             if (interactionAllowed)
             {
-/* Commented out and moved to separate function below <- by Emily
-                if (_interactOffCooldown)
-                    if (interactAction.IsPressed())
-                    {
-                    
-                        if(NpcTalkTrigger.instance.inTrigger)
-                        {
-                            _interactOffCooldown = false;
-
-                            NpcTalkTrigger.instance.Interact();
-                            return;
-                        }
-                        PlayerInteractScript.instance.CheckObjectInFront();
-                    }
-                
-                // Drops item if the player has one in truck
-                if (interactAction.IsPressed() && PickUpPutDownScript.instance.isPickedUp) <- moved drop/ put down item function from PickUpPutDownScript to ItemStorage script
-                {
-                   Debug.Log("drop item");
-                    PickUpPutDownScript.instance.DropItems();
-                    Invoke(nameof(InteractOffCoolDown), interactCooldown + interactCooldown* 0.05f);
-                    return;
-                }
-                */
-
                 // If not a destructable obj reset cooldown, and interact is on cooldown
                 if (!destroyChargeInProgress && !PickUpPutDownScript.instance.isPickedUp && !_interactOffCooldown) // Set in "PlayerInteractScript.instance.CheckObjectInFront()"
                 {
@@ -183,12 +158,15 @@ namespace InputManager
 
                     Debug.Log("Checking in front");
                     PlayerInteractScript.instance.CheckObjectInFront();
+                    
+                    // If not a npc or no obj picked up, try pushing obj
+                    if(!PickUpPutDownScript.instance.isPickedUp)
+                        PushController.instance.TryPush();
                 }
                 Invoke(nameof(InteractOffCoolDown), interactCooldown + interactCooldown * 0.05f);
-
             }
         }
-
+    
         public void InteractOffCoolDown()
         {
             _interactOffCooldown = true;
@@ -207,5 +185,30 @@ namespace InputManager
             swappingHatOffCooldown = true;
         }
     }
+    /* Commented out and moved to separate function below <- by Emily
+                if (_interactOffCooldown)
+                    if (interactAction.IsPressed())
+                    {
+
+                        if(NpcTalkTrigger.instance.inTrigger)
+                        {
+                            _interactOffCooldown = false;
+
+                            NpcTalkTrigger.instance.Interact();
+                            return;
+                        }
+                        PlayerInteractScript.instance.CheckObjectInFront();
+                    }
+
+                // Drops item if the player has one in truck
+                if (interactAction.IsPressed() && PickUpPutDownScript.instance.isPickedUp) <- moved drop/ put down item function from PickUpPutDownScript to ItemStorage script
+                {
+                   Debug.Log("drop item");
+                    PickUpPutDownScript.instance.DropItems();
+                    Invoke(nameof(InteractOffCoolDown), interactCooldown + interactCooldown* 0.05f);
+                    return;
+                }
+                */
+
 }
 
