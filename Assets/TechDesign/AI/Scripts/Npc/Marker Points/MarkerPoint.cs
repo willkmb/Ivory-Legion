@@ -1,4 +1,5 @@
 using System;
+using Ai;
 using UnityEngine;
 
 namespace Npc.Marker_Points
@@ -9,6 +10,8 @@ namespace Npc.Marker_Points
         [Header("Variables")] 
         [SerializeField] private MarkerType markerType;
         [SerializeField] private MarkerNpcTarget markerNpcTarget;
+        [Header("IMPORTANT - I NEED TO BE SET TO CORRECT ZONE")]
+        [SerializeField] private MarkerPointZone markerPointZone;
         
         private bool _requiresAction;
 
@@ -19,15 +22,16 @@ namespace Npc.Marker_Points
         [SerializeField] private float minMovementCooldownTime;
         [SerializeField] private float maxMovementCooldownTime;
         
+        
         private void Start()
         {
             switch(markerNpcTarget)
             {
                 case MarkerNpcTarget.Human:
-                    MarkerPointManager.instance.markerPointsHumanActive.Add(gameObject);
+                   markerPointZone.markerPointsHumanActive.Add(gameObject);
                     break;
                 case MarkerNpcTarget.Elephant:
-                    MarkerPointManager.instance.markerPointsElephantActive.Add(gameObject);
+                    markerPointZone.markerPointsElephantActive.Add(gameObject);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

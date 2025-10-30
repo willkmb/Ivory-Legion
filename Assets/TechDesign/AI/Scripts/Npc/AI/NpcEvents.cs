@@ -7,23 +7,15 @@ using static Interfaces.Interfaces;
 
 namespace Npc
 {
-    public class NpcEvents : MonoBehaviour, IHaveSfxSounds
+    public class NpcEvents : MonoBehaviour
     {
         public static NpcEvents instance;
         [HideInInspector] public float timerCallValue;
-        
-        [Header("SFX Audio")]
-        [SerializeField] private List<AudioClip> audioClips;
         private void Awake()
         {
             instance ??= this;
 
             timerCallValue = 0.05f;
-        }
-
-        private void Start()
-        {
-            AddSfx(audioClips);
         }
 
         private float _timer;
@@ -52,11 +44,6 @@ namespace Npc
         public void NpcCallAllStates()
         {
             NpcCallAllStatesEvent?.Invoke();
-        }
-        
-        public void AddSfx(List<AudioClip> audioList)
-        {
-       //     AudioManager.instance.DictionarySorting(audioList);
         }
     }
 }

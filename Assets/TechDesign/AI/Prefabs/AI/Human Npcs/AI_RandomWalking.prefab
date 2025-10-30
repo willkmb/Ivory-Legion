@@ -90,9 +90,11 @@ GameObject:
   - component: {fileID: 5482405159696720569}
   - component: {fileID: 4077578447017283574}
   - component: {fileID: 2154773815628393029}
+  - component: {fileID: 4403973222544226020}
+  - component: {fileID: 8020780815821793092}
   m_Layer: 3
   m_Name: AI_RandomWalking
-  m_TagString: npc
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,12 +225,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcType: 0
   npcState: 6
+  stateSaver: 0
   agent: {fileID: 5482405159696720569}
   setPathWalking: {fileID: 0}
   alwaysIdle: 0
   patrolling: 0
   minMovementCooldownTime: 0
   maxMovementCooldownTime: 0
+  markerPointZone: {fileID: 0}
 --- !u!114 &2154773815628393029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,3 +250,44 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   radiusOnSelf: 0
+--- !u!114 &4403973222544226020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293723575335677982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a358a55889dccfc48b0c7a3ade9d7652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueSets: []
+  startIndex: 0
+  branchIndex: 0
+  speakerName: {fileID: 0}
+  dialogueText: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  choiceRoot: {fileID: 0}
+  choiceButton: {fileID: 0}
+  cursorRoot: {fileID: 0}
+  cursor: {fileID: 0}
+  charImage: {fileID: 0}
+  pastNpcState: 0
+--- !u!114 &8020780815821793092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293723575335677982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc86d8c296d5e44dac570a105ed7040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trustValue: 0
+  opinionLevel: Neutral
+  likedTopics: []
+  dislikedTopics: []
+  text: {fileID: 0}

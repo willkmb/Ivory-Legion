@@ -15802,6 +15802,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1394003269791256217, guid: 73fc4a3aedcf1c44f9a265e156619330, type: 3}
+      propertyPath: alwaysIdle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5565470921340350827, guid: 73fc4a3aedcf1c44f9a265e156619330, type: 3}
       propertyPath: m_Name
       value: AI Path Walking (1)

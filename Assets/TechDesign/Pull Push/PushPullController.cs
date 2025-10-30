@@ -2,6 +2,7 @@
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PushPullController : MonoBehaviour
 {
@@ -24,8 +25,28 @@ public class PushPullController : MonoBehaviour
     public LayerMask collisionLayers;       //Layer storage for layers that cant be walked through
     private float halfDepth;                //Depth for grabbed object
     private float halfWidth;                //Width for grabbed object
-    private bool whichSide;                 //bool to find what Axis the object is being grabbed from
+    private bool whichSide; 
+    //bool to find what Axis the object is being grabbed from
 
+    [Header("Input Bindings")]  //Input Bindings
+    //  input for getting released button
+    [SerializeField] InputAction grab;
+
+    private void Awake()
+    {
+        //set up input action functionality
+        grab.performed += GrabCheck;
+    }
+    private void OnEnable()
+    {
+        // enables inputs
+        grab.Enable();
+    }
+    private void OnDisable()
+    {
+        // disables inputs
+        grab.Disable();
+    }
     private void Start()
     {
         isGrabbing = false;                 //Makes sure that the player hasnt got anything they're grabbing on start
@@ -33,7 +54,7 @@ public class PushPullController : MonoBehaviour
 
     private void Update()
     {
-        GrabCheck();
+        //GrabCheck();
 
         //Makes sure somethings being grabbed so collision can be acitvated
         if (isGrabbing && pushedObj != null)
@@ -44,8 +65,9 @@ public class PushPullController : MonoBehaviour
     }
 
     //Started from Update
-    private void GrabCheck()
+    private void GrabCheck(InputAction.CallbackContext context)
     {
+        /*
         if (Input.GetKeyDown(interactKey))
         {
             Debug.Log("E pressed");
@@ -59,6 +81,7 @@ public class PushPullController : MonoBehaviour
 
                 foreach (RaycastHit hit in hits)    //Finds the object being hit by raycast
                 {
+                    Debug.Log(hit.transform.gameObject.name);
                     if (hit.collider.CompareTag(pushableTag))   //Checks if object has the correct pushable tag
                     {
                         Debug.Log("Ray hit tag");    
@@ -77,6 +100,37 @@ public class PushPullController : MonoBehaviour
             {
                 ReleaseObject();    //Releases object if something is being grabbed currently
             }
+        }
+        */
+        Debug.Log("Grab Initiated");
+
+        if (!isGrabbing)    //Checks if nothing is being grabbed currently
+        {
+            Debug.Log("Not holding");
+
+            //Sends out raycast to find the object that wants to be grabbed
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, sphereRadius, transform.forward, maxDistance, pushableLayer);
+
+            foreach (RaycastHit hit in hits)    //Finds the object being hit by raycast
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                if (hit.collider.CompareTag(pushableTag))   //Checks if object has the correct pushable tag
+                {
+                    Debug.Log("Ray hit tag");
+                    //Activates GetPlayerViewSide function to find what side is being looked at and assigns that to whatSide
+                    string whatSide = GetPlayerViewSide(hit);
+                    Debug.Log("Player is looking at the " + whatSide + " side of the object.");
+                    MovePlayer(hit, whatSide);  //Starts MovePlayer function with what object is hit and what side is hit
+                }
+                else
+                {
+                    Debug.Log("Nothing to grab");
+                }
+            }
+        }
+        else
+        {
+            ReleaseObject();    //Releases object if something is being grabbed currently
         }
     }
 
