@@ -20,8 +20,8 @@ namespace Player
         public void CheckObjectInFront()
         {
             RaycastHit hit;
-            Vector3 startRay = new Vector3((transform.position + (transform.forward / 4)).x, transform.position.y - 1, (transform.position + (transform.forward / 4)).z);
-            if (Physics.Raycast(startRay, transform.forward, out hit, 2f))
+            Vector3 startRay = new Vector3((transform.position + (transform.forward / 3.5f)).x, transform.position.y - 1, (transform.position + (transform.forward / 3.5f)).z);
+            if (Physics.Raycast(startRay, transform.forward, out hit, 3f))
             {
                 if (hit.collider.gameObject.TryGetComponent(out IInteractable interactableObject)) // checks if the object is interactable
                 {

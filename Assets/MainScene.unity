@@ -790,7 +790,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  testCube: {fileID: 1618545035}
 --- !u!1001 &986316654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1406,6 +1405,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7255352793733768217, guid: 577c5da4e398b5d45812921fb1eb7219, type: 3}
+      propertyPath: isHat
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1887,7 +1890,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 25, y: 30, z: 1}
   m_Center: {x: 12.5, y: 15, z: 0}
@@ -2858,6 +2861,22 @@ PrefabInstance:
       propertyPath: dialogueUI
       value: 
       objectReference: {fileID: 3699986557315901247}
+    - target: {fileID: 6247209684870095528, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247209684870095528, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: maxDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247209684870095528, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: sphereRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247209684870095528, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: distanceFromObj
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7761556556715001361, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

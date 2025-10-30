@@ -47,6 +47,7 @@ public class ItemStorage : MonoBehaviour
 
             itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
             itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+            itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0,0,0,0);
         }
         else
         {
@@ -61,6 +62,7 @@ public class ItemStorage : MonoBehaviour
 
                 itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                 itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
             }
             else if (itemsInStorage[(int)Storage.BagLeft] == null)
             {
@@ -73,6 +75,29 @@ public class ItemStorage : MonoBehaviour
 
                 itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                 itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
+            }
+        }
+    }
+
+        // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
+        public void PutDown(GameObject thatobject)
+    {
+        if (itemsInStorage[0] != null)
+        {
+            Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 0.5f);
+            Debug.Log(intersecting.Length);
+            foreach (Collider coll in intersecting)
+            {
+                Debug.Log(coll.gameObject.name);
+            }
+            if (intersecting.Length == 1 || intersecting.Length == 2 || intersecting.Length == 3)
+            {
+                Debug.Log("Put down");
+                itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
+                itemsInStorage[(int)Storage.Trunk].transform.position = putDownPoint.transform.position;
+                itemsInStorage[(int)Storage.Trunk].transform.parent = null;
+                itemsInStorage[(int)Storage.Trunk] = null;
             }
         }
     }
@@ -122,6 +147,7 @@ public class ItemStorage : MonoBehaviour
     // if holding a hat, put it on head
     public void WearHat()
     {
+            Debug.Log("Hat attempt");
         if (itemsInStorage[(int)Storage.Trunk] != null)
         {
             if (itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isHat == true)
