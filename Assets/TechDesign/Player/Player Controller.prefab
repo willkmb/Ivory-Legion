@@ -5015,9 +5015,8 @@ GameObject:
   - component: {fileID: 6897069285698487650}
   - component: {fileID: 1520407513318287122}
   - component: {fileID: 1443041157681912446}
-  - component: {fileID: 6247209684870095528}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player Controller
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5131,7 +5130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42fab491d0fe1d4283c9728f68cd078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSystem: {fileID: 3549813695808335205}
+  movementInputSystem: {fileID: 0}
   moveAction:
     m_Name: 
     m_Type: 0
@@ -5216,24 +5215,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266185701416dbb43a91f7612b6d8795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigateAction:
-    m_Name: 
+  currentDialogueBoxSelected: 0
+  currentlyInDialogue: 0
+  dialogueInUse: {fileID: 0}
+  navigateLeftAction:
+    m_Name: Navigate Left
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 6009668f-b064-48d9-82c5-252be4054d3e
+    m_Id: 1dea4f31-2a0f-496f-acd4-0fc8a3031d62
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  navigateActionUp:
-    m_Name: 
+  navigateRightAction:
+    m_Name: Navigate Right
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 6e943095-ba0e-427e-8151-c942e8392434
+    m_Id: 5f5cf1aa-f27f-4ff6-a5e8-399d9bad8fb0
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  navigateUpAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 13820e05-dc30-4726-813a-6770583daf07
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateDownAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: df00553c-6a78-4106-babf-880ee30c2a43
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateInteractAction:
+    m_Name: Navigate Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7447ee3f-5ae4-440b-9075-60fdb2d29668
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  currentDialogueButtonsList: []
+  currentDialogueButton: {fileID: 0}
 --- !u!114 &3549813695808335205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5280,58 +5311,6 @@ MonoBehaviour:
     m_ActionId: b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba
     m_ActionName: 'Player/Next[/Keyboard/2]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4979036122374356444}
-        m_TargetAssemblyTypeName: Player.UIInputManager, Assembly-CSharp
-        m_MethodName: MoveMouse
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: c95b2375-e6d9-4b88-9c4c-c5e76515df4b
-    m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7607c7b6-cd76-4816-beef-bd0341cfe950
-    m_ActionName: 'UI/Submit[/Keyboard/enter]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 15cef263-9014-4fd5-94d9-4e4a6234a6ef
-    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 32b35790-4ed0-4e9a-aa41-69ac6d629449
-    m_ActionName: 'UI/Point[/Mouse/position]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
-    m_ActionName: 'UI/Click[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 44b200b1-1557-4083-816c-b22cbdf77ddf
-    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: dad70c86-b58c-4b17-88ad-f5e53adf419e
-    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0489e84a-4833-4c40-bfae-cea84b696689
-    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 24908448-c609-4bc3-a128-ea258674378a
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: b7319588-0228-489f-b4ce-ae641654ac32
     m_ActionName: 'Player/Seismic Sense[/Keyboard/space,/XInputControllerWindows/buttonSouth]'
@@ -5343,6 +5322,66 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bb772126-c418-4111-87be-15dcf5bcceeb
     m_ActionName: 'Player/Destroy[/Keyboard/e,/XInputControllerWindows/buttonNorth,/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7c27a11a-fc0a-4399-b7ae-72aec468cd6a
+    m_ActionName: 'Player/NAVIGATION_LEFT[/XInputControllerWindows/dpad/left,/XInputControllerWindows/leftStick/left]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e9a8d39e-47a4-4aab-addc-b32ecaa9bb6e
+    m_ActionName: 'Player/NAVIGATION_RIGHT[/XInputControllerWindows/dpad/right]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e0a0de4-2fb8-47e3-b868-a2054cdc6eef
+    m_ActionName: 'Player/NAVIGATION_UP[/XInputControllerWindows/dpad/up,/XInputControllerWindows/leftStick/up]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e1fb0743-825a-4542-b468-fc5c1f6da919
+    m_ActionName: 'Player/NAVIGATION_DOWN[/XInputControllerWindows/dpad/down,/XInputControllerWindows/leftStick/down]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b9c431f-291e-4d07-be75-5dcd3f3a8a9a
+    m_ActionName: 'Player/NAVIGATION_INTERACT[/XInputControllerWindows/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d4a30080-001d-4206-a277-9bc6e55602ef
+    m_ActionName: 'UI/Navigate[/XInputControllerWindows/dpad,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 05794552-700a-4e81-aa5b-eb06ad65badf
+    m_ActionName: 'UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7b1acb07-e723-4440-ae48-a7a38b949594
+    m_ActionName: 'UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 25460215-22f6-4314-86bb-abb15e122ffc
+    m_ActionName: 'UI/Point[/Mouse/position,/XInputControllerWindows/leftStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: afc11dbc-5226-496e-a3bd-20901176ff4e
+    m_ActionName: 'UI/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 15f75d1f-1d6e-42a4-9139-766bcddaf0e0
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f9330c6-5425-4d39-938c-f46a93b0bf6e
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7337347f-f702-45af-b04d-d2affba680cc
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b4a6fc8f-b1c6-48ad-9eb9-78d91a9d1433
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8000d841-45e5-4e62-be34-70c87c2f4991
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -5473,47 +5512,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   itemsInStorage: []
---- !u!114 &6247209684870095528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393508817684473014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9995704e0dac7a343bcda9ac91cdf436, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphereRadius: 2
-  maxDistance: 2
-  pushableTag: Pushable
-  pushableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  interactKey: 101
-  distanceFromObj: 2
-  wallDistance: 1
-  collisionLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  grab:
-    m_Name: Grab
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 07596a88-f4c2-4579-a7c5-ccc0c04e6991
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: f5d208e1-1722-49ff-8c47-dc6240e12409
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Grab
-      m_Flags: 0
-    m_Flags: 0
 --- !u!1 &2634587017723466076
 GameObject:
   m_ObjectHideFlags: 0

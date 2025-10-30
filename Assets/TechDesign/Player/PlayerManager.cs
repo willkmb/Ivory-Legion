@@ -1,3 +1,4 @@
+using System;
 using AI;
 using Player;
 using SeismicSense;
@@ -11,7 +12,6 @@ namespace InputManager
         public static PlayerManager instance;
         
         public PlayerInput movementInputSystem;
-        public PlayerInput uiInputSystem;
         
         //Action Keys
         [HideInInspector] public InputAction moveAction;
@@ -73,14 +73,6 @@ namespace InputManager
         // ReSharper disable Unity.PerformanceAnalysis - Ignore This 
         private void Update()
         {
-            Debug.Log(UIInputManager.instance.currentlyInDialogue);
-            if (UIInputManager.instance.currentlyInDialogue)
-            {
-                uiInputSystem.enabled = true;
-                movementInputSystem.enabled = false;
-            }
-            
-            
             // Movement
             if (movementAllowed)
                 if (moveAction.IsPressed())
@@ -166,9 +158,12 @@ namespace InputManager
 
                     Debug.Log("Checking in front");
                     PlayerInteractScript.instance.CheckObjectInFront();
+                    
+                    // If not a npc or no obj picked up, try pushing obj
+                    if(!PickUpPutDownScript.instance.isPickedUp)
+                        PushController.instance.TryPush();
                 }
                 Invoke(nameof(InteractOffCoolDown), interactCooldown + interactCooldown * 0.05f);
-
             }
         }
     

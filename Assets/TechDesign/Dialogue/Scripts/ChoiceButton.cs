@@ -19,7 +19,7 @@ namespace Player.Dialogue
         public void Interacted()
         {
             Debug.Log("Clicked");
+            UIInputManager.instance.dialogueInUse.ShowNextBranch();
         }
     }
 }
-

@@ -90,6 +90,7 @@ public class Dialogue : MonoBehaviour
         DialogueStage++;
         DialogueStage = Mathf.Clamp(DialogueStage, 0, DialogueSets.Count);
         branchIndex = startIndex;
+      
     }
 
     public void ShowNextBranch()
@@ -101,8 +102,10 @@ public class Dialogue : MonoBehaviour
             dialogueText.text = DialogueSets[DialogueStage].Dialogues[branchIndex].dialogueTextContent; // sets dialogue text to the field defined in dialogues class
             speakerName.text = DialogueSets[DialogueStage].Dialogues[branchIndex].name; //  sets the speakers name to the field defined in dialogues class
             charImage.GetComponent<Image>().sprite = DialogueSets[DialogueStage].Dialogues[branchIndex].image; // change the characters image
-
+            
+            // Dialogue being used = true and list cleanse to allow new list to take its place
             UIInputManager.instance.currentDialogueButtonsList.Clear();
+            UIInputManager.instance.dialogueInUse = this;
             
             foreach (Transform child in choiceRoot.transform) // destroy previous choices
             {
@@ -131,12 +134,31 @@ public class Dialogue : MonoBehaviour
                 }
             }
             UIInputManager.instance.currentlyInDialogue = true;
+            UIInputManager.instance.currentDialogueButton = UIInputManager.instance.currentDialogueButtonsList[0];
+            
             GameObject cursorObj = null;
             if (branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1) cursorObj = Instantiate(cursor, cursorRoot.transform); //if on the last dialogue in the list, spawn arrow that closes dialogue
             if (cursorObj != null) { cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { HideDialogue(); }); return; } // set the action of the button to close dialogue 
 
             if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
             if(cursorObj != null) cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex++; ShowNextBranch(); }); // set the action of the button to go to the next branch
+            
+            if (branchIndex >= DialogueSets[DialogueStage].Dialogues.Count)
+            {
+                // NPC state changers
+                _npcManager.npcState = pastNpcState;
+                if (_npcManager.npcState == NpcState.SetPathingWalking)
+                    _npcManager.setPathWalking.currentPointNumber -= 1;
+                _npcManager.StateChanger();
+        
+                //Input Manager(s) cooldowns //Resets UI Input variables to allow player movement again
+                PlayerManager.instance.InteractOffCoolDown();
+                PlayerManager.instance.movementAllowed = true;
+                UIInputManager.instance.currentDialogueButtonsList.Clear();
+                UIInputManager.instance.dialogueInUse = null;
+                UIInputManager.instance.currentlyInDialogue = false;
+                _tempChoiceButton = null;
+            }
         }
     }
 
@@ -148,20 +170,6 @@ public class Dialogue : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         loadSet(); // call this whenever we want it to change to the next set of dialogue
         ShowNextBranch();
-        
-        // Change NPC state change
-        _npcManager.npcState = pastNpcState;
-        if (_npcManager.npcState == NpcState.SetPathingWalking)
-            _npcManager.setPathWalking.currentPointNumber -= 1;
-        
-        _npcManager.StateChanger();
-        
-        //Input Manager(s)
-        PlayerManager.instance.InteractOffCoolDown();
-        PlayerManager.instance.movementAllowed = true;
-        UIInputManager.instance.currentDialogueButtonsList.Clear();
-        UIInputManager.instance.currentlyInDialogue = false;
-        _tempChoiceButton = null;
     }
 
     public void UpdateNPCOpinion(string topic)
