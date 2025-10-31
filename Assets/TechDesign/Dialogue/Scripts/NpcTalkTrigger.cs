@@ -55,9 +55,7 @@ public class NpcTalkTrigger : MonoBehaviour
                     dialogueUI.SetActive(true);
                     dialogueUI.GetComponent<Animation>().Play();
 
-                    UIInputManager.instance.EnableUIControllerInputs();
-
-                    //Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.lockState = CursorLockMode.Confined;
                     //GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().canMove = false;
             }
             else
