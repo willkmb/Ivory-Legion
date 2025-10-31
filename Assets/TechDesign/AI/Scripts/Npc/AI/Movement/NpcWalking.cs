@@ -26,11 +26,13 @@ namespace Npc.AI.Movement
         }
 
         private bool _requiresAction;
+        private GameObject markerpoint;
         public void WalkToLocation(Vector3 pos, MarkerPoint markerPoint)
         {
             _requiresAction = markerPoint.RequiresAction();
             _npcPerformingAction.activeMarkerPoint = markerPoint;
-            
+            markerpoint = markerPoint.transform.gameObject;
+
             targetPos = pos;
             _agent.SetPath(Path);
         }
@@ -51,7 +53,9 @@ namespace Npc.AI.Movement
                 
                 _npcManager.minMovementCooldownTime = _npcPerformingAction.activeMarkerPoint.GetMinMovementCooldownTime();
                 _npcManager.maxMovementCooldownTime = _npcPerformingAction.activeMarkerPoint.GetMaxMovementCooldownTime();
-                
+
+                _npcManager.markerPointZone.markerPointsHumanActive.Add(markerpoint);
+
                 NpcEvents.instance.NpcCheckArrivalEvent -= ArrivalChecker;
                 _npcManager.StateChanger();
             }
