@@ -10,6 +10,9 @@ namespace Player.Dialogue
         public int nextBranch;
         public string topic;
 
+        private bool isArrow;
+        private bool isLastArrow;
+
         private void Awake()
         {
             _button.onClick.AddListener(Interacted);
@@ -27,11 +30,21 @@ namespace Player.Dialogue
 
         public void Interacted()
         {
-            Debug.Log("Clicked");
-            //UIInputManager.instance.dialogueInUse.ShowNextBranch();
-            root.branchIndex = nextBranch;
-            root.UpdateNPCOpinion(topic);
-            root.ShowNextBranch();
+            if (isArrow)
+            {
+                root.branchIndex++;
+                root.branchIndex = nextBranch;
+            }
+            else if (isLastArrow)
+            {
+                root.HideDialogue();
+            }
+            else
+            {
+                root.branchIndex = nextBranch;
+                root.UpdateNPCOpinion(topic);
+                root.ShowNextBranch();
+            }
         }
     }
 }
