@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using System.Linq;
 using InputManager;
 using Npc.AI;
 using Player;
 using Player.Dialogue;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UI;
+// static System.Net.Mime.MediaTypeNames;
 
 public class Dialogue : MonoBehaviour
 {
@@ -78,7 +79,7 @@ public class Dialogue : MonoBehaviour
     private void Start()
     {
         _npcManager = transform.GetComponent<NpcManager>();
-        
+
         trustHolder = GetComponent<NPCtrustValue>();
         branchIndex = startIndex; // sets the current branch index to the start
         ShowNextBranch();
@@ -102,10 +103,13 @@ public class Dialogue : MonoBehaviour
             dialogueText.text = DialogueSets[DialogueStage].Dialogues[branchIndex].dialogueTextContent; // sets dialogue text to the field defined in dialogues class
             speakerName.text = DialogueSets[DialogueStage].Dialogues[branchIndex].name; //  sets the speakers name to the field defined in dialogues class
             charImage.GetComponent<Image>().sprite = DialogueSets[DialogueStage].Dialogues[branchIndex].image; // change the characters image
-            
-            // Dialogue being used = true and list cleanse to allow new list to take its place
-            UIInputManager.instance.currentDialogueButtonsList.Clear();
-            UIInputManager.instance.dialogueInUse = this;
+
+            if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count > 0)
+            {
+                // Dialogue being used = true and list cleanse to allow new list to take its place
+                UIInputManager.instance.currentDialogueButtonsList.Clear();
+                UIInputManager.instance.dialogueInUse = this;
+            }
             
             foreach (Transform child in choiceRoot.transform) // destroy previous choices
             {
@@ -126,10 +130,12 @@ public class Dialogue : MonoBehaviour
                     buttonTextObj.GetComponent<TextMeshProUGUI>().text = choice.choiceTextContent;
 
                     int next = choice.nextBranch;
-                    Button.GetComponent<Button>().onClick.AddListener(() => { branchIndex = next; UpdateNPCOpinion(choice.choiceTopic);  ShowNextBranch(); }); // adds the functionality of the button withought having to manually do it in inspector and calls advance branch method.
-                    
+                    Button.GetComponent<ChoiceButton>().root = this.GetComponent<Dialogue>();
+                    Button.GetComponent<ChoiceButton>().nextBranch = next;
+                    Button.GetComponent<ChoiceButton>().topic = choice.choiceTopic;
+
                     // Adds to a list which is accessed by the UI Input Manager - For controller UI movements
-                     if (!UIInputManager.instance.currentDialogueButtonsList.Contains(Button.transform.GetComponent<ChoiceButton>()) && Button != null)
+                    if (!UIInputManager.instance.currentDialogueButtonsList.Contains(Button.transform.GetComponent<ChoiceButton>()) && Button != null)
                          UIInputManager.instance.currentDialogueButtonsList.Add(Button.transform.GetComponent<ChoiceButton>());
                 }
             }
@@ -142,7 +148,10 @@ public class Dialogue : MonoBehaviour
 
             if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
             if(cursorObj != null) cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex++; ShowNextBranch(); }); // set the action of the button to go to the next branch
-            
+
+            UIInputManager.instance.currentlyInDialogue = true;
+            UIInputManager.instance.currentDialogueButton = UIInputManager.instance.currentDialogueButtonsList[0];
+
             if (branchIndex >= DialogueSets[DialogueStage].Dialogues.Count)
             {
                 // NPC state changers

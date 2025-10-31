@@ -6,6 +6,15 @@ namespace Player.Dialogue
     public class ChoiceButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
+        public global::Dialogue root;
+        public int nextBranch;
+        public string topic;
+
+        private void Awake()
+        {
+            _button.onClick.AddListener(Interacted);
+        }
+
         public void Selected()
         {
             _button.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
@@ -19,7 +28,10 @@ namespace Player.Dialogue
         public void Interacted()
         {
             Debug.Log("Clicked");
-            UIInputManager.instance.dialogueInUse.ShowNextBranch();
+            //UIInputManager.instance.dialogueInUse.ShowNextBranch();
+            root.branchIndex = nextBranch;
+            root.UpdateNPCOpinion(topic);
+            root.ShowNextBranch();
         }
     }
 }
