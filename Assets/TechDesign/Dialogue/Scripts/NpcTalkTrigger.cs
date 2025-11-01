@@ -32,7 +32,7 @@ public class NpcTalkTrigger : MonoBehaviour
         {
             if (inTrigger == true)
             {
-                if (Input.GetKeyDown(KeyCode.E) && !bubbleEnabled)
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3) && !bubbleEnabled)
                 {
                     if(collidedWith != null)
                     {
@@ -45,14 +45,30 @@ public class NpcTalkTrigger : MonoBehaviour
                     dialogueUI.SetActive(true);
                     dialogueUI.GetComponent<Animation>().Play();
                     Cursor.lockState = CursorLockMode.Confined;
+                    ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
+                    cursor.CursorState(true);
+                    Elephant_2 player = GameObject.FindWithTag("Player").GetComponent<Elephant_2>();
+                    player.enabled = false;
+
                 }
             }
             else
             {
-                dialogueUI.SetActive(false);
-                Cursor.lockState = CursorLockMode.None;
+                exitDialogue();
             }
+
+            if (Input.GetKeyDown(KeyCode.JoystickButton2)) exitDialogue();
         }
+    }
+
+    void exitDialogue()
+    {
+        dialogueUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
+        cursor.CursorState(false);
+        Elephant_2 player = GameObject.FindWithTag("Player").GetComponent<Elephant_2>();
+        player.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
