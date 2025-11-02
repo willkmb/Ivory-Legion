@@ -3,13 +3,17 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+
 public class ControllerCursor : MonoBehaviour
 {
     public float Speed;
-    public float offset;
     private Vector2 Position;
     private bool notConnected = true;
     public GameObject cursor;
+    private PointerEventData pointerData;
+    public GraphicRaycaster UI;
+    private GameObject button;
+
     void Awake()
     {
         Position = Input.mousePosition;
@@ -25,19 +29,18 @@ public class ControllerCursor : MonoBehaviour
         Vector2 moving = new Vector2(Xmove, Ymove) * Speed * Time.deltaTime;
         if(Position != null ) Position += moving;
 
-        Position.x = Mathf.Clamp(Position.x, 0, Screen.width - offset);
-        Position.y = Mathf.Clamp(Position.y, 0, Screen.height - offset);
+        Position.x = Mathf.Clamp(Position.x, 0, Screen.width);
+        Position.y = Mathf.Clamp(Position.y, 0, Screen.height);
 
         this.transform.position = Position;
 
-        if (Input.GetKeyDown(KeyCode.JoystickButton0))
+        List<RaycastResult> hit = new List<RaycastResult>();
+        UI.Raycast(new PointerEventData(EventSystem.current) { position = transform.position }, hit);
+        if (hit.Count > 0) { Debug.Log(hit[0]); button = hit[0].gameObject;}
+
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            Debug.Log("KeyPress");
-            PointerEventData click = new PointerEventData(EventSystem.current);
-            click.position = Position;
-            List<RaycastResult> hitResult = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(click, hitResult);
-            if (hitResult.Count > 0) ExecuteEvents.Execute(hitResult[0].gameObject, click, ExecuteEvents.pointerClickHandler);
+            if (button != null) { button.GetComponentInParent<Button>().onClick.Invoke(); }
         }
     }
 
@@ -56,12 +59,12 @@ public class ControllerCursor : MonoBehaviour
             }
         }
 
-        Cursor.visible = notConnected ? false : true;
+        Cursor.visible = !notConnected ? false : true;
     }
 
     public void CursorState(bool state)
     {
         cursor.GetComponent<Image>().enabled = state;
-        //Position = Input.mousePosition;
+        Position = Input.mousePosition;
     }
 }

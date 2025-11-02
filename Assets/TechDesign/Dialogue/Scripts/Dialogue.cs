@@ -129,6 +129,10 @@ public class Dialogue : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         loadSet(); // call this whenever we want it to change to the next set of dialogue
         ShowNextBranch();
+        ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
+        cursor.CursorState(false);
+        Elephant_2 player = GameObject.FindWithTag("Player").GetComponent<Elephant_2>();
+        player.enabled = true;
     }
 
     public void UpdateNPCOpinion(string topic)

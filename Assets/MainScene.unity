@@ -993,9 +993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05142e6c6860514a99675323599619d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 550
-  offset: 0
+  Speed: 375
   cursor: {fileID: 735378938}
+  UI: {fileID: 8259462956138510866}
 --- !u!114 &735378941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.79607844}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
