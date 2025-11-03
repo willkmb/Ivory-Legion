@@ -146,6 +146,8 @@ public class Dialogue : MonoBehaviour
         ShowNextBranch();
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
         cursor.CursorState(false);
+        PlayerMovement player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        player.enabled = true;
     }
 
     public void UpdateNPCOpinion(string topic)
