@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9821965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9821966}
+  m_Layer: 0
+  m_Name: ------------------------ (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9821966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9821965}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.08684, y: 0, z: 2.2483}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &99322949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1026,7 +1057,13 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 2444246874837943291, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8293723575335677982, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1897321693}
+    - targetCorrespondingSourceObject: {fileID: 8293723575335677982, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1897321692}
   m_SourcePrefab: {fileID: 100100000, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
 --- !u!1 &1262052982
 GameObject:
@@ -1187,7 +1224,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341429337}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75f666937645b4944b66f766e7b58ccb, type: 3}
   m_Name: 
@@ -1291,114 +1328,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78cc5a3a054eb6342b8d4f47703fcb69, type: 3}
---- !u!1 &1618545035
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1618545039}
-  - component: {fileID: 1618545038}
-  - component: {fileID: 1618545037}
-  - component: {fileID: 1618545036}
-  m_Layer: 6
-  m_Name: Test Cube
-  m_TagString: Pushable
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1618545036
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618545035}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1618545037
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618545035}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1618545038
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618545035}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1618545039
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618545035}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.27328, y: 1, z: 6.07485}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1675317747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1475,41 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 577c5da4e398b5d45812921fb1eb7219, type: 3}
+--- !u!1 &1897321691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8293723575335677982, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
+  m_PrefabInstance: {fileID: 1170315681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1897321692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897321691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef21426912091744a0a94fd1012fc37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questType: 1
+--- !u!114 &1897321693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897321691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e8cdd646d6ef6428dbe45c2dcae2f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questName: Test Quest
+  playerMeshRenderer: {fileID: 4711208715938537054, guid: 16252262cd18f1c45b3a2f5991173a16, type: 3}
+  questMeshRenderer: {fileID: 4711208715938537054, guid: 16252262cd18f1c45b3a2f5991173a16, type: 3}
+  questCompletionCheckers: 0
+  questCompletionEvent: 0
 --- !u!1001 &1905737695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2248,21 +2212,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2475870330000190476
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5377900229738206062}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 1, z: 10.174965}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2477923622649879445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2410,14 +2359,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!33 &3564376938848435269
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5377900229738206062}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!224 &3575221069048131084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2621,51 +2562,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!23 &4956662924463560548
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5377900229738206062}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: cf407a47d9af184408c4e8bc396fb814, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!224 &4972588435201410288
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2746,27 +2642,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &5377900229738206062
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2475870330000190476}
-  - component: {fileID: 3564376938848435269}
-  - component: {fileID: 4956662924463560548}
-  - component: {fileID: 8658231204631545770}
-  - component: {fileID: 8658231204631545772}
-  - component: {fileID: 8658231204631545771}
-  m_Layer: 0
-  m_Name: NPC
-  m_TagString: NPC
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!81 &5470683545262548742
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3599,152 +3474,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!136 &8658231204631545770
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5377900229738206062}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8658231204631545771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5377900229738206062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cc86d8c296d5e44dac570a105ed7040, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trustValue: 0
-  opinionLevel: Neutral
-  likedTopics: []
-  dislikedTopics: []
-  text: {fileID: 4026580592836358410}
---- !u!114 &8658231204631545772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5377900229738206062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a358a55889dccfc48b0c7a3ade9d7652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DialogueSets:
-  - Dialogues:
-    - name: Gisgo
-      dialogueTextContent: Set 1 - Dialogue 1
-      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      choices:
-      - choiceTextContent: Option 1 - War
-        choiceTopic: War
-        nextBranch: 1
-        rootBranch: 0
-      - choiceTextContent: Option 2 - Dock
-        choiceTopic: Dock
-        nextBranch: 2
-        rootBranch: 0
-    - name: Hannibal
-      dialogueTextContent: Set 1 - Dialogue 2
-      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
-      choices: []
-    - name: Gisgo
-      dialogueTextContent: Set 1 - Dialogue 3
-      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      choices: []
-    - name: Hannibal
-      dialogueTextContent: Set 1 - Dialogue 4
-      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
-      choices:
-      - choiceTextContent: Option 1 - War
-        choiceTopic: War
-        nextBranch: 4
-        rootBranch: 3
-      - choiceTextContent: Option 2 - Ntrl
-        choiceTopic: Fish
-        nextBranch: 4
-        rootBranch: 3
-      - choiceTextContent: Option 2 - Dock
-        choiceTopic: Dock
-        nextBranch: 4
-        rootBranch: 3
-    - name: Gisgo
-      dialogueTextContent: Set 1 - Dialogue 5
-      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      choices: []
-  - Dialogues:
-    - name: Gisgo
-      dialogueTextContent: Set 2 - Dialogue 1
-      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      choices:
-      - choiceTextContent: Option 1 - War
-        choiceTopic: War
-        nextBranch: 1
-        rootBranch: 0
-      - choiceTextContent: Option 2 - Dock
-        choiceTopic: Dock
-        nextBranch: 2
-        rootBranch: 0
-    - name: Hannibal
-      dialogueTextContent: Set 2 - Dialogue 2
-      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
-      choices: []
-    - name: Gisgo
-      dialogueTextContent: Set 2 - Dialogue 3
-      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      choices: []
-    - name: Hannibal
-      dialogueTextContent: Set 2 - Dialogue 4
-      image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
-      choices:
-      - choiceTextContent: Option 1 - War
-        choiceTopic: War
-        nextBranch: 4
-        rootBranch: 3
-      - choiceTextContent: Option 2 - Ntrl
-        choiceTopic: Fish
-        nextBranch: 4
-        rootBranch: 3
-      - choiceTextContent: Option 2 - Dock
-        choiceTopic: Dock
-        nextBranch: 4
-        rootBranch: 3
-    - name: Gisgo
-      dialogueTextContent: Set 2 - Dialogue 5
-      image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      choices: []
-  startIndex: 0
-  branchIndex: 0
-  speakerName: {fileID: 458584474700630780}
-  dialogueText: {fileID: 1102370536776726725}
-  dialogueBox: {fileID: 431913247581902545}
-  choiceRoot: {fileID: 9064757539264609240}
-  choiceButton: {fileID: 7364682090480881350, guid: 229068fa688c870419e0c55e7a1737a8, type: 3}
-  cursorRoot: {fileID: 8406258862392094154}
-  cursor: {fileID: 3375012534551387402, guid: 99dcf58148a01714b854c2868d48dba2, type: 3}
-  charImage: {fileID: 4288925233544835841}
-  pastNpcState: 0
 --- !u!4 &8745194092663908831
 Transform:
   m_ObjectHideFlags: 0
@@ -3922,14 +3651,13 @@ SceneRoots:
   - {fileID: 476499368}
   - {fileID: 1506556879}
   - {fileID: 1133841315}
-  - {fileID: 2475870330000190476}
   - {fileID: 1905737695}
   - {fileID: 541285905}
   - {fileID: 2061086607}
   - {fileID: 986316654}
   - {fileID: 1170315681}
-  - {fileID: 1618545039}
   - {fileID: 1971924307}
+  - {fileID: 9821966}
   - {fileID: 1341429338}
   - {fileID: 2039684703}
   - {fileID: 730951749}
