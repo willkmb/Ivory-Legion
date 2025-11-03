@@ -33,7 +33,7 @@ public class NpcTalkTrigger : MonoBehaviour
         {
             if (inTrigger == true)
             {
-                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3) && !bubbleEnabled)
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3)) //&& !bubble.enabled;
                 {
                     if (collidedWith != null)
                     {
@@ -48,8 +48,6 @@ public class NpcTalkTrigger : MonoBehaviour
                     Cursor.lockState = CursorLockMode.Confined;
                     ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
                     cursor.CursorState(true);
-                    PlayerMovement player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
-                    player.enabled = true;
 
                 }
             }
@@ -68,36 +66,35 @@ public class NpcTalkTrigger : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
         cursor.CursorState(false);
-        PlayerMovement player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
-        player.enabled = true;
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "NPC")
         {
             inTrigger = true;
             collidedWith = other.gameObject;
-            if (collidedWith.GetComponent<BubbleScript>() != null && collidedWith.GetComponent<BubbleScript>().enabled)
-            {
-                bubbleEnabled = true;
-                collidedWith.GetComponent<BubbleScript>().pickLine();
-                bubbleUI.SetActive(true);
-            }
+            //if (collidedWith.GetComponent<BubbleScript>() != null && collidedWith.GetComponent<BubbleScript>().enabled)
+            //{
+                //bubbleEnabled = true;
+                //collidedWith.GetComponent<BubbleScript>().pickLine();
+                //bubbleUI.SetActive(true);
+            //}
         }
     }
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "NPC")
         {
             inTrigger = false;
             dialogue = collidedWith.GetComponent<Dialogue>();
             dialogue.branchIndex = dialogue.startIndex;
-            if (collidedWith.GetComponent<BubbleScript>() != null)
-            {
-                bubbleEnabled = false;
-                bubbleUI.SetActive(false);
-            }
+            //if (collidedWith.GetComponent<BubbleScript>() != null)
+            //{
+                //bubbleEnabled = false;
+                //bubbleUI.SetActive(false);
+            //}
             collidedWith = null;
         }
     }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6646287163856041216}
   m_Layer: 5
   m_Name: ChoiceButton
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,6 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 8517663902876237400}
+  root: {fileID: 0}
+  nextBranch: 0
+  topic: 
 --- !u!1 &7629823120677721552
 GameObject:
   m_ObjectHideFlags: 0
