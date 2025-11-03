@@ -5015,6 +5015,7 @@ GameObject:
   - component: {fileID: 6897069285698487650}
   - component: {fileID: 1520407513318287122}
   - component: {fileID: 1443041157681912446}
+  - component: {fileID: 6320225302733596577}
   m_Layer: 0
   m_Name: Player Controller
   m_TagString: Player
@@ -5512,6 +5513,28 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   itemsInStorage: []
+--- !u!114 &6320225302733596577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393508817684473014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2aad31d17f7d7a48a7bbd8a5b78a349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 1.25
+  detectionDistance: 2
+  pushableLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  pushableTag: Pushable
+  pushSpeed: 5
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &2634587017723466076
 GameObject:
   m_ObjectHideFlags: 0

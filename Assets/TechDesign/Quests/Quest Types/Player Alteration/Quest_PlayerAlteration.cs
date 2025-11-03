@@ -1,0 +1,66 @@
+using System;
+using InputManager;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+namespace Quests
+{
+    public class Quest_PlayerAlteration : MonoBehaviour, Interfaces.Interfaces.IHaveQuest, Interfaces.Interfaces.ICheckQuestCompletion
+    {
+        [Header("Be specific with quest names")]
+        public string questName;
+        [Header("Mesh Filters")]
+        public Mesh playerMeshRenderer; // Add the players meshes to some form of dictionary 
+        public Mesh questMeshRenderer;
+        
+        
+        public QuestCompletionCheckers questCompletionCheckers;
+        public QuestCompletionEvent questCompletionEvent;
+
+
+        private void Start()
+        {
+            if (!QuestManager.instance.questDataBase.TryGetValue(questName, out var value)) // Stops duplication of quests between scenes
+                AddQuest(questName, false);
+        }
+        public void AddQuest(string questName, bool questCompleted) 
+        { 
+            QuestManager.instance.SetQuestDataBase(questName, questCompleted); // Adds quest by name and sets s to false;
+        }
+
+        public void CheckPlayerAlteration()
+        {
+            // Check if the Player's visuals matches the required visuals for quest
+            if (playerMeshRenderer == questMeshRenderer)
+                if (!QuestManager.instance.CheckIfQuestCompleted(questName))
+                {
+                    QuestManager.instance.QuestCompletedSetToTrue(questName);
+                    EventIfQuestCompleted();
+                }
+        }
+        
+        // Checks if player is visually changed based of Trigger
+        public void OnTriggerEnter(Collider other)
+        {
+            if (questCompletionCheckers == QuestCompletionCheckers.Trigger)
+                if (other.CompareTag("Player") && QuestManager.instance.CheckIfQuestCompleted(questName))
+                    CheckPlayerAlteration();
+        }
+
+        public void EventIfQuestCompleted()
+        {
+            switch (questCompletionEvent)
+            {
+                case QuestCompletionEvent.UnlockArea:
+                    Debug.Log("Unlock Area");
+                    break;
+                case QuestCompletionEvent.NpcStopsGuarding:
+                    Debug.Log("Npc Stops Guarding");
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
+}
+

@@ -9,7 +9,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-// static System.Net.Mime.MediaTypeNames;
 
 public class Dialogue : MonoBehaviour
 {
@@ -143,11 +142,25 @@ public class Dialogue : MonoBehaviour
             UIInputManager.instance.currentDialogueButton = UIInputManager.instance.currentDialogueButtonsList[0];
             
             GameObject cursorObj = null;
-            if (branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1) cursorObj = Instantiate(cursor, cursorRoot.transform); //if on the last dialogue in the list, spawn arrow that closes dialogue
+            bool lastBranch = false ;
+            bool noChoices = false;
+            if (branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1) cursorObj = Instantiate(cursor, cursorRoot.transform); lastBranch = true; //if on the last dialogue in the list, spawn arrow that closes dialogue
             if (cursorObj != null) { cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { HideDialogue(); }); return; } // set the action of the button to close dialogue 
+            if (lastBranch && cursorObj != null)
+            {
+                if (!UIInputManager.instance.currentDialogueButtonsList.Contains(cursorObj.GetComponent<ChoiceButton>()) && cursorObj != null)
+                    UIInputManager.instance.currentDialogueButtonsList.Add(cursorObj.GetComponent<ChoiceButton>());
+                cursorObj.GetComponent<ChoiceButton>().root = this.GetComponent<Dialogue>();
+            }
 
-            if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
+            if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1) cursorObj = Instantiate(cursor, cursorRoot.transform); noChoices = true; // if there is no choices, spawn the arrow
             if(cursorObj != null) cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex++; ShowNextBranch(); }); // set the action of the button to go to the next branch
+            if (noChoices && cursorObj != null)
+            {
+                if (!UIInputManager.instance.currentDialogueButtonsList.Contains(cursorObj.GetComponent<ChoiceButton>()) && cursorObj != null)
+                    UIInputManager.instance.currentDialogueButtonsList.Add(cursorObj.GetComponent<ChoiceButton>());
+                cursorObj.GetComponent<ChoiceButton>().root = this.GetComponent<Dialogue>();
+            }
 
             UIInputManager.instance.currentlyInDialogue = true;
             UIInputManager.instance.currentDialogueButton = UIInputManager.instance.currentDialogueButtonsList[0];
