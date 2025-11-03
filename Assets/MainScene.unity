@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 95736761}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TrunkPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,6 +201,10 @@ PrefabInstance:
     - target: {fileID: 6431349391544612186, guid: a1e9a6d66bbd7554887f44ed1ef81daa, type: 3}
       propertyPath: m_Name
       value: DestroyItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431349391544612186, guid: a1e9a6d66bbd7554887f44ed1ef81daa, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -631,7 +635,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 223357600}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SaddleBagRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +670,7 @@ GameObject:
   - component: {fileID: 373265558}
   - component: {fileID: 373265557}
   - component: {fileID: 373265560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 598068265}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HatPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 814444511}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SaddleBagLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1097,7 +1101,7 @@ GameObject:
   - component: {fileID: 972517798}
   - component: {fileID: 972517799}
   - component: {fileID: 972517800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Elephant
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1354,7 +1358,7 @@ GameObject:
   - component: {fileID: 1000959076}
   - component: {fileID: 1000959078}
   - component: {fileID: 1000959077}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SeismicSense(Particles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6187,7 +6191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116993574}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MarkerLoc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6222,7 +6226,7 @@ GameObject:
   - component: {fileID: 1230672288}
   - component: {fileID: 1230672287}
   - component: {fileID: 1230672286}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SeismicSense(Trigger)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6540,6 +6544,78 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
+--- !u!1 &1660328401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1660328402}
+  - component: {fileID: 1660328404}
+  - component: {fileID: 1660328403}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1660328402
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660328401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8827534882912164198}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 328.27, y: -153.3}
+  m_SizeDelta: {x: 150, y: 150}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1660328403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660328401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: 0cf3d150af776be4ba690cc03c5b35a3, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1660328404
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660328401}
+  m_CullTransparentMesh: 1
 --- !u!1 &1675317747
 GameObject:
   m_ObjectHideFlags: 0
@@ -6598,7 +6674,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1856678224}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PutDownPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6628,6 +6704,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 834855314448238960, guid: 577c5da4e398b5d45812921fb1eb7219, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4684858014482450938, guid: 577c5da4e398b5d45812921fb1eb7219, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.056919
@@ -6671,6 +6751,10 @@ PrefabInstance:
     - target: {fileID: 6036861676084668848, guid: 577c5da4e398b5d45812921fb1eb7219, type: 3}
       propertyPath: m_Name
       value: PickUpItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036861676084668848, guid: 577c5da4e398b5d45812921fb1eb7219, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7730,7 +7814,7 @@ GameObject:
   - component: {fileID: 8658231204631545772}
   - component: {fileID: 8658231204631545771}
   - component: {fileID: 8658231204631545773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NPC
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -7757,7 +7841,7 @@ GameObject:
   - component: {fileID: 7901321435267423380}
   - component: {fileID: 5351356844778170462}
   - component: {fileID: 7901321435267423381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ElephantLowPoly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8610,6 +8694,7 @@ RectTransform:
   - {fileID: 8786188792834331261}
   - {fileID: 144759175}
   - {fileID: 735378939}
+  - {fileID: 1660328402}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 
 public class ControllerCursor : MonoBehaviour
@@ -13,6 +14,7 @@ public class ControllerCursor : MonoBehaviour
     private PointerEventData pointerData;
     public GraphicRaycaster UI;
     private GameObject button;
+    private GameObject lastButton;
 
     void Awake()
     {
@@ -36,7 +38,15 @@ public class ControllerCursor : MonoBehaviour
 
         List<RaycastResult> hit = new List<RaycastResult>();
         UI.Raycast(new PointerEventData(EventSystem.current) { position = transform.position }, hit);
-        if (hit.Count > 0) { Debug.Log(hit[0]); button = hit[0].gameObject;}
+        if (hit.Count > 0) { button = hit[0].gameObject;}
+        if(button != null) button = hit.Count > 0 ? hit[0].gameObject : null;
+
+        if(button != lastButton)
+        {
+            if (button != null) hoverState(0);
+            if (lastButton != null) hoverState(1);
+            lastButton = button;
+        }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
@@ -66,5 +76,39 @@ public class ControllerCursor : MonoBehaviour
     {
         cursor.GetComponent<Image>().enabled = state;
         Position = Input.mousePosition;
+    }
+
+    void hoverState(int state)
+    {
+        if(state == 0)
+        {
+            if (button.transform.CompareTag("Interactable"))
+            {
+                Transform buttonScale = button.transform;
+                button.transform.localScale = new Vector3(buttonScale.localScale.x + 0.1f, buttonScale.localScale.y + 0.1f, buttonScale.localScale.z + 0.1f);
+            }
+            else
+            {
+                if (button.transform.parent.CompareTag("Interactable"))
+                {
+                    Transform buttonScale = button.transform.parent;
+                    button.transform.parent.localScale = new Vector3(buttonScale.localScale.x + 0.1f, buttonScale.localScale.y + 0.1f, buttonScale.localScale.z + 0.1f);
+                }
+            }
+        }
+        else if( state == 1)
+        {
+            if (lastButton.transform.CompareTag("Interactable"))
+            {
+                lastButton.transform.localScale = Vector3.one;
+            }
+            else
+            {
+                if (lastButton.transform.parent.CompareTag("Interactable"))
+                {
+                    lastButton.transform.parent.localScale = Vector3.one;
+                }
+            }
+        }
     }
 }
