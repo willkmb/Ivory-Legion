@@ -1,5 +1,5 @@
 using System;
-using AI;
+//using AI;
 using Player;
 using SeismicSense;
 using UnityEngine;
@@ -148,13 +148,13 @@ namespace InputManager
             {
                 if (_interactOffCooldown)
                 {
-                    if (NpcTalkTrigger.instance.inTrigger)
-                    {
-                        _interactOffCooldown = false;
+                    //if (NpcTalkTrigger.instance.inTrigger)
+                    //{
+                       // _interactOffCooldown = false;
 
-                        NpcTalkTrigger.instance.Interact();
-                        return;
-                    }
+                        //NpcTalkTrigger.instance.Interact();
+                        //return;
+                    //}
 
                     //Debug.Log("Checking in front");
                     PlayerInteractScript.instance.CheckObjectInFront();

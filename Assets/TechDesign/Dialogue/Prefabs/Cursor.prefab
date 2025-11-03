@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 5980450073343904598}
   - component: {fileID: 1605610165303829780}
   - component: {fileID: 1907110127658485613}
-  - component: {fileID: 2707137773992688668}
   m_Layer: 5
   m_Name: Cursor
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 3375012534551387402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0311525, y: 1.3094, z: 1.3094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5094142846734416249}
@@ -39,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 31.7, y: 30}
+  m_SizeDelta: {x: 33.17, y: 41.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1634051082219063903
 CanvasRenderer:
@@ -138,22 +137,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2.13, y: -2.1}
   m_UseGraphicAlpha: 1
---- !u!114 &2707137773992688668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3375012534551387402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8118fdf273ed934d94745b038d0fa2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 1605610165303829780}
-  root: {fileID: 0}
-  nextBranch: 0
-  topic: 
 --- !u!1 &6814496045304656527
 GameObject:
   m_ObjectHideFlags: 0
