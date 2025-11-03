@@ -3,7 +3,17 @@ guid: 87c270e47a0a7ad4aa2ecac886848e43
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodo_Body
+    second: {fileID: -876546973899608171, guid: cff832431ad882d459fa746f1f5820cb, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodo_Clothes
+    second: {fileID: -876546973899608171, guid: 2e07cdc88cbd5b0428eb0b695c3a782f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
