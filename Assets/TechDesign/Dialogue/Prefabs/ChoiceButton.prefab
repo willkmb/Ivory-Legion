@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5965728547525587233}
   - component: {fileID: 8517663902876237400}
   - component: {fileID: 8448740008279340810}
-  - component: {fileID: 6646287163856041216}
   m_Layer: 5
   m_Name: ChoiceButton
   m_TagString: Interactable
@@ -138,22 +137,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -2.25}
   m_UseGraphicAlpha: 1
---- !u!114 &6646287163856041216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7364682090480881350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8118fdf273ed934d94745b038d0fa2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 8517663902876237400}
-  root: {fileID: 0}
-  nextBranch: 0
-  topic: 
 --- !u!1 &7629823120677721552
 GameObject:
   m_ObjectHideFlags: 0
