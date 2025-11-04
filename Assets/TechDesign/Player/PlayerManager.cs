@@ -74,7 +74,7 @@ namespace InputManager
         private void Update()
         {
             // Movement
-            if (movementAllowed)
+            if (movementAllowed) //doesn't work for controller
                 if (moveAction.IsPressed())
                 {
                     PlayerMovement.instance.Movement(moveAction.ReadValue<Vector2>());
@@ -140,6 +140,12 @@ namespace InputManager
                     SeismicSenseScript.instance.StartPulse();
                 }
             
+        }
+
+        public void setMovementAllowed(bool allowed)
+        {
+            movementAllowed = allowed;
+            if (allowed) moveAction.Enable(); else moveAction.Disable();
         }
 
         void PickUpInteraction(InputAction.CallbackContext context)

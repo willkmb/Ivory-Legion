@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Player;
+using InputManager;
 
 public class NpcTalkTrigger : MonoBehaviour
 {
@@ -12,9 +13,9 @@ public class NpcTalkTrigger : MonoBehaviour
     Dialogue dialogue;
     Collider trigger;
     public bool inTrigger;
-    [HideInInspector] public GameObject collidedWith;
+    [HideInInspector] public GameObject collidedWith = null;
 
-    private bool bubbleEnabled = false;
+   // private bool bubbleEnabled = false;
     void Start()
     {
         triggerScript = GetComponentInChildren<TriggerScript>();
@@ -48,6 +49,7 @@ public class NpcTalkTrigger : MonoBehaviour
                     Cursor.lockState = CursorLockMode.Confined;
                     ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
                     cursor.CursorState(true);
+                    GameObject.FindWithTag("Player").GetComponent<PlayerManager>().enabled = false;
 
                 }
             }
@@ -66,6 +68,7 @@ public class NpcTalkTrigger : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
         cursor.CursorState(false);
+        GameObject.FindWithTag("Player").GetComponent<PlayerManager>().enabled = true;
 
     }
 
@@ -87,14 +90,14 @@ public class NpcTalkTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "NPC")
         {
-            inTrigger = false;
-            dialogue = collidedWith.GetComponent<Dialogue>();
-            dialogue.branchIndex = dialogue.startIndex;
             //if (collidedWith.GetComponent<BubbleScript>() != null)
             //{
-                //bubbleEnabled = false;
-                //bubbleUI.SetActive(false);
+            //bubbleEnabled = false;
+            //bubbleUI.SetActive(false);
             //}
+            dialogue = collidedWith.GetComponent<Dialogue>();
+            inTrigger = false;
+            dialogue.branchIndex = dialogue.startIndex;
             collidedWith = null;
         }
     }
