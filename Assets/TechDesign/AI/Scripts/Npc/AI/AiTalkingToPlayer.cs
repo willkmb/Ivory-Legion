@@ -14,7 +14,7 @@ namespace Npc.AI.Movement
         private void Start()
         {
             _npcManager = transform.parent.GetComponent<NpcManager>();
-            InputManager.InputManager.instance.IpressEvent += StopTalking;
+          //  InputManager.InputManager.instance.IpressEvent += StopTalking;
         }
 
 
@@ -33,7 +33,7 @@ namespace Npc.AI.Movement
         // If moving to location, make sure it is the same location (positoned saved)
         private void StopTalking()
         {
-            InputManager.InputManager.instance.EpressEvent -= TalkingToPlayer;
+          //  InputManager.InputManager.instance.EpressEvent -= TalkingToPlayer;
 
             _npcManager.setPathWalking.currentPointNumber -= 1;
             _npcManager.npcState = _pastState;

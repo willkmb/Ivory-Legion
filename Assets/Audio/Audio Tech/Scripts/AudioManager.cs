@@ -94,8 +94,6 @@ namespace Audio
                     audioSource.loop = true;
                     AudioAmbManager.instance.loopingAudioPlayersList.Add(audioSource);
                 }
-                   
-                
                 audioSource.spatialBlend = is3d ? 1 : 0;
             }
             
@@ -121,6 +119,8 @@ namespace Audio
                  AudioAmbManager.instance.FoliageSoundChecker(audioName, audioSource.clip.length);
             
             //Disables audio after x seconds, adding it back to the audioPoolFree list
+            if (loops)
+                return;
             audioPlayer.Invoke("DisableObj", audioSource.clip.length);
         }
     }

@@ -1,5 +1,5 @@
 using System;
-using AI;
+//using AI;
 using Player;
 using SeismicSense;
 using UnityEngine;
@@ -74,7 +74,7 @@ namespace InputManager
         private void Update()
         {
             // Movement
-            if (movementAllowed)
+            if (movementAllowed) //doesn't work for controller
                 if (moveAction.IsPressed())
                 {
                     PlayerMovement.instance.Movement(moveAction.ReadValue<Vector2>());
@@ -142,19 +142,25 @@ namespace InputManager
             
         }
 
+        public void setMovementAllowed(bool allowed)
+        {
+            movementAllowed = allowed;
+            if (allowed) moveAction.Enable(); else moveAction.Disable();
+        }
+
         void PickUpInteraction(InputAction.CallbackContext context)
         {
             if (interactionAllowed)
             {
                 if (_interactOffCooldown)
                 {
-                    if (NpcTalkTrigger.instance.inTrigger)
-                    {
-                        _interactOffCooldown = false;
+                    //if (NpcTalkTrigger.instance.inTrigger)
+                    //{
+                       // _interactOffCooldown = false;
 
-                        NpcTalkTrigger.instance.Interact();
-                        return;
-                    }
+                        //NpcTalkTrigger.instance.Interact();
+                        //return;
+                    //}
 
                     //Debug.Log("Checking in front");
                     PlayerInteractScript.instance.CheckObjectInFront();

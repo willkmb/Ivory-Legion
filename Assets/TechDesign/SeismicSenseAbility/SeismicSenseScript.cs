@@ -70,7 +70,8 @@ namespace SeismicSense
         {
             _detectable = detectObj.gameObject;
             
-            if (_detectable.CompareTag("NPC"))
+            ICaneBeSensed sensed = detectObj.GetComponent<ICaneBeSensed>();
+            if (sensed != null)
             {
                 Instantiate(returnPulse, _detectable.gameObject.transform.localPosition, Quaternion.identity);
                 // Spawns a pulse emitted from the location of the detectable object
