@@ -1,5 +1,6 @@
-using System.Collections;
+using Audio;
 using InputManager;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -52,6 +53,7 @@ namespace SeismicSense
             var particle = particleEffects.main;
             particle.loop = true;
             particleEffects.Play();
+            PlaySoundSense();
         }
 
         public void Reset()
@@ -70,7 +72,7 @@ namespace SeismicSense
         {
             _detectable = detectObj.gameObject;
             
-            ICaneBeSensed sensed = detectObj.GetComponent<ICaneBeSensed>();
+            ICanBeSensed sensed = detectObj.GetComponent<ICanBeSensed>();
             if (sensed != null)
             {
                 Instantiate(returnPulse, _detectable.gameObject.transform.localPosition, Quaternion.identity);
@@ -92,7 +94,7 @@ namespace SeismicSense
                 PlayerManager.instance.seismicOffCooldown = true;
             }
         }
-        
+
         // returns the sphere and particles to their original sizes once the timer has ended
         // private void Reset()
         // {
@@ -103,8 +105,8 @@ namespace SeismicSense
         //
         //     PlayerManager.instance.seismicOffCooldown = true;
         // }
-        
-        
+
+
         /*var particSettings = particEffects.main;
         if (Input.GetKey(KeyCode.Space)) //When the 'Space' key is held down, the
         {
@@ -133,6 +135,11 @@ namespace SeismicSense
         // {
         //     SeismicSen();
         // }
+        void PlaySoundSense()
+        {
+            Debug.Log("playsound");
+            AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+        }
     }
 }
 

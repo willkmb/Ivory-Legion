@@ -1,274 +1,305 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player {
-public class ItemStorage : MonoBehaviour
-{
-    public static ItemStorage instance;
-    
-    [Header("Points that Items are Parented to")]   //Points in space to put items
-    public GameObject putDownPoint;
-    [SerializeField] GameObject trunkPoint, hatPoint, saddlePointRight, saddlePointLeft;
-
-    [SerializeReference] InputActionAsset m_actionList;
-
-    [Header("Input Bindings")]  //Input Bindings
-    [SerializeField] InputAction hatOn;
-    [SerializeField] InputAction swapLeft;    
-    [SerializeField] InputAction swapRight;    
-
-
-    //Storage of item GameObjects
-    GameObject hatOnHead;
-    [HideInInspector] public GameObject[] itemsInStorage;
-    GameObject tempItemStorage0, tempItemStorage1, tempItemStorage2;
-    
-    //Changes array int to a word for easier readability
-    enum Storage : int
+    public class ItemStorage : MonoBehaviour
     {
-        Trunk = 0, 
-        BagLeft,
-        BagRight,
-    }
+        public static ItemStorage instance;
     
-    private void Awake()
-    {
-        instance ??= this;
+        [Header("Points that Items are Parented to")]   //Points in space to put items
+        public GameObject putDownPoint;
+        [SerializeField] GameObject trunkPoint, hatPoint, saddlePointRight, saddlePointLeft;
+
+        [SerializeReference] InputActionAsset m_actionList;
+
+        [Header("Input Bindings")]  //Input Bindings
+        [SerializeField] InputAction hatOn;
+        [SerializeField] InputAction swapLeft;    
+        [SerializeField] InputAction swapRight;    
+
+
+        //Storage of item GameObjects
+        GameObject hatOnHead;
+        [HideInInspector] public GameObject[] itemsInStorage;
+        GameObject tempItemStorage0, tempItemStorage1, tempItemStorage2;
+    
+        //Changes array int to a word for easier readability
+        enum Storage : int
+        {
+            Trunk = 0, 
+            BagLeft,
+            BagRight,
+        }
+    
+        private void Awake()
+        {
+            instance ??= this;
         
-        itemsInStorage = new GameObject[3];
-    }
-
-    // passes an object into item storage to pick it up, and childs it to a storage point
-    public void PickUp(GameObject thatObject)
-    {
-        if (itemsInStorage[(int)Storage.Trunk] == null)
-        {
-            itemsInStorage[(int)Storage.Trunk] = thatObject;
-
-            itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
-            itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-            itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0,0,0,0);
+            itemsInStorage = new GameObject[3];
         }
-        else
+
+        // passes an object into item storage to pick it up, and childs it to a storage point
+        public void PickUp(GameObject thatObject)
         {
-            if (itemsInStorage[(int)Storage.BagRight] == null)
+            if (itemsInStorage[(int)Storage.Trunk] == null)
             {
-                itemsInStorage[(int)Storage.BagRight] = itemsInStorage[(int)Storage.Trunk];
-
-                itemsInStorage[(int)Storage.BagRight].transform.position = saddlePointRight.transform.position;
-                itemsInStorage[(int)Storage.BagRight].transform.parent = saddlePointRight.transform;
-
                 itemsInStorage[(int)Storage.Trunk] = thatObject;
 
                 itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                 itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
+                itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0,0,0,0);
             }
-            else if (itemsInStorage[(int)Storage.BagLeft] == null)
+            else
             {
-                itemsInStorage[(int)Storage.BagLeft] = itemsInStorage[(int)Storage.Trunk];
-
-                itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
-                itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
-
-                itemsInStorage[(int)Storage.Trunk] = thatObject;
-
-                itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
-                itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
-            }
-        }
-    }
-
-        // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
-        public void PutDown(GameObject thatobject)
-    {
-        if (itemsInStorage[0] != null)
-        {
-            Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 0.5f);
-            Debug.Log(intersecting.Length);
-            foreach (Collider coll in intersecting)
-            {
-                Debug.Log(coll.gameObject.name);
-            }
-            if (intersecting.Length == 1 || intersecting.Length == 2 || intersecting.Length == 3)
-            {
-                Debug.Log("Put down");
-                itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
-                itemsInStorage[(int)Storage.Trunk].transform.position = putDownPoint.transform.position;
-                itemsInStorage[(int)Storage.Trunk].transform.parent = null;
-                itemsInStorage[(int)Storage.Trunk] = null;
-            }
-        }
-    }
-
-    // swaps trunk and left bag items
-    public void SwapItemLeft()
-    {
-        tempItemStorage1 = itemsInStorage[(int)Storage.Trunk];
-        itemsInStorage[(int)Storage.Trunk] = itemsInStorage[(int)Storage.BagLeft];
-        itemsInStorage[(int)Storage.BagLeft] = tempItemStorage1;
-        tempItemStorage1 = null;
-
-        if (itemsInStorage[(int)Storage.Trunk] != null)
-        {
-            itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
-            itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-        }
-
-        if (itemsInStorage[(int)Storage.BagLeft] != null)
-        {
-            itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
-            itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
-        }
-    }
-
-    // swaps trunk and right bag items
-    public void SwapItemRight()
-    {
-        tempItemStorage1 = itemsInStorage[(int)Storage.Trunk];
-        itemsInStorage[(int)Storage.Trunk] = itemsInStorage[(int)Storage.BagRight];
-        itemsInStorage[(int)Storage.BagRight] = tempItemStorage1;
-        tempItemStorage1 = null;
-
-        if (itemsInStorage[(int)Storage.Trunk] != null)
-        {
-            itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
-            itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-        }
-
-        if (itemsInStorage[(int)Storage.BagRight] != null)
-        {
-            itemsInStorage[(int)Storage.BagRight].transform.position = saddlePointRight.transform.position;
-            itemsInStorage[(int)Storage.BagRight].transform.parent = saddlePointRight.transform;
-        }
-    }
-
-    // if holding a hat, put it on head
-    public void WearHat()
-    {
-            Debug.Log("Hat attempt");
-        if (itemsInStorage[(int)Storage.Trunk] != null)
-        {
-            if (itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isHat == true)
-            {
-                if (hatOnHead == null)
+                if (itemsInStorage[(int)Storage.BagRight] == null)
                 {
-                    hatOnHead = itemsInStorage[(int)Storage.Trunk];
+                    itemsInStorage[(int)Storage.BagRight] = itemsInStorage[(int)Storage.Trunk];
+
+                    itemsInStorage[(int)Storage.BagRight].transform.position = saddlePointRight.transform.position;
+                    itemsInStorage[(int)Storage.BagRight].transform.parent = saddlePointRight.transform;
+
+                    itemsInStorage[(int)Storage.Trunk] = thatObject;
+
+                    itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
+                    itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                    itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
+                }
+                else if (itemsInStorage[(int)Storage.BagLeft] == null)
+                {
+                    itemsInStorage[(int)Storage.BagLeft] = itemsInStorage[(int)Storage.Trunk];
+
+                    itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
+                    itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
+
+                    itemsInStorage[(int)Storage.Trunk] = thatObject;
+
+                    itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
+                    itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                    itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
+                }
+            }
+            //PlaySoundPickUp();
+        }
+
+            // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
+        public void PutDown(GameObject thatobject)
+        {
+            if (itemsInStorage[0] != null)
+            {
+                QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore;
+                Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 0.5f, -1, queryTriggerInteraction);
+                Debug.Log(intersecting.Length);
+                foreach (Collider coll in intersecting)
+                {
+                    Debug.Log(coll.gameObject.name);
+                }
+                if (intersecting.Length == 1 || intersecting.Length == 2)
+                {
+                    Debug.Log("Put down");
+                    itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
+                    itemsInStorage[(int)Storage.Trunk].transform.position = putDownPoint.transform.position;
+                    itemsInStorage[(int)Storage.Trunk].transform.parent = null;
                     itemsInStorage[(int)Storage.Trunk] = null;
-                    hatOnHead.transform.position = hatPoint.transform.position;
-                    hatOnHead.transform.parent = hatPoint.transform;
+                    //PlaySoundPutDown();
                 }
             }
         }
-        else
+
+        // swaps trunk and left bag items
+        public void SwapItemLeft()
         {
-            if (hatOnHead != null)
+            if (itemsInStorage[(int)Storage.Trunk] != null || itemsInStorage[(int)Storage.BagLeft] != null)
             {
-                itemsInStorage[(int)Storage.Trunk] = hatOnHead;
-                hatOnHead = null;
-                itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
-                itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                tempItemStorage1 = itemsInStorage[(int)Storage.Trunk];
+                itemsInStorage[(int)Storage.Trunk] = itemsInStorage[(int)Storage.BagLeft];
+                itemsInStorage[(int)Storage.BagLeft] = tempItemStorage1;
+                tempItemStorage1 = null;
+
+                if (itemsInStorage[(int)Storage.Trunk] != null)
+                {
+                    itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
+                    itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                }
+
+                if (itemsInStorage[(int)Storage.BagLeft] != null)
+                {
+                    itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
+                    itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
+                }
+                //PlaySoundSwap();
             }
         }
 
-//usused code
-        /*
-        if(itemsInStorage[(int)Storage.Trunk] != null)
+        // swaps trunk and right bag items
+        public void SwapItemRight()
         {
-            if (itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isHat == true)
+            if (itemsInStorage[(int)Storage.Trunk] != null || itemsInStorage[(int)Storage.BagRight] != null)
             {
-                if (Input.GetKeyDown(KeyCode.H))
+                tempItemStorage1 = itemsInStorage[(int)Storage.Trunk];
+                itemsInStorage[(int)Storage.Trunk] = itemsInStorage[(int)Storage.BagRight];
+                itemsInStorage[(int)Storage.BagRight] = tempItemStorage1;
+                tempItemStorage1 = null;
+
+                if (itemsInStorage[(int)Storage.Trunk] != null)
+                {
+                    itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
+                    itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                }
+
+                if (itemsInStorage[(int)Storage.BagRight] != null)
+                {
+                    itemsInStorage[(int)Storage.BagRight].transform.position = saddlePointRight.transform.position;
+                    itemsInStorage[(int)Storage.BagRight].transform.parent = saddlePointRight.transform;
+                }
+                //PlaySoundSwap();
+            }
+        }
+
+        // if holding a hat, put it on head
+        public void WearHat()
+        {
+
+                Debug.Log("Hat attempt");
+            if (itemsInStorage[(int)Storage.Trunk] != null)
+            {
+                if (itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isHat == true)
                 {
                     if (hatOnHead == null)
                     {
                         hatOnHead = itemsInStorage[(int)Storage.Trunk];
                         itemsInStorage[(int)Storage.Trunk] = null;
+                        hatOnHead.transform.position = hatPoint.transform.position;
+                        hatOnHead.transform.parent = hatPoint.transform;
+                        //PlaySoundSwap();
                     }
                 }
             }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.H))
+            else
             {
                 if (hatOnHead != null)
                 {
                     itemsInStorage[(int)Storage.Trunk] = hatOnHead;
                     hatOnHead = null;
+                    itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
+                    itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                    //PlaySoundSwap();
                 }
             }
-        }
-        */
-    }
 
-    /*
-    public void PutDown()
-    {
-        if (itemsInStorage[(int)Storage.Trunk] != null)
-        {
-            if (Input.GetKeyDown(KeyCode.X))
+    //usused code
+            /*
+            if(itemsInStorage[(int)Storage.Trunk] != null)
             {
-                itemsInStorage[(int)Storage.Trunk].transform.parent = null;
-                itemsInStorage[(int)Storage.Trunk].gameObject.GetComponent<PickUpScript>().isPickedUp = false;
+                if (itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isHat == true)
+                {
+                    if (Input.GetKeyDown(KeyCode.H))
+                    {
+                        if (hatOnHead == null)
+                        {
+                            hatOnHead = itemsInStorage[(int)Storage.Trunk];
+                            itemsInStorage[(int)Storage.Trunk] = null;
+                        }
+                    }
+                }
             }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.H))
+                {
+                    if (hatOnHead != null)
+                    {
+                        itemsInStorage[(int)Storage.Trunk] = hatOnHead;
+                        hatOnHead = null;
+                    }
+                }
+            }
+            */
         }
-    }*/
+        void PlaySoundPickUp()
+        {
+            Debug.Log("playsound");
+            AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+        }
 
-    void RotateInvItems(InputAction.CallbackContext context)
-    {
+        void PlaySoundPutDown()
+        {
+            Debug.Log("playsound");
+            AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+        }
+        void PlaySoundSwap()
+        {
+            Debug.Log("playsound");
+            AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+        }
+
         /*
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        public void PutDown()
         {
-            tempItemStorage1 = itemsInStorage[0];
-            itemsInStorage[0] = itemsInStorage[1];
-            itemsInStorage[1] = tempItemStorage1;
-            tempItemStorage1 = null;
-        }
+            if (itemsInStorage[(int)Storage.Trunk] != null)
+            {
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    itemsInStorage[(int)Storage.Trunk].transform.parent = null;
+                    itemsInStorage[(int)Storage.Trunk].gameObject.GetComponent<PickUpScript>().isPickedUp = false;
+                }
+            }
+        }*/
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        void RotateInvItems(InputAction.CallbackContext context)
         {
-            tempItemStorage1 = itemsInStorage[0];
-            itemsInStorage[0] = itemsInStorage[2];
-            itemsInStorage[2] = tempItemStorage1;
-            tempItemStorage1 = null;
-        }
-        */
-        /*
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            tempItemStorage0 = null;
-            tempItemStorage1 = null;
-            tempItemStorage2 = null;
+            /*
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                tempItemStorage1 = itemsInStorage[0];
+                itemsInStorage[0] = itemsInStorage[1];
+                itemsInStorage[1] = tempItemStorage1;
+                tempItemStorage1 = null;
+            }
 
-            tempItemStorage0 = itemsInStorage[(int)Storage.Trunk];            
-            tempItemStorage1 = itemsInStorage[(int)Storage.BagRight];
-            tempItemStorage2 = itemsInStorage[(int)Storage.BagLeft];
-            itemsInStorage[(int)Storage.Trunk] = tempItemStorage2;
-            itemsInStorage[(int)Storage.BagRight] = tempItemStorage0;
-            itemsInStorage[(int)Storage.BagLeft] = tempItemStorage1;
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                tempItemStorage1 = itemsInStorage[0];
+                itemsInStorage[0] = itemsInStorage[2];
+                itemsInStorage[2] = tempItemStorage1;
+                tempItemStorage1 = null;
+            }
+            */
+            /*
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                tempItemStorage0 = null;
+                tempItemStorage1 = null;
+                tempItemStorage2 = null;
+
+                tempItemStorage0 = itemsInStorage[(int)Storage.Trunk];            
+                tempItemStorage1 = itemsInStorage[(int)Storage.BagRight];
+                tempItemStorage2 = itemsInStorage[(int)Storage.BagLeft];
+                itemsInStorage[(int)Storage.Trunk] = tempItemStorage2;
+                itemsInStorage[(int)Storage.BagRight] = tempItemStorage0;
+                itemsInStorage[(int)Storage.BagLeft] = tempItemStorage1;
 
 
-        }
+            }
         
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
 
-            tempItemStorage0 = null;
-            tempItemStorage1 = null;
-            tempItemStorage2 = null;
+                tempItemStorage0 = null;
+                tempItemStorage1 = null;
+                tempItemStorage2 = null;
 
-            tempItemStorage0 = itemsInStorage[(int)Storage.Trunk];            
-            tempItemStorage1 = itemsInStorage[(int)Storage.BagRight];
-            tempItemStorage2 = itemsInStorage[(int)Storage.BagLeft];
-            itemsInStorage[(int)Storage.Trunk] = tempItemStorage1;
-            itemsInStorage[(int)Storage.BagRight] = tempItemStorage2;
-            itemsInStorage[(int)Storage.BagLeft] = tempItemStorage0;
+                tempItemStorage0 = itemsInStorage[(int)Storage.Trunk];            
+                tempItemStorage1 = itemsInStorage[(int)Storage.BagRight];
+                tempItemStorage2 = itemsInStorage[(int)Storage.BagLeft];
+                itemsInStorage[(int)Storage.Trunk] = tempItemStorage1;
+                itemsInStorage[(int)Storage.BagRight] = tempItemStorage2;
+                itemsInStorage[(int)Storage.BagLeft] = tempItemStorage0;
 
-        }
+            }
         
-        */
+            */
+        }
     }
-}
 }
 

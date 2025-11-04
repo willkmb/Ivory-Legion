@@ -1,3 +1,4 @@
+using Audio;
 using System;
 using UnityEngine;
 
@@ -55,8 +56,10 @@ namespace Player
         {
            //Debug.Log("Trying to push");
             //Finds pushable object
+            //RaycastHit[] hits = Physics.SphereCastAll(transform.position, detectionRadius, transform.forward,
+                //detectionDistance, pushableLayer); // <-- REMOVED LAYER MASK, NOT NEEDED AND MESSES WITH MINIMAP AS MiniMap ALSO USES LAYERS - EMILY
             RaycastHit[] hits = Physics.SphereCastAll(transform.position, detectionRadius, transform.forward,
-                detectionDistance, pushableLayer);
+                detectionDistance);
 
             foreach (RaycastHit hit in hits)
             {
@@ -91,6 +94,7 @@ namespace Player
                 //Debug.Log("Position clear");
                 targetPosition = proposedTarget;
                 isPushing = true;
+                //PlaySoundPush();
             }
             else
             {
@@ -186,6 +190,11 @@ namespace Player
                 Gizmos.matrix = Matrix4x4.TRS(lastCheckOrigin, Quaternion.identity, Vector3.one);
                 Gizmos.DrawWireCube(Vector3.zero, lastHalfExtents * 2);
             }
+        }
+        void PlaySoundPush()
+        {
+            Debug.Log("playsound");
+            AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
         }
     }
 }

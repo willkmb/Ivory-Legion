@@ -1,5 +1,6 @@
-using System;
+using Audio;
 using InputManager;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Interfaces.Interfaces;
@@ -12,6 +13,7 @@ public class DestructionScript : MonoBehaviour, IInteractable
     [HideInInspector] public float timer;
     bool isDestroyed;
     bool isStartDestruct;
+    bool readySoundPlayed;
     GameObject player;
 
     [SerializeField] Material OffMaterial;
@@ -41,6 +43,10 @@ public class DestructionScript : MonoBehaviour, IInteractable
            
             if (timer > 2 && timer < 3)
             {
+                if (!readySoundPlayed)
+                {
+                    //PlaySoundReady();
+                }
                 _meshRenderer.material = OnMaterial; // changes material to indicate correct time to release button
             }
             else
@@ -53,10 +59,10 @@ public class DestructionScript : MonoBehaviour, IInteractable
     // on interact, sets interaction check to true
     public void Interact()
     {
-   
         if (!isDestroyed)
         {
             Debug.Log(isStartDestruct + " - start destruct");
+            //PlaySoundStart();
             isStartDestruct = true;
             PlayerManager.instance.currentDestructableObject = this;
         }
@@ -72,14 +78,38 @@ public class DestructionScript : MonoBehaviour, IInteractable
                 //alternative functionality - removess collider and changes material instead of disabling object
             //gameObject.GetComponent<Collider>().enabled = false;
             //gameObject.GetComponent<MeshRenderer>().material = OffMaterial;
-
+            //PlaySoundDestroy();
             gameObject.SetActive(false);
         }
         else
         {
-             timer = 0;
-             isStartDestruct = false;
-             _meshRenderer.material = DefaultMaterial;
+            //PlaySoundFail();
+            timer = 0;
+            isStartDestruct = false;
+            readySoundPlayed = false;
+            _meshRenderer.material = DefaultMaterial;
         }
+    }
+
+    void PlaySoundStart()
+    {
+        Debug.Log("playsound");
+        AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+    }
+    void PlaySoundReady()
+    {
+        Debug.Log("playsound");
+        AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+        readySoundPlayed = true;
+    }
+    void PlaySoundDestroy()
+    {
+        Debug.Log("playsound");
+        AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+    }
+    void PlaySoundFail()
+    {
+        Debug.Log("playsound");
+        AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
     }
 }

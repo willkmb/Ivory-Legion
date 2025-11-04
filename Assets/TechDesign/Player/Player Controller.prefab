@@ -5015,7 +5015,6 @@ GameObject:
   - component: {fileID: 6897069285698487650}
   - component: {fileID: 1520407513318287122}
   - component: {fileID: 1443041157681912446}
-  - component: {fileID: 6320225302733596577}
   - component: {fileID: 6798780922907594705}
   m_Layer: 10
   m_Name: Player Controller
@@ -5120,7 +5119,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &7907373797328656713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5213,7 +5212,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2393508817684473014}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 266185701416dbb43a91f7612b6d8795, type: 3}
   m_Name: 
@@ -5419,7 +5418,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 0}
+  bubbleUI: {fileID: 0}
   inTrigger: 0
+  collidedWith: {fileID: 0}
 --- !u!114 &6897069285698487650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5515,28 +5516,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   itemsInStorage: []
---- !u!114 &6320225302733596577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393508817684473014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2aad31d17f7d7a48a7bbd8a5b78a349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRadius: 1.25
-  detectionDistance: 2
-  pushableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  pushableTag: Pushable
-  pushSpeed: 5
-  collisionLayers:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &6798780922907594705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5549,8 +5528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2aad31d17f7d7a48a7bbd8a5b78a349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 1.25
-  detectionDistance: 2
+  detectionRadius: 0.5
+  detectionDistance: 0.5
   pushableLayer:
     serializedVersion: 2
     m_Bits: 64
