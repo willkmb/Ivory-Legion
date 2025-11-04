@@ -1,5 +1,6 @@
-using System;
 using System.Collections.Generic;
+using InputManager;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
 using Random = UnityEngine.Random;
@@ -12,8 +13,6 @@ namespace Audio
         [Header("List of Amb Sounds (E.G Waves)")]
         [SerializeField] private List<string> splineSoundsList;
         public List<Vector3> _bezierKnotsList;
-        [Header("Player")]
-        [SerializeField] private GameObject tempPlayer;
 
         [Header("Variables")]
         [SerializeField] private float maxVolumeDistance;
@@ -56,6 +55,7 @@ namespace Audio
             else
                 chosenAudioName = splineSoundsList[Random.Range(0, splineSoundsList.Count)];
 
+            //SplineUtility.GetNearestPoint(Spline.Spline, tempPlayer.transform.position, out float3 nearest, out float normalisedCurvePos);
             
             // Gets closest knot to the players current position
             float smallestDistance = Mathf.Infinity;
@@ -63,7 +63,7 @@ namespace Audio
    
             foreach (Vector3 pos in _bezierKnotsList)
             {
-                float distance = Vector3.Distance(pos, tempPlayer.transform.position);
+                float distance = Vector3.Distance(pos, PlayerManager.instance.gameObject.transform.position);
                 if (distance <= smallestDistance)
                 {
                     smallestDistance = distance;

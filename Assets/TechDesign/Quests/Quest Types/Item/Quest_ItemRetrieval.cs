@@ -15,10 +15,6 @@ namespace Quests
 
        private void Start()
        {
-           //Adds quests if it doesn't exist   
-           if (!QuestManager.instance.questDataBase.TryGetValue(questName, out var value)) // Stops duplication of quests between scenes
-                AddQuest(questName, false);
-           
            if (!QuestManager.instance.questDataBase.ContainsKey(questName)) // Stops duplication of quests items s scenes
                SetItemIDs(itemListIDValues, itemsToRetrieve); // Sets values to the items in the List - First item in list = 0, second item = 1, etc
 
