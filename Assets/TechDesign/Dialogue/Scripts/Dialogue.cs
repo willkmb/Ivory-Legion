@@ -76,10 +76,11 @@ public class Dialogue : MonoBehaviour
         ShowNextBranch();
     }
 
-    public void loadSet()
+    public void loadSet(int stage)
     {
         if (DialogueSets.Count == 0) return;
-        DialogueStage++;
+        //DialogueStage++;
+        DialogueStage  = stage;
         DialogueStage = Mathf.Clamp(DialogueStage, 0, DialogueSets.Count);
         branchIndex = startIndex;
     }
@@ -141,7 +142,7 @@ public class Dialogue : MonoBehaviour
         dialogueUI.SetActive(false);
         branchIndex = startIndex;
         Cursor.lockState = CursorLockMode.None;
-        loadSet(); // call this whenever we want it to change to the next set of dialogue
+       // loadSet(); // call this whenever we want it to change to the next set of dialogue
         ShowNextBranch();
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
         cursor.CursorState(false);
