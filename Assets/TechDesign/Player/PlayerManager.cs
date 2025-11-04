@@ -78,8 +78,13 @@ namespace InputManager
                 if (moveAction.IsPressed())
                 {
                     PlayerMovement.instance.Movement(moveAction.ReadValue<Vector2>());
+                    PlayerMovement.instance.isWalking = true;
                 }
-            
+                else if (moveAction.WasReleasedThisFrame())
+                {
+                    PlayerMovement.instance.isWalking = false;
+                }
+
             // Interactions
             if (interactionAllowed)
             {
