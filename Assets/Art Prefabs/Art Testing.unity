@@ -20925,6 +20925,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 114ff2f13fb2fbf4f91e23ec7ffeb221, type: 3}
+--- !u!1001 &2114186264
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -59.18
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.97196054
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 59b6f7377c17d3d4782d7a643514109d, type: 3}
+    - target: {fileID: -7511558181221131132, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 79f4445dde916ae41bddd111f97b721d, type: 3}
+    - target: {fileID: 919132149155446097, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+      propertyPath: m_Name
+      value: Phoenician_Fishing_Boat_1_Complete
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
 --- !u!1001 &2128195699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21365,3 +21430,4 @@ SceneRoots:
   - {fileID: 1959030450}
   - {fileID: 2098673521}
   - {fileID: 1248893725}
+  - {fileID: 2114186264}
