@@ -21,9 +21,6 @@ namespace Quests
         
         private void Start()
         {
-            if (!QuestManager.instance.questDataBase.TryGetValue(questName, out var value)) // Stops duplication of quests between scenes
-                AddQuest(questName, false);
-            
             AddMeshToDataBase(questMeshRenderer.name, questMeshRenderer);
         }
         public void AddMeshToDataBase(string meshName, Mesh mesh) // Public as it might be used later down the line

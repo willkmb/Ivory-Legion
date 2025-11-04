@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using InputManager;
 using NUnit.Framework;
 using Player;
 using UnityEngine;
@@ -22,10 +23,7 @@ namespace Audio
         
          [Header("Radius of sound spawning around player")]
         [SerializeField] private float playerRadius;
-        [Header("Temp")]
-        [SerializeField] private PlayerInterface player;
-        [Header("Variables")]
-        //Values
+        [Header("Values")]
         private float _closeAudioPercentage;
         private float _mediumAudioPercentage;
         private float _largeAudioPercentage;
@@ -99,8 +97,8 @@ namespace Audio
             else
             {
                 //If the random location is x% of the radius away from the player continue the script
-                location = (Random.insideUnitSphere * playerRadius) + player.transform.position;
-                if (Vector3.Distance(location, player.transform.position) < playerRadius * miniumSpawnDistancePercentage)
+                location = (Random.insideUnitSphere * playerRadius) + PlayerManager.instance.gameObject.transform.position;
+                if (Vector3.Distance(location,  PlayerManager.instance.gameObject.transform.position) < playerRadius * miniumSpawnDistancePercentage)
                 {
                     RandomAmbNoise();
                     return;
@@ -108,12 +106,12 @@ namespace Audio
             }
             
             // Prevents audio from going under the floor
-            if (location.y < player.transform.position.y)
-                location.y = player.transform.position.y;
+            if (location.y <  PlayerManager.instance.gameObject.transform.position.y)
+                location.y =  PlayerManager.instance.gameObject.transform.position.y;
                 
             //Distance checks for volume and priority levels
             var minVolume = 1f; var maxVolume = 1f; var priority = 128;
-            var distance = Vector3.Distance(location, player.transform.position);
+            var distance = Vector3.Distance(location, PlayerManager.instance.gameObject.transform.position);
             if (distance <= _closeAudioPercentage) // Sound is 30% of radius range
             {
                 minVolume = 0.85f;
@@ -167,7 +165,7 @@ namespace Audio
             
             //If sound is an amb catalyst continue
             List<GameObject> newFoliageList = new List<GameObject>();
-            RaycastHit[] hit = Physics.SphereCastAll(player.transform.position, playerRadius, Vector3.down,playerRadius , foliageLayerMask.value);
+            RaycastHit[] hit = Physics.SphereCastAll( PlayerManager.instance.gameObject.transform.position, playerRadius, Vector3.down,playerRadius , foliageLayerMask.value);
             foreach (var foliage in hit)
                 newFoliageList.Add(foliage.transform.gameObject);
 
@@ -187,7 +185,7 @@ namespace Audio
            
            //Gets volume based of distance
            var minVolume = 1f; var maxVolume = 1f; var priority = 128;
-           float distance = Vector3.Distance(foliageObj.transform.position, player.transform.position);
+           float distance = Vector3.Distance(foliageObj.transform.position, PlayerManager.instance.gameObject.transform.position);
            if (distance <= _closeAudioPercentage) // Sound is 30% of radius range
            {
                 minVolume = 0.85f;
