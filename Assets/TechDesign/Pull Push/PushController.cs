@@ -7,8 +7,10 @@ namespace Player
     public class PushController : MonoBehaviour
     {
         public static PushController instance;
-        
-        
+
+        [Header("Push Sound Name - HAS TO BE EXACT TO AUDIO CLIP NAME")]
+        [SerializeField] private string PushSoundFileName;
+
         [Header("Push Settings")] [Tooltip("How far the player can detect pushable objects.")]
         public float detectionRadius = 2f;
 
@@ -194,7 +196,7 @@ namespace Player
         void PlaySoundPush()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+            AudioManager.instance.PlayAudio(PushSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
         }
     }
 }

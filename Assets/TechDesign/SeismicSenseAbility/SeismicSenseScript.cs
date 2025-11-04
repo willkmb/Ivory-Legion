@@ -10,11 +10,14 @@ namespace SeismicSense
     {
         public static SeismicSenseScript instance; //Singleton (can be called from other scripts to reference this one
 
+        [Header("Seismic Sense Sound Name - HAS TO BE EXACT TO AUDIO CLIP NAME")]
+        [SerializeField] private string seismicSenseSoundFileName;
+
         [Header("Pulse Items")]
         [SerializeField] private GameObject seismicPulseSphere; //Trigger for in trigger
         [SerializeField] private GameObject particlesObj;
         public ParticleSystem particleEffects;
-        [SerializeField] private string seismicPulseSound;
+
 
         [Header("Obj Pool")]
         public GameObject returnPulse;
@@ -55,8 +58,7 @@ namespace SeismicSense
             var particle = particleEffects.main;
             particle.loop = true;
             particleEffects.Play();
-            AudioManager.instance.PlayAudio(seismicPulseSound, PlayerManager.instance.transform.position, false, false, false,
-                1, 1, true, 0.9f, 1.1f, 128);
+            //PlaySoundSeismic();
         }
 
         public void Reset()
@@ -73,7 +75,7 @@ namespace SeismicSense
         // Checks whether a detectable object has entered the sphere trigger
         private void OnTriggerEnter(Collider detectObj)
         {
-            ICaneBeSensed sensed = detectObj.GetComponent<ICaneBeSensed>();
+            ICanBeSensed sensed = detectObj.GetComponent<ICanBeSensed>();
             if (sensed != null)
             {
                 SeismicManager.instance.CallPoolObj(sensed.gameObject);
@@ -95,6 +97,11 @@ namespace SeismicSense
                 Reset();
                 PlayerManager.instance.seismicOffCooldown = true;
             }
+        }
+
+        void PlaySoundSeismic()
+        {
+            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 1, 1, true, 0.75f, 1.25f, 128);
         }
 
 

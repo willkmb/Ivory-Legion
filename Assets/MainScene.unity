@@ -171,14 +171,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestroyItem
       objectReference: {fileID: 0}
-    - target: {fileID: 6431349391544612186, guid: a1e9a6d66bbd7554887f44ed1ef81daa, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6431349391544612186, guid: a1e9a6d66bbd7554887f44ed1ef81daa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1090,6 +1082,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2012191713559972797, guid: 6437e231c910a324299df444e2ac83ac, type: 3}
   m_PrefabInstance: {fileID: 7435513045369821041}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &651976614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 651976615}
+  m_Layer: 10
+  m_Name: WalkParticles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &651976615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651976614}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1378108645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &730951748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,6 +1689,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1378108645 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7761556556715001361, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+  m_PrefabInstance: {fileID: 6292682634230706550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1457693377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,6 +2644,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1443041157681912446, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: SwapSoundFileName
+      value: FillerSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443041157681912446, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: PickUpSoundFileName
+      value: FillerSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443041157681912446, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: PutDownSoundFileName
+      value: FillerSound
+      objectReference: {fileID: 0}
     - target: {fileID: 2393508817684473014, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2628,10 +2668,18 @@ PrefabInstance:
       propertyPath: pulseSpeed
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4981363647586795447, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: seismicSenseSoundFileName
+      value: FillerSound
+      objectReference: {fileID: 0}
     - target: {fileID: 6011009514161748355, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: dialogueUI
       value: 
       objectReference: {fileID: 1362355040}
+    - target: {fileID: 6798780922907594705, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: PushSoundFileName
+      value: FillerSound
+      objectReference: {fileID: 0}
     - target: {fileID: 7761556556715001361, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2674,7 +2722,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7761556556715001361, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 651976615}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
 --- !u!1001 &7435513045369821041

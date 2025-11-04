@@ -6,7 +6,12 @@ namespace Player {
     public class ItemStorage : MonoBehaviour
     {
         public static ItemStorage instance;
-    
+
+        [Header("Item Storage Sound Names - HAVE TO BE EXACT TO AUDIO CLIP NAME")]
+        [SerializeField] private string PickUpSoundFileName;
+        [SerializeField] private string PutDownSoundFileName;
+        [SerializeField] private string SwapSoundFileName;
+
         [Header("Points that Items are Parented to")]   //Points in space to put items
         public GameObject putDownPoint;
         [SerializeField] GameObject trunkPoint, hatPoint, saddlePointRight, saddlePointLeft;
@@ -219,18 +224,18 @@ namespace Player {
         void PlaySoundPickUp()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+            AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
         }
 
         void PlaySoundPutDown()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+            AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
         }
         void PlaySoundSwap()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+            AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
         }
 
         /*

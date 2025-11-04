@@ -9,7 +9,13 @@ using static Interfaces.Interfaces;
 public class DestructionScript : MonoBehaviour, IInteractable
 {
     public static DestructionScript instance;
-    
+
+    [Header("Destruction Sound Names - HAVE TO BE EXACT TO AUDIO CLIP NAME")]
+    [SerializeField] private string StartSoundFileName;
+    [SerializeField] private string ReadySoundFileName;
+    [SerializeField] private string DestroySoundFileName;
+    [SerializeField] private string FailSoundFileName;
+
     [HideInInspector] public float timer;
     bool isDestroyed;
     bool isStartDestruct;
@@ -94,22 +100,22 @@ public class DestructionScript : MonoBehaviour, IInteractable
     void PlaySoundStart()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+        AudioManager.instance.PlayAudio(StartSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
     }
     void PlaySoundReady()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+        AudioManager.instance.PlayAudio(ReadySoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
         readySoundPlayed = true;
     }
     void PlaySoundDestroy()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+        AudioManager.instance.PlayAudio(DestroySoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
     }
     void PlaySoundFail()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 128);
+        AudioManager.instance.PlayAudio(FailSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
     }
 }
