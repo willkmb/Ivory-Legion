@@ -102,8 +102,10 @@ namespace Player {
                 if (intersecting.Length == 1 || intersecting.Length == 2)
                 {
                     Debug.Log("Put down");
+                    Collider col = itemsInStorage[(int)Storage.Trunk].GetComponent<Collider>();
+                    Vector3 halfExtents = new Vector3(col.bounds.extents.x * 0.95f, col.bounds.extents.y, col.bounds.extents.z * 0.95f);
                     itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
-                    itemsInStorage[(int)Storage.Trunk].transform.position = putDownPoint.transform.position;
+                    itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (halfExtents.y *2), putDownPoint.transform.position.z);
                     itemsInStorage[(int)Storage.Trunk].transform.parent = null;
                     itemsInStorage[(int)Storage.Trunk] = null;
                     //PlaySoundPutDown();
