@@ -45,16 +45,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf64ebf38f58554a86872700457dcd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioPool: []
+  audioPoolFree: []
+  audioPoolLocked: []
   audioPrefab: {fileID: 551610665070553820, guid: 0331e87d557c2774781eba12dd10785a, type: 3}
+  audioSource: {fileID: 0}
   sfxList:
   - {fileID: 8300000, guid: 882e04e919a09de4585f82d5ef3ceea8, type: 3}
   musicList:
   - {fileID: 8300000, guid: 882e04e919a09de4585f82d5ef3ceea8, type: 3}
   ambList:
-  - {fileID: 8300000, guid: 882e04e919a09de4585f82d5ef3ceea8, type: 3}
+  - {fileID: 8300000, guid: 0541a19aba0500846b1632c7d8cd94ac, type: 3}
+  - {fileID: 8300000, guid: 12d460644c66d58448a7033220614de8, type: 3}
+  - {fileID: 8300000, guid: a4b3e2835d90126498003e8ba17488b7, type: 3}
+  - {fileID: 8300000, guid: 3e5d741565f5a3c4d9cc99b744f4866a, type: 3}
+  - {fileID: 8300000, guid: 2c84d270737251e499392c07c6a0b2ec, type: 3}
+  - {fileID: 8300000, guid: 262f2f389d7f3be49953ad86bbde69d0, type: 3}
+  - {fileID: 8300000, guid: dc554f7a23feebb49842f5afdc0b8a6f, type: 3}
+  - {fileID: 8300000, guid: 25dbf43b5a134cb4eafafc50824a15bc, type: 3}
+  - {fileID: 8300000, guid: 14f5ca9b7b6bd0541bc08102914dfa0c, type: 3}
+  - {fileID: 8300000, guid: 83f1668f89f25064b8d7b21bc968f0a4, type: 3}
+  - {fileID: 8300000, guid: 81724bb7cb939684e809c85cc06afd6b, type: 3}
   diaList:
   - {fileID: 8300000, guid: 882e04e919a09de4585f82d5ef3ceea8, type: 3}
+  ambCatalystList:
+  - {fileID: 8300000, guid: 83f1668f89f25064b8d7b21bc968f0a4, type: 3}
+  - {fileID: 8300000, guid: 81724bb7cb939684e809c85cc06afd6b, type: 3}
 --- !u!82 &1851572448400969578
 AudioSource:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ namespace Audio
                 _bezierKnotsList.Add(knot.Position);
             }
 
-            _delay = 0f;
+            _delay = 1f;
         }
 
         private float _timer;
