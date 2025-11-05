@@ -15,6 +15,7 @@ namespace Quests
         private Quest_ItemChecker _questItemChecker;
         
         private Quest_PlayerAlteration _questPlayerAlteration;
+        private Dialogue dialogue;
         
         private void Awake()
         {
@@ -32,6 +33,8 @@ namespace Quests
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            if(_npcManager != null) {dialogue = _npcManager.gameObject.GetComponent<Dialogue>();}
         }
         // Only called in the NPC MANAGER
         // Checks if the quest has been completed - Checks based of the type of quest that has been applied to the game object
@@ -49,10 +52,12 @@ namespace Quests
                         {
                             // CHANGE DIALOGUE TO QUEST COMPLETION ONES
                             _questItemChecker.EventIfQuestCompleted();   // Change to when dialogue clicked do this script
+                            dialogue.loadSet(dialogue.questCompletion); // change int to correct dialogue stage for this interaction
                             return;
                         }
                         //Dialogue of NPC telling them to do the quest
                         Debug.Log("Quest not completed go get" + _questItemRetrieval.itemsToRetrieve.ToString() + "!");
+                        dialogue.loadSet(dialogue.questInProgress);
                         return;
                     }
                     //Item(s) collected - Sets quest is completed
@@ -70,10 +75,12 @@ namespace Quests
                         {
                             // CHANGE DIALOGUE TO QUEST COMPLETION ONES
                             _questPlayerAlteration.EventIfQuestCompleted();
+                            dialogue.loadSet(dialogue.questCompletion);
                             return;
                         }
                         //Dialogue of NPC telling them to do the quest
                         Debug.Log("You ain't wearing the correct outfit!!");
+                        dialogue.loadSet(dialogue.questInProgress);
                         return;
                     }
                     

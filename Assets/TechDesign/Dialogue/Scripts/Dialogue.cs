@@ -38,6 +38,12 @@ public class Dialogue : MonoBehaviour
     private NpcManager _npcManager;
     [HideInInspector] public NpcState pastNpcState;
 
+    [Header("Dialogue Stage Mapping")]
+    [Tooltip("Set ints for specific stages of dialogue to be called in quest manager")]
+    public int questInProgress = 1;
+    public int questCompletion = 2;
+    public int postQuest = 3;
+
     [System.Serializable]
     public class dialogue // same as above but for main body text
     {
@@ -142,7 +148,7 @@ public class Dialogue : MonoBehaviour
         dialogueUI.SetActive(false);
         branchIndex = startIndex;
         Cursor.lockState = CursorLockMode.None;
-       // loadSet(); // call this whenever we want it to change to the next set of dialogue
+        loadSet(DialogueStage); // call this whenever we want it to change to the next set of dialogue
         ShowNextBranch();
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
         cursor.CursorState(false);
