@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Player;
 using InputManager;
+using Npc.AI;
 
 public class NpcTalkTrigger : MonoBehaviour
 {
@@ -50,7 +51,14 @@ public class NpcTalkTrigger : MonoBehaviour
                     ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
                     cursor.CursorState(true);
                     GameObject.FindWithTag("Player").GetComponent<PlayerManager>().enabled = false;
-
+                    
+                    
+                    NpcManager npcManager = collidedWith.transform.GetComponent<NpcManager>();
+                    if (npcManager != null)
+                    {
+                        npcManager.npcState = NpcState.TalkingToPlayer;
+                        npcManager.StateChanger();
+                    }
                 }
             }
             else

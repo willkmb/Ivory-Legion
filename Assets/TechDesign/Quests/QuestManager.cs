@@ -39,6 +39,7 @@ namespace Quests
         public void SetQuestDataBase(string questName, bool value)
         {
             questDataBase.Add(questName, value);
+            Debug.Log(questName);
         }
 
         public void SetItemDataBase(int itemID, GameObject item)

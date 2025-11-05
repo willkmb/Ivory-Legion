@@ -18,10 +18,7 @@ namespace Quests
            if (!QuestManager.instance.questDataBase.ContainsKey(questName)) // Stops duplication of quests items s scenes
                SetItemIDs(itemListIDValues, itemsToRetrieve); // Sets values to the items in the List - First item in list = 0, second item = 1, etc
 
-           AddItemToQuestInventory(0, 1); // Testing
-           AddItemToQuestInventory(1,1); // Testing
-           AddItemToQuestInventory(2,1); // Testing
-           AddItemToQuestInventory(2,1); // Testing
+         //  AddItemToQuestInventory(0, 1); // Testing
        }
        
        public void AddQuest(string questName, bool questCompleted) 
