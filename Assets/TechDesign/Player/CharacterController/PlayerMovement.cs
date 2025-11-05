@@ -1,7 +1,9 @@
+using Audio;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;                      //THIS IS USING THE OLD INPUT SYSTEM!!!!!!!
 
 namespace Player
@@ -9,7 +11,10 @@ namespace Player
     public class PlayerMovement : MonoBehaviour
     {
         public static PlayerMovement instance;
-    
+
+        [Header("Walk Sound Name - HAS TO BE EXACT TO AUDIO CLIP NAME")]
+        [SerializeField] private string WalkSoundFileName;
+
         [Header("References")]
         private CharacterController controller;
         [SerializeField] private Transform cameraTransform;
@@ -29,6 +34,7 @@ namespace Player
 
         public bool isWalking; // - Emily, particles
         private bool isParticlesPlaying;// - Emily, particles
+        private bool isWalkSoundPlaying;// - Emily, sound
         private void Awake()
         {
             instance ??= this;
@@ -45,7 +51,12 @@ namespace Player
             {
                 if (!isParticlesPlaying)
                 {
-                    StartWalkParticles();
+                    StartWalkParticles();                    
+                }
+                if (!isWalkSoundPlaying)
+                {
+                    //PlaySoundWalk();  
+                    //isWalkSoundPlaying = true; <-- and ^ sounds for walking - Emily
                 }
             }
             else
@@ -114,6 +125,16 @@ namespace Player
             walkParticles1.Stop();
             walkParticles2.Stop();
             isParticlesPlaying = false;
+        }
+        void PlaySoundWalk() // - Emily, sounds
+        {
+            AudioManager.instance.PlayAudio(WalkSoundFileName, transform.position, false, false, false, 1, 1, true, 0.75f, 1.25f, 128);
+            Invoke("SoundPlayingFalse", 0.5f);
+        }
+
+        void SoundPlayingFalse() // - Emily, sounds
+        {
+            isWalkSoundPlaying = false;
         }
     }
 }
