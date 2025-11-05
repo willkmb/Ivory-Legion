@@ -5016,6 +5016,7 @@ GameObject:
   - component: {fileID: 1520407513318287122}
   - component: {fileID: 1443041157681912446}
   - component: {fileID: 6320225302733596577}
+  - component: {fileID: 5277164083836934409}
   m_Layer: 0
   m_Name: Player Controller
   m_TagString: Player
@@ -5535,6 +5536,14 @@ MonoBehaviour:
   collisionLayers:
     serializedVersion: 2
     m_Bits: 64
+--- !u!81 &5277164083836934409
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393508817684473014}
+  m_Enabled: 1
 --- !u!1 &2634587017723466076
 GameObject:
   m_ObjectHideFlags: 0

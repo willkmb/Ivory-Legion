@@ -7,13 +7,14 @@ namespace Audio
     {
         public static AudioManager instance;
 
+        [Header("Variables")]
+        [Range(0.5f, 25f)] [SerializeField] private float delayTime;
+        
         [Header("Object Pool Obj")]
          public List<GameObject> audioPoolFree;
-         public List<GameObject> audioPoolLocked;
         [SerializeField] private GameObject audioPrefab;
         
         [Header("Audio Lists of Entire Game")]
-        [HideInInspector] public AudioSource audioSource;
         [SerializeField] private List<AudioClip> sfxList;
         [SerializeField] private List<AudioClip> musicList;
         [SerializeField] private List<AudioClip> ambList;
@@ -31,25 +32,47 @@ namespace Audio
         {
             instance ??= this;
             
-            audioSource  = GetComponent<AudioSource>();
             DontDestroyOnLoad(gameObject);
             
             audioPoolFree = new List<GameObject>();
-            audioPoolLocked = new List<GameObject>();
         }
         private void Start()
         {
             SpawnObjectPool();
             
             DictionarySortingSound(sfxList);
-            DictionarySortingSound(musicList);
-            DictionarySortingSound(ambList);
-            DictionarySortingSound(diaList);
+            DictionarySortingMusic(musicList);
+            DictionarySortingAmb(ambList);
+            DictionarySortingDialogue(diaList);
 
             DictionarySortingCatalystAmb(ambCatalystList);
         }
 
         private void DictionarySortingSound(List<AudioClip> audioList)
+        {
+            foreach(var audioClip in audioList) 
+            {
+                soundDataBase.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
+            }
+        }
+        private void DictionarySortingMusic(List<AudioClip> audioList)
+        {
+            foreach(var audioClip in audioList) 
+            {
+                soundDataBase.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
+            }
+        }
+        private void DictionarySortingAmb(List<AudioClip> audioList)
+        {
+            foreach(var audioClip in audioList) 
+            {
+                soundDataBase.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
+            }
+        }
+        private void DictionarySortingDialogue(List<AudioClip> audioList)
         {
             foreach(var audioClip in audioList) 
             {
@@ -77,11 +100,18 @@ namespace Audio
                 instantiate.SetActive(false);
             }
         }
-        // Call when you want to use a sound
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // ReSharper disable Unity.PerformanceAnalysis
+        /// Call when you want to use a sound
         public void PlayAudio(string audioName,Vector3 spawnPosition,bool loops, bool is3d, bool ambSound,
             float minVolume, float maxVolume, bool randomPitch, float minPitch, float maxPitch, int priority)
         {
+            if (!soundDataBase.TryGetValue(audioName, out AudioClip audioClip))
+            {
+                Debug.LogError(audioName + " - Doesn't exist");
+                return;
+            }
+            
             GameObject audioObj = audioPoolFree[0];
             audioPoolFree.Remove(audioObj);
             audioObj.transform.position = spawnPosition;
@@ -96,7 +126,6 @@ namespace Audio
                 }
                 audioSource.spatialBlend = is3d ? 1 : 0;
             }
-            
             
             //Used later to disable the obj after x seconds, then re adds it to the free objPool
             AudioPlayer audioPlayer = audioObj.GetComponent<AudioPlayer>();
@@ -121,7 +150,7 @@ namespace Audio
             //Disables audio after x seconds, adding it back to the audioPoolFree list
             if (loops)
                 return;
-            audioPlayer.Invoke("DisableObj", audioSource.clip.length);
+            audioPlayer.Invoke("DisableObj", audioSource.clip.length + (delayTime - Random.Range(delayTime * 0.1f, delayTime * 0.35f)));
         }
     }
 }

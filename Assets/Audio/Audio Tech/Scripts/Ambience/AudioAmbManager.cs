@@ -38,9 +38,9 @@ namespace Audio
         {
             instance ??= this;
             
-            _closeAudioPercentage = playerRadius * 0.30f;
-            _mediumAudioPercentage = playerRadius * 0.60f;
-            _largeAudioPercentage = playerRadius;
+            _closeAudioPercentage = (playerRadius * miniumSpawnDistancePercentage) * 0.30f;
+            _mediumAudioPercentage = (playerRadius * miniumSpawnDistancePercentage) * 0.60f;
+            _largeAudioPercentage = (playerRadius * miniumSpawnDistancePercentage);
 
             _minTime = Mathf.Clamp(_minTime, 1, 5);
             _maxTime = Mathf.Clamp(_maxTime, 5, 10);
@@ -50,9 +50,14 @@ namespace Audio
 
         private void Start()
         {
+            Invoke("StartAudio", 0.1f);
+        }
+
+        private void StartAudio()
+        {
             foreach (var soundName in loopingAmbSoundList)
                 AudioManager.instance.PlayAudio(soundName, transform.position, true, false, false,
-                    1, 1, false, 1, 1, 128);
+                    0.3f, 0.3f, false, 1, 1, 60);
         }
 
         [HideInInspector] public bool summonedNoise;
@@ -73,7 +78,7 @@ namespace Audio
                 loopingAudioPlayersList.Remove(var);
                 foreach (var audioSource in loopingAmbSound)
                     AudioManager.instance.PlayAudio(audioSource, transform.position, true, false, false,
-                        1, 1, false, 1, 1, 128);
+                        0.3f, 0.3f, false, 1, 1, 128);
             }
         }
         // ReSharper disable Unity.PerformanceAnalysis
@@ -87,7 +92,7 @@ namespace Audio
             else
                 chosenAudioName = currentAmbSoundList[Random.Range(0, currentAmbSoundList.Count)];
             
-            // Locatio setter based of if the audio is static
+            // Location setter based of if the audio is static
             Vector3 location;
             if (staticSoundsList.Contains(chosenAudioName))
             {
@@ -114,21 +119,21 @@ namespace Audio
             var distance = Vector3.Distance(location, PlayerManager.instance.gameObject.transform.position);
             if (distance <= _closeAudioPercentage) // Sound is 30% of radius range
             {
-                minVolume = 0.85f;
-                maxVolume = 1f;
-                priority = 128;
+                minVolume = 0.3f;
+                maxVolume = 0.2f;
+                priority = 100;
             }
             if (distance <= _mediumAudioPercentage && distance >= _closeAudioPercentage) // Sound is 30% - 60% of radius range
             {
-                minVolume = 0.50f;
-                maxVolume = 0.85f;
-                priority = 100;
+                minVolume = 0.1f;
+                maxVolume = 0.2f;
+                priority = 80;
             }
             if (distance >= _largeAudioPercentage)// Sound is 60%+ of radius range
             {
-                minVolume = 0.3f;
-                maxVolume = 0.5f;
-                priority = 80;
+                minVolume = 0.05f;
+                maxVolume = 0.1f;
+                priority = 60;
             }
             AudioManager.instance.PlayAudio(chosenAudioName, location,false,true, true
                 , minVolume, maxVolume, true, 0.8f, 1.2f, priority);
@@ -161,7 +166,6 @@ namespace Audio
                 AmbTimerSetter(audioTime, false);
                 return;
             }
-                
             
             //If sound is an amb catalyst continue
             List<GameObject> newFoliageList = new List<GameObject>();
