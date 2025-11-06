@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366292531632398829, guid: 0e932c0ace5dade48a95ff03a7ed0f24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3366292531632398829, guid: 0e932c0ace5dade48a95ff03a7ed0f24, type: 3}
       propertyPath: m_LocalPosition.z
@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_2x2_Wall_Sandstone_Algae
       objectReference: {fileID: 0}
+    - target: {fileID: 5607128241239739034, guid: 0dcdfea54e823c34a89df45b2a9cde78, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7560881251605147514, guid: db46fda74debd4f4bbe96cc226ca7850, type: 3}
     - target: {fileID: 9189142700468213391, guid: 0dcdfea54e823c34a89df45b2a9cde78, type: 3}
       propertyPath: m_LocalPosition.x
       value: -47.5
@@ -198,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9189142700468213391, guid: 0dcdfea54e823c34a89df45b2a9cde78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.921335
+      value: 8.999992
       objectReference: {fileID: 0}
     - target: {fileID: 9189142700468213391, guid: 0dcdfea54e823c34a89df45b2a9cde78, type: 3}
       propertyPath: m_LocalRotation.w
