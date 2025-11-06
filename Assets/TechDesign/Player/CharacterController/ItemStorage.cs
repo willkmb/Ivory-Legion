@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Audio;
 using Quests;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace Player {
         public GameObject putDownPoint;
         [SerializeField] GameObject trunkPoint, hatPoint, saddlePointRight, saddlePointLeft;
 
-        [SerializeReference] InputActionAsset m_actionList;
+        //[SerializeReference] InputActionAsset m_actionList;
 
         [Header("Input Bindings")]  //Input Bindings
         [SerializeField] InputAction hatOn;
@@ -48,7 +49,9 @@ namespace Player {
         // passes an object into item storage to pick it up, and childs it to a storage point
         public void PickUp(GameObject thatObject, int itemID, int itemAmount)
         {
-            QuestManager.instance.questPlayerInventory.Add((itemID), itemAmount); // Item ID : Item Amount
+            QuestManager.instance.AdjustItemToQuestInventory((itemID), itemAmount); // Item ID : Item Amount
+            PickUpPutDownScript pickUpPutDownScript = thatObject.GetComponent<PickUpPutDownScript>(); 
+            pickUpPutDownScript.RemoveFromAreas(); // Removes self from area Lists - Quests
             
             if (itemsInStorage[(int)Storage.Trunk] == null)
             {
@@ -93,26 +96,23 @@ namespace Player {
             // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
         public void PutDown(GameObject thatobject, int itemID, int itemAmount)
         {
+           Debug.Log("put down");
             if (itemsInStorage[0] != null)
             {
                 QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore;
                 Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 0.5f, -1, queryTriggerInteraction);
                 Debug.Log(intersecting.Length);
-                foreach (Collider coll in intersecting)
-                {
-                    Debug.Log(coll.gameObject.name);
-                }
-                if (intersecting.Length == 1 || intersecting.Length == 2)
+                
+                if (intersecting.Length == 1 || intersecting.Length == 2 || QuestAreaCheck(intersecting, itemsInStorage[(int)Storage.Trunk]))
                 {
                     Debug.Log("Put down");
                     Collider col = itemsInStorage[(int)Storage.Trunk].GetComponent<Collider>();
                     Vector3 halfExtents = new Vector3(col.bounds.extents.x * 0.95f, col.bounds.extents.y, col.bounds.extents.z * 0.95f);
+                    
                     itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
                     itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (halfExtents.y *2), putDownPoint.transform.position.z);
                     itemsInStorage[(int)Storage.Trunk].transform.parent = null;
                     itemsInStorage[(int)Storage.Trunk] = null;
-                    
-                    QuestManager.instance.questPlayerInventory.Add((itemID), -itemAmount); // Item ID : Item Amount
                     //PlaySoundPutDown();
                 }
             }
@@ -198,35 +198,26 @@ namespace Player {
                     //PlaySoundSwap();
                 }
             }
-
-    //usused code
-            /*
-            if(itemsInStorage[(int)Storage.Trunk] != null)
+        }
+        
+        // Don't yell at me for putting this here, don't want to clutter the top for smth quest related
+        private bool QuestAreaCheck(Collider[] colliders, GameObject droppedObject)
+        {
+            bool questArea = false;
+            foreach (Collider coll in colliders)
             {
-                if (itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isHat == true)
+                Debug.Log(coll.gameObject.name);
+                Quest_AreaFill questAreaFill = coll.GetComponent<Quest_AreaFill>();
+                if (questAreaFill != null)
                 {
-                    if (Input.GetKeyDown(KeyCode.H))
-                    {
-                        if (hatOnHead == null)
-                        {
-                            hatOnHead = itemsInStorage[(int)Storage.Trunk];
-                            itemsInStorage[(int)Storage.Trunk] = null;
-                        }
-                    }
+                     PickUpPutDownScript pickUpPutDownScript = droppedObject.transform.GetComponent<PickUpPutDownScript>();
+                    QuestManager.instance.AdjustItemToQuestInventory(pickUpPutDownScript.GetItemID(), -pickUpPutDownScript.GetItemAmount()); // Item ID : Item Amount
+                   // QuestManager.instance.CheckAreaFill(pickUpPutDownScript,pickUpPutDownScript.gameObject,pickUpPutDownScript.GetItemID()); // Checks area for a quest type - Probs should add a way to filter this in future
+                   questAreaFill.CheckItemRequired(pickUpPutDownScript,droppedObject, pickUpPutDownScript.GetItemID());
+                   return true;
                 }
             }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.H))
-                {
-                    if (hatOnHead != null)
-                    {
-                        itemsInStorage[(int)Storage.Trunk] = hatOnHead;
-                        hatOnHead = null;
-                    }
-                }
-            }
-            */
+            return false;
         }
         void PlaySoundPickUp()
         {
@@ -310,6 +301,36 @@ namespace Player {
 
             }
         
+            */
+                      
+
+            //usused code
+            /*
+            if(itemsInStorage[(int)Storage.Trunk] != null)
+            {
+                if (itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isHat == true)
+                {
+                    if (Input.GetKeyDown(KeyCode.H))
+                    {
+                        if (hatOnHead == null)
+                        {
+                            hatOnHead = itemsInStorage[(int)Storage.Trunk];
+                            itemsInStorage[(int)Storage.Trunk] = null;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.H))
+                {
+                    if (hatOnHead != null)
+                    {
+                        itemsInStorage[(int)Storage.Trunk] = hatOnHead;
+                        hatOnHead = null;
+                    }
+                }
+            }
             */
         }
     }
