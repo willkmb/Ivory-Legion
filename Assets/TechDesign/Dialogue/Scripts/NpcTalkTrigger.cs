@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Player;
 using InputManager;
+using Npc.AI;
 
 public class NpcTalkTrigger : MonoBehaviour
 {
@@ -49,8 +50,19 @@ public class NpcTalkTrigger : MonoBehaviour
                     Cursor.lockState = CursorLockMode.Confined;
                     ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
                     cursor.CursorState(true);
-                    GameObject.FindWithTag("Player").GetComponent<PlayerManager>().enabled = false;
 
+                    PlayerManager manager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+                    manager.movementAllowed = false;
+                    manager.interactionAllowed = false;
+                    manager.moveAction.Disable();
+                    
+                    
+                    NpcManager npcManager = collidedWith.transform.GetComponent<NpcManager>();
+                    if (npcManager != null)
+                    {
+                        npcManager.npcState = NpcState.TalkingToPlayer;
+                        npcManager.StateChanger();
+                    }
                 }
             }
             else
@@ -68,8 +80,10 @@ public class NpcTalkTrigger : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
         cursor.CursorState(false);
-        GameObject.FindWithTag("Player").GetComponent<PlayerManager>().enabled = true;
-
+        PlayerManager manager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+        manager.movementAllowed = true;
+        manager.interactionAllowed = true;
+        manager.moveAction.Enable();
     }
 
     void OnTriggerEnter(Collider other)
@@ -95,9 +109,9 @@ public class NpcTalkTrigger : MonoBehaviour
             //bubbleEnabled = false;
             //bubbleUI.SetActive(false);
             //}
-            dialogue = collidedWith.GetComponent<Dialogue>();
+            dialogue = other.GetComponent<Dialogue>();
+            if (dialogue != null) { dialogue.branchIndex = dialogue.startIndex; }
             inTrigger = false;
-            dialogue.branchIndex = dialogue.startIndex;
             collidedWith = null;
         }
     }

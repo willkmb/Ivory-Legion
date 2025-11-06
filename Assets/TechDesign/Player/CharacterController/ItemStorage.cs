@@ -1,4 +1,5 @@
 using Audio;
+using Quests;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -45,8 +46,10 @@ namespace Player {
         }
 
         // passes an object into item storage to pick it up, and childs it to a storage point
-        public void PickUp(GameObject thatObject)
+        public void PickUp(GameObject thatObject, int itemID, int itemAmount)
         {
+            QuestManager.instance.questPlayerInventory.Add((itemID), itemAmount); // Item ID : Item Amount
+            
             if (itemsInStorage[(int)Storage.Trunk] == null)
             {
                 itemsInStorage[(int)Storage.Trunk] = thatObject;
@@ -88,7 +91,7 @@ namespace Player {
         }
 
             // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
-        public void PutDown(GameObject thatobject)
+        public void PutDown(GameObject thatobject, int itemID, int itemAmount)
         {
             if (itemsInStorage[0] != null)
             {
@@ -108,6 +111,8 @@ namespace Player {
                     itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (halfExtents.y *2), putDownPoint.transform.position.z);
                     itemsInStorage[(int)Storage.Trunk].transform.parent = null;
                     itemsInStorage[(int)Storage.Trunk] = null;
+                    
+                    QuestManager.instance.questPlayerInventory.Add((itemID), -itemAmount); // Item ID : Item Amount
                     //PlaySoundPutDown();
                 }
             }

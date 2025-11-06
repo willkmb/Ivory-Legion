@@ -49,10 +49,11 @@ namespace Npc.AI
         private float _agentOriginalSpeed;
         [Header("Make the AI stay still")]
         public bool alwaysIdle; // Ticked if you want the NPC to always stay in the same location (E.G Shop Merchant)
-        [Header("Only patrols when ticked")]
+        [Header("Variables")]
         public bool patrolling; // Ticked if you want the NPC to travel between points on the SetPathingWalking
         [HideInInspector] public float minMovementCooldownTime;
         [HideInInspector] public float maxMovementCooldownTime;
+        public bool usedInCutscene;
         
         [Header("Only Required if AI is 'BASE'")]
         public MarkerPointZone markerPointZone;

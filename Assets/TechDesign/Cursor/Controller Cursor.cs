@@ -50,8 +50,11 @@ public class ControllerCursor : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            if (button != null) { button.GetComponentInParent<Button>().onClick.Invoke(); }
+            if (button != null) { if (button.GetComponentInParent<Button>() != null) { button.GetComponentInParent<Button>().onClick.Invoke(); } }
         }
+
+        if (Input.GetKey(KeyCode.Joystick1Button0)) {this.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);}
+        if (Input.GetKeyUp(KeyCode.Joystick1Button0)) { this.transform.localScale = Vector3.one; }
     }
 
     void CheckControllerConnected()
