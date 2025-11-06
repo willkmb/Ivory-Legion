@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4574574600100624724, guid: cea2f296c51cb2b44914eec6a9abd228, type: 3}
       propertyPath: m_Name
-      value: P_2x2_Doorway_Sandstone_Bottom_Flat
+      value: P_2x2_DoubleWindow_Sandstone_Flat
       objectReference: {fileID: 0}
     - target: {fileID: 5607128241239739034, guid: cea2f296c51cb2b44914eec6a9abd228, type: 3}
       propertyPath: m_Mesh
@@ -67,5 +67,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4574574600100624724, guid: cea2f296c51cb2b44914eec6a9abd228, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8156486883743068597}
   m_SourcePrefab: {fileID: 100100000, guid: cea2f296c51cb2b44914eec6a9abd228, type: 3}
+--- !u!1 &8066294866203120745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4574574600100624724, guid: cea2f296c51cb2b44914eec6a9abd228, type: 3}
+  m_PrefabInstance: {fileID: 5804325375041187133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8156486883743068597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066294866203120745}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.144375, y: 2, z: 2}
+  m_Center: {x: 0.027812498, y: 1, z: -1}
