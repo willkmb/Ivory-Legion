@@ -62,8 +62,13 @@ namespace Npc.AI.Movement
             //If all marker points have been reached and the AI is not patrolling
             if (movementLocations.Count <= currentPointNumber && !_npcManager.patrolling)
             {
+                // Cutscene deactivation
                 if (_npcManager.usedInCutscene)
+                {
+                    _npcManager.npcState = NpcState.Idle;
                     gameObject.SetActive(false);
+                    return;
+                }
                 
                 // Do reset Stuff - Different skin
                 _resetting = true;

@@ -19,19 +19,24 @@ namespace Cutscene
         [Header("Npcs to move during cutscene")]
         [SerializeField] private List<NpcManager> npcManagers = new List<NpcManager>();
 
+        private bool _doOnce = false;
         private void OnTriggerEnter(Collider other)
         {
-           PlayerManager player = other.GetComponent<PlayerManager>();
-           if (player == null) 
-                return;
+            if (_doOnce)
+               return; 
+            
+            _doOnce = true;
+              PlayerManager player = other.transform.parent.GetComponent<PlayerManager>();
+             if (player == null) 
+                 return;
            
-           foreach (var manager in npcManagers)
-           {
-               manager.gameObject.SetActive(true);
-               manager.npcState = NpcState.SetPathingWalking; // Idle -> SetPathingWalking
-               manager.StateChanger();
-           }
-           gameObject.SetActive(false);
+             foreach (var manager in npcManagers)
+              {
+                 manager.gameObject.SetActive(true);
+                 manager.npcState = NpcState.SetPathingWalking; // Idle -> SetPathingWalking
+                 manager.StateChanger();
+              }
+              gameObject.SetActive(false);
         }
     }
 }

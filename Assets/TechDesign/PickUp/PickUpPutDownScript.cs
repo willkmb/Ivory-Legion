@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Audio;
+using Quests;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Interfaces.Interfaces;
@@ -17,6 +19,9 @@ namespace Player {
         // private variables
         GameObject player;
         public bool isPickedUp;
+        
+        // Quest // - Attaches to area if placed - If obj picked up remove self from area
+        [HideInInspector] public List<Quest_AreaFill> questAreaList;
 
         private void Awake()
         {
@@ -50,6 +55,28 @@ namespace Player {
         public void Activate()
         {
             throw new System.NotImplementedException();
+        }
+
+        public int GetItemID()
+        {
+            return itemID;
+        }
+
+        public int GetItemAmount()
+        {
+            return itemAmount;
+        }
+
+        public void RemoveFromAreas()
+        {
+            foreach (var area in questAreaList)
+            {
+                if (area.currentItemsInArea.Contains(gameObject))
+                {
+                    area.currentItemsInArea.Remove(gameObject);
+                    area.itemsRequiredUsedList.Add(itemID);
+                }
+            }
         }
     }
     
