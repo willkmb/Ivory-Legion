@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Player;
 using InputManager;
+using Npc.AI;
 
 public class NpcTalkTrigger : MonoBehaviour
 {
