@@ -4,6 +4,10 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Interfaces.Interfaces;
+using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Splines.Interpolators;
+using System.Collections;
 
 
 public class DestructionScript : MonoBehaviour, IInteractable
@@ -32,6 +36,14 @@ public class DestructionScript : MonoBehaviour, IInteractable
 
     private MeshRenderer _meshRenderer;
 
+    [Header("UI")]
+    [SerializeField] private Image chargeFill;
+    [SerializeField] private float chargeTime; // max time to reach fully charged
+    [SerializeField] private Color col1;
+    [SerializeField] private Color col2;
+    bool revertCharge = false;
+    bool revertChargeEnd = false;
+
     private void Awake()
     {
         instance ??= this;
@@ -46,6 +58,8 @@ public class DestructionScript : MonoBehaviour, IInteractable
         if (isStartDestruct) // if the player has interacted
         {
             timer += Time.deltaTime; //start timer
+            if(!revertChargeEnd) chargeFill.fillAmount = Mathf.Lerp(chargeFill.fillAmount, timer / chargeTime, Time.deltaTime * 4f);
+            chargeFill.color = Color.Lerp(col1, col2, chargeFill.fillAmount);
            
             if (timer > 2 && timer < 3)
             {
@@ -60,6 +74,10 @@ public class DestructionScript : MonoBehaviour, IInteractable
                 _meshRenderer.material = OffMaterial; // changes material to indicate incorrect time to release button
             }
         }
+
+        revert();
+        revertEnd();
+        if (chargeFill.fillAmount <= 0) revertCharge = false;
     }
 
     // on interact, sets interaction check to true
@@ -71,6 +89,7 @@ public class DestructionScript : MonoBehaviour, IInteractable
             //PlaySoundStart();
             isStartDestruct = true;
             PlayerManager.instance.currentDestructableObject = this;
+            revertCharge = false;
         }
     }
 
@@ -79,13 +98,17 @@ public class DestructionScript : MonoBehaviour, IInteractable
     {
         if (timer > 2 && timer < 3)
         {
+            revertChargeEnd = true;
             isDestroyed = true;
+            gameObject.GetComponent<Collider>().enabled = false;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            Invoke("remove", 1.5f);
 
-                //alternative functionality - removess collider and changes material instead of disabling object
+            //alternative functionality - removess collider and changes material instead of disabling object
             //gameObject.GetComponent<Collider>().enabled = false;
             //gameObject.GetComponent<MeshRenderer>().material = OffMaterial;
             //PlaySoundDestroy();
-            gameObject.SetActive(false);
+
         }
         else
         {
@@ -94,7 +117,23 @@ public class DestructionScript : MonoBehaviour, IInteractable
             isStartDestruct = false;
             readySoundPlayed = false;
             _meshRenderer.material = DefaultMaterial;
+            revertCharge = true;
         }
+    }
+
+    void revert()
+    {
+        if (revertCharge && !Input.GetKeyDown(KeyCode.JoystickButton3)) { chargeFill.fillAmount = Mathf.Lerp(chargeFill.fillAmount, 0f, Time.deltaTime * 3f); }
+    }
+
+    void revertEnd()
+    {
+        if (revertChargeEnd) { chargeFill.fillAmount = Mathf.Lerp(chargeFill.fillAmount, 0f, Time.deltaTime * 6f); }
+    }
+
+    void remove()
+    {
+        this.gameObject.SetActive(false);
     }
 
     void PlaySoundStart()
