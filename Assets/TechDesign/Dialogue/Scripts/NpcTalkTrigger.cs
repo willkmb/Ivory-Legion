@@ -50,11 +50,19 @@ public class NpcTalkTrigger : MonoBehaviour
                     Cursor.lockState = CursorLockMode.Confined;
                     ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
                     cursor.CursorState(true);
+
                     PlayerManager manager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
                     manager.movementAllowed = false;
                     manager.interactionAllowed = false;
                     manager.moveAction.Disable();
-
+                    
+                    
+                    NpcManager npcManager = collidedWith.transform.GetComponent<NpcManager>();
+                    if (npcManager != null)
+                    {
+                        npcManager.npcState = NpcState.TalkingToPlayer;
+                        npcManager.StateChanger();
+                    }
                 }
             }
             else
@@ -76,7 +84,6 @@ public class NpcTalkTrigger : MonoBehaviour
         manager.movementAllowed = true;
         manager.interactionAllowed = true;
         manager.moveAction.Enable();
-
     }
 
     void OnTriggerEnter(Collider other)
