@@ -37,6 +37,7 @@ public class NpcTalkTrigger : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3)) //&& !bubble.enabled;
                 {
+                    Debug.Log("Pressed");
                     if (collidedWith != null)
                     {
                         dialogue = collidedWith.GetComponent<Dialogue>();
