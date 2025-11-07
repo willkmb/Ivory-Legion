@@ -1,90 +1,121 @@
-using InputManager;
-using Npc.AI;
-using Player;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem;
+using Player;
+using InputManager;
+using Npc.AI;
 
-namespace AI
-{
 public class NpcTalkTrigger : MonoBehaviour
 {
-    public static NpcTalkTrigger instance;
-    
     TriggerScript triggerScript;
     public GameObject dialogueUI;
+    public GameObject bubbleUI;
     Dialogue dialogue;
     Collider trigger;
     public bool inTrigger;
-    private GameObject collidedWith;
-    private NpcManager _currentNpcManager;
-    
-    private void Awake()
-    {
-        instance ??= this;
-    }
+    [HideInInspector] public GameObject collidedWith = null;
+
+   // private bool bubbleEnabled = false;
     void Start()
     {
         triggerScript = GetComponentInChildren<TriggerScript>();
         dialogueUI.SetActive(false);
     }
-    
-    public void Interact()
+
+    void Update()
+    {
+        Interact();
+    }
+
+
+    void Interact()
     {
         if (triggerScript != null)
         {
             if (inTrigger == true)
             {
-                // Start dialogue system with that NPC
-                    if(collidedWith != null)
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3)) //&& !bubble.enabled;
+                {
+                    Debug.Log("Pressed");
+                    if (collidedWith != null)
                     {
                         dialogue = collidedWith.GetComponent<Dialogue>();
                         dialogue.ShowNextBranch();
                         TextMeshProUGUI text = collidedWith.GetComponent<NPCtrustValue>().text;
                         string opinion = collidedWith.GetComponent<NPCtrustValue>().opinionLevel;
                         text.text = "Opinion: " + opinion;
-                        
-                        // Change npc state
-                        _currentNpcManager = collidedWith.transform.GetComponent<NpcManager>();
-                        _currentNpcManager.npcState = NpcState.TalkingToPlayer;
-                        _currentNpcManager.StateChanger();
-                        
-                        // Player Inputs
-                        PlayerManager.instance.movementAllowed = false;
                     }
                     dialogueUI.SetActive(true);
                     dialogueUI.GetComponent<Animation>().Play();
-
                     Cursor.lockState = CursorLockMode.Confined;
-                    //GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().canMove = false;
+                    ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
+                    cursor.CursorState(true);
+
+                    PlayerManager manager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+                    manager.movementAllowed = false;
+                    manager.interactionAllowed = false;
+                    manager.moveAction.Disable();
+                    
+                    
+                    NpcManager npcManager = collidedWith.transform.GetComponent<NpcManager>();
+                    if (npcManager != null)
+                    {
+                        npcManager.npcState = NpcState.TalkingToPlayer;
+                        npcManager.StateChanger();
+                    }
+                }
             }
             else
             {
-                dialogueUI.SetActive(false);
-                Cursor.lockState = CursorLockMode.None;
+                exitDialogue();
             }
+
+            if (Input.GetKeyDown(KeyCode.JoystickButton2)) exitDialogue();
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void exitDialogue()
+    {
+        dialogueUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
+        cursor.CursorState(false);
+        PlayerManager manager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+        manager.movementAllowed = true;
+        manager.interactionAllowed = true;
+        manager.moveAction.Enable();
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "NPC")
         {
             inTrigger = true;
             collidedWith = other.gameObject;
-            Debug.Log("trigger enter");
+            //if (collidedWith.GetComponent<BubbleScript>() != null && collidedWith.GetComponent<BubbleScript>().enabled)
+            //{
+                //bubbleEnabled = true;
+                //collidedWith.GetComponent<BubbleScript>().pickLine();
+                //bubbleUI.SetActive(true);
+            //}
         }
     }
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "NPC")
         {
+            //if (collidedWith.GetComponent<BubbleScript>() != null)
+            //{
+            //bubbleEnabled = false;
+            //bubbleUI.SetActive(false);
+            //}
+            dialogue = other.GetComponent<Dialogue>();
+            if (dialogue != null) { dialogue.branchIndex = dialogue.startIndex; }
             inTrigger = false;
-            dialogue = collidedWith.GetComponent<Dialogue>();
-            dialogue.branchIndex = dialogue.startIndex;
             collidedWith = null;
-            Debug.Log("trigger exit");
         }
     }
+
 }
-}
+

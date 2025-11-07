@@ -5,10 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
-using InputManager;
 using Npc.AI;
 using Player;
-using Player.Dialogue;
+using InputManager;
 
 public class Dialogue : MonoBehaviour
 {
@@ -36,13 +35,14 @@ public class Dialogue : MonoBehaviour
     public GameObject charImage;
 
     NPCtrustValue trustHolder;
-    
-    // NpcManager Memory Values etc
     private NpcManager _npcManager;
     [HideInInspector] public NpcState pastNpcState;
-    
-    //Input Stuff
-    private ChoiceButton _tempChoiceButton;
+
+    [Header("Dialogue Stage Mapping")]
+    [Tooltip("Set ints for specific stages of dialogue to be called in quest manager")]
+    public int questInProgress = 1;
+    public int questCompletion = 2;
+    public int postQuest = 3;
 
     [System.Serializable]
     public class dialogue // same as above but for main body text
@@ -77,17 +77,16 @@ public class Dialogue : MonoBehaviour
 
     private void Start()
     {
-        _npcManager = transform.GetComponent<NpcManager>();
-        
         trustHolder = GetComponent<NPCtrustValue>();
         branchIndex = startIndex; // sets the current branch index to the start
         ShowNextBranch();
     }
 
-    public void loadSet()
+    public void loadSet(int stage)
     {
         if (DialogueSets.Count == 0) return;
-        DialogueStage++;
+        //DialogueStage++;
+        DialogueStage  = stage;
         DialogueStage = Mathf.Clamp(DialogueStage, 0, DialogueSets.Count);
         branchIndex = startIndex;
     }
@@ -102,8 +101,6 @@ public class Dialogue : MonoBehaviour
             speakerName.text = DialogueSets[DialogueStage].Dialogues[branchIndex].name; //  sets the speakers name to the field defined in dialogues class
             charImage.GetComponent<Image>().sprite = DialogueSets[DialogueStage].Dialogues[branchIndex].image; // change the characters image
 
-            UIInputManager.instance.currentDialogueButtonsList.Clear();
-            
             foreach (Transform child in choiceRoot.transform) // destroy previous choices
             {
                 Destroy(child.gameObject);
@@ -116,27 +113,32 @@ public class Dialogue : MonoBehaviour
 
             foreach (var choice in DialogueSets[DialogueStage].Dialogues[branchIndex].choices) // loops through each choice option we've set
             {
-                if(choice.rootBranch == branchIndex) // if the starting branch index equals the current branch index, then we create a new set of choices buttons
+                if (choice.rootBranch == branchIndex) // if the starting branch index equals the current branch index, then we create a new set of choices buttons
                 {
                     GameObject Button = Instantiate(choiceButton, choiceRoot.transform);
                     GameObject buttonTextObj = Button.transform.Find("ChoiceButtonText")?.gameObject; // gets the text component in the child of button and sets it to the choice text field defined in choices
                     buttonTextObj.GetComponent<TextMeshProUGUI>().text = choice.choiceTextContent;
 
                     int next = choice.nextBranch;
-                    Button.GetComponent<Button>().onClick.AddListener(() => { branchIndex = next; UpdateNPCOpinion(choice.choiceTopic);  ShowNextBranch(); }); // adds the functionality of the button withought having to manually do it in inspector and calls advance branch method.
-                    
-                    // Adds to a list which is accessed by the UI Input Manager - For controller UI movements
-                     if (!UIInputManager.instance.currentDialogueButtonsList.Contains(Button.transform.GetComponent<ChoiceButton>()) && Button != null)
-                         UIInputManager.instance.currentDialogueButtonsList.Add(Button.transform.GetComponent<ChoiceButton>());
+                    Button.GetComponent<Button>().onClick.AddListener(() => { branchIndex = next; UpdateNPCOpinion(choice.choiceTopic); ShowNextBranch(); }); // adds the functionality of the button withought having to manually do it in inspector and calls advance branch method.
                 }
             }
-            UIInputManager.instance.currentlyInDialogue = true;
+
             GameObject cursorObj = null;
             if (branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1) cursorObj = Instantiate(cursor, cursorRoot.transform); //if on the last dialogue in the list, spawn arrow that closes dialogue
             if (cursorObj != null) { cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { HideDialogue(); }); return; } // set the action of the button to close dialogue 
 
             if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
-            if(cursorObj != null) cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex++; ShowNextBranch(); }); // set the action of the button to go to the next branch
+            if (cursorObj != null) cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex++; ShowNextBranch(); }); // set the action of the button to go to the next branch
+
+            if (branchIndex >= DialogueSets[DialogueStage].Dialogues.Count)
+            {
+                // NPC state changers
+                _npcManager.npcState = pastNpcState;
+                if (_npcManager.npcState == NpcState.SetPathingWalking)
+                    _npcManager.setPathWalking.currentPointNumber -= 1;
+                _npcManager.StateChanger();
+            }
         }
     }
 
@@ -146,22 +148,14 @@ public class Dialogue : MonoBehaviour
         dialogueUI.SetActive(false);
         branchIndex = startIndex;
         Cursor.lockState = CursorLockMode.None;
-        loadSet(); // call this whenever we want it to change to the next set of dialogue
+        loadSet(DialogueStage); // call this whenever we want it to change to the next set of dialogue
         ShowNextBranch();
-        
-        // Change NPC state change
-        _npcManager.npcState = pastNpcState;
-        if (_npcManager.npcState == NpcState.SetPathingWalking)
-            _npcManager.setPathWalking.currentPointNumber -= 1;
-        
-        _npcManager.StateChanger();
-        
-        //Input Manager(s)
-        PlayerManager.instance.InteractOffCoolDown();
-        PlayerManager.instance.movementAllowed = true;
-        UIInputManager.instance.currentDialogueButtonsList.Clear();
-        UIInputManager.instance.currentlyInDialogue = false;
-        _tempChoiceButton = null;
+        ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
+        cursor.CursorState(false);
+        PlayerManager manager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+        manager.movementAllowed = true;
+        manager.interactionAllowed = true;
+        manager.moveAction.Enable();
     }
 
     public void UpdateNPCOpinion(string topic)

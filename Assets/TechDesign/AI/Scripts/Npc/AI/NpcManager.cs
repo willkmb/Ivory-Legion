@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Ai;
 using Npc.AI.Movement;
 using Audio;
+using Quests;
 using UnityEngine;
 using UnityEngine.AI;
 using static Interfaces.Interfaces;
@@ -48,13 +49,18 @@ namespace Npc.AI
         private float _agentOriginalSpeed;
         [Header("Make the AI stay still")]
         public bool alwaysIdle; // Ticked if you want the NPC to always stay in the same location (E.G Shop Merchant)
-        [Header("Only patrols when ticked")]
+        [Header("Variables")]
         public bool patrolling; // Ticked if you want the NPC to travel between points on the SetPathingWalking
         [HideInInspector] public float minMovementCooldownTime;
         [HideInInspector] public float maxMovementCooldownTime;
+        public bool usedInCutscene;
         
         [Header("Only Required if AI is 'BASE'")]
         public MarkerPointZone markerPointZone;
+        
+        //Quests
+        [Header("Here for Testing")]
+        public Quest_DialogueAlterer questDialogueAlterer;
         
         private void Awake()
         {
@@ -110,7 +116,9 @@ namespace Npc.AI
                 case NpcState.TalkingToPlayer: //NPC will stop any movement and enter the dialogue with the player
                     agent.speed = 0f;
                     _dialogue.pastNpcState = stateSaver;
-                    // Do talking stuff here
+                    // Quests // - Alters Text based of quest completion state
+                    if (questDialogueAlterer != null)
+                        questDialogueAlterer.ChangeDialogueBasedOnQuests();
                     break;
                 case NpcState.RandomPathing: //Walk to a random spot with x radius to simulate that they are busy.
                     //Repeats in an infinite loop unless spoken to by player in which it will continue after the conversation

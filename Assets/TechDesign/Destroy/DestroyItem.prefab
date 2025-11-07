@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5946777264177752737}
   - component: {fileID: 4426317467527116431}
   - component: {fileID: 1015346128988537863}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DestroyItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,6 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33282e46b545874d80d63c0a0bbd368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartSoundFileName: FillerSound
+  ReadySoundFileName: FillerSound
+  DestroySoundFileName: FillerSound
+  FailSoundFileName: FillerSound
+  timer: 0
   OffMaterial: {fileID: 2100000, guid: 9536acdfbbcefdf4ea8e122d6085b0d2, type: 2}
   OnMaterial: {fileID: 2100000, guid: 4067686d6b51419479241ca3c7af68c3, type: 2}
   DefaultMaterial: {fileID: 2100000, guid: 91aca6e1fa81b8c47b03a9ca0bafcc35, type: 2}

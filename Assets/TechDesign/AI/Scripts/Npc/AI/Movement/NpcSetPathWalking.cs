@@ -22,7 +22,8 @@ namespace Npc.AI.Movement
 
         //Values
         private Vector3 _targetPos;
-        [FormerlySerializedAs("_currentPointNumber")] [HideInInspector] public int currentPointNumber;
+        [FormerlySerializedAs("_currentPointNumber")] 
+        [HideInInspector] public int currentPointNumber;
         private int _skinNumber;
         private float _resetTimer;
         private bool _resetting;
@@ -37,6 +38,9 @@ namespace Npc.AI.Movement
             _npcManager = transform.GetComponent<NpcManager>();
             
             currentPointNumber = 0;
+            if (_npcManager.usedInCutscene)
+                currentPointNumber = movementLocations.Count - 1;
+            
             _resetTimer = 0;
         }
 
@@ -45,6 +49,9 @@ namespace Npc.AI.Movement
             NpcEvents.instance.NpcCheckArrivalEvent += ArrivalChecker;
             
             movementLocations[0] = transform.position;
+            
+            if (_npcManager.usedInCutscene)
+                gameObject.SetActive(false);
         }
 
         public void GetNextLocationPoint()
@@ -52,9 +59,17 @@ namespace Npc.AI.Movement
             if (_resetting)
                 return;
             
-            //If all marker points have been reached and the enemy is not patrolling
+            //If all marker points have been reached and the AI is not patrolling
             if (movementLocations.Count <= currentPointNumber && !_npcManager.patrolling)
             {
+                // Cutscene deactivation
+                if (_npcManager.usedInCutscene)
+                {
+                    _npcManager.npcState = NpcState.Idle;
+                    gameObject.SetActive(false);
+                    return;
+                }
+                
                 // Do reset Stuff - Different skin
                 _resetting = true;
                 NpcEvents.instance.NpcCheckArrivalEvent += ResetTimer;

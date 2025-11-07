@@ -1,4 +1,5 @@
 using System.Collections;
+using Audio;
 using InputManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,18 +9,23 @@ namespace SeismicSense
     public class SeismicSenseScript : MonoBehaviour
     {
         public static SeismicSenseScript instance; //Singleton (can be called from other scripts to reference this one
-        
+
+        [Header("Seismic Sense Sound Name - HAS TO BE EXACT TO AUDIO CLIP NAME")]
+        [SerializeField] private string seismicSenseSoundFileName;
+
         [Header("Pulse Items")]
-        [SerializeField] private GameObject seismicPulseSphere;
-        [SerializeField] private GameObject returnPulse;
+        [SerializeField] private GameObject seismicPulseSphere; //Trigger for in trigger
         [SerializeField] private GameObject particlesObj;
         public ParticleSystem particleEffects;
-        private GameObject _detectable;
 
-        [Header("Values")] 
+
+        [Header("Obj Pool")]
+        public GameObject returnPulse;
+
+        [Header("Values")]
         [Range(0.1f, 0.5f)] public float pulseSpeed;
         [Range(5f, 100f)] public float rangeMax = 100f;
-        
+
         // Variables
         [HideInInspector] public bool inProgress;
 
@@ -52,6 +58,7 @@ namespace SeismicSense
             var particle = particleEffects.main;
             particle.loop = true;
             particleEffects.Play();
+            //PlaySoundSeismic();
         }
 
         public void Reset()
@@ -60,19 +67,19 @@ namespace SeismicSense
 
             inProgress = false;
             particSettings.loop = false;
-            
+
             seismicPulseSphere.transform.localScale = _originalScale;
             particlesObj.transform.localScale = _originalScale;
         }
-        
+
         // Checks whether a detectable object has entered the sphere trigger
         private void OnTriggerEnter(Collider detectObj)
         {
-            _detectable = detectObj.gameObject;
-            
-            if (_detectable.CompareTag("NPC"))
+            ICanBeSensed sensed = detectObj.GetComponent<ICanBeSensed>();
+            if (sensed != null)
             {
-                Instantiate(returnPulse, _detectable.gameObject.transform.localPosition, Quaternion.identity);
+                SeismicManager.instance.CallPoolObj(sensed.gameObject);
+                //Instantiate(returnPulse, _detectable.gameObject.transform.localPosition, Quaternion.identity);
                 // Spawns a pulse emitted from the location of the detectable object
             }
         }
@@ -91,7 +98,14 @@ namespace SeismicSense
                 PlayerManager.instance.seismicOffCooldown = true;
             }
         }
-        
+
+        void PlaySoundSeismic()
+        {
+            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 1, 1, true, 0.75f, 1.25f, 128);
+        }
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // returns the sphere and particles to their original sizes once the timer has ended
         // private void Reset()
         // {
@@ -102,8 +116,8 @@ namespace SeismicSense
         //
         //     PlayerManager.instance.seismicOffCooldown = true;
         // }
-        
-        
+
+
         /*var particSettings = particEffects.main;
         if (Input.GetKey(KeyCode.Space)) //When the 'Space' key is held down, the
         {
