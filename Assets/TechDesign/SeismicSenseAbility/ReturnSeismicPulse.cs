@@ -12,6 +12,7 @@ public class ReturnSeismicPulse : MonoBehaviour
 
     ParticleSystem particEffects;
     Vector3 SphereExpand = new Vector3(0.05f, 0.05f, 0.05f);
+    [Range(0.1f, 0.5f)] public float pulseSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,7 +37,8 @@ public class ReturnSeismicPulse : MonoBehaviour
     // Causes the sphere trigger and particle effect to expand outward
     void SeismicSense()
     {
-        SeismicPulseSphere.transform.localScale += SphereExpand;
+        //SeismicPulseSphere.transform.localScale += SphereExpand;
+        SeismicPulseSphere.transform.localScale += new Vector3(pulseSpeed, pulseSpeed, pulseSpeed);
         particlesObj.transform.localScale = SeismicPulseSphere.transform.localScale;
     }
 
