@@ -4779,6 +4779,11 @@ MonoBehaviour:
   questCompletionCheckers: 0
   questName: Area Fill
   questItemRetrieval: {fileID: 0}
+--- !u!1 &1568019336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6036861676084668848, guid: 577c5da4e398b5d45812921fb1eb7219, type: 3}
+  m_PrefabInstance: {fileID: 779359988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1675317747
 GameObject:
   m_ObjectHideFlags: 0
@@ -5705,7 +5710,7 @@ PrefabInstance:
     - target: {fileID: 7941607588020711630, guid: 7c8f83623eb615043b8613b70b0d4bef, type: 3}
       propertyPath: 'itemsInArea.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1568019336}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
