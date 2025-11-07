@@ -53,6 +53,10 @@ public class Dialogue : MonoBehaviour
         public string dialogueTextContent;
         [Header("Change the character image")]
         public Sprite image;
+        [Header("Cursor to bottleneck player you don't want them to go directly to the next")]
+        public bool bottleneck = false;
+        [Header("Set index to the branch for bottleneck")]
+        public int bottleneckIndex;
 
         [System.Serializable]
         public class dialogueChoice //creates a class with option and branch index, System.serializable exposes it to the inspector for easy adaptability and modularity
@@ -128,8 +132,12 @@ public class Dialogue : MonoBehaviour
             if (branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1) cursorObj = Instantiate(cursor, cursorRoot.transform); //if on the last dialogue in the list, spawn arrow that closes dialogue
             if (cursorObj != null) { cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { HideDialogue(); }); return; } // set the action of the button to close dialogue 
 
-            if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
+            if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1 && DialogueSets[DialogueStage].Dialogues[branchIndex].bottleneck == false) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
             if (cursorObj != null) cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex++; ShowNextBranch(); }); // set the action of the button to go to the next branch
+
+            /*if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1 && DialogueSets[DialogueStage].Dialogues[branchIndex].bottleneck) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
+            int nextBottleneck = DialogueSets[DialogueStage].Dialogues[branchIndex].bottleneckIndex;
+            if (cursorObj != null) cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex = nextBottleneck; ShowNextBranch(); });*/
 
             if (branchIndex >= DialogueSets[DialogueStage].Dialogues.Count)
             {
@@ -144,6 +152,7 @@ public class Dialogue : MonoBehaviour
 
     public void HideDialogue()
     {
+        Debug.Log("Hidden dialogue");
         GameObject dialogueUI = GameObject.Find("DialogueHolder");
         dialogueUI.SetActive(false);
         branchIndex = startIndex;

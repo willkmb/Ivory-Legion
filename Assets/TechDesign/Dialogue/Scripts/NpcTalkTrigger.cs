@@ -77,6 +77,7 @@ public class NpcTalkTrigger : MonoBehaviour
 
     void exitDialogue()
     {
+        Debug.Log("ExitDialogue");
         dialogueUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
