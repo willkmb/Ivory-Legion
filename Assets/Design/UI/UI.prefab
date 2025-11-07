@@ -132,6 +132,9 @@ MonoBehaviour:
   button1: {fileID: 8416465230021935025}
   button2: {fileID: 3674734173874713875}
   button3: {fileID: 617623841555645854}
+  button1Text: {fileID: 1470715816606546142}
+  button2Text: {fileID: 8927368294838119545}
+  button3Text: {fileID: 8797014362889083705}
 --- !u!1 &555677287828405276
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +459,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: bb317d00531452042af6d172132a5bce, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: bb317d00531452042af6d172132a5bce, type: 2}
+  - {fileID: 7400000, guid: abcb74612f519e44c89433fd41c8137f, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -639,6 +643,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: f2057b6e7e34e1c43b0dbb283ca98622, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: f2057b6e7e34e1c43b0dbb283ca98622, type: 2}
+  - {fileID: 7400000, guid: f16599806e4c555469992e96af8a6e26, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -721,7 +726,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -795,6 +800,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 0e1a5554bd8394f4eb2a365af4560dae, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 0e1a5554bd8394f4eb2a365af4560dae, type: 2}
+  - {fileID: 7400000, guid: b2cf789fffcd6bf498293a9e670b52f9, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1070,6 +1076,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 19a60c25beec9ad4b89be1c5d095bef3, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 19a60c25beec9ad4b89be1c5d095bef3, type: 2}
+  - {fileID: 7400000, guid: 92fa32f20a0b97340a1682b4a0edd0c2, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1183,7 +1190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -48, y: 69.7}
+  m_AnchoredPosition: {x: -233.3, y: 65.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &382069453534111463
@@ -1216,8 +1223,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Opinion: --'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8efe58dfe4e1c614c9bdcc928c85ff1c, type: 2}
-  m_sharedMaterial: {fileID: 8601260986575417323, guid: 8efe58dfe4e1c614c9bdcc928c85ff1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0dbd79e21944c2a478cfd552d074f8da, type: 2}
+  m_sharedMaterial: {fileID: -4912557469762904102, guid: 0dbd79e21944c2a478cfd552d074f8da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1241,8 +1248,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.46
-  m_fontSizeBase: 21.46
+  m_fontSize: 14.99
+  m_fontSizeBase: 14.99
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1355,8 +1362,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8efe58dfe4e1c614c9bdcc928c85ff1c, type: 2}
-  m_sharedMaterial: {fileID: 8601260986575417323, guid: 8efe58dfe4e1c614c9bdcc928c85ff1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0dbd79e21944c2a478cfd552d074f8da, type: 2}
+  m_sharedMaterial: {fileID: -4912557469762904102, guid: 0dbd79e21944c2a478cfd552d074f8da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1590,6 +1597,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: bb317d00531452042af6d172132a5bce, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: bb317d00531452042af6d172132a5bce, type: 2}
+  - {fileID: 7400000, guid: abcb74612f519e44c89433fd41c8137f, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1785,6 +1793,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 19a60c25beec9ad4b89be1c5d095bef3, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 19a60c25beec9ad4b89be1c5d095bef3, type: 2}
+  - {fileID: 7400000, guid: 92fa32f20a0b97340a1682b4a0edd0c2, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -2273,6 +2282,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: bf7b2380699bb8d4eaba6fbde6808087, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: bf7b2380699bb8d4eaba6fbde6808087, type: 2}
+  - {fileID: 7400000, guid: ca9928c5b3a324042808a403b60c0c9a, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -2428,6 +2438,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: bf7b2380699bb8d4eaba6fbde6808087, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: bf7b2380699bb8d4eaba6fbde6808087, type: 2}
+  - {fileID: 7400000, guid: ca9928c5b3a324042808a403b60c0c9a, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -2743,6 +2754,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 19a60c25beec9ad4b89be1c5d095bef3, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 19a60c25beec9ad4b89be1c5d095bef3, type: 2}
+  - {fileID: 7400000, guid: 92fa32f20a0b97340a1682b4a0edd0c2, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -2836,6 +2848,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 19a60c25beec9ad4b89be1c5d095bef3, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 19a60c25beec9ad4b89be1c5d095bef3, type: 2}
+  - {fileID: 7400000, guid: 92fa32f20a0b97340a1682b4a0edd0c2, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -3007,8 +3020,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Speaker Name...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8efe58dfe4e1c614c9bdcc928c85ff1c, type: 2}
-  m_sharedMaterial: {fileID: 8601260986575417323, guid: 8efe58dfe4e1c614c9bdcc928c85ff1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0dbd79e21944c2a478cfd552d074f8da, type: 2}
+  m_sharedMaterial: {fileID: -4912557469762904102, guid: 0dbd79e21944c2a478cfd552d074f8da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3208,7 +3221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6786782299121567418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3730,6 +3743,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 9ada335b62862db4c8ecd7d14349cb96, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 9ada335b62862db4c8ecd7d14349cb96, type: 2}
+  - {fileID: 7400000, guid: a35af955f65bae14f82c88930341c7e0, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -3958,6 +3972,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 202df6e3fd9b05b40aa5c861e0bee155, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 202df6e3fd9b05b40aa5c861e0bee155, type: 2}
+  - {fileID: 7400000, guid: ddb1ac665c27a874dbb61036263c7fc8, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -4038,7 +4053,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4112,6 +4127,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 202df6e3fd9b05b40aa5c861e0bee155, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 202df6e3fd9b05b40aa5c861e0bee155, type: 2}
+  - {fileID: 7400000, guid: ddb1ac665c27a874dbb61036263c7fc8, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0

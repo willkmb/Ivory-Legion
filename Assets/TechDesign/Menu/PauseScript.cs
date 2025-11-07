@@ -70,7 +70,7 @@ public class PauseScript : MonoBehaviour
         isPaused = false;
         PlayerManager manager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         NpcTalkTrigger tt = GameObject.FindWithTag("Player").GetComponent<NpcTalkTrigger>();
-        tt.enabled = false;
+        tt.enabled = true;
         manager.enabled = true;
         manager.movementAllowed = true;
         manager.interactionAllowed = true;
