@@ -1,6 +1,7 @@
 using System;
 using Ai;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Npc.Marker_Points
 {
@@ -77,6 +78,11 @@ namespace Npc.Marker_Points
         public float GetMaxMovementCooldownTime()
         {
             return maxMovementCooldownTime;
+        }
+
+        public float RandomDelay()
+        {
+            return Random.Range(minMovementCooldownTime, maxMovementCooldownTime);
         }
     }
 }

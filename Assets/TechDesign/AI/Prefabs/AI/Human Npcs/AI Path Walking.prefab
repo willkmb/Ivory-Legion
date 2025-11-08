@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5323662316473001147}
   - component: {fileID: 1394003269791256217}
   - component: {fileID: 7991608886031019867}
+  - component: {fileID: 302535685855475277}
   - component: {fileID: 3124562806528550084}
   - component: {fileID: 7212954053113446442}
   m_Layer: 3
@@ -157,6 +158,7 @@ MonoBehaviour:
   minMovementCooldownTime: 0
   maxMovementCooldownTime: 0
   usedInCutscene: 0
+  currentMovPos: {x: 0, y: 0, z: 0}
   markerPointZone: {fileID: 0}
   questDialogueAlterer: {fileID: 0}
 --- !u!114 &7991608886031019867
@@ -179,6 +181,21 @@ MonoBehaviour:
   - {fileID: 2100000, guid: fc9e9ff1d58a3ed47a45e65c8ac09a64, type: 2}
   currentPointNumber: 0
   timeToReset: 2
+--- !u!114 &302535685855475277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565470921340350827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f041daa7bf8807d4ea9b8e7b83fd8752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &3124562806528550084
 MonoBehaviour:
   m_ObjectHideFlags: 0
