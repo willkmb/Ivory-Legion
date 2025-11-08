@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Ai;
 using Npc.AI.Movement;
 using Audio;
@@ -54,6 +55,7 @@ namespace Npc.AI
         [HideInInspector] public float minMovementCooldownTime;
         [HideInInspector] public float maxMovementCooldownTime;
         public bool usedInCutscene;
+        [HideInInspector] public Vector3 currentMovPos;
         
         [Header("Only Required if AI is 'BASE'")]
         public MarkerPointZone markerPointZone;
