@@ -40,10 +40,10 @@ public class NpcTalkTrigger : MonoBehaviour
                     Debug.Log("Pressed");
                     if (collidedWith != null)
                     {
-                        dialogue = collidedWith.GetComponent<Dialogue>();
+                        dialogue = collidedWith.GetComponentInParent<Dialogue>();
                         dialogue.ShowNextBranch();
-                        TextMeshProUGUI text = collidedWith.GetComponent<NPCtrustValue>().text;
-                        string opinion = collidedWith.GetComponent<NPCtrustValue>().opinionLevel;
+                        TextMeshProUGUI text = collidedWith.GetComponentInParent<NPCtrustValue>().text;
+                        string opinion = collidedWith.GetComponentInParent<NPCtrustValue>().opinionLevel;
                         text.text = "Opinion: " + opinion;
                     }
                     dialogueUI.SetActive(true);
@@ -77,6 +77,7 @@ public class NpcTalkTrigger : MonoBehaviour
 
     void exitDialogue()
     {
+        Debug.Log("ExitDialogue called — inTrigger=" + inTrigger);
         dialogueUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
@@ -110,7 +111,7 @@ public class NpcTalkTrigger : MonoBehaviour
             //bubbleEnabled = false;
             //bubbleUI.SetActive(false);
             //}
-            dialogue = other.GetComponent<Dialogue>();
+            dialogue = other.GetComponentInParent<Dialogue>();
             if (dialogue != null) { dialogue.branchIndex = dialogue.startIndex; }
             inTrigger = false;
             collidedWith = null;
