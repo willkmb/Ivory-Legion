@@ -8456,7 +8456,7 @@ Transform:
   m_GameObject: {fileID: 768229141}
   serializedVersion: 2
   m_LocalRotation: {x: 0.29883623, y: -0.64085644, z: 0.29883623, w: 0.64085644}
-  m_LocalPosition: {x: 25, y: 30, z: 0}
+  m_LocalPosition: {x: 10, y: 14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8481,7 +8481,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   volumeAnchorOverride: {fileID: 0}
-  antialiasing: 0
+  antialiasing: 1
   SMAAQuality: 2
   dithering: 0
   stopNaNs: 0
@@ -8507,7 +8507,7 @@ MonoBehaviour:
   flipYMode: 0
   xrRendering: 1
   fullscreenPassthrough: 0
-  allowDynamicResolution: 0
+  allowDynamicResolution: 1
   customRenderingSettings: 0
   invertFaceCulling: 0
   probeLayerMask:
@@ -8642,7 +8642,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -8655,7 +8655,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -19111,6 +19111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcde067cc0f62d448dc63b36e2da087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFollow: 0
+  yMinusLevel: 0
 --- !u!1001 &1824017466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23059,6 +23061,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1067929f4572532458d6bea6ef0aef22, type: 3}
+--- !u!1001 &2120969839
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.400376
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9992903
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.488472
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6065436
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.79505026
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -105.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
+      propertyPath: m_Name
+      value: SM_Bodo_Guard_Outfit_LP (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5455180be938849499fef3a1b1b42bb3, type: 3}
 --- !u!1001 &2128195699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23589,3 +23648,4 @@ SceneRoots:
   - {fileID: 249127700}
   - {fileID: 1058923460}
   - {fileID: 1068840536}
+  - {fileID: 2120969839}
