@@ -31,6 +31,7 @@ namespace InputManager
         
         // Other Bool
         [HideInInspector] public bool movementAllowed = true;
+        [HideInInspector] public bool inCutscene = false;
         [HideInInspector] public bool interactionAllowed = true;
         [HideInInspector] public bool destroyChargeInProgress = false;
         
@@ -52,6 +53,7 @@ namespace InputManager
             swapItemLeftOffCooldown = true;
             swapItemRightOffCooldown = true;
             swappingHatOffCooldown = true;
+            inCutscene = false;
         }
 
         private void Start()
@@ -73,6 +75,9 @@ namespace InputManager
         // ReSharper disable Unity.PerformanceAnalysis - Ignore This 
         private void Update()
         {
+
+            if (inCutscene)
+                return;
             // Movement
             if (movementAllowed) //doesn't work for controller
                 if (moveAction.IsPressed())
