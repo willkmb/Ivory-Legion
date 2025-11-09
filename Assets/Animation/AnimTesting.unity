@@ -1712,7 +1712,7 @@ Animator:
   m_GameObject: {fileID: 1165567903}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 575cda1f4a8798046a9130d4213bcec0, type: 3}
-  m_Controller: {fileID: 9100000, guid: 989f4554954cf7d418ae9a30d77c78d3, type: 2}
+  m_Controller: {fileID: 9100000, guid: bd82a800e3d25e145a01b9ceaf22b422, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3375,6 +3375,14 @@ PrefabInstance:
     - target: {fileID: 2393508817684473014, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303499635637054537, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: walkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303499635637054537, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: turningSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3303499635637054537, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: cameraTransform

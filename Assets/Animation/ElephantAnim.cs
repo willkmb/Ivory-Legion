@@ -37,6 +37,7 @@ public class ElephantAnim : MonoBehaviour
     
     public void Idle()
     {
+        anim.SetBool("isIdle", true);
         anim.SetBool("isWalking", false);
         // if (PlayerMovement.instance.isWalking == false)
         // {
@@ -45,6 +46,27 @@ public class ElephantAnim : MonoBehaviour
         // }
         
     }
-    
+
+    public void Seismic()
+    {
+        //anim.SetBool("idle", false);
+        anim.SetBool("isWalking", false);
+        anim.SetBool("canSeismic", true);
+        Debug.Log("SEISMIC ANIM");
+    }
+
+    public void Push()
+    {
+        anim.SetBool("canPush", true);
+        Debug.Log("PUSHING ANIM");
+        
+        anim.SetBool("canPushing", false);
+    }
+
+    public void Stomp()
+    {
+        anim.SetBool("canStomp", true);
+        Debug.Log("STOMP ANIM");
+    }
     
 }
