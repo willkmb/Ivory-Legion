@@ -17,7 +17,7 @@ namespace Npc.AI.Movement
         //Components 
         private NavMeshPath _path;
         
-        // Scrips
+        // Scripts
         private NpcManager _npcManager;
 
         //Values
@@ -108,6 +108,8 @@ namespace Npc.AI.Movement
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            _npcManager.currentMovPos = _targetPos;
+            
             _npcManager.agent.SetPath(_path);
         }
 

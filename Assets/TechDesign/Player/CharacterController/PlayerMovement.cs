@@ -43,6 +43,9 @@ namespace Player
         private void Start()
         {
             controller = GetComponent<CharacterController>();
+
+            if (Camera.main != null) 
+                cameraTransform = Camera.main.transform;
         }
 
         private void Update()

@@ -8,6 +8,12 @@ namespace Mechanic_Destruction
         Instantiate,
         EnableObj
     }
+
+    public enum ObjType // Add later
+    {
+        ID,
+        Obj, 
+    }
     public class ObjSpawnOnBreak : MonoBehaviour
     {
         [SerializeField] private GameObject spawnObj;
