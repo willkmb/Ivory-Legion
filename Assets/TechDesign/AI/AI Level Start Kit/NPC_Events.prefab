@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerCallValue: 0.05
-  npcAvoidancePrefab: {fileID: 3240812921255262879, guid: dd83544f465b6dd46b227467e5aa261c, type: 3}
-  npcAvoidanceList: []
+  blocker: {fileID: 7898916125320885296, guid: ef515bb6c25c4ee44a735cad5106a750, type: 3}
+  avoidancePredictionTime: 0
+  pathFindingIterationsPerFrame: 0

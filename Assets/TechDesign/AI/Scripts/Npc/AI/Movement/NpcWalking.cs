@@ -59,8 +59,14 @@ namespace Npc.AI.Movement
                     delay = markerpoint.transform.GetComponent<MarkerPoint>().GetTestPS().time 
                             + (markerpoint.transform.GetComponent<MarkerPoint>().GetTestPS().time * 0.1f);
                 }
-                if(!_requiresAction)
+                if (!_requiresAction)
+                {
                     _npcManager.npcState = NpcState.Idle;
+                    var rotation = transform.rotation;
+                    rotation.y = markerpoint.transform.localRotation.y + 90;
+                    transform.localRotation = rotation;
+                }
+     
                 
                 _npcManager.minMovementCooldownTime = _npcPerformingAction.activeMarkerPoint.GetMinMovementCooldownTime();
                 _npcManager.maxMovementCooldownTime = _npcPerformingAction.activeMarkerPoint.GetMaxMovementCooldownTime();
