@@ -25,16 +25,24 @@ namespace Cutscene
         [SerializeField] private Camera mainCam;
         [SerializeField] private Camera animationCam;
         
+        [Header("Timers")]
+        [SerializeField] private float parentWalkTimer;
+        [SerializeField] private float humanWalkTimer;
         
         [Header("Npcs to move during cutscene")]
-        [SerializeField] private List<NpcManager> gameObjects = new List<NpcManager>();
+        [SerializeField] private List<NpcManager> walkingElephants = new List<NpcManager>();
+        [SerializeField] private List<NpcManager> parents = new List<NpcManager>();
+        [SerializeField] private List<NpcManager> humans = new List<NpcManager>();
+        [SerializeField] private GameObject blocker;
 
         private void Awake()
         {
             mainCam =  Camera.main;
+            _doOnce = false;
+            blocker.SetActive(false);
         }
 
-        private bool _doOnce = false;
+        private bool _doOnce;
         private void OnTriggerEnter(Collider other)
         {
             if (_doOnce)
@@ -45,7 +53,7 @@ namespace Cutscene
              if (player == null) 
                  return;
 
-             foreach (var VARIABLE in gameObjects)
+             foreach (var VARIABLE in walkingElephants)
              {
                  VARIABLE.npcState = NpcState.SetPathingWalking;
                  VARIABLE.StateChanger();
@@ -56,14 +64,34 @@ namespace Cutscene
              _doOnce = true;
              PlayerManager.instance.inCutscene = true;
              
+             
+            Invoke("ParentsWalk", parentWalkTimer); 
+            Invoke("HumanWalk", humanWalkTimer); 
             Invoke("StopAnimation", animation.clip.length);
+        }
+
+        private void ParentsWalk()
+        {
+            foreach (var VARIABLE in parents)
+            {
+                VARIABLE.npcState = NpcState.SetPathingWalking;
+                VARIABLE.StateChanger();
+            }
+        }
+        private void HumanWalk()
+        {
+            foreach (var VARIABLE in humans)
+            {
+                VARIABLE.npcState = NpcState.SetPathingWalking;
+                VARIABLE.StateChanger();
+            }
         }
         private void StopAnimation()
         {
             mainCam.enabled = true;
             PlayerManager.instance.inCutscene = false;
             animation.Stop();
-            foreach (var manager in gameObjects)
+            foreach (var manager in walkingElephants)
                 manager.gameObject.SetActive(false);
 
             switch (afterCutscene)
@@ -74,7 +102,7 @@ namespace Cutscene
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
+            blocker.SetActive(true);
             gameObject.SetActive(false);
         }
     }
