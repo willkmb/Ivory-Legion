@@ -11,7 +11,7 @@ namespace Npc.AI.Movement
     {
         //Lists
         [Header("Ensure locations are on navmesh")]
-        [SerializeField] private List<Vector3> movementLocations;
+        public List<Vector3> movementLocations;
         [SerializeField] private List<Material> skinList;
        
         //Components 
@@ -53,19 +53,18 @@ namespace Npc.AI.Movement
         {
             if (_resetting)
                 return;
-            
+
             //If all marker points have been reached and the AI is not patrolling
             if (movementLocations.Count <= currentPointNumber && !_npcManager.patrolling)
             {
-                // Cutscene deactivation
-                if (_npcManager.usedInCutscene)
+                // Do reset Stuff - Different skin
+                if (_npcManager.idleAfterCutscene)
                 {
+                    Debug.Log("called");
                     _npcManager.npcState = NpcState.Idle;
-                    gameObject.SetActive(false);
+                    _npcManager.StateChanger();
                     return;
                 }
-                
-                // Do reset Stuff - Different skin
                 _resetting = true;
                 NpcEvents.instance.NpcCheckArrivalEvent += ResetTimer;
                 ChangeSkin();
