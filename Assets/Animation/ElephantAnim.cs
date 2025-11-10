@@ -58,7 +58,7 @@ public class ElephantAnim : MonoBehaviour
     public void Push()
     {
         anim.SetBool("canPush", true);
-        Debug.Log("PUSHING ANIM");
+        //Debug.Log("PUSHING ANIM");
         
         anim.SetBool("canPushing", false);
     }
@@ -68,5 +68,11 @@ public class ElephantAnim : MonoBehaviour
         anim.SetBool("canStomp", true);
         Debug.Log("STOMP ANIM");
     }
-    
+
+    public void Pickup()
+    {
+        anim.SetBool("pickUpB", true);
+        anim.SetTrigger("pickUpT");
+    }
+
 }
