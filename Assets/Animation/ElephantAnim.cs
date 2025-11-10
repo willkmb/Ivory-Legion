@@ -50,7 +50,7 @@ public class ElephantAnim : MonoBehaviour
     public void Seismic()
     {
         //anim.SetBool("idle", false);
-        anim.SetBool("isWalking", false);
+        //anim.SetBool("isWalking", false);
         anim.SetBool("canSeismic", true);
         Debug.Log("SEISMIC ANIM");
     }
@@ -71,8 +71,7 @@ public class ElephantAnim : MonoBehaviour
 
     public void Pickup()
     {
-        anim.SetBool("pickUpB", true);
-        anim.SetTrigger("pickUpT");
+        anim.SetBool("pickUp", true);
     }
 
 }
