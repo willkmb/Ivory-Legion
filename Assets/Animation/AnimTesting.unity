@@ -1712,7 +1712,7 @@ Animator:
   m_GameObject: {fileID: 1165567903}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 575cda1f4a8798046a9130d4213bcec0, type: 3}
-  m_Controller: {fileID: 9100000, guid: 989f4554954cf7d418ae9a30d77c78d3, type: 2}
+  m_Controller: {fileID: 9100000, guid: bd82a800e3d25e145a01b9ceaf22b422, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1724,6 +1724,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1165567906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165567903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262892d91eb317a45948d989c1c1da6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1170315681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2696,6 +2708,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cb68e20403ef8429075febc0ae957d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1165567905}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cb68e20403ef8429075febc0ae957d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1165567906}
   m_SourcePrefab: {fileID: 100100000, guid: 47cb68e20403ef8429075febc0ae957d, type: 3}
 --- !u!1001 &1896455653
 PrefabInstance:
@@ -3237,6 +3252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcde067cc0f62d448dc63b36e2da087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFollow: 0
+  yMinusLevel: 0
 --- !u!23 &4956662924463560548
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3362,6 +3379,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3303499635637054537, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: walkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303499635637054537, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: turningSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303499635637054537, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 9051307857350015597}
@@ -3418,7 +3443,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3089410062842384438, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7761556556715001361, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       insertIndex: -1

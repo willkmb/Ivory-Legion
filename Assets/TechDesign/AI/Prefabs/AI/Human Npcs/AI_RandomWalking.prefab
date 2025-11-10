@@ -46,7 +46,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8293723575335677982}
-  m_Mesh: {fileID: 3965695897676713098, guid: 50b7683b4a312fe4ca46318cf1becaf2, type: 3}
+  m_Mesh: {fileID: 7752700668315996145, guid: 08d351365664d7145853788a6006a57d, type: 3}
 --- !u!23 &7475053945019657940
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -156,7 +156,9 @@ MonoBehaviour:
   patrolling: 0
   minMovementCooldownTime: 0
   maxMovementCooldownTime: 0
-  usedInCutscene: 0
+  removeAfterCutscene: 0
+  idleAfterCutscene: 0
+  currentMovPos: {x: 0, y: 0, z: 0}
   markerPointZone: {fileID: 0}
   questDialogueAlterer: {fileID: 0}
 --- !u!114 &2154773815628393029

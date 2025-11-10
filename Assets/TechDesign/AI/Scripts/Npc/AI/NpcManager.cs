@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Ai;
 using Npc.AI.Movement;
 using Audio;
@@ -37,6 +38,7 @@ namespace Npc.AI
 
         //Components
         [HideInInspector] public NavMeshAgent agent;
+        private GameObject _blocker;
         
         //Scripts
         private NpcSetLocation _npcSetLocation;
@@ -46,14 +48,15 @@ namespace Npc.AI
         private Dialogue _dialogue;
         
         // Values
+        [Header("Values / Variables")]
         private float _agentOriginalSpeed;
-        [Header("Make the AI stay still")]
         public bool alwaysIdle; // Ticked if you want the NPC to always stay in the same location (E.G Shop Merchant)
-        [Header("Variables")]
         public bool patrolling; // Ticked if you want the NPC to travel between points on the SetPathingWalking
         [HideInInspector] public float minMovementCooldownTime;
         [HideInInspector] public float maxMovementCooldownTime;
-        public bool usedInCutscene;
+        public bool removeAfterCutscene;
+        public bool idleAfterCutscene;
+        [HideInInspector] public Vector3 currentMovPos;
         
         [Header("Only Required if AI is 'BASE'")]
         public MarkerPointZone markerPointZone;
@@ -90,6 +93,7 @@ namespace Npc.AI
                 case NpcState.Idle: //NPC will not move,
                     agent.speed = 0f;
                     stateSaver = NpcState.Idle;
+                    _blocker = NpcEvents.instance.GetBlocker(); NpcEvents.instance.SetBlocker(transform.position, _blocker);
                     if (!alwaysIdle)
                     {
                         var randomTime = Random.Range(minMovementCooldownTime, maxMovementCooldownTime);
@@ -98,16 +102,21 @@ namespace Npc.AI
                     }
                     break;
                 case NpcState.Walking: // NPC walks to set location(s), set by parameters
+                    if (_blocker != null)
+                        NpcEvents.instance.ResetBlocker(_blocker);
                     stateSaver = NpcState.Walking;
                     _npcSetLocation.SetLocation(); // Gets location for the npc to walk too
                     break;
                 case NpcState.SetPathingWalking: //Selected for Npcs that walk to point A TO B with no other objective
                     // Only needs to be called once as it loops itself in a contained script
+                    if (_blocker != null)
+                        NpcEvents.instance.ResetBlocker(_blocker);
                     stateSaver =  NpcState.SetPathingWalking;
                     setPathWalking.GetNextLocationPoint();
                     break;
                 case NpcState.PerformingAction: //E.G Animations involving jobs or trading with the shop owner
                     stateSaver  =  NpcState.PerformingAction;
+                    _blocker = NpcEvents.instance.GetBlocker(); NpcEvents.instance.SetBlocker(transform.position, _blocker);
                     _performingAction.SubscribeToTimer();
                     break;
                 case NpcState.AvoidingPlayer: // When the NPC is near the player, move backwards / away to avoid collision with the player.
@@ -117,11 +126,14 @@ namespace Npc.AI
                     agent.speed = 0f;
                     _dialogue.pastNpcState = stateSaver;
                     // Quests // - Alters Text based of quest completion state
+                    _blocker = NpcEvents.instance.GetBlocker(); NpcEvents.instance.SetBlocker(transform.position, _blocker);
                     if (questDialogueAlterer != null)
                         questDialogueAlterer.ChangeDialogueBasedOnQuests();
                     break;
                 case NpcState.RandomPathing: //Walk to a random spot with x radius to simulate that they are busy.
                     //Repeats in an infinite loop unless spoken to by player in which it will continue after the conversation
+                    if (_blocker != null)
+                         NpcEvents.instance.ResetBlocker(_blocker);
                     stateSaver =  NpcState.RandomPathing;
                     _randomMovement.GetRandomlocation();
                     break;
