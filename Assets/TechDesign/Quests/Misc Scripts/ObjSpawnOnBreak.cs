@@ -1,4 +1,5 @@
 using System;
+using InputManager;
 using UnityEngine;
 
 namespace Mechanic_Destruction
@@ -14,10 +15,17 @@ namespace Mechanic_Destruction
         ID,
         Obj, 
     }
+
+    public enum OnBreak
+    {
+        Null,
+        StartDialogue,
+    }
     public class ObjSpawnOnBreak : MonoBehaviour
     {
         [SerializeField] private GameObject spawnObj;
         public OnDestructionType onDestruction;
+        public OnBreak onBreak;
 
         private void Start()
         {
@@ -25,7 +33,7 @@ namespace Mechanic_Destruction
                 spawnObj.SetActive(false);
         }
 
-        private void OnDisable()
+        public void SpawnObj()
         {
             switch (onDestruction)
             {
@@ -33,8 +41,20 @@ namespace Mechanic_Destruction
                     GameObject go = Instantiate(spawnObj, transform.position, Quaternion.identity);
                     break;
                 case OnDestructionType.EnableObj:
-                    spawnObj.gameObject.SetActive(false);
+                    spawnObj.SetActive(true);
                     spawnObj.transform.position = transform.position;
+                    spawnObj.transform.LookAt(PlayerManager.instance.transform.position);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            switch (onBreak)
+            {
+                case OnBreak.Null:
+                    break;
+                case OnBreak.StartDialogue:
+                    // Start dialogue
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cutscene;
 using UnityEngine;
 using TMPro;
 using Player;
@@ -29,6 +30,7 @@ public class NpcTalkTrigger : MonoBehaviour
     }
 
 
+    // ReSharper disable Unity.PerformanceAnalysis
     void Interact()
     {
         if (triggerScript != null)
@@ -64,6 +66,9 @@ public class NpcTalkTrigger : MonoBehaviour
                         npcManager.npcState = NpcState.TalkingToPlayer;
                         npcManager.StateChanger();
                     }
+                    CtDiaMoveCamera ctx = collidedWith.transform.GetComponent<CtDiaMoveCamera>(); // Moves camera if the interacted has the script on them
+                    if (ctx != null)
+                        ctx.MoveCamera();
                 }
             }
             else
@@ -77,7 +82,7 @@ public class NpcTalkTrigger : MonoBehaviour
 
     void exitDialogue()
     {
-        Debug.Log("ExitDialogue called — inTrigger=" + inTrigger);
+        Debug.Log("ExitDialogue called ï¿½ inTrigger=" + inTrigger);
         dialogueUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();

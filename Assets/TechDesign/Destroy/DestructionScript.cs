@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Splines.Interpolators;
 using System.Collections;
+using Mechanic_Destruction;
 
 
 public class DestructionScript : MonoBehaviour, IInteractable
@@ -44,12 +45,15 @@ public class DestructionScript : MonoBehaviour, IInteractable
     bool revertCharge = false;
     bool revertChargeEnd = false;
 
+    //Spawn obj on destroy
+    private ObjSpawnOnBreak _objSpawnOnBreak;
     private void Awake()
     {
         instance ??= this;
         
         isDestroyed = false;
         _meshRenderer = GetComponent<MeshRenderer>();
+        _objSpawnOnBreak = transform.GetComponent<ObjSpawnOnBreak>();
     }
 
     // Update is called once per frame
@@ -98,6 +102,7 @@ public class DestructionScript : MonoBehaviour, IInteractable
     {
         if (timer > 2 && timer < 3)
         {
+            _objSpawnOnBreak.SpawnObj();
             revertChargeEnd = true;
             isDestroyed = true;
             gameObject.GetComponent<Collider>().enabled = false;
