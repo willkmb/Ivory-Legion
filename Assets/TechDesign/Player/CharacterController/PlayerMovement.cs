@@ -20,7 +20,6 @@ namespace Player
         private CharacterController controller;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private ParticleSystem walkParticles1;
-        [SerializeField] private ParticleSystem walkParticles2;
 
         [Header("Movement Settings")]
         [SerializeField] private float walkSpeed = 5f;
@@ -129,13 +128,11 @@ namespace Player
         public void StartWalkParticles() // - Emily, particles
         {
             walkParticles1.Play();
-            walkParticles2.Play();
             isParticlesPlaying = true;
         }
         public void StopWalkParticles() // - Emily, particles
         {
             walkParticles1.Stop();
-            walkParticles2.Stop();
             isParticlesPlaying = false;
         }
         void PlaySoundWalk() // - Emily, sounds
