@@ -5,6 +5,7 @@ public class NPCAnimation : MonoBehaviour
 {
     NpcManager npcManager;
     Animator animator;
+    bool isIdle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,14 +23,24 @@ public class NPCAnimation : MonoBehaviour
     {
         if (npcManager.stateSaver == NpcState.Idle || npcManager.stateSaver == NpcState.TalkingToPlayer)
         {
-            Debug.Log("Idle");
-            animator.SetBool("Idle", true);
+            if (!isIdle)
+            {
+                //Debug.Log("Idle");
+                animator.SetBool("Idle", true);
+                isIdle = true;
+            }
+
         }
 
         else if (npcManager.stateSaver == NpcState.Walking || npcManager.stateSaver == NpcState.SetPathingWalking)
         {
-            Debug.Log("Walking");
-            animator.SetBool("Idle", false);
+            if (isIdle)
+            {
+                //Debug.Log("Walking");
+                animator.SetBool("Idle", false);
+                isIdle = false;
+            }
+
         }
     }
 }
