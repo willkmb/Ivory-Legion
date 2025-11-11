@@ -17,6 +17,7 @@ public class NpcTalkTrigger : MonoBehaviour
     public bool inTrigger;
     [HideInInspector] public GameObject collidedWith = null;
     private GameObject prompt;
+    private HandlerMoveScript handler;
 
    // private bool bubbleEnabled = false;
     void Start()
@@ -50,6 +51,8 @@ public class NpcTalkTrigger : MonoBehaviour
                         text.text = "Opinion: " + opinion;
 
                         prompt = collidedWith.GetComponentInParent<PromptScript>().thisPrompt;
+                        handler = collidedWith.GetComponentInParent<HandlerMoveScript>();
+                        if(handler != null) handler.enabled = false;
                         if(prompt != null) prompt.SetActive(false);
                     }
                     dialogueUI.SetActive(true);
@@ -75,18 +78,15 @@ public class NpcTalkTrigger : MonoBehaviour
                         ctx.MoveCamera();
                 }
             }
-            else
-            {
-                exitDialogue();
-            }
+            
 
             if (Input.GetKeyDown(KeyCode.JoystickButton2)) exitDialogue();
         }
     }
 
-    void exitDialogue()
+    public void exitDialogue()
     {
-        if (prompt != null) prompt.SetActive(true);
+        Invoke("Move", 0.5f);
         Debug.Log("ExitDialogue called inTrigger=" + inTrigger);
         dialogueUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
@@ -126,6 +126,12 @@ public class NpcTalkTrigger : MonoBehaviour
             inTrigger = false;
             collidedWith = null;
         }
+    }
+
+    private void Move()
+    {
+        handler.enabled = true;
+        handler.move();
     }
 
 }

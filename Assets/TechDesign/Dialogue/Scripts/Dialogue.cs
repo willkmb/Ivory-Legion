@@ -8,6 +8,7 @@ using System.Linq;
 using Npc.AI;
 using Player;
 using InputManager;
+using Cutscene;
 
 public class Dialogue : MonoBehaviour
 {
@@ -156,6 +157,10 @@ public class Dialogue : MonoBehaviour
         manager.movementAllowed = true;
         manager.interactionAllowed = true;
         manager.moveAction.Enable();
+        NpcTalkTrigger talk = GameObject.FindWithTag("Player").GetComponent<NpcTalkTrigger>();
+        talk.exitDialogue();
+
+        if(Cutscene_Gameplay.finishedParent) GameObject.Find("Cutscene_Parade").GetComponent<Cutscene_Gameplay>().resetHandler();
     }
 
     public void UpdateNPCOpinion(string topic)

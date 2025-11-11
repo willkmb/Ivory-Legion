@@ -38,11 +38,20 @@ namespace Cutscene
         [SerializeField] private List<NpcManager> humans = new List<NpcManager>();
         [SerializeField] private GameObject blocker;
 
+        [SerializeField] private GameObject parent;
+        [SerializeField] public static bool finishedParent = false;
+
         private void Awake()
         {
             mainCam =  Camera.main;
             _doOnce = false;
             blocker.SetActive(false);
+        }
+
+        private void Start()
+        {
+            parent.GetComponent<PromptScript>().thisPrompt.SetActive(false);
+            parent.GetComponent<Dialogue>().enabled = false;
         }
 
         private bool _doOnce;
@@ -106,12 +115,25 @@ namespace Cutscene
             {
                 case CutSceneActivation.Trigger:
                     Debug.Log("Start dialogue with parents");
+                    parent.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+                    parent.GetComponent<Dialogue>().enabled = true;
+                    resetHandler();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
             blocker.SetActive(true);
             gameObject.SetActive(false);
+        }
+
+        public void resetHandler()
+        {
+            if (finishedParent)
+            {
+                GameObject handler = GameObject.Find("Handler_AI_NPC");
+                handler.GetComponentInParent<PromptScript>().thisPrompt.SetActive(true);
+                handler.GetComponentInParent<Dialogue>().enabled = true;
+            }
         }
 
         /*private IEnumerator PauseParentsForDialogue(NpcManager VARIABLE,float timeLocal)
