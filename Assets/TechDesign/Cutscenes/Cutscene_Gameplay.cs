@@ -1,10 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using InputManager;
 using Npc;
 using Npc.AI;
 using Npc.AI.Movement;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Cutscene
 {
@@ -24,6 +26,7 @@ namespace Cutscene
         [SerializeField] private new Animation animation;
         [SerializeField] private Camera mainCam;
         [SerializeField] private Camera animationCam;
+        private float time = 0f;
         
         [Header("Timers")]
         [SerializeField] private float parentWalkTimer;
@@ -74,8 +77,13 @@ namespace Cutscene
         {
             foreach (var VARIABLE in parents)
             {
+                float dis = Vector3.Distance(VARIABLE.transform.position, VARIABLE.GetComponent<NpcSetPathWalking>().movementLocations[1]);
+                float speed = VARIABLE.GetComponent<NavMeshAgent>().speed;
+                time = dis/ speed;
                 VARIABLE.npcState = NpcState.SetPathingWalking;
                 VARIABLE.StateChanger();
+
+                //StartCoroutine(PauseParentsForDialogue( VARIABLE, time));
             }
         }
         private void HumanWalk()
@@ -105,6 +113,13 @@ namespace Cutscene
             blocker.SetActive(true);
             gameObject.SetActive(false);
         }
+
+        /*private IEnumerator PauseParentsForDialogue(NpcManager VARIABLE,float timeLocal)
+        {
+            yield return new WaitForSeconds(timeLocal);
+            float dis = Vector3.Distance(VARIABLE.transform.position, VARIABLE.GetComponent<NpcSetPathWalking>().movementLocations[1]);
+            if (dis < 0.25f) { VARIABLE.npcState = NpcState.Idle; VARIABLE.StateChanger(); }
+        }*/
     }
 }
 

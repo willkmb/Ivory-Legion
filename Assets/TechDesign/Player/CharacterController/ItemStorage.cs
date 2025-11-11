@@ -142,7 +142,7 @@ namespace Player {
                     itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
                     itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
                 }
-                //PlaySoundSwap();
+               //PlaySoundSwap();
             }
         }
 
@@ -224,18 +224,18 @@ namespace Player {
         void PlaySoundPickUp()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 1.25f, 1.5f, 128);
         }
 
         void PlaySoundPutDown()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1f, 128);
         }
         void PlaySoundSwap()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 0.5f, 0.5f, true, 0.75f, 1.25f, 128);
         }
 
         /*

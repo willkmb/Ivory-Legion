@@ -16,6 +16,7 @@ public class NpcTalkTrigger : MonoBehaviour
     Collider trigger;
     public bool inTrigger;
     [HideInInspector] public GameObject collidedWith = null;
+    private GameObject prompt;
 
    // private bool bubbleEnabled = false;
     void Start()
@@ -47,6 +48,9 @@ public class NpcTalkTrigger : MonoBehaviour
                         TextMeshProUGUI text = collidedWith.GetComponentInParent<NPCtrustValue>().text;
                         string opinion = collidedWith.GetComponentInParent<NPCtrustValue>().opinionLevel;
                         text.text = "Opinion: " + opinion;
+
+                        prompt = collidedWith.GetComponentInParent<PromptScript>().thisPrompt;
+                        if(prompt != null) prompt.SetActive(false);
                     }
                     dialogueUI.SetActive(true);
                     dialogueUI.GetComponent<Animation>().Play();
@@ -82,7 +86,8 @@ public class NpcTalkTrigger : MonoBehaviour
 
     void exitDialogue()
     {
-        Debug.Log("ExitDialogue called � inTrigger=" + inTrigger);
+        if (prompt != null) prompt.SetActive(true);
+        Debug.Log("ExitDialogue called inTrigger=" + inTrigger);
         dialogueUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
