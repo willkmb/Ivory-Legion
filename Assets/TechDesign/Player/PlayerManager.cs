@@ -142,7 +142,7 @@ namespace InputManager
                 }
 
             //Seismic Sense
-            /*if (seismicOffCooldown)
+            if (seismicOffCooldown)
                 if (seismicSenseAction.IsPressed())
                 {
                     ElephantAnim.instance.Seismic();
@@ -153,13 +153,11 @@ namespace InputManager
                     SeismicSenseScript.instance.inProgress = true; // Allows particles of SS to start expanding
                     
                     SeismicSenseScript.instance.StartPulse();
-<<<<<<< HEAD
-                }*/
-
-=======
                 }
->>>>>>> dd69796deb14946d0ebbb30016c2126be0f59546
+
+                
         }
+        
 
         public void setMovementAllowed(bool allowed)
         {
