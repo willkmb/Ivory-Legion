@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4684858014482450938}
   - component: {fileID: 1918226476637961627}
   - component: {fileID: 7255352793733768217}
+  - component: {fileID: 7504021911654959589}
   m_Layer: 0
   m_Name: PickUpItem
   m_TagString: Untagged
@@ -153,5 +154,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09c7e17c7ac8db409e79b8401538a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 0
+  itemAmount: 0
   PutDownPoint: {fileID: 0}
   isHat: 0
+  isPickedUp: 0
+  questAreaList: []
+--- !u!114 &7504021911654959589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6036861676084668848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cccba2621a7dccd4db0e392e7d815a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

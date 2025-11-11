@@ -58,7 +58,7 @@ namespace SeismicSense
             var particle = particleEffects.main;
             particle.loop = true;
             particleEffects.Play();
-            //PlaySoundSeismic();
+            PlaySoundSeismic();
         }
 
         public void Reset()
@@ -101,7 +101,7 @@ namespace SeismicSense
 
         void PlaySoundSeismic()
         {
-            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 1, 1, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 0.75f, 0.75f, true, 0.75f, 1.25f, 128);
         }
 
 
