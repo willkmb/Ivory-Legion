@@ -30,6 +30,8 @@ namespace Player
         private Vector3 lastCheckOrigin;
         private Vector3 lastHalfExtents;
         private bool lastPathClear;
+        
+        
 
         private void Awake()
         {
@@ -42,6 +44,7 @@ namespace Player
 
             if (isPushing && pushedObj != null)
             {
+                ElephantAnim.instance.Push();
                 MovePushedObject();
             }
         }
@@ -97,11 +100,13 @@ namespace Player
                 targetPosition = proposedTarget;
                 isPushing = true;
                 //PlaySoundPush();
+                
             }
             else
             {
                 //Debug.Log("Position blocked");
             }
+            ElephantAnim.instance.Push();
         }
 
         private void MovePushedObject()

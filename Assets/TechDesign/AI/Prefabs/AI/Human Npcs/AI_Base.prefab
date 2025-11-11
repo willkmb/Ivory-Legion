@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 2700701554941396903}
   - component: {fileID: 2922839564690337798}
   - component: {fileID: 785884384287327301}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: AI_Base
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8293723575335677982}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -136,7 +136,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.99999994
+  m_Height: 1
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -161,7 +161,9 @@ MonoBehaviour:
   patrolling: 0
   minMovementCooldownTime: 0
   maxMovementCooldownTime: 0
-  usedInCutscene: 0
+  removeAfterCutscene: 0
+  idleAfterCutscene: 0
+  currentMovPos: {x: 0, y: 0, z: 0}
   markerPointZone: {fileID: 0}
   questDialogueAlterer: {fileID: 0}
 --- !u!114 &5026178957439393021

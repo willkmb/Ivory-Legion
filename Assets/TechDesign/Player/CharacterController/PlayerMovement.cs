@@ -2,6 +2,7 @@ using Audio;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using InputManager;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;                      //THIS IS USING THE OLD INPUT SYSTEM!!!!!!!
@@ -43,10 +44,18 @@ namespace Player
         private void Start()
         {
             controller = GetComponent<CharacterController>();
+
+            if (Camera.main != null) 
+                cameraTransform = Camera.main.transform;
         }
 
         private void Update()
         {
+            if (PlayerManager.instance.inCutscene)
+            {
+                StopWalkParticles(); 
+                return;
+            }
             if (isWalking) // - Emily, particles
             {
                 if (!isParticlesPlaying)
@@ -72,6 +81,9 @@ namespace Player
         // Move 4 directions
         public void Movement(Vector2 input)
         {
+            if (!PlayerManager.instance.movementAllowed || PlayerManager.instance.inCutscene)
+                return;
+            
             // Get movement direction relative to camera
             Vector3 inputDirection = new Vector3(input.x, 0, input.y).normalized;
 

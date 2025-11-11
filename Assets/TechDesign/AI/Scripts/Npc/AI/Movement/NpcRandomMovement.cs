@@ -94,6 +94,8 @@ namespace Npc.AI.Movement
                     throw new ArgumentOutOfRangeException();
             }
             
+            _npcManager.currentMovPos = _movePos;
+            
             _npcManager.agent.SetPath(_path);
         }
 

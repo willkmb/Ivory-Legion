@@ -32,14 +32,14 @@ namespace Npc.AI.Movement
             switch (_npcManager.npcType)
             {
                 case NpcType.Humanoid:
-                    var mpAmountHuman = _npcManager.markerPointZone.markerPointsHumanActive.Count;
-                    var randomPointHuman = Random.Range(0, mpAmountHuman);
+                    var randomPointHuman = Random.Range(0,  _npcManager.markerPointZone.markerPointsHumanActive.Count - 1);
                      pointObj = _npcManager.markerPointZone.markerPointsHumanActive[randomPointHuman];
+                    RemoveMarkerPoint(pointObj);
                     break;
                 case NpcType.Elephant:
-                    var mpAmountElephant = _npcManager.markerPointZone.markerPointsElephantActive.Count;
-                    var randomPointElephant = Random.Range(0, mpAmountElephant);
+                    var randomPointElephant = Random.Range(0, _npcManager.markerPointZone.markerPointsElephantActive.Count - 1);
                      pointObj = _npcManager.markerPointZone.markerPointsElephantActive[randomPointElephant];
+                    RemoveMarkerPoint(pointObj);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -52,7 +52,6 @@ namespace Npc.AI.Movement
                 case NpcType.Humanoid:
                     if (!NavMesh.CalculatePath(transform.position,pointObj.transform.position, NavMesh.AllAreas, _npcWalking.Path))
                     {
-                        RemoveMarkerPoint(pointObj);
                         SetLocation();
                         return;
                     } 
@@ -60,7 +59,6 @@ namespace Npc.AI.Movement
                 case NpcType.Elephant:
                     if (!NavMesh.CalculatePath(transform.position,pointObj.transform.position, _npcManager.agent.areaMask, _npcWalking.Path))
                     {
-                        RemoveMarkerPoint(pointObj);
                         SetLocation();
                         return;
                     }
@@ -68,10 +66,6 @@ namespace Npc.AI.Movement
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-          
-            //Called if npc can arrive at marker point
-            RemoveMarkerPoint(pointObj); // Prevents other npcs going to the same location
-            
             var position = pointObj.transform.position;
             _npcWalking.targetPos = position;
 

@@ -203,7 +203,6 @@ namespace Player {
         // Don't yell at me for putting this here, don't want to clutter the top for smth quest related
         private bool QuestAreaCheck(Collider[] colliders, GameObject droppedObject)
         {
-            bool questArea = false;
             foreach (Collider coll in colliders)
             {
                 Debug.Log(coll.gameObject.name);
