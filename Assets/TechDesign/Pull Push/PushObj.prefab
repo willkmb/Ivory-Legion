@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7732111855328188091}
   - component: {fileID: 2721650625088806793}
   - component: {fileID: 5997673696348821793}
-  m_Layer: 6
+  - component: {fileID: 3992426632414237173}
+  m_Layer: 10
   m_Name: PushObj
   m_TagString: Pushable
   m_Icon: {fileID: 0}
@@ -108,3 +109,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3992426632414237173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943459798601541497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cccba2621a7dccd4db0e392e7d815a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
