@@ -24,54 +24,72 @@ public class ElephantAnim : MonoBehaviour
     {
         instance ??= this;
     }
-
+    
+    public void Default() 
+    {
+        anim.SetBool("isIdle", true);
+        anim.SetBool("isWalking", false);
+        anim.SetBool("canSeismic", false);
+        anim.SetBool("canStomp", false);
+        anim.SetBool("canPush", false);
+        anim.SetBool("pickUp", false);
+    }
+    
     public void Walk()
     {
         anim.SetBool("isWalking", true);
-        //need to get input here to make the walking true
-        //if (PlayerMovement.instance.isWalking == true)
-        //{
-        //
-        //}
+        anim.SetBool("isIdle", false);
     }
     
     public void Idle()
     {
-        anim.SetBool("isIdle", true);
         anim.SetBool("isWalking", false);
-        // if (PlayerMovement.instance.isWalking == false)
-        // {
-        //     //when no input make walking bool false to make idle anim play
-        //     
-        // }
+        Default();
         
     }
 
     public void Seismic()
     {
-        //anim.SetBool("idle", false);
-        //anim.SetBool("isWalking", false);
         anim.SetBool("canSeismic", true);
+        anim.SetTrigger("canSeismicT"); 
+        //{
+          //  Default();
+        //}
+        
         Debug.Log("SEISMIC ANIM");
     }
 
     public void Push()
     {
-        anim.SetBool("canPush", true);
-        //Debug.Log("PUSHING ANIM");
+        anim.SetTrigger("canPushT");
+        {
+            Default();
+        }
         
-        anim.SetBool("canPushing", false);
     }
 
     public void Stomp()
     {
-        anim.SetBool("canStomp", true);
-        Debug.Log("STOMP ANIM");
+        //need add reference
+        anim.SetTrigger("canStompT");
+        {
+            Default();
+        }
+        //Debug.Log("STOMP ANIM");
     }
 
     public void Pickup()
     {
         anim.SetBool("pickUp", true);
+        anim.SetTrigger("pickUpT");
     }
 
+    public void Putdown()
+    {
+        anim.SetBool("putDown", true);
+        anim.SetTrigger("putDownT");
+        //{
+          //  Default();
+        //}
+    }
 }

@@ -44,7 +44,6 @@ namespace Player {
             {
                 player.GetComponent<ItemStorage>().PickUp(this.gameObject, itemID, itemAmount);
                 isPickedUp = true;
-                ElephantAnim.instance.Pickup();
             }
             else
             {
