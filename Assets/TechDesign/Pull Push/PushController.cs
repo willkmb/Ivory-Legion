@@ -44,7 +44,6 @@ namespace Player
 
             if (isPushing && pushedObj != null)
             {
-                ElephantAnim.instance.Push();
                 MovePushedObject();
             }
         }
