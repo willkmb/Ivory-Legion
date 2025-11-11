@@ -146,14 +146,19 @@ namespace InputManager
                 if (seismicSenseAction.IsPressed())
                 {
                     ElephantAnim.instance.Seismic();
+                    
                     //Seismic Sense Stuff
                     SeismicSenseScript.instance.Reset(); // Resets the particles to center of player 
                     seismicOffCooldown = false;
                     SeismicSenseScript.instance.inProgress = true; // Allows particles of SS to start expanding
                     
                     SeismicSenseScript.instance.StartPulse();
+<<<<<<< HEAD
                 }*/
 
+=======
+                }
+>>>>>>> dd69796deb14946d0ebbb30016c2126be0f59546
         }
 
         public void setMovementAllowed(bool allowed)

@@ -49,6 +49,7 @@ namespace Player {
         // passes an object into item storage to pick it up, and childs it to a storage point
         public void PickUp(GameObject thatObject, int itemID, int itemAmount)
         {
+            ElephantAnim.instance.Pickup();
             QuestManager.instance.AdjustItemToQuestInventory((itemID), itemAmount); // Item ID : Item Amount
             PickUpPutDownScript pickUpPutDownScript = thatObject.GetComponent<PickUpPutDownScript>(); 
             pickUpPutDownScript.RemoveFromAreas(); // Removes self from area Lists - Quests
@@ -95,10 +96,12 @@ namespace Player {
 
             // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
         public void PutDown(GameObject thatobject, int itemID, int itemAmount)
-        {
+        { 
+           // ElephantAnim.instance.Putdown();
            Debug.Log("put down");
             if (itemsInStorage[0] != null)
             {
+                ElephantAnim.instance.Putdown();
                 QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore;
                 Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 0.5f, -1, queryTriggerInteraction);
                 Debug.Log(intersecting.Length);
@@ -139,7 +142,7 @@ namespace Player {
                     itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
                     itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
                 }
-                //PlaySoundSwap();
+               //PlaySoundSwap();
             }
         }
 
@@ -221,18 +224,18 @@ namespace Player {
         void PlaySoundPickUp()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 1.25f, 1.5f, 128);
         }
 
         void PlaySoundPutDown()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1f, 128);
         }
         void PlaySoundSwap()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 0.5f, 0.5f, true, 0.75f, 1.25f, 128);
         }
 
         /*
