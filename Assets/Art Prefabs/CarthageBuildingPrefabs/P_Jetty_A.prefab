@@ -1,0 +1,285 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2208721467160215374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7007164365889187966}
+  m_Layer: 0
+  m_Name: P_Jetty_A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7007164365889187966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2208721467160215374}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.4919, y: 1.90539, z: -1.73415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5851095117887702105}
+  - {fileID: 7301122925051519511}
+  - {fileID: 2653500405437404903}
+  - {fileID: 4617827891890064616}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &748822082855139082
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7007164365889187966}
+    m_Modifications:
+    - target: {fileID: 768346457321421620, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_Name
+      value: P_2x2_Jetty_Wooden (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.9999924
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.0000043
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071061
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710754
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+--- !u!4 &2653500405437404903 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+  m_PrefabInstance: {fileID: 748822082855139082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5468977050651444218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7007164365889187966}
+    m_Modifications:
+    - target: {fileID: 768346457321421620, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_Name
+      value: P_2x2_Jetty_Wooden (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.9999962
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.0000043
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071061
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710754
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+--- !u!4 &7301122925051519511 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+  m_PrefabInstance: {fileID: 5468977050651444218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7972122549620337925
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7007164365889187966}
+    m_Modifications:
+    - target: {fileID: 768346457321421620, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_Name
+      value: P_2x2_Jetty_Wooden (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.9999866
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.0000043
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071061
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710754
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+--- !u!4 &4617827891890064616 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+  m_PrefabInstance: {fileID: 7972122549620337925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9188536462235657652
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7007164365889187966}
+    m_Modifications:
+    - target: {fileID: 768346457321421620, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_Name
+      value: P_2x2_Jetty_Wooden
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0000042915344
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071061
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710754
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+--- !u!4 &5851095117887702105 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3366292531632398829, guid: 5a9e8b83705c3ac4dbd8cc0cd7ac1af9, type: 3}
+  m_PrefabInstance: {fileID: 9188536462235657652}
+  m_PrefabAsset: {fileID: 0}

@@ -18,6 +18,7 @@ public class GameObjectTrigger : MonoBehaviour
             Trigger = true;
 
             //Temp
+            //True
             Destroy(destroyObject);
         }
     }
