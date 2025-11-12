@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4426317467527116431}
   - component: {fileID: 1015346128988537863}
   - component: {fileID: 2768334535424986869}
+  - component: {fileID: 5595283326613132207}
   m_Layer: 10
   m_Name: DestroyItem
   m_TagString: Untagged
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartSoundFileName: FillerSound
   ReadySoundFileName: FillerSound
-  DestroySoundFileName: FillerSound
+  DestroySoundFileName: Sfx_PotBreak
   FailSoundFileName: FillerSound
   timer: 0
   OffMaterial: {fileID: 2100000, guid: 9536acdfbbcefdf4ea8e122d6085b0d2, type: 2}
@@ -176,3 +177,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cccba2621a7dccd4db0e392e7d815a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5595283326613132207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6431349391544612186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6466076fbfdb01948a3c2fb096ce4aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnObj: {fileID: 0}
+  onDestruction: 0
+  onBreak: 0

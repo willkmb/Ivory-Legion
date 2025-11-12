@@ -91,7 +91,7 @@ namespace Player {
                     itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
                 }
             }
-            //PlaySoundPickUp();
+            PlaySoundPickUp();
         }
 
             // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
@@ -116,7 +116,7 @@ namespace Player {
                     itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (halfExtents.y *2), putDownPoint.transform.position.z);
                     itemsInStorage[(int)Storage.Trunk].transform.parent = null;
                     itemsInStorage[(int)Storage.Trunk] = null;
-                    //PlaySoundPutDown();
+                    PlaySoundPutDown();
                 }
             }
         }
@@ -142,7 +142,7 @@ namespace Player {
                     itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
                     itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
                 }
-               //PlaySoundSwap();
+               PlaySoundSwap();
             }
         }
 
@@ -167,7 +167,7 @@ namespace Player {
                     itemsInStorage[(int)Storage.BagRight].transform.position = saddlePointRight.transform.position;
                     itemsInStorage[(int)Storage.BagRight].transform.parent = saddlePointRight.transform;
                 }
-                //PlaySoundSwap();
+                PlaySoundSwap();
             }
         }
 
@@ -186,7 +186,7 @@ namespace Player {
                         itemsInStorage[(int)Storage.Trunk] = null;
                         hatOnHead.transform.position = hatPoint.transform.position;
                         hatOnHead.transform.parent = hatPoint.transform;
-                        //PlaySoundSwap();
+                        PlaySoundSwap();
                     }
                 }
             }
@@ -198,7 +198,7 @@ namespace Player {
                     hatOnHead = null;
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    //PlaySoundSwap();
+                    PlaySoundSwap();
                 }
             }
         }
@@ -224,18 +224,18 @@ namespace Player {
         void PlaySoundPickUp()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 1.25f, 1.5f, 128);
+            AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 0.65f, 0.65f, true, 1.25f, 1.5f, 128);
         }
 
         void PlaySoundPutDown()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1f, 128);
+            AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 0.65f, 0.65f, true, 0.75f, 1f, 128);
         }
         void PlaySoundSwap()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 0.5f, 0.5f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 0.4f, 0.4f, true, 0.75f, 1.25f, 128);
         }
 
         /*
