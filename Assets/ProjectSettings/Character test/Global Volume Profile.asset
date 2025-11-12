@@ -323,7 +323,7 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 3
   focusMode:
     m_OverrideState: 1
     m_Value: 2
@@ -341,7 +341,7 @@ MonoBehaviour:
     m_Value: 3
   farFocusStart:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 37
   farFocusEnd:
     m_OverrideState: 1
     m_Value: 75
@@ -429,16 +429,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   quality:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   intensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   maximumVelocity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 200
   minimumVelocity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 2
   cameraMotionBlur:
     m_OverrideState: 0
@@ -459,7 +459,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   m_SampleCount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 8
 --- !u!114 &5264908025508584340
 MonoBehaviour:
@@ -504,7 +504,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.107
+    m_Value: 0
   xMultiplier:
     m_OverrideState: 1
     m_Value: 1
