@@ -60,7 +60,7 @@ namespace Player {
 
                 itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                 itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0,0,0,0);
+                itemsInStorage[(int)Storage.Trunk].transform.localRotation = pickUpPutDownScript.trunkRotation;
             }
             else
             {
@@ -75,7 +75,7 @@ namespace Player {
 
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
+                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = pickUpPutDownScript.bagRotation;
                 }
                 else if (itemsInStorage[(int)Storage.BagLeft] == null)
                 {
@@ -88,7 +88,7 @@ namespace Player {
 
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
+                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = pickUpPutDownScript.bagRotation;
                 }
             }
             PlaySoundPickUp();
@@ -108,12 +108,12 @@ namespace Player {
                 
                 if (intersecting.Length == 1 || intersecting.Length == 2 || QuestAreaCheck(intersecting, itemsInStorage[(int)Storage.Trunk]))
                 {
-                    Debug.Log("Put down");
-                    Collider col = itemsInStorage[(int)Storage.Trunk].GetComponent<Collider>();
-                    Vector3 halfExtents = new Vector3(col.bounds.extents.x * 0.95f, col.bounds.extents.y, col.bounds.extents.z * 0.95f);
-                    
                     itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
-                    itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (halfExtents.y *2), putDownPoint.transform.position.z);
+                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = new Quaternion(0, 0, 0, 0);
+
+                    BoxCollider col = itemsInStorage[(int)Storage.Trunk].GetComponent<BoxCollider>();
+                    itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (col.size.y/2), putDownPoint.transform.position.z);
+
                     itemsInStorage[(int)Storage.Trunk].transform.parent = null;
                     itemsInStorage[(int)Storage.Trunk] = null;
                     PlaySoundPutDown();
@@ -135,14 +135,16 @@ namespace Player {
                 {
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().trunkRotation;
                 }
 
                 if (itemsInStorage[(int)Storage.BagLeft] != null)
                 {
                     itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
                     itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
+                    itemsInStorage[(int)Storage.BagLeft].transform.localRotation = itemsInStorage[(int)Storage.BagLeft].GetComponent<PickUpPutDownScript>().bagRotation;
                 }
-               PlaySoundSwap();
+                PlaySoundSwap();
             }
         }
 
@@ -160,12 +162,14 @@ namespace Player {
                 {
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().trunkRotation;
                 }
 
                 if (itemsInStorage[(int)Storage.BagRight] != null)
                 {
                     itemsInStorage[(int)Storage.BagRight].transform.position = saddlePointRight.transform.position;
                     itemsInStorage[(int)Storage.BagRight].transform.parent = saddlePointRight.transform;
+                    itemsInStorage[(int)Storage.BagRight].transform.localRotation = itemsInStorage[(int)Storage.BagRight].GetComponent<PickUpPutDownScript>().bagRotation;
                 }
                 PlaySoundSwap();
             }
@@ -186,6 +190,7 @@ namespace Player {
                         itemsInStorage[(int)Storage.Trunk] = null;
                         hatOnHead.transform.position = hatPoint.transform.position;
                         hatOnHead.transform.parent = hatPoint.transform;
+                        hatOnHead.transform.localRotation = new Quaternion(0, 0, 0, 0);
                         PlaySoundSwap();
                     }
                 }
@@ -198,6 +203,7 @@ namespace Player {
                     hatOnHead = null;
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
+                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().trunkRotation;
                     PlaySoundSwap();
                 }
             }
