@@ -101,7 +101,7 @@ namespace SeismicSense
 
         void PlaySoundSeismic()
         {
-            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 0.75f, 0.75f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 0.25f, 0.25f, true, 0.75f, 1.25f, 128);
         }
 
 

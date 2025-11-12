@@ -98,7 +98,7 @@ namespace Player
                 //Debug.Log("Position clear");
                 targetPosition = proposedTarget;
                 isPushing = true;
-                //PlaySoundPush();
+                PlaySoundPush();
                 
             }
             else
@@ -199,8 +199,9 @@ namespace Player
         }
         void PlaySoundPush()
         {
-            Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PushSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            //Debug.Log("playsound");
+            AudioManager.instance.PlayAudio(PushSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1.25f, 128);
         }
+
     }
 }
