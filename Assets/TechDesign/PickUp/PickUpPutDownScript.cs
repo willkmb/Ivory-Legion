@@ -44,10 +44,12 @@ namespace Player {
             {
                 player.GetComponent<ItemStorage>().PickUp(this.gameObject, itemID, itemAmount);
                 isPickedUp = true;
+                this.GetComponent<PromptScript>().thisPrompt.SetActive(false);
             }
             else
             {
                 player.GetComponent<ItemStorage>().PutDown(this.gameObject, itemID, itemAmount);
+                this.GetComponent<PromptScript>().thisPrompt.SetActive(true);
             }        
 
         }

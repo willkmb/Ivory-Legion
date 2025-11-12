@@ -55,6 +55,9 @@ public class Dialogue : MonoBehaviour
         [Header("Change the character image")]
         public Sprite image;
 
+        [Header("TEMPORARY OPTION: Reset Handler after parents speak")]
+        public bool resetHandler = false;
+
         [System.Serializable]
         public class dialogueChoice //creates a class with option and branch index, System.serializable exposes it to the inspector for easy adaptability and modularity
         {
@@ -145,10 +148,13 @@ public class Dialogue : MonoBehaviour
 
     public void HideDialogue()
     {
+        if (GetComponent<PlayParentMovement>() != null)
+        {
+            GetComponent<PlayParentMovement>().move();
+        }
         Debug.Log("Hide");
         GameObject dialogueUI = GameObject.Find("DialogueHolderNew");
         dialogueUI.SetActive(false);
-        branchIndex = startIndex;
         Cursor.lockState = CursorLockMode.None;
         loadSet(DialogueStage); // call this whenever we want it to change to the next set of dialogue
         ShowNextBranch();
@@ -160,8 +166,6 @@ public class Dialogue : MonoBehaviour
         manager.moveAction.Enable();
         NpcTalkTrigger talk = GameObject.FindWithTag("Player").GetComponent<NpcTalkTrigger>();
         talk.exitDialogue();
-
-        if(Cutscene_Gameplay.finishedParent) GameObject.Find("Cutscene_Parade").GetComponent<Cutscene_Gameplay>().resetHandler();
     }
 
     public void UpdateNPCOpinion(string topic)

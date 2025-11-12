@@ -39,7 +39,6 @@ namespace Cutscene
         [SerializeField] private GameObject blocker;
 
         [SerializeField] private GameObject parent;
-        [SerializeField] public static bool finishedParent = false;
 
         private void Awake()
         {
@@ -80,6 +79,13 @@ namespace Cutscene
             Invoke("ParentsWalk", parentWalkTimer); 
             Invoke("HumanWalk", humanWalkTimer); 
             Invoke("StopAnimation", animation.clip.length);
+
+            PromptScript[] promptObjects;
+            promptObjects = FindObjectsByType<PromptScript>(FindObjectsSortMode.None);
+            foreach (var promptObject in promptObjects)
+            {
+                promptObject.thisPrompt.SetActive(false);
+            }
         }
 
         private void ParentsWalk()
@@ -117,23 +123,12 @@ namespace Cutscene
                     Debug.Log("Start dialogue with parents");
                     parent.GetComponent<PromptScript>().thisPrompt.SetActive(true);
                     parent.GetComponent<Dialogue>().enabled = true;
-                    resetHandler();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
             blocker.SetActive(true);
             gameObject.SetActive(false);
-        }
-
-        public void resetHandler()
-        {
-            if (finishedParent)
-            {
-                GameObject handler = GameObject.Find("Handler_AI_NPC");
-                handler.GetComponentInParent<PromptScript>().thisPrompt.SetActive(true);
-                handler.GetComponentInParent<Dialogue>().enabled = true;
-            }
         }
 
         /*private IEnumerator PauseParentsForDialogue(NpcManager VARIABLE,float timeLocal)

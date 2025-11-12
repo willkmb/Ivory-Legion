@@ -14,6 +14,7 @@ public class HandlerMoveScript : MonoBehaviour
     private bool isVisible;
     private bool waitingToMove;
     public GameObject di;
+    private bool enabled = false;
 
     [System.Serializable]
     public class pointClass
@@ -42,12 +43,6 @@ public class HandlerMoveScript : MonoBehaviour
         if (currentIndex > points.Count - 1) return;
         if (moving) isMoving();
         if (moving) this.GetComponent<PromptScript>().thisPrompt.SetActive(false); else { this.GetComponent<Dialogue>().loadSet(points[currentIndex].dialogueSet); }
-        if (!moving && di.activeInHierarchy == false && points[currentIndex].showPromptWhenReach) this.GetComponent<PromptScript>().thisPrompt.SetActive(true);
-        if (!moving && points[currentIndex].showPromptWhenReach == false) this.GetComponent<Dialogue>().enabled = false;
-        if (!moving && points[currentIndex].showPromptWhenReach) this.GetComponent<Dialogue>().enabled = true;
-        bool enabled = false;
-        if (!moving && points[currentIndex].enableCut && !enabled) {GameObject.Find("Cutscene_Parade").GetComponent<Collider>().enabled = true; enabled = true; }
-        if (!moving && points[currentIndex].moveAgainAfter) moveAgain();
     }
 
     public void isMoving()
@@ -63,6 +58,12 @@ public class HandlerMoveScript : MonoBehaviour
         {
             moving = false;
             startPos = this.transform.position;
+
+            if (di.activeInHierarchy == false && points[currentIndex].showPromptWhenReach) this.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+            if (points[currentIndex].showPromptWhenReach == false) this.GetComponent<Dialogue>().enabled = false;
+            if (points[currentIndex].showPromptWhenReach) this.GetComponent<Dialogue>().enabled = true;
+            if (points[currentIndex].enableCut && !enabled) { GameObject.Find("Cutscene_Parade").GetComponent<Collider>().enabled = true; enabled = true; }
+            if (points[currentIndex].moveAgainAfter) moveAgain();
         }
     }
 
