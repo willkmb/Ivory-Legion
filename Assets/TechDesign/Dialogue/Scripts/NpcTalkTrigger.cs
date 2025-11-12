@@ -6,6 +6,7 @@ using TMPro;
 using Player;
 using InputManager;
 using Npc.AI;
+using SeismicSense;
 
 public class NpcTalkTrigger : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class NpcTalkTrigger : MonoBehaviour
     [HideInInspector] public GameObject collidedWith = null;
     private GameObject prompt;
     private HandlerMoveScript handler;
+    bool talking = false;
 
    // private bool bubbleEnabled = false;
     void Start()
@@ -39,8 +41,9 @@ public class NpcTalkTrigger : MonoBehaviour
         {
             if (inTrigger == true)
             {
-                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3)) //&& !bubble.enabled;
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3) && !talking) //&& !bubble.enabled;
                 {
+                    talking = true;
                     Debug.Log("Pressed");
                     if (collidedWith != null)
                     {
@@ -65,6 +68,8 @@ public class NpcTalkTrigger : MonoBehaviour
                     manager.movementAllowed = false;
                     manager.interactionAllowed = false;
                     manager.moveAction.Disable();
+
+                    FindAnyObjectByType<SeismicSenseScript>().gameObject.SetActive(false);
                     
                     
                     NpcManager npcManager = collidedWith.transform.GetComponent<NpcManager>();
@@ -96,6 +101,8 @@ public class NpcTalkTrigger : MonoBehaviour
         manager.movementAllowed = true;
         manager.interactionAllowed = true;
         manager.moveAction.Enable();
+        talking = false;
+        FindAnyObjectByType<SeismicSenseScript>().gameObject.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)

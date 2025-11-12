@@ -192,17 +192,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
---- !u!114 &10858863 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8275824274102106002, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
-  m_PrefabInstance: {fileID: 10858862}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d52acfd14a8c1a428d42f057a0b1999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &10858864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7220146650339446542, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
@@ -227,7 +216,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -68.03
@@ -401,7 +390,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -66.31999
@@ -862,7 +851,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 375782307}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1024,7 +1013,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 1, y: 1}
+  m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -1147,7 +1136,7 @@ MonoBehaviour:
   m_LightAngle: 1
   m_MaxDepthBias: 0.001
   m_ShadowResolution:
-    m_Override: 512
+    m_Override: 16
     m_UseOverride: 1
     m_Level: 0
   m_ShadowDimmer: 1
@@ -1249,7 +1238,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 375782307}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1359,7 +1348,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1394,7 +1383,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -79.75
@@ -1512,7 +1501,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 10858863}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1662,17 +1651,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
---- !u!114 &375782307 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8275824274102106002, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
-  m_PrefabInstance: {fileID: 375782306}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d52acfd14a8c1a428d42f057a0b1999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &375782308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7220146650339446542, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
@@ -1697,7 +1675,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -67.899994
@@ -1966,7 +1944,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 1120016054}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2203,7 +2181,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -67.25
@@ -2322,7 +2300,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 1120016054}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2512,7 +2490,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 10858863}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2587,7 +2565,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 10858863}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2740,17 +2718,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
---- !u!114 &764997644 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8275824274102106002, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
-  m_PrefabInstance: {fileID: 764997643}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d52acfd14a8c1a428d42f057a0b1999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &764997645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7220146650339446542, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
@@ -2771,7 +2738,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -79.75
@@ -3008,7 +2975,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -67.729996
@@ -3091,7 +3058,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -68.03
@@ -3210,7 +3177,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 375782307}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3386,7 +3353,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 1120016054}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3711,7 +3678,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -68.17
@@ -3848,17 +3815,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
---- !u!114 &1120016054 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8275824274102106002, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
-  m_PrefabInstance: {fileID: 1120016053}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d52acfd14a8c1a428d42f057a0b1999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1120016055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7220146650339446542, guid: df1e3315733e0a947b2cefcd53462c84, type: 3}
@@ -4278,7 +4234,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 1120016054}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4487,7 +4443,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -67.869995
@@ -5075,7 +5031,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 375782307}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -5171,7 +5127,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -112.56
@@ -5355,7 +5311,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 1120016054}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -5435,7 +5391,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 1120016054}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -5883,7 +5839,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 375782307}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6223,7 +6179,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -68.08
@@ -6438,7 +6394,7 @@ PrefabInstance:
     - target: {fileID: 7914732892682677126, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 10858863}
+      objectReference: {fileID: 0}
     - target: {fileID: 8663404028301476491, guid: f79d36d51fc317d469d68e16f3c867d0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6477,7 +6433,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -68.23999
@@ -6560,7 +6516,7 @@ PrefabInstance:
     - target: {fileID: 4077578447017283574, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: markerPointZone
       value: 
-      objectReference: {fileID: 764997644}
+      objectReference: {fileID: 0}
     - target: {fileID: 4408025043076377308, guid: 0caa12b40e470654bb830d922e46187e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -67.33
@@ -6836,7 +6792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &5470683545262548742
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7113,6 +7069,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 16777215
       objectReference: {fileID: 0}
+    - target: {fileID: 5051402638810334552, guid: 6437e231c910a324299df444e2ac83ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5220786813474329320, guid: 6437e231c910a324299df444e2ac83ac, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 16777215
@@ -7144,6 +7104,10 @@ PrefabInstance:
     - target: {fileID: 7546595864626480704, guid: 6437e231c910a324299df444e2ac83ac, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606653484043109014, guid: 6437e231c910a324299df444e2ac83ac, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7836699969784666837, guid: 6437e231c910a324299df444e2ac83ac, type: 3}
       propertyPath: m_Animations.Array.size
