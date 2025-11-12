@@ -32,6 +32,6 @@ public class PromptScript : MonoBehaviour
 
     public void populate()
     {
-        if (this.CompareTag("NPC")) thisPrompt = Instantiate(Prompt, rootPrompt);
+        if (this.CompareTag("NPC") || this.CompareTag("Pushable") || this.CompareTag("Interactable")) thisPrompt = Instantiate(Prompt, rootPrompt);
     }
 }

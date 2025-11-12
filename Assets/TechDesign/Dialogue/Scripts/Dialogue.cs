@@ -145,7 +145,8 @@ public class Dialogue : MonoBehaviour
 
     public void HideDialogue()
     {
-        GameObject dialogueUI = GameObject.Find("DialogueHolder");
+        Debug.Log("Hide");
+        GameObject dialogueUI = GameObject.Find("DialogueHolderNew");
         dialogueUI.SetActive(false);
         branchIndex = startIndex;
         Cursor.lockState = CursorLockMode.None;

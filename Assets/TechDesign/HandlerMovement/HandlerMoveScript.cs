@@ -39,13 +39,14 @@ public class HandlerMoveScript : MonoBehaviour
 
     private void Update()
     {
-        if (currentIndex > points.Count -1) return;
+        if (currentIndex > points.Count - 1) return;
         if (moving) isMoving();
-        if(moving) this.GetComponent<PromptScript>().thisPrompt.SetActive(false); else { this.GetComponent<Dialogue>().loadSet(points[currentIndex].dialogueSet); }
-        if(!moving && di.activeInHierarchy == false && points[currentIndex].showPromptWhenReach) this.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+        if (moving) this.GetComponent<PromptScript>().thisPrompt.SetActive(false); else { this.GetComponent<Dialogue>().loadSet(points[currentIndex].dialogueSet); }
+        if (!moving && di.activeInHierarchy == false && points[currentIndex].showPromptWhenReach) this.GetComponent<PromptScript>().thisPrompt.SetActive(true);
         if (!moving && points[currentIndex].showPromptWhenReach == false) this.GetComponent<Dialogue>().enabled = false;
         if (!moving && points[currentIndex].showPromptWhenReach) this.GetComponent<Dialogue>().enabled = true;
-        if (!moving && points[currentIndex].enableCut) GameObject.Find("Cutscene_Parade").GetComponent<Collider>().enabled = true;
+        bool enabled = false;
+        if (!moving && points[currentIndex].enableCut && !enabled) {GameObject.Find("Cutscene_Parade").GetComponent<Collider>().enabled = true; enabled = true; }
         if (!moving && points[currentIndex].moveAgainAfter) moveAgain();
     }
 
