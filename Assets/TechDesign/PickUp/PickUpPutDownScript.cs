@@ -13,20 +13,25 @@ namespace Player {
         [SerializeField] private int itemAmount;
     
         // variables in inspector
-        [SerializeField] GameObject PutDownPoint;
         public bool isHat;
+        public Quaternion trunkRotation;
+        public Quaternion bagRotation;
+
 
         // private variables
         GameObject player;
         public bool isPickedUp;
+
         
         // Quest // - Attaches to area if placed - If obj picked up remove self from area
         [HideInInspector] public List<Quest_AreaFill> questAreaList;
+        private GameObject water;
         
 
         private void Awake()
         {
             instance ??= this;
+            water = GameObject.Find("OceanMesh");
         }
     
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,11 +49,20 @@ namespace Player {
             {
                 player.GetComponent<ItemStorage>().PickUp(this.gameObject, itemID, itemAmount);
                 isPickedUp = true;
+                this.GetComponent<PromptScript>().thisPrompt.SetActive(false);
             }
             else
             {
-                player.GetComponent<ItemStorage>().PutDown(this.gameObject, itemID, itemAmount);
-            }        
+                RaycastHit hit;
+                if (Physics.Raycast(this.transform.position, Vector3.down, out hit, 50f))
+                {
+                    if (hit.collider.gameObject != water)
+                    {
+                        player.GetComponent<ItemStorage>().PutDown(this.gameObject, itemID, itemAmount);
+                        if (this.GetComponent<PromptScript>().enabled) this.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+                    }
+                }
+            }
 
         }
 

@@ -1,14 +1,14 @@
+using Cutscene;
+using InputManager;
+using Npc.AI;
+using Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Linq;
-using Npc.AI;
-using Player;
-using InputManager;
-using Cutscene;
 
 public class Dialogue : MonoBehaviour
 {
@@ -54,6 +54,9 @@ public class Dialogue : MonoBehaviour
         public string dialogueTextContent;
         [Header("Change the character image")]
         public Sprite image;
+        [Header("Manually choose branch for cursor")]
+        public bool manualCursor = false;
+        public int nextBranch;
 
         [System.Serializable]
         public class dialogueChoice //creates a class with option and branch index, System.serializable exposes it to the inspector for easy adaptability and modularity
@@ -126,9 +129,10 @@ public class Dialogue : MonoBehaviour
             }
 
             GameObject cursorObj = null;
-            if (branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1) cursorObj = Instantiate(cursor, cursorRoot.transform); //if on the last dialogue in the list, spawn arrow that closes dialogue
+            if (branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1 && DialogueSets[DialogueStage].Dialogues[branchIndex].manualCursor == false) cursorObj = Instantiate(cursor, cursorRoot.transform); //if on the last dialogue in the list, spawn arrow that closes dialogue
             if (cursorObj != null) { cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { HideDialogue(); }); return; } // set the action of the button to close dialogue 
-
+            if (DialogueSets[DialogueStage].Dialogues[branchIndex].manualCursor) cursorObj = Instantiate(cursor, cursorRoot.transform);
+            if (cursorObj != null) { cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex = DialogueSets[DialogueStage].Dialogues[branchIndex].nextBranch; ShowNextBranch(); }); return; }
             if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
             if (cursorObj != null) cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex++; ShowNextBranch(); }); // set the action of the button to go to the next branch
 
@@ -145,9 +149,13 @@ public class Dialogue : MonoBehaviour
 
     public void HideDialogue()
     {
-        GameObject dialogueUI = GameObject.Find("DialogueHolder");
+        if (GetComponent<PlayParentMovement>() != null && GetComponent<PlayParentMovement>().enabled)
+        {
+            GetComponent<PlayParentMovement>().move();
+        }
+        Debug.Log("Hide");
+        GameObject dialogueUI = GameObject.Find("DialogueHolderNew");
         dialogueUI.SetActive(false);
-        branchIndex = startIndex;
         Cursor.lockState = CursorLockMode.None;
         loadSet(DialogueStage); // call this whenever we want it to change to the next set of dialogue
         ShowNextBranch();
@@ -159,8 +167,6 @@ public class Dialogue : MonoBehaviour
         manager.moveAction.Enable();
         NpcTalkTrigger talk = GameObject.FindWithTag("Player").GetComponent<NpcTalkTrigger>();
         talk.exitDialogue();
-
-        if(Cutscene_Gameplay.finishedParent) GameObject.Find("Cutscene_Parade").GetComponent<Cutscene_Gameplay>().resetHandler();
     }
 
     public void UpdateNPCOpinion(string topic)

@@ -16,6 +16,10 @@ namespace Quests
         [SerializeField] private QuestCompletionEvent questCompletionEvent;
         [SerializeField] private List<GameObject> unlockAreas = new List<GameObject>();
 
+        [Header("Timing")]
+        public GameObject handler;
+        public GameObject parent;
+
         private void Awake()
         {
           //  itemsRequiredUsedList = itemsRequired;
@@ -31,7 +35,9 @@ namespace Quests
                {
                    currentItemsInArea.Add(itemObj);
                    itemsRequiredUsedList.Remove(itemID);
-               }
+
+                   itemObj.GetComponent<PromptScript>().enabled = false;
+                }
            }
            
            if (itemsRequiredUsedList.Count <= 0)
@@ -41,6 +47,12 @@ namespace Quests
         private void ItemsCollected()
         {
             Debug.Log("Items collected");
+            handler.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+            handler.GetComponent<Dialogue>().enabled = true;
+            parent.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+            parent.GetComponent <Dialogue>().enabled = true;
+            parent.GetComponent<Dialogue>().loadSet(1);
+            parent.GetComponent<PlayParentMovement>().enabled = false;
             switch (questCompletionEvent)
             {
                 case QuestCompletionEvent.UnlockArea:

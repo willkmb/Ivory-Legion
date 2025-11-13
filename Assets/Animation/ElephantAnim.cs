@@ -72,6 +72,7 @@ public class ElephantAnim : MonoBehaviour
     {
         //need add reference
         anim.SetTrigger("canStompT");
+        anim.SetBool("canStop", true);
         {
             Default();
         }

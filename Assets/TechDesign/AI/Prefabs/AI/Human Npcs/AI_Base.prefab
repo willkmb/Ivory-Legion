@@ -222,6 +222,7 @@ MonoBehaviour:
     - name: Gisgo
       dialogueTextContent: Set 1 - Dialogue 1
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      resetHandler: 0
       choices:
       - choiceTextContent: Option 1 - War
         choiceTopic: War
@@ -234,14 +235,17 @@ MonoBehaviour:
     - name: Hannibal
       dialogueTextContent: Set 1 - Dialogue 2
       image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      resetHandler: 0
       choices: []
     - name: Gisgo
       dialogueTextContent: Set 1 - Dialogue 3
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      resetHandler: 0
       choices: []
     - name: Hannibal
       dialogueTextContent: Set 1 - Dialogue 4
       image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      resetHandler: 0
       choices:
       - choiceTextContent: Option 1 - War
         choiceTopic: War
@@ -258,11 +262,13 @@ MonoBehaviour:
     - name: Gisgo
       dialogueTextContent: Set 1 - Dialogue 5
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      resetHandler: 0
       choices: []
   - Dialogues:
     - name: Gisgo
       dialogueTextContent: Set 2 - Dialogue 1
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      resetHandler: 0
       choices:
       - choiceTextContent: Option 1 - War
         choiceTopic: War
@@ -275,14 +281,17 @@ MonoBehaviour:
     - name: Hannibal
       dialogueTextContent: Set 2 - Dialogue 2
       image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      resetHandler: 0
       choices: []
     - name: Gisgo
       dialogueTextContent: Set 2 - Dialogue 3
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      resetHandler: 0
       choices: []
     - name: Hannibal
       dialogueTextContent: Set 2 - Dialogue 4
       image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
+      resetHandler: 0
       choices:
       - choiceTextContent: Option 1 - War
         choiceTopic: War
@@ -299,6 +308,7 @@ MonoBehaviour:
     - name: Gisgo
       dialogueTextContent: Set 2 - Dialogue 5
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
+      resetHandler: 0
       choices: []
   startIndex: 0
   branchIndex: 0
@@ -391,6 +401,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1702402034501423280, guid: ddac4441d9b92b841a1ae27ceb805592, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 014fc7ffabf778b48978575a8055ad80, type: 3}
+    - target: {fileID: -1702402034501423280, guid: ddac4441d9b92b841a1ae27ceb805592, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 6d1659f49e0e2ee4ea7ce847f51ab28a, type: 3}
     - target: {fileID: 919132149155446097, guid: ddac4441d9b92b841a1ae27ceb805592, type: 3}
       propertyPath: m_Name
       value: Male Walk
@@ -461,6 +479,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Female Walk
       objectReference: {fileID: 0}
+    - target: {fileID: 5748711575877550709, guid: a35a06ed89a59b846910b1fe8fae4083, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 3a16ce253d71b2a42b8e25bd46641ee4, type: 3}
+    - target: {fileID: 5748711575877550709, guid: a35a06ed89a59b846910b1fe8fae4083, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 3fa6ffc2deae7fe4fbfd7f8df23e44f8, type: 3}
     - target: {fileID: 5866666021909216657, guid: a35a06ed89a59b846910b1fe8fae4083, type: 3}
       propertyPath: m_Controller
       value: 

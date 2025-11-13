@@ -63,7 +63,7 @@ namespace Player
                 }
                 if (!isWalkSoundPlaying)
                 {
-                    //PlaySoundWalk();  
+                    PlaySoundWalk();  
                     isWalkSoundPlaying = true; //<-- and ^ sounds for walking - Emily
                 }
             }
@@ -137,7 +137,7 @@ namespace Player
         }
         void PlaySoundWalk() // - Emily, sounds
         {
-            AudioManager.instance.PlayAudio(WalkSoundFileName, transform.position, false, false, false, 0.25f, 0.4f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(WalkSoundFileName, transform.position, false, false, false, 0.5f, 0.6f, true, 0.5f, 1f, 128);
             Invoke("SoundPlayingFalse", 0.75f);
         }
 

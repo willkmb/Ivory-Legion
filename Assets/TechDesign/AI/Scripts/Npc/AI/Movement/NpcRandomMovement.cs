@@ -13,6 +13,7 @@ namespace Npc.AI.Movement
         [Header("FALSE = Start Pos, TRUE = Current Pos")]
         [SerializeField] private bool radiusOnSelf;
         private Vector3 _radiusPosition;
+        [Range(0f, 25f)] [SerializeField] private float cooldown;
         
         //Scripts
         private NpcManager _npcManager;
@@ -107,7 +108,7 @@ namespace Npc.AI.Movement
                 && Math.Abs(_npcManager.agent.transform.position.z - _movePos.z) < 0.1f && Math.Abs((_npcManager.agent.transform.position.y - _movePos.y)) < 1.5f)
             {
                 NpcEvents.instance.NpcCheckArrivalEvent -= ArrivalChecker;
-                GetRandomlocation();
+                Invoke("GetRandomlocation", cooldown);
             }
         }
     }
