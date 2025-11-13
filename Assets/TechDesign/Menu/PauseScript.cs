@@ -7,6 +7,7 @@ using InputManager;
 public class PauseScript : MonoBehaviour
 {
     public GameObject pause;
+    public GameObject di;
     private bool isPaused = false;
 
     [Header("Anim Elements")]
@@ -72,12 +73,6 @@ public class PauseScript : MonoBehaviour
         NpcTalkTrigger tt = GameObject.FindWithTag("Player").GetComponent<NpcTalkTrigger>();
         tt.enabled = true;
         manager.enabled = true;
-        manager.movementAllowed = true;
-        manager.interactionAllowed = true;
-        manager.moveAction.Enable();
-
-        ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>();
-        cursor.CursorState(false);
 
         tint1.GetComponent<Animation>().Play("TintAnimOut");
         pattern.GetComponent<Animation>().Play("TintAnimOut");
@@ -93,6 +88,14 @@ public class PauseScript : MonoBehaviour
         button2Text.GetComponent<Animation>().Play("BottomButtonTextOut");
         button3Text.GetComponent<Animation>().Play("BottomButtonTextOut");
         Invoke("Hide", 1f);
+
+        if (!di.activeInHierarchy)
+        {
+            ControllerCursor cursor = GameObject.Find("ContCursor").GetComponent<ControllerCursor>(); cursor.CursorState(false);
+            manager.movementAllowed = true;
+            manager.interactionAllowed = true;
+            manager.moveAction.Enable();
+        }
     }
 
     void Hide()

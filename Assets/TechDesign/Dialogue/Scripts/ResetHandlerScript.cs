@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 public class ResetHandlerScript : MonoBehaviour
@@ -18,10 +19,19 @@ public class ResetHandlerScript : MonoBehaviour
     {
         handler.GetComponent<PromptScript>().thisPrompt.SetActive(true);
         handler.GetComponent<Dialogue>().enabled = true;
+        pushObject.tag = "Pushable";
         pushObject.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+    }
+
+    void startVase()
+    {
         pickup1.GetComponent<PromptScript>().thisPrompt.SetActive(true);
         pickup2.GetComponent<PromptScript>().thisPrompt.SetActive(true);
         pickup3.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+
+        pickup1.GetComponent<PickUpPutDownScript>().enabled = true;
+        pickup2.GetComponent<PickUpPutDownScript>().enabled = true;
+        pickup3.GetComponent<PickUpPutDownScript>().enabled = true;
     }
 
     void hidePickup()
@@ -29,5 +39,11 @@ public class ResetHandlerScript : MonoBehaviour
         pickup1.GetComponent<PromptScript>().thisPrompt.SetActive(false);
         pickup2.GetComponent<PromptScript>().thisPrompt.SetActive(false);
         pickup3.GetComponent<PromptScript>().thisPrompt.SetActive(false);
+    }
+
+    private void Update()
+    {
+        PushController push = GameObject.FindWithTag("Player").GetComponent<PushController>();
+        if (push.pushedOnce) { pushObject.GetComponent<PromptScript>().thisPrompt.SetActive(false); startVase(); return; }
     }
 }

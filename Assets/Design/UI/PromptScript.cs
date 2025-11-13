@@ -1,3 +1,4 @@
+using InputManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +10,12 @@ public class PromptScript : MonoBehaviour
     public Transform rootPrompt;
     [Range(0, 20)]
     public float YOffset = 0;
+
+    private PlayerManager playerManager;
     void Awake()
     {
         populate();
+        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
     }
 
     void Update()
@@ -21,8 +25,7 @@ public class PromptScript : MonoBehaviour
         {
             thisPrompt.GetComponent<Image>().enabled = true;
             Vector3 MarkerPos = new Vector3(this.transform.position.x, this.transform.position.y + YOffset, this.transform.position.z);
-            Vector3 pos = Camera.main.WorldToScreenPoint(MarkerPos);
-            thisPrompt.transform.position = pos;
+            if (!playerManager.inCutscene) { Vector3 pos = Camera.main.WorldToScreenPoint(MarkerPos); thisPrompt.transform.position = pos; }
         }
         else
         {
@@ -32,6 +35,6 @@ public class PromptScript : MonoBehaviour
 
     public void populate()
     {
-        if (this.CompareTag("NPC") || this.CompareTag("Pushable") || this.CompareTag("Interactable")) thisPrompt = Instantiate(Prompt, rootPrompt);
+        thisPrompt = Instantiate(Prompt, rootPrompt);
     }
 }
