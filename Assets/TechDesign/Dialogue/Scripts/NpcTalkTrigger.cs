@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cutscene;
-using UnityEngine;
-using TMPro;
-using Player;
 using InputManager;
 using Npc.AI;
+using Player;
 using SeismicSense;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using Unity.Android.Gradle;
+using UnityEngine;
 
 public class NpcTalkTrigger : MonoBehaviour
 {
@@ -20,16 +21,15 @@ public class NpcTalkTrigger : MonoBehaviour
     private GameObject prompt;
     private HandlerMoveScript handler;
     bool talking = false;
+    private bool bubbleEnabled = false;
 
     [Header("Animations")]
     Animator anim;
-
-    // private bool bubbleEnabled = false;
     void Start()
     {
         triggerScript = GetComponentInChildren<TriggerScript>();
         dialogueUI.SetActive(false);
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -37,15 +37,13 @@ public class NpcTalkTrigger : MonoBehaviour
         Interact();
     }
 
-
-    // ReSharper disable Unity.PerformanceAnalysis
     void Interact()
     {
         if (triggerScript != null)
         {
             if (inTrigger == true)
             {
-                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3) && !talking && collidedWith.GetComponentInParent<Dialogue>().enabled) //&& !bubble.enabled;
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3) && !talking && collidedWith.GetComponentInParent<Dialogue>().enabled && !bubbleEnabled) //&& !bubble.enabled;
                 {
                     talking = true;
                     Debug.Log("Pressed");
@@ -117,23 +115,23 @@ public class NpcTalkTrigger : MonoBehaviour
         {
             inTrigger = true;
             collidedWith = other.gameObject;
-            //if (collidedWith.GetComponent<BubbleScript>() != null && collidedWith.GetComponent<BubbleScript>().enabled)
-            //{
-                //bubbleEnabled = true;
-                //collidedWith.GetComponent<BubbleScript>().pickLine();
-                //bubbleUI.SetActive(true);
-            //}
+            if (collidedWith.GetComponent<BubbleScript>() != null && collidedWith.GetComponent<BubbleScript>().enabled)
+            {
+                bubbleEnabled = true;
+                collidedWith.GetComponent<BubbleScript>().pickLine();
+                bubbleUI.SetActive(true);
+            }
         }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "NPC")
         {
-            //if (collidedWith.GetComponent<BubbleScript>() != null)
-            //{
-            //bubbleEnabled = false;
-            //bubbleUI.SetActive(false);
-            //}
+            if (collidedWith.GetComponent<BubbleScript>() != null)
+            {
+                bubbleEnabled = false;
+                bubbleUI.SetActive(false);
+            }
             dialogue = other.GetComponentInParent<Dialogue>();
             if (dialogue != null) { dialogue.branchIndex = dialogue.startIndex; }
             inTrigger = false;
