@@ -34,17 +34,11 @@ public class BubbleScript : MonoBehaviour
     {
         GameObject elephant = GameObject.FindGameObjectWithTag("Player");
         collidedWith = elephant.GetComponent<NpcTalkTrigger>().collidedWith;
-        bool inTrigger = elephant.GetComponent<NpcTalkTrigger>().inTrigger;
-        if (inTrigger && collidedWith != null)
+        inTrigger = elephant.GetComponent<NpcTalkTrigger>().inTrigger;
+        if (inTrigger && collidedWith != null && collidedWith.GetComponent<BubbleScript>() != null)
         {
-            Renderer rend = collidedWith.GetComponent<Renderer>(); // if npc is visible
-            bool isVisible = rend.isVisible;
-            if (isVisible)
-            {
-                MarkerLoc = collidedWith.transform.Find("MarkerLoc").gameObject;
-                Vector3 pos = Camera.main.WorldToScreenPoint(MarkerLoc.transform.position);
-                bubble.transform.position = pos; // set the speech bubble to match position of npc
-            }
+            MarkerLoc = collidedWith.transform.Find("MarkerLoc").gameObject;
+            if (MarkerLoc != null) { Vector3 pos = Camera.main.WorldToScreenPoint(MarkerLoc.transform.position); bubble.transform.position = pos; } // set the speech bubble to match position of npc
         }
     }
 

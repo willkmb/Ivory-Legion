@@ -8,6 +8,7 @@ public class ResetHandlerScript : MonoBehaviour
     public GameObject pickup1;
     public GameObject pickup2;
     public GameObject pickup3;
+    bool pushed = false;
 
 
     private void Start()
@@ -44,6 +45,6 @@ public class ResetHandlerScript : MonoBehaviour
     private void Update()
     {
         PushController push = GameObject.FindWithTag("Player").GetComponent<PushController>();
-        if (push.pushedOnce) { pushObject.GetComponent<PromptScript>().thisPrompt.SetActive(false); startVase(); return; }
+        if (push.pushedOnce && !pushed) { pushObject.GetComponent<PromptScript>().thisPrompt.SetActive(false); startVase(); pushed = true; return; }
     }
 }
