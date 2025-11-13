@@ -21,11 +21,15 @@ public class NpcTalkTrigger : MonoBehaviour
     private HandlerMoveScript handler;
     bool talking = false;
 
-   // private bool bubbleEnabled = false;
+    [Header("Animations")]
+    Animator anim;
+
+    // private bool bubbleEnabled = false;
     void Start()
     {
         triggerScript = GetComponentInChildren<TriggerScript>();
         dialogueUI.SetActive(false);
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -70,8 +74,10 @@ public class NpcTalkTrigger : MonoBehaviour
                     manager.moveAction.Disable();
 
                     FindAnyObjectByType<SeismicSenseScript>().gameObject.SetActive(false);
-                    
-                    
+                    anim.SetBool("isIdle", true);
+                    anim.SetBool("isWalking", false);
+
+
                     NpcManager npcManager = collidedWith.transform.GetComponent<NpcManager>();
                     if (npcManager != null)
                     {

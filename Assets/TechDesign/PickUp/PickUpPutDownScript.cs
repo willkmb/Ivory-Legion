@@ -25,11 +25,13 @@ namespace Player {
         
         // Quest // - Attaches to area if placed - If obj picked up remove self from area
         [HideInInspector] public List<Quest_AreaFill> questAreaList;
+        private GameObject water;
         
 
         private void Awake()
         {
             instance ??= this;
+            water = GameObject.Find("OceanMesh");
         }
     
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -51,9 +53,16 @@ namespace Player {
             }
             else
             {
-                player.GetComponent<ItemStorage>().PutDown(this.gameObject, itemID, itemAmount);
-                this.GetComponent<PromptScript>().thisPrompt.SetActive(true);
-            }        
+                RaycastHit hit;
+                if (Physics.Raycast(this.transform.position, Vector3.down, out hit, 50f))
+                {
+                    if (hit.collider.gameObject != water)
+                    {
+                        player.GetComponent<ItemStorage>().PutDown(this.gameObject, itemID, itemAmount);
+                        if (this.GetComponent<PromptScript>().enabled) this.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+                    }
+                }
+            }
 
         }
 

@@ -31,7 +31,9 @@ namespace Quests
                {
                    currentItemsInArea.Add(itemObj);
                    itemsRequiredUsedList.Remove(itemID);
-               }
+
+                   itemObj.GetComponent<PromptScript>().enabled = false;
+                }
            }
            
            if (itemsRequiredUsedList.Count <= 0)

@@ -30,7 +30,9 @@ namespace Player
         private Vector3 lastCheckOrigin;
         private Vector3 lastHalfExtents;
         private bool lastPathClear;
-        
+
+        [Header("For Timing")]
+        public bool pushedOnce = false;
         
 
         private void Awake()
@@ -121,6 +123,7 @@ namespace Player
                     Mathf.Round(targetPosition.y * 1000f) / 1000f, Mathf.Round(targetPosition.z * 1000f) / 1000f);
 
                 isPushing = false;
+                if(pushedObj == GameObject.Find("PushObj-Warehouse")) pushedOnce = true;
             }
         }
 
