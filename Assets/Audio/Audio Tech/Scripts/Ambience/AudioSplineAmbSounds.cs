@@ -48,14 +48,19 @@ namespace Audio
 
         private void RandomSplineSound()
         {
+            var position = PlayerManager.instance.transform.position;
+            SplineUtility.GetNearestPoint(Spline.Spline, position, out float3 nearest, out float normalisedCurvePos);
+            float distanceFromPlayer = Vector3.Distance(position, nearest);
+            if (distanceFromPlayer > maxVolumeDistance)
+                return;
+
+            
             string chosenAudioName;
             //Gets random audio
             if(splineSoundsList.Count <= 1)
                 chosenAudioName = splineSoundsList[0]; //Prevents game from breaking
             else
                 chosenAudioName = splineSoundsList[Random.Range(0, splineSoundsList.Count)];
-
-            //SplineUtility.GetNearestPoint(Spline.Spline, tempPlayer.transform.position, out float3 nearest, out float normalisedCurvePos);
             
             // Gets closest knot to the players current position
             float smallestDistance = Mathf.Infinity;
