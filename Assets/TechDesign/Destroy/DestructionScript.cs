@@ -89,6 +89,7 @@ public class DestructionScript : MonoBehaviour, IInteractable
     {
         if (!isDestroyed)
         {
+            ElephantAnim.instance.Stomp();
             Debug.Log(isStartDestruct + " - start destruct");
             PlaySoundStart();
             isStartDestruct = true;
