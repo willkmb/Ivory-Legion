@@ -103,7 +103,7 @@ namespace Player {
             {
                 ElephantAnim.instance.Putdown();
                 QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore;
-                Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 0.5f, -1, queryTriggerInteraction);
+                Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 1f, -1, queryTriggerInteraction);
                 Debug.Log(intersecting.Length);
                 
                 if (intersecting.Length == 1 || intersecting.Length == 2 || QuestAreaCheck(intersecting, itemsInStorage[(int)Storage.Trunk]))

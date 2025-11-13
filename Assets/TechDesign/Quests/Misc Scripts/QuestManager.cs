@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Player;
 using UnityEngine;
 
 namespace Quests
@@ -29,11 +27,11 @@ namespace Quests
         public Dictionary<int, GameObject> questItemIDDataBase = new Dictionary<int, GameObject>(); // Used to call ID of item, to beu sed in various quests
         public Dictionary<int, int> questPlayerInventory = new Dictionary<int, int>(); // ITEM ID : ITEM COUNT
         
-        public Dictionary<string, Mesh> playerMeshesDataBase = new Dictionary<string, Mesh>(); // ITEM ID : ITEM COUNT
+        public Dictionary<string, Mesh> playerMeshesDataBase = new Dictionary<string, Mesh>(); // ITEM ID : MESH
         
         [Header("Items in this scene")]
         [Header("Each ID only needed once")]
-        [SerializeField] private List<int> itemIDs = new List<int>();
+        [SerializeField] private List<int> itemIds = new List<int>();
         [SerializeField] private List<GameObject> itemsInArea = new List<GameObject>();
 
         private void Awake()
@@ -46,9 +44,9 @@ namespace Quests
 
         private void Start()
         {
-            for (int i = 0; i < itemIDs.Count; i++)
+            for (int i = 0; i < itemIds.Count; i++)
             {
-               int itemID = itemIDs[i];
+               int itemID = itemIds[i];
                GameObject itemObj = itemsInArea[itemID];
                SetItemDataBase(itemID, itemObj);
             }
@@ -96,7 +94,7 @@ namespace Quests
         {
             if(questDataBase.TryGetValue(questName, out var questBool))
             {
-                Debug.Log("Quest Completion Status = " + questBool);
+                Debug.Log( questName + " Completion Status = " + questBool);
                 return questBool;
             }
             Debug.LogError(questName + " doesn't exist");

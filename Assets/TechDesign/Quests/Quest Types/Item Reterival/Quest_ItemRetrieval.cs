@@ -12,13 +12,17 @@ namespace Quests
        public List<GameObject> itemsToRetrieve;
        public List<int> itemListIDValues;
 
+       private Quest_ItemChecker _questItemChecker;
+
+       private void Awake()
+       {
+           _questItemChecker = transform.GetComponent<Quest_ItemChecker>();
+       }
 
        private void Start()
        {
            if (!QuestManager.instance.questDataBase.ContainsKey(questName)) // Stops duplication of quests items s scenes
                SetItemIDs(itemListIDValues, itemsToRetrieve); // Sets values to the items in the List - First item in list = 0, second item = 1, etc
-
-         //  AddItemToQuestInventory(0, 1); // Testing
        }
        
        public void AddQuest(string questName, bool questCompleted) 
@@ -67,8 +71,12 @@ namespace Quests
                 AddItemToQuestInventory(tempIDList[i], itemAmountList[i]);
                 i++;
             }
+
             if (itemsCollected >= itemsToRetrieve.Count) // If all items retrieved set quest to complete
+            {
                 QuestManager.instance.QuestCompletedSetToTrue(questName);
+                    _questItemChecker.EventIfQuestCompleted();
+            }
         }
 
         private int CollectItemID(GameObject obj)
