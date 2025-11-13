@@ -107,6 +107,7 @@ public class DestructionScript : MonoBehaviour, IInteractable
             isDestroyed = true;
             gameObject.GetComponent<Collider>().enabled = false;
             gameObject.GetComponent<MeshRenderer>().enabled = false;
+            FindFirstObjectByType<CameraShake>().Shake();
             Invoke("remove", 1.5f);
 
             //alternative functionality - removess collider and changes material instead of disabling object
