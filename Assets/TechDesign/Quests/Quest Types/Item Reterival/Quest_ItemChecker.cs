@@ -20,7 +20,7 @@ namespace Quests
         public void OnTriggerEnter(Collider other)
         {
             if (checkerType == QuestCompletionCheckers.Trigger)
-                if (other.CompareTag("Player") && QuestManager.instance.CheckIfQuestCompleted(questItemRetrieval.questName))
+                if (other.CompareTag("Player") && !QuestManager.instance.CheckIfQuestCompleted(questItemRetrieval.questName))
                     questItemRetrieval.CheckIfItemsCollected();
         }
 
