@@ -10049,6 +10049,7 @@ MonoBehaviour:
   swapItemRightOffCooldown: 0
   swappingHatOffCooldown: 0
   movementAllowed: 1
+  inCutscene: 0
   interactionAllowed: 1
   destroyChargeInProgress: 0
   currentDestructableObject: {fileID: 0}
@@ -10252,7 +10253,6 @@ MonoBehaviour:
   WalkSoundFileName: FillerSound
   cameraTransform: {fileID: 0}
   walkParticles1: {fileID: 4534254131478408117}
-  walkParticles2: {fileID: 8735257533289219427}
   walkSpeed: 5
   turningSpeed: 5
   gravity: 9.8
@@ -16186,6 +16186,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -9581459954204580, guid: 47cb68e20403ef8429075febc0ae957d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6031568432796785953, guid: 8133e4894707d464390779d45f257e8e, type: 3}
+    - target: {fileID: -9581459954204580, guid: 47cb68e20403ef8429075febc0ae957d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 96b6555e9464c6f44bfcf5d213d5cc45, type: 3}
     - target: {fileID: 34636883370229675, guid: 47cb68e20403ef8429075febc0ae957d, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -16286,6 +16294,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5426691605346090543, guid: 47cb68e20403ef8429075febc0ae957d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5697769886234778667, guid: 8133e4894707d464390779d45f257e8e, type: 3}
+    - target: {fileID: 5426691605346090543, guid: 47cb68e20403ef8429075febc0ae957d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 96b6555e9464c6f44bfcf5d213d5cc45, type: 3}
     - target: {fileID: 5528967591033318716, guid: 47cb68e20403ef8429075febc0ae957d, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -16378,7 +16394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09d241e3f7c5e5e43a0d24679b8aeb46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.468486
+      value: 1.33
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09d241e3f7c5e5e43a0d24679b8aeb46, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16415,11 +16431,11 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 09d241e3f7c5e5e43a0d24679b8aeb46, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8a9ca0fd99b7b274098c7fa48913e295, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 9ccc976007da5954ca949ff83a7377bc, type: 3}
     - target: {fileID: -7511558181221131132, guid: 09d241e3f7c5e5e43a0d24679b8aeb46, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5c12afbed960dd843bf8621d3be17f1b, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 9ccc976007da5954ca949ff83a7377bc, type: 3}
     - target: {fileID: 919132149155446097, guid: 09d241e3f7c5e5e43a0d24679b8aeb46, type: 3}
       propertyPath: m_Name
       value: SM_CarryRope
