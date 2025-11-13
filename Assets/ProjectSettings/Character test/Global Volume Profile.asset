@@ -15,10 +15,10 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: -22.4
+    m_Value: 0
   tint:
     m_OverrideState: 1
-    m_Value: 4.9
+    m_Value: 12
 --- !u!114 &-6852743038855526668
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -266,19 +266,19 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.25466895}
+    m_Value: {x: 1, y: 0, z: 0.8966608, w: -0.12746231}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.01697793}
+    m_Value: {x: 0.97217685, y: 1, z: 0.9791328, w: -0.01697793}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.050933793}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.04176609}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
   shadowsEnd:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.2
   highlightsStart:
     m_OverrideState: 1
     m_Value: 0.55
@@ -323,7 +323,7 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 3
   focusMode:
     m_OverrideState: 1
     m_Value: 2
@@ -341,7 +341,7 @@ MonoBehaviour:
     m_Value: 3
   farFocusStart:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 37
   farFocusEnd:
     m_OverrideState: 1
     m_Value: 75
@@ -393,7 +393,7 @@ MonoBehaviour:
     m_Value: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.29684895, b: 0.26226407, a: 1}
+    m_Value: {r: 0.8867924, g: 0.4690481, b: 0.30535775, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
@@ -429,16 +429,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   quality:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   intensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   maximumVelocity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 200
   minimumVelocity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 2
   cameraMotionBlur:
     m_OverrideState: 0
@@ -459,7 +459,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   m_SampleCount:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 8
 --- !u!114 &5264908025508584340
 MonoBehaviour:
@@ -504,7 +504,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.107
+    m_Value: 0
   xMultiplier:
     m_OverrideState: 1
     m_Value: 1

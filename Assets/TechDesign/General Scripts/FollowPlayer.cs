@@ -7,7 +7,9 @@ public class FollowPlayer : MonoBehaviour
 {
     public static FollowPlayer instance;
     [HideInInspector] public bool canFollow;
-    [SerializeField] private float yMinusLevel;
+    [SerializeField] private float xAdjust;
+    [SerializeField] private float yAdjust;
+    [SerializeField] private float zAdjust;
     
     GameObject playerPoint;
 
@@ -29,7 +31,7 @@ public class FollowPlayer : MonoBehaviour
         //gameObject.transform.position = new Vector3(playerPoint.transform.position.x, 0, 0);
         if (canFollow)
         {
-            Vector3 var = new Vector3(playerPoint.transform.position.x - yMinusLevel, transform.position.y, playerPoint.transform.position.z);
+            Vector3 var = new Vector3(playerPoint.transform.position.x + xAdjust, playerPoint.transform.position.y + yAdjust, playerPoint.transform.position.z + zAdjust);
             gameObject.transform.position = var;
         }
             

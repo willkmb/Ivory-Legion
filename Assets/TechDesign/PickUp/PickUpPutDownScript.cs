@@ -13,12 +13,15 @@ namespace Player {
         [SerializeField] private int itemAmount;
     
         // variables in inspector
-        [SerializeField] GameObject PutDownPoint;
         public bool isHat;
+        public Quaternion trunkRotation;
+        public Quaternion bagRotation;
+
 
         // private variables
         GameObject player;
         public bool isPickedUp;
+
         
         // Quest // - Attaches to area if placed - If obj picked up remove self from area
         [HideInInspector] public List<Quest_AreaFill> questAreaList;
