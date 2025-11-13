@@ -8,7 +8,7 @@ public class HandlerMoveScript : MonoBehaviour
 {
     private int currentIndex = 0;
     private float time = 0;
-    private bool moving = false;
+    public bool moving = false;
     private bool pressed = false;
     private Vector3 startPos;
     private bool isVisible;
