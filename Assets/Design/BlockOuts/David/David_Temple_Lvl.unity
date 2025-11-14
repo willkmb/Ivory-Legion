@@ -9779,6 +9779,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1750240304}
+  - {fileID: 1136432162}
   - {fileID: 577463242}
   - {fileID: 758796889}
   - {fileID: 581950707}
@@ -19648,7 +19649,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: dispute between elephants, settling it would affect player's morality depending
-    on the outcome chosen by player
+    on the outcome chosen by player. you can encourage them to work together for
+    the reward for the herd mentality path or keep them fighting each other and steal
+    the reward for lone elephant.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -35503,13 +35506,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758796888}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.02934974, z: -0, w: 0.99956924}
-  m_LocalPosition: {x: 24.050884, y: 0, z: 118.7}
+  m_LocalRotation: {x: -0, y: -0.06804307, z: -0, w: 0.99768245}
+  m_LocalPosition: {x: 23.85, y: 0, z: 118.69}
   m_LocalScale: {x: 5, y: 0.21703, z: 10.19881}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 223851012}
-  m_LocalEulerAnglesHint: {x: 0, y: -3.364, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -7.803, z: 0}
 --- !u!65 &758796890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52654,6 +52657,114 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2349316384800913884, guid: d25aeb2f4b3d798418c9bb44e8128c51, type: 3}
   m_PrefabInstance: {fileID: 1136209063}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1136432161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1136432162}
+  - component: {fileID: 1136432165}
+  - component: {fileID: 1136432164}
+  - component: {fileID: 1136432163}
+  m_Layer: 8
+  m_Name: Cube (60)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1136432162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136432161}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24.450882, y: 0, z: 111.29}
+  m_LocalScale: {x: 5, y: 0.21703, z: 25.656427}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 223851012}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1136432163
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136432161}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1136432164
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136432161}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9f869972a95ffb2469c00c6e2fe3a3ec, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1136432165
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136432161}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1140884938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96432,7 +96543,8 @@ MonoBehaviour:
     - name: Gisgo
       dialogueTextContent: Set 1 - Dialogue 1
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices:
       - choiceTextContent: Option 1 - War
         choiceTopic: War
@@ -96445,17 +96557,20 @@ MonoBehaviour:
     - name: Hannibal
       dialogueTextContent: Set 1 - Dialogue 2
       image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices: []
     - name: Gisgo
       dialogueTextContent: Set 1 - Dialogue 3
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices: []
     - name: Hannibal
       dialogueTextContent: Set 1 - Dialogue 4
       image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices:
       - choiceTextContent: Option 1 - War
         choiceTopic: War
@@ -96472,13 +96587,15 @@ MonoBehaviour:
     - name: Gisgo
       dialogueTextContent: Set 1 - Dialogue 5
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices: []
   - Dialogues:
     - name: Gisgo
       dialogueTextContent: Set 2 - Dialogue 1
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices:
       - choiceTextContent: Option 1 - War
         choiceTopic: War
@@ -96491,17 +96608,20 @@ MonoBehaviour:
     - name: Hannibal
       dialogueTextContent: Set 2 - Dialogue 2
       image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices: []
     - name: Gisgo
       dialogueTextContent: Set 2 - Dialogue 3
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices: []
     - name: Hannibal
       dialogueTextContent: Set 2 - Dialogue 4
       image: {fileID: 21300000, guid: 4f617a471b0b24842a3c263072c7dc2a, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices:
       - choiceTextContent: Option 1 - War
         choiceTopic: War
@@ -96518,7 +96638,8 @@ MonoBehaviour:
     - name: Gisgo
       dialogueTextContent: Set 2 - Dialogue 5
       image: {fileID: 21300000, guid: 326ca337f890b4a42bb8a4fd4b1c120d, type: 3}
-      resetHandler: 0
+      manualCursor: 0
+      nextBranch: 0
       choices: []
   startIndex: 0
   branchIndex: 0
