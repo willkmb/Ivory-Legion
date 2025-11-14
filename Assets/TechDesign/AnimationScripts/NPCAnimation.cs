@@ -32,7 +32,7 @@ public class NPCAnimation : MonoBehaviour
 
         }
 
-        else if (npcManager.stateSaver == NpcState.Walking || npcManager.stateSaver == NpcState.SetPathingWalking)
+        else if (npcManager.stateSaver == NpcState.Walking || npcManager.stateSaver == NpcState.SetPathingWalking || npcManager.stateSaver == NpcState.RandomPathing)
         {
             if (isIdle)
             {
