@@ -20,6 +20,7 @@ public class ControllerCursor : MonoBehaviour
     {
         Position = Input.mousePosition;
         CheckControllerConnected();
+
     }
             
     void Update()

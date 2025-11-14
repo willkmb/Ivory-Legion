@@ -1,5 +1,6 @@
 using InputManager;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayParentMovement : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayParentMovement : MonoBehaviour
         PlayerManager.instance.inCutscene = true;
         parent1.GetComponent<Animation>().Play();
         parent2.GetComponent<Animation>().Play();
+        parent1.GetComponent<NavMeshAgent>().enabled = false;
+        parent2.GetComponent<NavMeshAgent>().enabled = false;
         Invoke("endmovement", parent1.GetComponent<Animation>().clip.length);
     }
 
@@ -23,11 +26,12 @@ public class PlayParentMovement : MonoBehaviour
         GetComponent<ResetHandlerScript>().Reset();
         parent1.GetComponent<Animation>().Stop();
         parent2.GetComponent<Animation>().Stop();
+
         parent1.transform.position = p1.position;
         parent2.transform.position = p2.position;
         Vector3 p1Rot = parent1.transform.localEulerAngles;
-        parent1.transform.localEulerAngles = new Vector3 (p1Rot.x, 0f, p1Rot.z);
+        parent1.transform.localEulerAngles = new Vector3(p1Rot.x, 0f, p1Rot.z);
         Vector3 p2Rot = parent1.transform.localEulerAngles;
-        parent2.transform.localEulerAngles = new Vector3 (p2Rot.x, 0f, p2Rot.z);
+        parent2.transform.localEulerAngles = new Vector3(p2Rot.x, 0f, p2Rot.z);
     }
 }

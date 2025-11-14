@@ -27,7 +27,8 @@ namespace Npc.AI.Movement
         private int _skinNumber;
         private float _resetTimer;
         private bool _resetting;
-        
+        private bool _cutsceneDonOnce;
+
         //Variables
         [SerializeField] private float timeToReset;
         
@@ -40,6 +41,9 @@ namespace Npc.AI.Movement
             currentPointNumber = 0;
             
             _resetTimer = 0;
+
+            if (_npcManager.idleAfterCutscene || _npcManager.removeAfterCutscene)
+                currentPointNumber = 1;
         }
 
         private void Start()
@@ -53,6 +57,12 @@ namespace Npc.AI.Movement
         {
             if (_resetting)
                 return;
+
+            if (_npcManager.idleAfterCutscene || _npcManager.removeAfterCutscene)
+            {
+                _cutsceneDonOnce = true;
+                currentPointNumber = 1;
+            }
 
             //If all marker points have been reached and the AI is not patrolling
             if (movementLocations.Count <= currentPointNumber && !_npcManager.patrolling)
@@ -75,6 +85,9 @@ namespace Npc.AI.Movement
             if (_npcManager.patrolling)
                 currentPointNumber = 0;
             
+            if(_npcManager.idleAfterCutscene || _npcManager.removeAfterCutscene)
+                _targetPos = movementLocations[1];
+
             _targetPos = movementLocations[currentPointNumber];
             MoveToLocation();
         }
