@@ -7,9 +7,9 @@ public class FollowPlayer : MonoBehaviour
 {
     public static FollowPlayer instance;
     [HideInInspector] public bool canFollow;
-    [SerializeField] private float xAdjust;
-    [SerializeField] private float yAdjust;
-    [SerializeField] private float zAdjust;
+    [SerializeField] public float xAdjust;
+    [SerializeField] public float yAdjust;
+    [SerializeField] public float zAdjust;
     
     GameObject playerPoint;
 
