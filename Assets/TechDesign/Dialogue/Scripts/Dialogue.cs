@@ -191,11 +191,12 @@ public class Dialogue : MonoBehaviour
             if(time >= flip)
             {
                 angle = angle * angle - 2f;
-                flip = 0f;
+                time = 0f;
             }
 
             float setAngle = angle * 12f;
             button.localRotation = Quaternion.Euler(0, 0, setAngle);
+            yield return null;
         }
 
     }
