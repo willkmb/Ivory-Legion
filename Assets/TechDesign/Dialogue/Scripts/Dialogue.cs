@@ -69,6 +69,9 @@ public class Dialogue : MonoBehaviour
             public int nextBranch;
             [Header("Which branch this choice belongs to")]
             public int rootBranch;
+            [Header("breaking Character?")]
+            public bool isBreaking = false;
+            public float frequency = 0f;
         }
         public List<dialogueChoice> choices = new List<dialogueChoice>();
     }
@@ -125,6 +128,8 @@ public class Dialogue : MonoBehaviour
 
                     int next = choice.nextBranch;
                     Button.GetComponent<Button>().onClick.AddListener(() => { branchIndex = next; UpdateNPCOpinion(choice.choiceTopic); ShowNextBranch(); }); // adds the functionality of the button withought having to manually do it in inspector and calls advance branch method.
+
+                    if (choice.isBreaking) StartCoroutine(buttonWiggle(Button.gameObject.transform, choice.frequency));
                 }
             }
 
@@ -172,6 +177,27 @@ public class Dialogue : MonoBehaviour
     public void UpdateNPCOpinion(string topic)
     {
         trustHolder.AmendTrustValue(topic);
+    }
+
+    IEnumerator buttonWiggle(Transform button, float frequency)
+    {
+        float time = 0;
+        float angle = 1f;
+        float flip = 1f / frequency;
+
+        while (true)
+        {
+            time += Time.deltaTime;
+            if(time >= flip)
+            {
+                angle = angle * angle - 2f;
+                flip = 0f;
+            }
+
+            float setAngle = angle * 12f;
+            button.localRotation = Quaternion.Euler(0, 0, setAngle);
+        }
+
     }
 }
 

@@ -9141,6 +9141,22 @@ PrefabInstance:
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 349210989}
+    - target: {fileID: 6489953938716092007, guid: eab9cf7453f599d4586914a3fd0a03e7, type: 3}
+      propertyPath: DialogueSets.Array.data[0].Dialogues.Array.data[0].choices.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489953938716092007, guid: eab9cf7453f599d4586914a3fd0a03e7, type: 3}
+      propertyPath: DialogueSets.Array.data[0].Dialogues.Array.data[0].dialogueTextContent
+      value: Example Dialogue...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489953938716092007, guid: eab9cf7453f599d4586914a3fd0a03e7, type: 3}
+      propertyPath: DialogueSets.Array.data[0].Dialogues.Array.data[0].choices.Array.data[0].choiceTextContent
+      value: '[Breaking choice]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489953938716092007, guid: eab9cf7453f599d4586914a3fd0a03e7, type: 3}
+      propertyPath: DialogueSets.Array.data[0].Dialogues.Array.data[0].choices.Array.data[1].choiceTextContent
+      value: '[Regular Choice]'
+      objectReference: {fileID: 0}
     - target: {fileID: 7532739035848419361, guid: eab9cf7453f599d4586914a3fd0a03e7, type: 3}
       propertyPath: di
       value: 
@@ -43075,7 +43091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1096744524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -83438,7 +83454,7 @@ PrefabInstance:
       objectReference: {fileID: 1857842818}
     - target: {fileID: 7926590006334109091, guid: 6437e231c910a324299df444e2ac83ac, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8413590993086788376, guid: 6437e231c910a324299df444e2ac83ac, type: 3}
       propertyPath: m_Pivot.x
