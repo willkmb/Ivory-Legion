@@ -9859,6 +9859,7 @@ GameObject:
   - component: {fileID: 1520407513318287122}
   - component: {fileID: 1443041157681912446}
   - component: {fileID: 6798780922907594705}
+  - component: {fileID: 1690684890058977155}
   m_Layer: 10
   m_Name: Player Controller
   m_TagString: Player
@@ -10233,6 +10234,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8000d841-45e5-4e62-be34-70c87c2f4991
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3c3024cb-9115-4a3b-8462-e8c79948b490
+    m_ActionName: 'Player/PushPulling[/Keyboard/w,/Keyboard/s]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -10257,6 +10262,9 @@ MonoBehaviour:
   turningSpeed: 5
   gravity: 9.8
   isWalking: 0
+  newTransform: {fileID: 0}
+  pushpulling: 0
+  move: {x: 0, y: 0, z: 0}
 --- !u!114 &6011009514161748355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10377,7 +10385,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2393508817684473014}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2aad31d17f7d7a48a7bbd8a5b78a349, type: 3}
   m_Name: 
@@ -10393,6 +10401,26 @@ MonoBehaviour:
   collisionLayers:
     serializedVersion: 2
     m_Bits: 64
+  pushedOnce: 0
+--- !u!114 &1690684890058977155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393508817684473014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6442d89a1316044d93032e91961952e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPushObjects: []
+  nearestPushable: {fileID: 0}
+  hitObj: {fileID: 0}
+  hitPush: {fileID: 0}
+  Player: {fileID: 2393508817684473014}
+  distance: 0
+  nearestDistance: 1000000
 --- !u!1 &2618277322878979849
 GameObject:
   m_ObjectHideFlags: 0
