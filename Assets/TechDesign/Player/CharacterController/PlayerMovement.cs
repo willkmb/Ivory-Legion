@@ -35,6 +35,12 @@ namespace Player
         public bool isWalking; // - Emily, particles
         private bool isParticlesPlaying;// - Emily, particles
         private bool isWalkSoundPlaying;// - Emily, sound
+
+        public Transform newTransform; // Tommy, PushPull_Remake
+        public bool pushpulling; // Tommy, PushPull_Remake
+
+        public Vector3 move; //Tommy, PushPull_Remake
+
         private void Awake()
         {
             instance ??= this;
@@ -46,6 +52,8 @@ namespace Player
 
             if (Camera.main != null) 
                 cameraTransform = Camera.main.transform;
+
+            newTransform = cameraTransform; //Tommy PushPull_Remake
         }
 
         private void Update()
@@ -96,7 +104,8 @@ namespace Player
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * turningSpeed);
 
                 // Move player in that direction
-                Vector3 move = moveDirection * walkSpeed;
+                //Vector3 move = moveDirection * walkSpeed;
+                move = moveDirection * walkSpeed;
                 move.y = VerticalForceCalculation();
 
                 controller.Move(move * Time.deltaTime);
@@ -104,9 +113,20 @@ namespace Player
             else
             {
                 // Apply gravity even if not moving
-                Vector3 move = new Vector3(0, VerticalForceCalculation(), 0);
+                //Vector3 move = new Vector3(0, VerticalForceCalculation(), 0);
+                move = new Vector3(0, VerticalForceCalculation(), 0);
                 controller.Move(move * Time.deltaTime);
             }
+        }
+
+        public void PushPullMove() // Tommy, PushPull_Remake
+        {
+            cameraTransform = newTransform; // allows for player movement to be detached from camera transform during push pull
+        }
+
+        public void PushPullStop()// Tommy, PushPull_Remake
+        {
+            cameraTransform = Camera.main.transform; // resets the camera transform so that player movement is based on camera positioning
         }
 
         private float VerticalForceCalculation()
@@ -137,7 +157,7 @@ namespace Player
         }
         void PlaySoundWalk() // - Emily, sounds
         {
-            AudioManager.instance.PlayAudio(WalkSoundFileName, transform.position, false, false, false, 0.1f, 0.25f, true, 0.5f, 1f, 128);
+            AudioManager.instance.PlayAudio(WalkSoundFileName, transform.position, false, false, false, 0.5f, 0.6f, true, 0.5f, 1f, 128);
             Invoke("SoundPlayingFalse", 0.75f);
         }
 

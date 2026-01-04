@@ -47,12 +47,7 @@ namespace Quests
         private void ItemsCollected()
         {
             Debug.Log("Items collected");
-            handler.GetComponent<PromptScript>().thisPrompt.SetActive(true);
-            handler.GetComponent<Dialogue>().enabled = true;
-            parent.GetComponent<PromptScript>().thisPrompt.SetActive(true);
-            parent.GetComponent <Dialogue>().enabled = true;
-            parent.GetComponent<Dialogue>().loadSet(1);
-            parent.GetComponent<PlayParentMovement>().enabled = false;
+            
             switch (questCompletionEvent)
             {
                 case QuestCompletionEvent.UnlockArea:
@@ -64,6 +59,13 @@ namespace Quests
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            handler.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+            handler.GetComponent<Dialogue>().enabled = true;
+            parent.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+            parent.GetComponent<Dialogue>().enabled = true;
+            parent.GetComponent<Dialogue>().loadSet(1);
+            parent.GetComponent<PlayParentMovement>().enabled = false;
         }
 
         public void AddQuest(string questName, bool questCompleted)
