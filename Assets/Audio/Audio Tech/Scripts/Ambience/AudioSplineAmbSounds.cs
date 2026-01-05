@@ -92,8 +92,8 @@ namespace Audio
                 maxVolume *= 1f;
                 priority = 128;
             }
-            AudioManager.instance.PlayAudio(chosenAudioName, smallestPosition, false, true, false,
-                minVolume, maxVolume, true, minPitch, maxPitch, priority);
+           // AudioManager.instance.PlayAudio(chosenAudioName, smallestPosition, false, true, false,
+               // minVolume, maxVolume, true, minPitch, maxPitch, priority);
           
             _delay = Random.Range(minDelay, maxDelay);
             _timer = 0f;

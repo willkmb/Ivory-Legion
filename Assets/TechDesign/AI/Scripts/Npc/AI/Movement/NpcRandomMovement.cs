@@ -57,7 +57,7 @@ namespace Npc.AI.Movement
         private bool LocationNavmeshCheck(Vector3 randomPoint)
         {
             NavMeshHit hit;
-            switch (_npcManager.npcType)
+            switch (_npcManager.npcType) // Creature Type
             {
                 case NpcType.Humanoid:
                     if (NavMesh.SamplePosition(randomPoint, out hit, 1, NavMesh.AllAreas))

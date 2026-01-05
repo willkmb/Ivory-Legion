@@ -79,7 +79,7 @@ namespace Npc
         
         public event UnityAction NpcCheckArrivalEvent;
 
-        public void NpcCheckArrival()
+        private void NpcCheckArrival()
         {
             NpcCheckArrivalEvent?.Invoke();
         }

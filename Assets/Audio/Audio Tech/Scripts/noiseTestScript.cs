@@ -21,7 +21,7 @@ public class noiseTestScript : MonoBehaviour
     void PlaySound()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 1);
+       // AudioManager.instance.PlayAudio("FillerSound", transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1f, 1);
     }
 
 }

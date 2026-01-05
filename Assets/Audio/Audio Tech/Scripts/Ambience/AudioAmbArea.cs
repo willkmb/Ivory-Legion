@@ -28,8 +28,8 @@ namespace Audio
 
         private void FirstArea()
         {
-            AudioAmbManager.instance.staticSoundsList =  staticSoundsList;
-            AudioAmbManager.instance.staticSoundsLocations = staticLocationsList;
+            AudioAmbManager.instance.staticAudioNames =  staticSoundsList;
+            AudioAmbManager.instance.staticAudioLocations = staticLocationsList;
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -37,9 +37,9 @@ namespace Audio
             if (player != null)
             {
                 AudioAmbManager.instance.ChangeLoopingAmb(ambLoopingList);
-                AudioAmbManager.instance.currentAmbSoundList = ambList;
-                AudioAmbManager.instance.staticSoundsList =  staticSoundsList;
-                AudioAmbManager.instance.staticSoundsLocations = staticLocationsList;
+                AudioAmbManager.instance.baseAudioNames = ambList;
+                AudioAmbManager.instance.staticAudioNames =  staticSoundsList;
+                AudioAmbManager.instance.staticAudioLocations = staticLocationsList;
             }
         }
         

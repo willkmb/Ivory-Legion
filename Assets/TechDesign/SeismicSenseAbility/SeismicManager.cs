@@ -2,6 +2,14 @@ using SeismicSense;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SeismicSenseType
+{
+    Null,
+    Quest,
+    NpcWantingToTalk,
+    QuestItem,
+    Valuable,
+}
 public class SeismicManager : MonoBehaviour
 {
     public static SeismicManager instance;

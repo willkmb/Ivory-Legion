@@ -1,16 +1,36 @@
+using System;
+using Audio;
 using UnityEngine;
 
 public class ICanBeSensed : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public SeismicSenseType senseType;
 
-    // Update is called once per frame
-    void Update()
+    public void ReturningPulse()
     {
         
+        // Audio
+        string parameterValue = "";
+        switch (senseType)
+        {
+            case SeismicSenseType.Null:
+                break;
+            case SeismicSenseType.Quest:
+                parameterValue = "Quest";
+                break;
+            case SeismicSenseType.NpcWantingToTalk:
+                parameterValue = "Npc Talk";
+                break;
+            case SeismicSenseType.QuestItem:
+                parameterValue = "Quest Item";
+                break;
+            case SeismicSenseType.Valuable:
+                parameterValue  = "Valuable";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        AudioManager.instance.PlayFMODSound(transform.position, "event:/Mechanics/Seismic Sense Hit Event", true,false,false, 0, 0, false, 
+            true, "Seismic Sense Hits", parameterValue);
     }
 }

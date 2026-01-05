@@ -140,7 +140,8 @@ namespace Player
         }
         void PlaySoundWalk() // - Emily, sounds
         {
-            AudioManager.instance.PlayAudio(WalkSoundFileName, transform.position, false, false, false, 1, 1, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayFMODSound(transform.position, WalkSoundFileName, true, true, true, 0.9f, 1.1f, 
+                true, false, null, null);
             Invoke("SoundPlayingFalse", 0.5f);
         }
 
