@@ -17,8 +17,7 @@ namespace Audio
         public List<string> staticSoundsList = new List<string>();
         [Header("Locations for those static sounds")]
         public List<Vector3> staticLocationsList = new List<Vector3>();
-        [Header("Locations for those static sounds")]
-        public List<AudioSplineAmbSounds> splineAmbAudioList = new List<AudioSplineAmbSounds>();
+     
 
         private void Start()
         {
@@ -28,6 +27,8 @@ namespace Audio
 
         private void FirstArea()
         {
+            AudioAmbManager.instance.ChangeLoopingAmb(ambLoopingList);
+            AudioAmbManager.instance.currentAmbSoundList = ambList;
             AudioAmbManager.instance.staticSoundsList =  staticSoundsList;
             AudioAmbManager.instance.staticSoundsLocations = staticLocationsList;
         }

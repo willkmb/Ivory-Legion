@@ -103,12 +103,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DArray_2b3a7a5722914e7fb3d94c24b1df3d70_TextureArray_1_Texture2DArray:
+        m_Texture: {fileID: 18700000, guid: c19f36b71ccd7ff4798302b0780827fb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2DArray_2fd90bf4cd19498da07c24c8f73ff91b_TextureArray_1_Texture2DArray:
         m_Texture: {fileID: 18700000, guid: 6a10404cdddc764498f7cdc3ff50f8ad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2DArray_3db24b50fb474c8e8a14f7aaa41ce827_TextureArray_1_Texture2DArray:
         m_Texture: {fileID: 18700000, guid: 1138fa930c68f1d4997c63e0db1bbd18, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DArray_58c2535689db4ebc97eed5161a14ed04_TextureArray_1_Texture2DArray:
+        m_Texture: {fileID: 18700000, guid: 07dbb66f8e0e9024e811ab1531b44b80, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2DArray_59816e02e5334b49b02bb0f6e2963c29_TextureArray_1_Texture2DArray:
@@ -121,6 +129,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2DArray_665b3976b8954ddfbad40b55427f9ce4_TextureArray_1_Texture2DArray:
         m_Texture: {fileID: 18700000, guid: 07dbb66f8e0e9024e811ab1531b44b80, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DArray_80bfe1731d6945ec8c7ffdbe8784d5c3_TextureArray_1_Texture2DArray:
+        m_Texture: {fileID: 18700000, guid: 1138fa930c68f1d4997c63e0db1bbd18, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2DArray_824dd9f7f38f4f53b8e8e234fdf0e1f6_TextureArray_1_Texture2DArray:
@@ -143,11 +155,19 @@ Material:
         m_Texture: {fileID: 18700000, guid: c19f36b71ccd7ff4798302b0780827fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DArray_a9bbe45c6eba4559a9249f1b387376b6_TextureArray_1_Texture2DArray:
+        m_Texture: {fileID: 18700000, guid: 07dbb66f8e0e9024e811ab1531b44b80, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2DArray_aa1d8b0a283941d2980d1298f4a4bd17_TextureArray_1_Texture2DArray:
         m_Texture: {fileID: 18700000, guid: 1138fa930c68f1d4997c63e0db1bbd18, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2DArray_ac45210e2b5e443aacd7ab8838a458ee_TextureArray_1_Texture2DArray:
+        m_Texture: {fileID: 18700000, guid: 6a10404cdddc764498f7cdc3ff50f8ad, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DArray_b67e04fb4e454926a6dfe6214f1fda66_TextureArray_1_Texture2DArray:
         m_Texture: {fileID: 18700000, guid: 6a10404cdddc764498f7cdc3ff50f8ad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -223,6 +243,7 @@ Material:
     - _BlendMode: 0
     - _CoatMask: 0
     - _ConservativeDepthOffsetEnable: 0
+    - _Corner: 0
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
@@ -253,6 +274,7 @@ Material:
     - _Fade_Edge_2: 0.5
     - _Fade_Hardness: 0
     - _Fade_Loaction: 0
+    - _Fade_Rotation: 0
     - _Float: 0
     - _Float_1: 0
     - _HeightAmplitude: 0.02
@@ -316,6 +338,8 @@ Material:
     - _SurfaceType: 0
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
+    - _Texture_Rotation_Material_1: 0
+    - _Texture_Rotation_Material_2: 0
     - _Thickness: 1
     - _TransmissionEnable: 1
     - _TransmissionMask: 1

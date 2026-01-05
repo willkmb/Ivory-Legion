@@ -6,10 +6,10 @@ namespace Ai
 {
     public class MarkerPointZone : MonoBehaviour
     {
-        public List<GameObject> markerPointsHumanActive = new List<GameObject>();
-        public List<GameObject> markerPointsHumanInactive = new List<GameObject>();
-        public List<GameObject> markerPointsElephantActive = new List<GameObject>();
-        public List<GameObject> markerPointsElephantInactive = new List<GameObject>();
+       [HideInInspector] public List<GameObject> markerPointsHumanActive = new List<GameObject>();
+       [HideInInspector] public List<GameObject> markerPointsHumanInactive = new List<GameObject>();
+       [HideInInspector]  public List<GameObject> markerPointsElephantActive = new List<GameObject>();
+       [HideInInspector]  public List<GameObject> markerPointsElephantInactive = new List<GameObject>();
     }
 }
 

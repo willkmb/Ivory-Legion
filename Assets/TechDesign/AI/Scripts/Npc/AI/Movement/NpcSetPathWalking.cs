@@ -11,13 +11,13 @@ namespace Npc.AI.Movement
     {
         //Lists
         [Header("Ensure locations are on navmesh")]
-        [SerializeField] private List<Vector3> movementLocations;
+        public List<Vector3> movementLocations;
         [SerializeField] private List<Material> skinList;
        
         //Components 
         private NavMeshPath _path;
         
-        // Scrips
+        // Scripts
         private NpcManager _npcManager;
 
         //Values
@@ -27,7 +27,8 @@ namespace Npc.AI.Movement
         private int _skinNumber;
         private float _resetTimer;
         private bool _resetting;
-        
+        private bool _cutsceneDonOnce;
+
         //Variables
         [SerializeField] private float timeToReset;
         
@@ -38,10 +39,11 @@ namespace Npc.AI.Movement
             _npcManager = transform.GetComponent<NpcManager>();
             
             currentPointNumber = 0;
-            if (_npcManager.usedInCutscene)
-                currentPointNumber = movementLocations.Count - 1;
             
             _resetTimer = 0;
+
+            if (_npcManager.idleAfterCutscene || _npcManager.removeAfterCutscene)
+                currentPointNumber = 1;
         }
 
         private void Start()
@@ -49,28 +51,30 @@ namespace Npc.AI.Movement
             NpcEvents.instance.NpcCheckArrivalEvent += ArrivalChecker;
             
             movementLocations[0] = transform.position;
-            
-            if (_npcManager.usedInCutscene)
-                gameObject.SetActive(false);
         }
 
         public void GetNextLocationPoint()
         {
             if (_resetting)
                 return;
-            
+
+            if (_npcManager.idleAfterCutscene || _npcManager.removeAfterCutscene)
+            {
+                _cutsceneDonOnce = true;
+                currentPointNumber = 1;
+            }
+
             //If all marker points have been reached and the AI is not patrolling
             if (movementLocations.Count <= currentPointNumber && !_npcManager.patrolling)
             {
-                // Cutscene deactivation
-                if (_npcManager.usedInCutscene)
+                // Do reset Stuff - Different skin
+                if (_npcManager.idleAfterCutscene)
                 {
+                    Debug.Log("called");
                     _npcManager.npcState = NpcState.Idle;
-                    gameObject.SetActive(false);
+                    _npcManager.StateChanger();
                     return;
                 }
-                
-                // Do reset Stuff - Different skin
                 _resetting = true;
                 NpcEvents.instance.NpcCheckArrivalEvent += ResetTimer;
                 ChangeSkin();
@@ -81,6 +85,9 @@ namespace Npc.AI.Movement
             if (_npcManager.patrolling)
                 currentPointNumber = 0;
             
+            if(_npcManager.idleAfterCutscene || _npcManager.removeAfterCutscene)
+                _targetPos = movementLocations[1];
+
             _targetPos = movementLocations[currentPointNumber];
             MoveToLocation();
         }
@@ -108,6 +115,8 @@ namespace Npc.AI.Movement
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            _npcManager.currentMovPos = _targetPos;
+            
             _npcManager.agent.SetPath(_path);
         }
 

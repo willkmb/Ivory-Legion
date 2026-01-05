@@ -63,7 +63,7 @@ public class MenuScript : MonoBehaviour
 
     private void changeScene()
     {
-        SceneManager.LoadScene("PrototypeLevel");
+        SceneManager.LoadScene(1);
     }
 
     public IEnumerator ChangeText()

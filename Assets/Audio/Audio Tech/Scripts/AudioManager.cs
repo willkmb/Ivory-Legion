@@ -150,7 +150,7 @@ namespace Audio
             //Disables audio after x seconds, adding it back to the audioPoolFree list
             if (loops)
                 return;
-            audioPlayer.Invoke("DisableObj", audioSource.clip.length + (delayTime - Random.Range(delayTime * 0.1f, delayTime * 0.35f)));
+            audioPlayer.Invoke("DisableObj", audioSource.clip.length + (delayTime - Random.Range(delayTime * 0.1f, delayTime * 0.6f)));
         }
     }
 }

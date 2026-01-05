@@ -8,14 +8,13 @@ public class HandlerMoveScript : MonoBehaviour
 {
     private int currentIndex = 0;
     private float time = 0;
-    private bool moving = false;
+    public bool moving = false;
     private bool pressed = false;
     private Vector3 startPos;
     private bool isVisible;
-    public GameObject bubble;
-    public TextMeshProUGUI text;
-    public GameObject MarkerLoc;
     private bool waitingToMove;
+    public GameObject di;
+    private bool enabled = false;
 
     [System.Serializable]
     public class pointClass
@@ -25,6 +24,11 @@ public class HandlerMoveScript : MonoBehaviour
         public float waitTime = 2f;
         public bool shouldtalk;
         public string textContent;
+
+        public int dialogueSet;
+        public bool enableCut = false;
+        public bool moveAgainAfter = false;
+        public bool showPromptWhenReach = true;
     }
 
     public List<pointClass> points = new List<pointClass>();
@@ -36,26 +40,9 @@ public class HandlerMoveScript : MonoBehaviour
 
     private void Update()
     {
-        if (currentIndex > points.Count -1) return;
+        if (currentIndex > points.Count - 1) return;
         if (moving) isMoving();
-
-        if (points[currentIndex].shouldtalk && !moving)
-        {
-            if (isVisible)
-            {
-                Vector3 pos = Camera.main.WorldToScreenPoint(MarkerLoc.transform.position);
-                bubble.transform.position = pos;
-            }
-        }
-
-        if (moving)
-        {
-            this.transform.Find("TriggerHandler").gameObject.SetActive(false);
-        }
-        else
-        {
-            this.transform.Find("TriggerHandler").gameObject.SetActive(true);
-        }
+        if (moving) this.GetComponent<PromptScript>().thisPrompt.SetActive(false); else { this.GetComponent<Dialogue>().loadSet(points[currentIndex].dialogueSet); }
     }
 
     public void isMoving()
@@ -71,6 +58,12 @@ public class HandlerMoveScript : MonoBehaviour
         {
             moving = false;
             startPos = this.transform.position;
+
+            if (di.activeInHierarchy == false && points[currentIndex].showPromptWhenReach) this.GetComponent<PromptScript>().thisPrompt.SetActive(true);
+            if (points[currentIndex].showPromptWhenReach == false) this.GetComponent<Dialogue>().enabled = false;
+            if (points[currentIndex].showPromptWhenReach) this.GetComponent<Dialogue>().enabled = true;
+            if (points[currentIndex].enableCut && !enabled) { GameObject.Find("Cutscene_Parade").GetComponent<Collider>().enabled = true; enabled = true; }
+            if (points[currentIndex].moveAgainAfter) moveAgain();
         }
     }
 
@@ -80,32 +73,23 @@ public class HandlerMoveScript : MonoBehaviour
         currentIndex++;
         moving = true;
         time = 0f;
-        isVisible = false;
-        bubble.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void move()
     {
-        if(other.CompareTag("Player") && !moving)
+        Debug.Log("move2");
+        if (currentIndex >= points.Count) return;
+        if (!pressed && !moving)
         {
-            if (currentIndex >= points.Count) return;
-            isVisible = true;
-            if (!pressed && !moving)
-            {
-                moving = true;
-                pressed = true;
-                time = 0f;
-            }
-            else if (!moving && pressed && !waitingToMove)
-            {
-                waitingToMove = true;
-                Invoke("moveAgain", points[currentIndex].waitTime);
-                if (points[currentIndex].shouldtalk)
-                {
-                    bubble.SetActive(true);
-                    text.text = points[currentIndex].textContent;
-                }
-            }
+            Debug.Log("move");
+            moving = true;
+            pressed = true;
+            time = 0f;
+        }
+        else if (!moving && pressed && !waitingToMove)
+        {
+            waitingToMove = true;
+            Invoke("moveAgain", points[currentIndex].waitTime);
         }
     }
 }

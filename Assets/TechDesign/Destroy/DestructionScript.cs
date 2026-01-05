@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Splines.Interpolators;
 using System.Collections;
+using Mechanic_Destruction;
 
 
 public class DestructionScript : MonoBehaviour, IInteractable
@@ -44,12 +45,15 @@ public class DestructionScript : MonoBehaviour, IInteractable
     bool revertCharge = false;
     bool revertChargeEnd = false;
 
+    //Spawn obj on destroy
+    private ObjSpawnOnBreak _objSpawnOnBreak;
     private void Awake()
     {
         instance ??= this;
         
         isDestroyed = false;
         _meshRenderer = GetComponent<MeshRenderer>();
+        _objSpawnOnBreak = transform.GetComponent<ObjSpawnOnBreak>();
     }
 
     // Update is called once per frame
@@ -65,7 +69,7 @@ public class DestructionScript : MonoBehaviour, IInteractable
             {
                 if (!readySoundPlayed)
                 {
-                    //PlaySoundReady();
+                    PlaySoundReady();
                 }
                 _meshRenderer.material = OnMaterial; // changes material to indicate correct time to release button
             }
@@ -85,8 +89,9 @@ public class DestructionScript : MonoBehaviour, IInteractable
     {
         if (!isDestroyed)
         {
+            ElephantAnim.instance.Stomp();
             Debug.Log(isStartDestruct + " - start destruct");
-            //PlaySoundStart();
+            PlaySoundStart();
             isStartDestruct = true;
             PlayerManager.instance.currentDestructableObject = this;
             revertCharge = false;
@@ -96,8 +101,9 @@ public class DestructionScript : MonoBehaviour, IInteractable
     // on interact release, destroy object if timed right
     public void DestroyObj()
     {
-        if (timer > 2 && timer < 3)
+        if (timer >= 2 && timer <= 3)
         {
+            _objSpawnOnBreak.SpawnObj();
             revertChargeEnd = true;
             isDestroyed = true;
             gameObject.GetComponent<Collider>().enabled = false;
@@ -107,12 +113,12 @@ public class DestructionScript : MonoBehaviour, IInteractable
             //alternative functionality - removess collider and changes material instead of disabling object
             //gameObject.GetComponent<Collider>().enabled = false;
             //gameObject.GetComponent<MeshRenderer>().material = OffMaterial;
-            //PlaySoundDestroy();
+            PlaySoundDestroy();
 
         }
         else
         {
-            //PlaySoundFail();
+            PlaySoundFail();
             timer = 0;
             isStartDestruct = false;
             readySoundPlayed = false;
@@ -139,22 +145,22 @@ public class DestructionScript : MonoBehaviour, IInteractable
     void PlaySoundStart()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayAudio(StartSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+        AudioManager.instance.PlayAudio(StartSoundFileName, transform.position, false, false, false, 0.5f, 0.5f, true, 1f, 1.25f, 128);
     }
     void PlaySoundReady()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayAudio(ReadySoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+        AudioManager.instance.PlayAudio(ReadySoundFileName, transform.position, false, false, false, 0.5f, 0.5f, true, 1f, 1.25f, 128);
         readySoundPlayed = true;
     }
     void PlaySoundDestroy()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayAudio(DestroySoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+        AudioManager.instance.PlayAudio(DestroySoundFileName, transform.position, false, false, false, 0.1f, 0.1f, true, 0.75f, 1.25f, 128);
     }
     void PlaySoundFail()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayAudio(FailSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+        AudioManager.instance.PlayAudio(FailSoundFileName, transform.position, false, false, false, 0.75f, 0.75f, true, 0.75f, 1f, 128);
     }
 }

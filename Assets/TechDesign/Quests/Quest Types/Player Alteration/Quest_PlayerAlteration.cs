@@ -48,19 +48,22 @@ namespace Quests
         public void CheckPlayerAlteration()
         {
             // Check if the Player's visuals matches the required visuals for quest
+            Debug.Log(playerMeshRenderer == questMeshRenderer);
             if (playerMeshRenderer == questMeshRenderer)
+            {
                 if (!QuestManager.instance.CheckIfQuestCompleted(questName))
                 {
                     QuestManager.instance.QuestCompletedSetToTrue(questName);
                     EventIfQuestCompleted();
                 }
+            }
         }
         
         // Checks if player is visually changed based of Trigger
         public void OnTriggerEnter(Collider other)
         {
             if (questCompletionCheckers == QuestCompletionCheckers.Trigger)
-                if (other.CompareTag("Player") && QuestManager.instance.CheckIfQuestCompleted(questName))
+                if (other.CompareTag("Player") && !QuestManager.instance.CheckIfQuestCompleted(questName))
                     CheckPlayerAlteration();
         }
 

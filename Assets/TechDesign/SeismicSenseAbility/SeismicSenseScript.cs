@@ -55,10 +55,22 @@ namespace SeismicSense
 
         public void StartPulse()
         {
+            /*
             var particle = particleEffects.main;
             particle.loop = true;
             particleEffects.Play();
-            //PlaySoundSeismic();
+            PlaySoundSeismic();
+            */
+            Invoke("StartPulse1", 0.5f);
+        }
+
+        void StartPulse1()
+        {
+            inProgress = true;
+            var particle = particleEffects.main;
+            particle.loop = true;
+            particleEffects.Play();
+            PlaySoundSeismic();
         }
 
         public void Reset()
@@ -101,7 +113,7 @@ namespace SeismicSense
 
         void PlaySoundSeismic()
         {
-            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 1, 1, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 0.25f, 0.25f, true, 0.75f, 1.25f, 128);
         }
 
 

@@ -29,10 +29,30 @@ public class SeismicManager : MonoBehaviour
     public void CallPoolObj(GameObject parentObj)
     {
         GameObject returnPulse = freeReturnPulses[0];
+
+        var particleMain = returnPulse.GetComponentInChildren<ParticleSystem>().main;
+
+        switch (parentObj.tag)
+        {
+            case "Pushable":
+                particleMain.startColor = Color.green;
+                //Debug.Log("I'm Green");
+                break;
+            case "NPC":
+                particleMain.startColor = Color.red;
+                //Debug.Log("I'm Red");
+                break;
+            case "Interactable":
+                particleMain.startColor = Color.blue;
+                //Debug.Log("I'm Blue");
+                break;
+        }
+
         returnPulse.SetActive(true);
         returnPulse.transform.SetParent(parentObj.transform);
         returnPulse.transform.position = parentObj.transform.position;
         freeReturnPulses.Remove(returnPulse);
         inactiveReturnPulses.Add(returnPulse);
+
     }
 }
