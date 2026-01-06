@@ -57,7 +57,7 @@ namespace Audio
         private void StartAudio()
         {
             foreach (var soundName in loopingAudioEventName)
-                AudioManager.instance.PlayFMODSound(Vector3.zero, soundName, false, false,false, 0, 0, false, 
+                AudioManager.instance.PlayFMODSound(Vector3.zero, soundName, 1f,false, false,false, 0, 0, false, 
                     false, null, null);
         }
 
@@ -78,7 +78,7 @@ namespace Audio
                 var.stop(STOP_MODE.ALLOWFADEOUT);
                 loopingAudioEventInstances.Remove(var);
                 foreach (var soundName in loopingAmbSound)
-                    AudioManager.instance.PlayFMODSound(Vector3.zero, soundName, false, false,false, 0, 0, false, 
+                    AudioManager.instance.PlayFMODSound(Vector3.zero, soundName, 1f,false, false,false, 0, 0, false, 
                         false, null, null);
             }
         }
@@ -134,7 +134,7 @@ namespace Audio
             }
             
             // Plays FMOD audio
-            AudioManager.instance.PlayFMODSound(location, chosenAudioName, true,false,false, minVolume, maxVolume, false, 
+            AudioManager.instance.PlayFMODSound(location, chosenAudioName, 1f,true,false,false, minVolume, maxVolume, false, 
                 false, null, null);
             
             if (isCatalyst)
@@ -198,7 +198,7 @@ namespace Audio
                maxVolume = 0.5f;
            }
             
-           AudioManager.instance.PlayFMODSound(audioFoliageReactor.transform.position, randomFoliageEvent, true,false,true, minVolume, maxVolume, true, 
+           AudioManager.instance.PlayFMODSound(audioFoliageReactor.transform.position, randomFoliageEvent, 1f,true,false,true, minVolume, maxVolume, true, 
                false, null, null); 
            
            AmbTimerSetter(1.5f, false);

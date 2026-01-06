@@ -221,18 +221,18 @@ namespace Player {
         void PlaySoundPickUp()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayFMODSound(transform.position, PickUpSoundFileName, true, true, false, 1.0f, 1.0f, true, false, null, null);
+            AudioManager.instance.PlayFMODSound(transform.position, PickUpSoundFileName, 1f,true, true, false, 1.0f, 1.0f, true, false, null, null);
         }
 
         void PlaySoundPutDown()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayFMODSound(transform.position, PutDownSoundFileName, true, true, false, 1.0f, 1.0f, true, false, null, null);
+            AudioManager.instance.PlayFMODSound(transform.position, PutDownSoundFileName, 1f,true, true, false, 1.0f, 1.0f, true, false, null, null);
         }
         void PlaySoundSwap()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayFMODSound(transform.position, SwapSoundFileName, true, true, false, 1.0f, 1.0f, true, false, null, null);
+            AudioManager.instance.PlayFMODSound(transform.position, SwapSoundFileName, 1f,true, true, false, 1.0f, 1.0f, true, false, null, null);
         }
 
         /*

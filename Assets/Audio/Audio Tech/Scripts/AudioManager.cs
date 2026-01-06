@@ -105,7 +105,7 @@ namespace Audio
         }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// FMOD
-        public void PlayFMODSound(Vector3 spawnPosition,string eventName, bool is3d,bool reverbCheck, bool alterVolume, float minVolume, float maxVolume, bool isOneShot,
+        public void PlayFMODSound(Vector3 spawnPosition,string eventName, float audioLength,bool is3d,bool reverbCheck, bool alterVolume, float minVolume, float maxVolume, bool isOneShot,
     bool isLabelledParameter, string parameterName, string parameterValue)
         {
             GameObject audioObj = audioPoolFreeFMOD[Random.Range(0, audioPoolFree.Count -1)];
@@ -119,7 +119,7 @@ namespace Audio
             }
             audioObj.SetActive(true);
 
-            fmodSoundPlayer.PlaySound(eventName, is3d, reverbCheck, alterVolume, minVolume, maxVolume, isOneShot, 
+            fmodSoundPlayer.PlaySound(eventName, audioLength,is3d, reverbCheck, alterVolume, minVolume, maxVolume, isOneShot, 
                 isLabelledParameter, parameterName, parameterValue);
         }
 

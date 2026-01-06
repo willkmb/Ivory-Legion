@@ -20,7 +20,7 @@ namespace Audio
 
         private void Test()
         {
-            AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/WalkingTest", true, true,false, 1, 1, true, false, null, null);
+            AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/WalkingTest", 1f,true, true,false, 1, 1, true, false, null, null);
         }
 
         private void OnTriggerEnter(Collider other)

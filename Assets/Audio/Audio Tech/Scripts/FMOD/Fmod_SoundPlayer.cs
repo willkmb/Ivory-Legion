@@ -4,6 +4,7 @@ using FMODUnity;
 using InputManager;
 using SeismicSense;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 namespace Audio.FMOD
 {
@@ -20,7 +21,7 @@ namespace Audio.FMOD
         public ReverbArea currentReverbArea;
        // Checks what type of audio it is
        //Checks if the sounds requires reverb
-        public void PlaySound(string eventName, bool is3d,bool reverbCheck, bool alterVolume, float minVolume, float maxVolume, bool isOneShot,
+        public void PlaySound(string eventName, float audioLength,bool is3d,bool reverbCheck, bool alterVolume, float minVolume, float maxVolume, bool isOneShot,
             bool isLabelledParameter, string parameterName, string parameterValue)
         {
             EventInstance instance = RuntimeManager.CreateInstance(eventName);
@@ -30,9 +31,9 @@ namespace Audio.FMOD
                 rgb = transform.AddComponent<Rigidbody>();
                 rgb.useGravity = false;
                 rgb.freezeRotation = true;
-                Invoke("ReverbCheck",Time.deltaTime * 2);
+                Invoke("ReverbCheck",Time.deltaTime * 4);
             }
-            
+            Invoke("Reset",audioLength);
             if (isLabelledParameter)
             {
                 SoundParameterLabelled(instance, parameterName, parameterValue, alterVolume, true, 0.85f, 1.15f, reverbMultiplier);
@@ -89,18 +90,18 @@ namespace Audio.FMOD
         // Spherecast check to see if the audio should reverberate
         private void ReverbCheck()
         {
-            Debug.Log("reverb check");
             var playerDistToObj = Vector3.Distance(PlayerManager.instance.transform.position, currentReverbArea.highestReverbPoint.transform.position);
             if (playerDistToObj <= currentReverbArea.playerMaxDistance)
                 reverbMultiplier = (currentReverbArea.reverbMultiplier * (currentReverbArea.playerMaxDistance / playerDistToObj)) / 10;
-            Debug.Log(currentReverbArea.reverbMultiplier + " * " + "("+currentReverbArea.playerMaxDistance +"/"+playerDistToObj + ")");
-            Debug.Log("reverb multiplier: " + reverbMultiplier);
         }
         // Resets the audio player to be used again
-        public void Reset()
+        public void Reset(EventInstance instance)
         {
             Destroy(rgb);
             boxCollider.enabled = false;
+            instance.release();
+            gameObject.SetActive(false);
+            AudioManager.instance.audioPoolFreeFMOD.Add(gameObject);
         }
     }
 }
