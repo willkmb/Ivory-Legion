@@ -187,8 +187,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5786663762312604941}
   - {fileID: 8540391683934774262}
+  - {fileID: 5786663762312604941}
   - {fileID: 6526863999673154600}
   - {fileID: 5931095108110275837}
   - {fileID: 5983829159754895391}
@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 7546595864626480704}
+  di: {fileID: 0}
   tint1: {fileID: 3796004982048559864}
   pattern: {fileID: 1938800185145484796}
   tint2: {fileID: 6415312848418690568}
