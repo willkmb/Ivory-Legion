@@ -64,8 +64,8 @@ namespace Player
                 }
                 if (!isWalkSoundPlaying)
                 {
-                    //PlaySoundWalk();  
-                    //isWalkSoundPlaying = true; <-- and ^ sounds for walking - Emily
+                    PlaySoundWalk();  
+                    isWalkSoundPlaying = true; //<-- and ^ sounds for walking - Emily
                 }
             }
             else
@@ -138,18 +138,33 @@ namespace Player
             walkParticles2.Stop();
             isParticlesPlaying = false;
         }
-        void PlaySoundWalk() // - Emily, sounds
+        // ReSharper disable Unity.PerformanceAnalysis
+        void PlaySoundWalk() // - Emily, sounds - Updated (Brandon)
         {
-            AudioManager.instance.PlayFMODSound(transform.position, WalkSoundFileName, 0.5f, true, true, 
-                true, 0.75f, 1.25f, 
-                false, 0, 0, 
-                true, 
-                false, null, null);
-            Invoke("SoundPlayingFalse", 0.5f);
+                // If npc is in a terrain area, play that audio instead
+                if (PlayerManager.instance.audioEventNames.Count >= 1)
+                {
+                    AudioManager.instance.PlayFMODSound(transform.position, PlayerManager.instance.audioEventNames[0], 1f, true, true, 
+                        false, 0.9f, 1.1f, 
+                        true, 0.9f, 1.1f, 
+                        true, 
+                        false, null, null);
+                    StartCoroutine(SoundPlayingFalse(1));
+                    return;
+                }
+                    
+                // Plays base Audio if there is no terrain audio
+                AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/Elephants/E_Walking_Base", 1f, true, true, 
+                    true, 0.9f, 1.1f,
+                    true, 0.9f, 1.1f, 
+                    true, 
+                    false, null, null);
+                
+            StartCoroutine(SoundPlayingFalse(1));
         }
-
-        void SoundPlayingFalse() // - Emily, sounds
+        IEnumerator SoundPlayingFalse(int secs)
         {
+            yield return new WaitForSeconds(secs);
             isWalkSoundPlaying = false;
         }
     }

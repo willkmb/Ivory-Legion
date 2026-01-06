@@ -11,7 +11,7 @@ namespace Audio
             audioSource.Stop();
             audioSource.pitch = 1f;
             audioSource.volume = 1f;
-            AudioManager.instance.audioPoolFree.Add(gameObject);
+            AudioManager.instance.audioPoolFreeFMOD.Add(gameObject);
             gameObject.SetActive(false);
         }
     }

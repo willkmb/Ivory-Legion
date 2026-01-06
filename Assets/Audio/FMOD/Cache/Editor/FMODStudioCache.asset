@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Switch Bank.bank
   Name: Switch Bank
   StudioPath: bank:/Mechanics/Switch Bank
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-7633260011768843819
@@ -33,7 +33,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Seismic Sense Bank.bank
   Name: Seismic Sense Bank
   StudioPath: bank:/Mechanics/Seismic Sense Bank
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-7511866256940879861
@@ -90,33 +90,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-6452127980206942399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Walking/WalkingTest
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Walking/WalkingTest
-  Guid:
-    Data1: -317544677
-    Data2: 1113577626
-    Data3: 1028232871
-    Data4: 1991315803
-  Banks:
-  - {fileID: -4794721120974045267}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-6342051860142494504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +108,7 @@ MonoBehaviour:
   lastModified: 639009965580000000
   FileSizes: []
   Exists: 1
---- !u!114 &-4794721120974045267
+--- !u!114 &-4535854465303325273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,15 +117,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Walking.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Walking/Humans/H_Walking_Base
   m_EditorClassIdentifier: 
-  Path: FMOD/Desktop/Walking.bank
-  Name: Walking
-  StudioPath: bank:/SFX/Walking
-  lastModified: 639032918640000000
-  FileSizes: []
-  Exists: 1
+  Path: event:/SFX/Walking/Humans/H_Walking_Base
+  Guid:
+    Data1: 298515830
+    Data2: 1293861446
+    Data3: 709911437
+    Data4: -1782528400
+  Banks:
+  - {fileID: 5363446290586559285}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4531653306062741696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,10 +150,10 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639032918640000000
+  lastModified: 639033017640000000
   FileSizes:
   - Name: 
-    Value: 2334
+    Value: 2564
   Exists: 1
 --- !u!114 &-4096269627443562151
 MonoBehaviour:
@@ -188,7 +170,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Docks.bank
   Name: Docks
   StudioPath: bank:/Amb/Docks
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-4096113539777897528
@@ -235,7 +217,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Journal.bank
   Name: Journal
   StudioPath: bank:/UI/Journal
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-3281047363513233974
@@ -253,7 +235,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Gisgo.bank
   Name: Gisgo
   StudioPath: bank:/SFX/Gisgo
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-2717385601841800206
@@ -283,6 +265,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-2237841136577963803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Walking Test.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Walking Test.bank
+  Name: Walking Test
+  StudioPath: bank:/SFX/Walking/Walking Test
+  lastModified: 639033096700000000
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-1868325466199305067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Put Down Bank.bank
   Name: Put Down Bank
   StudioPath: bank:/Mechanics/Put Down Bank
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -357,7 +357,9 @@ MonoBehaviour:
   - {fileID: -3281047363513233974}
   - {fileID: -3621423849049524329}
   - {fileID: 2214591829542579785}
-  - {fileID: -4794721120974045267}
+  - {fileID: -2237841136577963803}
+  - {fileID: 1103466477897033884}
+  - {fileID: 5363446290586559285}
   EditorEvents:
   - {fileID: 5241885927937677785}
   - {fileID: 9093187399311315942}
@@ -371,14 +373,16 @@ MonoBehaviour:
   - {fileID: 8784750178589992769}
   - {fileID: 238522531611517780}
   - {fileID: 3203221894425936055}
-  - {fileID: -6452127980206942399}
+  - {fileID: 1882129227102835690}
+  - {fileID: 50121092582624853}
+  - {fileID: -4535854465303325273}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6607755374509310819}
   StringsBanks:
   - {fileID: -4531653306062741696}
   cacheVersion: 131857
-  cacheTime: 639032918640000000
+  cacheTime: 639033096700000000
   SerializableEventsDict:
   - key: event:/Mechanics/Seismic Sense/Seismic Sense Hit Event
     index: 0
@@ -404,8 +408,39 @@ MonoBehaviour:
     index: 10
   - key: event:/Mechanics/Destruction/Destruction Object Event
     index: 11
-  - key: event:/SFX/Walking/WalkingTest
+  - key: event:/SFX/Walking/Elephants/E_Walking_Base
     index: 12
+  - key: event:/SFX/Walking/Elephants/E_Walking_Dirt
+    index: 13
+  - key: event:/SFX/Walking/Humans/H_Walking_Base
+    index: 14
+--- !u!114 &50121092582624853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Walking/Elephants/E_Walking_Dirt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Walking/Elephants/E_Walking_Dirt
+  Guid:
+    Data1: 189961181
+    Data2: 1179237952
+    Data3: -1538311256
+    Data4: -1515012435
+  Banks:
+  - {fileID: 1103466477897033884}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
 --- !u!114 &238522531611517780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +483,25 @@ MonoBehaviour:
   Path: FMOD/Desktop/Amb Misc.bank
   Name: Amb Misc
   StudioPath: bank:/Amb/Amb Misc
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &1103466477897033884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/E_Walking.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/E_Walking.bank
+  Name: E_Walking
+  StudioPath: bank:/SFX/Walking/E_Walking
+  lastModified: 639033016840000000
   FileSizes: []
   Exists: 1
 --- !u!114 &1464942813054611183
@@ -466,9 +519,36 @@ MonoBehaviour:
   Path: FMOD/Desktop/Menu.bank
   Name: Menu
   StudioPath: bank:/Music/Menu
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
+--- !u!114 &1882129227102835690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Walking/Elephants/E_Walking_Base
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Walking/Elephants/E_Walking_Base
+  Guid:
+    Data1: -317544677
+    Data2: 1113577626
+    Data3: 1028232871
+    Data4: 1991315803
+  Banks:
+  - {fileID: -2237841136577963803}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &2214591829542579785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,7 +564,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Main Menu.bank
   Name: Main Menu
   StudioPath: bank:/UI/Main Menu
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &2591265549786958723
@@ -556,7 +636,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Augmentation Bank.bank
   Name: Augmentation Bank
   StudioPath: bank:/Mechanics/Augmentation Bank
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &5241885927937677785
@@ -587,6 +667,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5500
+--- !u!114 &5363446290586559285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/H_Walking.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/H_Walking.bank
+  Name: H_Walking
+  StudioPath: bank:/SFX/Walking/H_Walking
+  lastModified: 639033017640000000
+  FileSizes: []
+  Exists: 1
 --- !u!114 &5803259036112702686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,7 +720,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Elephants.bank
   Name: Elephants
   StudioPath: bank:/SFX/Elephants
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &6607755374509310819
@@ -640,7 +738,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639032918640000000
+  lastModified: 639033017640000000
   FileSizes: []
   Exists: 1
 --- !u!114 &6737495542046213320
@@ -712,7 +810,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Destruction Bank.bank
   Name: Destruction Bank
   StudioPath: bank:/Mechanics/Destruction Bank
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &7684877613004714340
@@ -730,7 +828,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Pull Bank.bank
   Name: Pull Bank
   StudioPath: bank:/Mechanics/Pull Bank
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &8055047889799220421
@@ -766,7 +864,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Pick Up Bank.bank
   Name: Pick Up Bank
   StudioPath: bank:/Mechanics/Pick Up Bank
-  lastModified: 639032918640000000
+  lastModified: 639032945200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &8784750178589992769

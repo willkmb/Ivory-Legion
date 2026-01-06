@@ -121,7 +121,7 @@ namespace Audio
                 location.y =  PlayerManager.instance.gameObject.transform.position.y;
                 
             //Distance checks for volume and priority levels
-            var minVolume = 1f; var maxVolume = 1f; var priority = 128;
+            var minVolume = 1f; var maxVolume = 1f; //var priority = 128;
             var distance = Vector3.Distance(location, PlayerManager.instance.gameObject.transform.position);
             if (distance <= _closeAudioPercentage) // Sound is 30% of radius range
             {

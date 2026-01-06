@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Ai;
+using InputManager;
+using Npc.AI;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,6 +23,11 @@ namespace Npc
         [Header("Agent Values")] 
         [SerializeField] private float avoidancePredictionTime;
         [SerializeField] private int pathFindingIterationsPerFrame;
+
+        [Header("Audio")] 
+        public MarkerPointZone currentMarkerZone;
+        public int maxNumberOfAudioPlayers = 5;
+        public int currentNumberOfAudioPlayers = 0;
         
         private void Awake()
         {

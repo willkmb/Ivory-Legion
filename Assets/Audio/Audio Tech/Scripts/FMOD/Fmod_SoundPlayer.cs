@@ -80,7 +80,7 @@ namespace Audio.FMOD
             
             currentInstance.start();
         }
-        
+
         // E.G Explosion
         private void OneShotSound(float reverbMultiplier, bool randomPitch, float minPitch, float maxPitch)
         {
@@ -108,7 +108,9 @@ namespace Audio.FMOD
         // Resets the audio player to be used again
         public void Reset()
         {
-            Destroy(rgb);
+            if (rgb != null)
+                Destroy(rgb);
+            
             boxCollider.enabled = false;
             currentInstance.release();
             gameObject.SetActive(false);
