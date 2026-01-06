@@ -105642,6 +105642,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 120168962402192144, guid: 666a903c27fa11547a3e650e760590ac, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 2039
+      objectReference: {fileID: 0}
+    - target: {fileID: 120168962402192144, guid: 666a903c27fa11547a3e650e760590ac, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 661550321084200997, guid: 666a903c27fa11547a3e650e760590ac, type: 3}
       propertyPath: m_Name
       value: Reverb Audio Area

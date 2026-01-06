@@ -71,10 +71,10 @@ namespace Audio
                 }
             }
             // Sets the volume based of how close the player is to the sound
-            var minVolume = 1f; var maxVolume = 1f;
-            var minPitch = 0.8f; var maxPitch = 1.2f;
-            var priority = 128;
-            if (smallestDistance >= maxVolumeDistance * 0.35f)
+            // var minVolume = 1f; var maxVolume = 1f;
+            // var minPitch = 0.8f; var maxPitch = 1.2f;
+            // var priority = 128;
+            /*if (smallestDistance >= maxVolumeDistance * 0.35f)
             {
                 minVolume *= 0.15f;
                 maxVolume *= 0.35f;
@@ -91,7 +91,7 @@ namespace Audio
                 minVolume *= 0.75f;
                 maxVolume *= 1f;
                 priority = 128;
-            }
+            }*/
            // AudioManager.instance.PlayAudio(chosenAudioName, smallestPosition, false, true, false,
                // minVolume, maxVolume, true, minPitch, maxPitch, priority);
           

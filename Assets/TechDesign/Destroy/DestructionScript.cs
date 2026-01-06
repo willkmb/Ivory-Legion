@@ -144,26 +144,31 @@ public class DestructionScript : MonoBehaviour, IInteractable
     void PlaySoundStart()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayFMODSound(transform.position, StartSoundFileName, 1f,true, true, true, 0.75f, 1.25f, false, 
-            false, null, null);
+        PlaySound(StartSoundFileName, 2f);
     }
     void PlaySoundReady()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayFMODSound(transform.position, ReadySoundFileName, 1f,true, true, true, 0.75f, 1.25f, false, 
-            false, null, null);
+        PlaySound(ReadySoundFileName, 2f);
         readySoundPlayed = true;
     }
     void PlaySoundDestroy()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayFMODSound(transform.position, DestroySoundFileName, 1f,true, true, true, 0.75f, 1.25f, false, 
-            false, null, null);
+        PlaySound(DestroySoundFileName, 2f);
     }
     void PlaySoundFail()
     {
         Debug.Log("playsound");
-        AudioManager.instance.PlayFMODSound(transform.position, FailSoundFileName, 1f,true, true, true, 0.75f, 1.25f, false, 
+        PlaySound(FailSoundFileName, 2f);
+    }
+
+    void PlaySound(string eventName, float audioLength)
+    {
+        AudioManager.instance.PlayFMODSound(transform.position, eventName, audioLength, true, true, 
+            true, 0.75f, 1.25f, 
+            false, 0, 0, 
+            true, 
             false, null, null);
     }
 }
