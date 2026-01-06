@@ -13,20 +13,6 @@ namespace Audio
         [Range(0,50)] public float playerMaxDistance;
         [Header("List of Players in Area")]
         [SerializeField] private List<Fmod_SoundPlayer> playersList;
-        private void Start()
-        {
-            Invoke("Test",1f);
-        }
-
-        private void Test()
-        {
-            AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/WalkingTest", 1f,true, true,
-                false, 1, 1, 
-                true, 0.9f,1.1f,
-                true, 
-                false, null, null);
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             Fmod_SoundPlayer player = other.gameObject.transform.GetComponent<Fmod_SoundPlayer>();

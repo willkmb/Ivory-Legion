@@ -11,10 +11,6 @@ namespace Audio
         [Header("Variables")]
         [Range(0.5f, 25f)] [SerializeField] private float delayTime;
         
-        [Header("Object Pool Obj")]
-         public List<GameObject> audioPoolFree;
-        [SerializeField] private GameObject audioPrefab;
-        
         public List<GameObject> audioPoolFreeFMOD;
         [SerializeField] private GameObject fmodAudioPrefab;
         
@@ -37,8 +33,6 @@ namespace Audio
             instance ??= this;
             
             DontDestroyOnLoad(gameObject);
-            
-            audioPoolFree = new List<GameObject>();
         }
         private void Start()
         {
@@ -104,14 +98,15 @@ namespace Audio
             }
         }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// FMOD
+        // ReSharper disable Unity.PerformanceAnalysis
+        /// FMOD
         public void PlayFMODSound(Vector3 spawnPosition,string eventName, float audioLength,bool is3d,bool reverbCheck,
-    bool alterVolume, float minVolume, float maxVolume, 
-    bool alterPitch, float minPitch, float maxPitch,
-    bool isOneShot,
-    bool isLabelledParameter, string parameterName, string parameterValue)
+              bool alterVolume, float minVolume, float maxVolume, 
+              bool alterPitch, float minPitch, float maxPitch,
+              bool isOneShot,
+              bool isLabelledParameter, string parameterName, string parameterValue)
         {
-            GameObject audioObj = audioPoolFreeFMOD[Random.Range(0, audioPoolFree.Count -1)];
+            GameObject audioObj = audioPoolFreeFMOD[Random.Range(0, audioPoolFreeFMOD.Count -1)];
             audioPoolFreeFMOD.Remove(audioObj);
             audioObj.transform.position = spawnPosition;
             Fmod_SoundPlayer fmodSoundPlayer = audioObj.GetComponent<Fmod_SoundPlayer>();

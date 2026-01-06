@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Ai;
 using Npc.AI.Movement;
 using Audio;
+using InputManager;
 using Quests;
 using UnityEngine;
 using UnityEngine.AI;
@@ -36,11 +38,11 @@ namespace Npc.AI
         public NpcState npcState;
         [HideInInspector] public NpcState stateSaver;
 
-        //Components
+        // Components
         [HideInInspector] public NavMeshAgent agent;
         private GameObject _blocker;
         
-        //Scripts
+        // Scripts
         private NpcSetLocation _npcSetLocation;
         private NpcPerformingAction _performingAction;
         [HideInInspector] public NpcSetPathWalking setPathWalking;
@@ -54,17 +56,25 @@ namespace Npc.AI
         public bool patrolling; // Ticked if you want the NPC to travel between points on the SetPathingWalking
         [HideInInspector] public float minMovementCooldownTime;
         [HideInInspector] public float maxMovementCooldownTime;
-        public bool removeAfterCutscene;
         public bool idleAfterCutscene;
         [HideInInspector] public Vector3 currentMovPos;
         
         [Header("Only Required if AI is 'BASE'")]
         public MarkerPointZone markerPointZone;
         
-        //Quests
+        // Audio
+        [Header("Audio")]
+        [HideInInspector] public bool isWalking;
+        private float audioTimer;
+        [SerializeField] private float audioFrequencyTime;
+        [SerializeField] private float playerHearingRange;
+        public List<string> audioEventNames = new List<string>();
+        
+        
+        // Quests
         [Header("Here for Testing")]
         public Quest_DialogueAlterer questDialogueAlterer;
-        
+   
         private void Awake()
         {
             agent = transform.GetComponent<NavMeshAgent>();
@@ -75,6 +85,9 @@ namespace Npc.AI
             setPathWalking = transform.GetComponent<NpcSetPathWalking>();
             _randomMovement = transform.GetComponent<NpcRandomMovement>();
             _dialogue = transform.GetComponent<Dialogue>();
+
+            audioFrequencyTime =
+                Mathf.Clamp(audioFrequencyTime, audioFrequencyTime *0.75f, audioFrequencyTime *1.25f);
         }
 
         private void Start()
@@ -83,14 +96,29 @@ namespace Npc.AI
 
             if (alwaysIdle)
                 npcState = NpcState.Idle;
+            
+            markerPointZone.AddToZone(this);
         }
-
+        private void Update()
+        {
+            // Calls audio for Npcs
+            if (NpcEvents.instance.currentMarkerZone.activeElephantsNpcs.Contains(this) ||  NpcEvents.instance.currentMarkerZone.activeHumanNpcs.Contains(this))
+            {
+                audioTimer += Time.deltaTime;
+                if (audioTimer > audioFrequencyTime && isWalking)
+                {
+                    audioTimer = 0f;
+                    NpcWalkingAudio();
+                }
+            }
+        }
         // The brain of the NPC
         private void StateMachine()
         {
             switch (npcState)
             {
                 case NpcState.Idle: //NPC will not move,
+                    isWalking = false;
                     agent.speed = 0f;
                     stateSaver = NpcState.Idle;
                     _blocker = NpcEvents.instance.GetBlocker(); NpcEvents.instance.SetBlocker(transform.position, _blocker);
@@ -104,6 +132,7 @@ namespace Npc.AI
                 case NpcState.Walking: // NPC walks to set location(s), set by parameters
                     if (_blocker != null)
                         NpcEvents.instance.ResetBlocker(_blocker);
+                    isWalking = true;
                     stateSaver = NpcState.Walking;
                     _npcSetLocation.SetLocation(); // Gets location for the npc to walk too
                     break;
@@ -111,15 +140,18 @@ namespace Npc.AI
                     // Only needs to be called once as it loops itself in a contained script
                     if (_blocker != null)
                         NpcEvents.instance.ResetBlocker(_blocker);
+                    isWalking = true;
                     stateSaver =  NpcState.SetPathingWalking;
                     setPathWalking.GetNextLocationPoint();
                     break;
                 case NpcState.PerformingAction: //E.G Animations involving jobs or trading with the shop owner
+                    isWalking = false;
                     stateSaver  =  NpcState.PerformingAction;
                     _blocker = NpcEvents.instance.GetBlocker(); NpcEvents.instance.SetBlocker(transform.position, _blocker);
                     _performingAction.SubscribeToTimer();
                     break;
                 case NpcState.TalkingToPlayer: //NPC will stop any movement and enter the dialogue with the player
+                    isWalking = false;
                     agent.speed = 0f;
                     _dialogue.pastNpcState = stateSaver;
                     // Quests // - Alters Text based of quest completion state
@@ -131,6 +163,7 @@ namespace Npc.AI
                     //Repeats in an infinite loop unless spoken to by player in which it will continue after the conversation
                     if (_blocker != null)
                          NpcEvents.instance.ResetBlocker(_blocker);
+                    isWalking = true;
                     stateSaver =  NpcState.RandomPathing;
                     _randomMovement.GetRandomlocation();
                     break;
@@ -144,6 +177,44 @@ namespace Npc.AI
         {
             agent.speed = _agentOriginalSpeed;
             StateMachine();
+        }
+        
+        private void NpcWalkingAudio()
+        {
+            // Add zone stuff to help optimise the game
+            float distance = Vector3.Distance(transform.position, PlayerManager.instance.transform.position);
+            if (playerHearingRange > distance && NpcEvents.instance.currentNumberOfAudioPlayers < NpcEvents.instance.maxNumberOfAudioPlayers)
+            {
+                NpcEvents.instance.currentNumberOfAudioPlayers += 1;
+                    // If npc is in a terrain area, play that audio instead
+                    if (audioEventNames.Count >= 1)
+                    {
+                        AudioManager.instance.PlayFMODSound(transform.position, audioEventNames[0], 1f, true, true, 
+                            false, 0.9f, 1.1f, 
+                            true, 0.9f, 1.1f, 
+                            true, 
+                            false, null, null);
+                        StartCoroutine(ResetAudio(1));
+                        return;
+                    }
+                    
+                    // Plays base Audio if there is no terrain audio
+                    AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/Humans/H_Walking_Base", 1f, true, true, 
+                        true, 0.9f, 1.1f,
+                        true, 0.9f, 1.1f, 
+                        true, 
+                        false, null, null);
+                    StartCoroutine(ResetAudio(1));
+            }
+        }
+       
+
+        IEnumerator ResetAudio(int secs)
+        {
+            yield return new WaitForSeconds(secs);
+            NpcEvents.instance.currentNumberOfAudioPlayers -= 1;
+
+            audioFrequencyTime = Random.Range(audioFrequencyTime * 0.75f, audioFrequencyTime * 1.25f);
         }
     }
 }

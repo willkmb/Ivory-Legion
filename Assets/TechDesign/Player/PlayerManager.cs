@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 //using AI;
 using Player;
 using SeismicSense;
@@ -37,6 +38,9 @@ namespace InputManager
         
         // Scripts
         [HideInInspector] public DestructionScript currentDestructableObject;
+        
+        // Audio
+        public List<string> audioEventNames = new List<string>();
         
         [Header("Values")]
         public float interactCooldown;
