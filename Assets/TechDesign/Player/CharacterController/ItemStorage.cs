@@ -49,7 +49,6 @@ namespace Player {
         // passes an object into item storage to pick it up, and childs it to a storage point
         public void PickUp(GameObject thatObject, int itemID, int itemAmount)
         {
-            ElephantAnim.instance.Pickup();
             QuestManager.instance.AdjustItemToQuestInventory((itemID), itemAmount); // Item ID : Item Amount
             PickUpPutDownScript pickUpPutDownScript = thatObject.GetComponent<PickUpPutDownScript>(); 
             pickUpPutDownScript.RemoveFromAreas(); // Removes self from area Lists - Quests
@@ -60,7 +59,7 @@ namespace Player {
 
                 itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                 itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                itemsInStorage[(int)Storage.Trunk].transform.localRotation = pickUpPutDownScript.trunkRotation;
+                itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0,0,0,0);
             }
             else
             {
@@ -75,7 +74,7 @@ namespace Player {
 
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = pickUpPutDownScript.bagRotation;
+                    itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
                 }
                 else if (itemsInStorage[(int)Storage.BagLeft] == null)
                 {
@@ -88,35 +87,33 @@ namespace Player {
 
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = pickUpPutDownScript.bagRotation;
+                    itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
                 }
             }
-            PlaySoundPickUp();
+            //PlaySoundPickUp();
         }
 
             // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
         public void PutDown(GameObject thatobject, int itemID, int itemAmount)
-        { 
-           // ElephantAnim.instance.Putdown();
+        {
            Debug.Log("put down");
             if (itemsInStorage[0] != null)
             {
-                ElephantAnim.instance.Putdown();
                 QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore;
                 Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 0.5f, -1, queryTriggerInteraction);
                 Debug.Log(intersecting.Length);
                 
                 if (intersecting.Length == 1 || intersecting.Length == 2 || QuestAreaCheck(intersecting, itemsInStorage[(int)Storage.Trunk]))
                 {
+                    Debug.Log("Put down");
+                    Collider col = itemsInStorage[(int)Storage.Trunk].GetComponent<Collider>();
+                    Vector3 halfExtents = new Vector3(col.bounds.extents.x * 0.95f, col.bounds.extents.y, col.bounds.extents.z * 0.95f);
+                    
                     itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
-                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = new Quaternion(0, 0, 0, 0);
-
-                    BoxCollider col = itemsInStorage[(int)Storage.Trunk].GetComponent<BoxCollider>();
-                    itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (col.size.y/2), putDownPoint.transform.position.z);
-
+                    itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (halfExtents.y *2), putDownPoint.transform.position.z);
                     itemsInStorage[(int)Storage.Trunk].transform.parent = null;
                     itemsInStorage[(int)Storage.Trunk] = null;
-                    PlaySoundPutDown();
+                    //PlaySoundPutDown();
                 }
             }
         }
@@ -135,16 +132,14 @@ namespace Player {
                 {
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().trunkRotation;
                 }
 
                 if (itemsInStorage[(int)Storage.BagLeft] != null)
                 {
                     itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
                     itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
-                    itemsInStorage[(int)Storage.BagLeft].transform.localRotation = itemsInStorage[(int)Storage.BagLeft].GetComponent<PickUpPutDownScript>().bagRotation;
                 }
-                PlaySoundSwap();
+                //PlaySoundSwap();
             }
         }
 
@@ -162,16 +157,14 @@ namespace Player {
                 {
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().trunkRotation;
                 }
 
                 if (itemsInStorage[(int)Storage.BagRight] != null)
                 {
                     itemsInStorage[(int)Storage.BagRight].transform.position = saddlePointRight.transform.position;
                     itemsInStorage[(int)Storage.BagRight].transform.parent = saddlePointRight.transform;
-                    itemsInStorage[(int)Storage.BagRight].transform.localRotation = itemsInStorage[(int)Storage.BagRight].GetComponent<PickUpPutDownScript>().bagRotation;
                 }
-                PlaySoundSwap();
+                //PlaySoundSwap();
             }
         }
 
@@ -190,8 +183,7 @@ namespace Player {
                         itemsInStorage[(int)Storage.Trunk] = null;
                         hatOnHead.transform.position = hatPoint.transform.position;
                         hatOnHead.transform.parent = hatPoint.transform;
-                        hatOnHead.transform.localRotation = new Quaternion(0, 0, 0, 0);
-                        PlaySoundSwap();
+                        //PlaySoundSwap();
                     }
                 }
             }
@@ -203,8 +195,7 @@ namespace Player {
                     hatOnHead = null;
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    itemsInStorage[(int)Storage.Trunk].transform.localRotation = itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().trunkRotation;
-                    PlaySoundSwap();
+                    //PlaySoundSwap();
                 }
             }
         }
@@ -230,18 +221,18 @@ namespace Player {
         void PlaySoundPickUp()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 0.65f, 0.65f, true, 1.25f, 1.5f, 128);
+            AudioManager.instance.PlayFMODSound(transform.position, PickUpSoundFileName, 1f,true, true, false, 1.0f, 1.0f, true, false, null, null);
         }
 
         void PlaySoundPutDown()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 0.65f, 0.65f, true, 0.75f, 1f, 128);
+            AudioManager.instance.PlayFMODSound(transform.position, PutDownSoundFileName, 1f,true, true, false, 1.0f, 1.0f, true, false, null, null);
         }
         void PlaySoundSwap()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 0.4f, 0.4f, true, 0.75f, 1.25f, 128);
+            AudioManager.instance.PlayFMODSound(transform.position, SwapSoundFileName, 1f,true, true, false, 1.0f, 1.0f, true, false, null, null);
         }
 
         /*

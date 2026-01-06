@@ -20,6 +20,7 @@ namespace Player
         private CharacterController controller;
         [SerializeField] private Transform cameraTransform;
         [SerializeField] private ParticleSystem walkParticles1;
+        [SerializeField] private ParticleSystem walkParticles2;
 
         [Header("Movement Settings")]
         [SerializeField] private float walkSpeed = 5f;
@@ -63,8 +64,8 @@ namespace Player
                 }
                 if (!isWalkSoundPlaying)
                 {
-                    PlaySoundWalk();  
-                    isWalkSoundPlaying = true; //<-- and ^ sounds for walking - Emily
+                    //PlaySoundWalk();  
+                    //isWalkSoundPlaying = true; <-- and ^ sounds for walking - Emily
                 }
             }
             else
@@ -128,17 +129,20 @@ namespace Player
         public void StartWalkParticles() // - Emily, particles
         {
             walkParticles1.Play();
+            walkParticles2.Play();
             isParticlesPlaying = true;
         }
         public void StopWalkParticles() // - Emily, particles
         {
             walkParticles1.Stop();
+            walkParticles2.Stop();
             isParticlesPlaying = false;
         }
         void PlaySoundWalk() // - Emily, sounds
         {
-            AudioManager.instance.PlayAudio(WalkSoundFileName, transform.position, false, false, false, 0.1f, 0.25f, true, 0.5f, 1f, 128);
-            Invoke("SoundPlayingFalse", 0.75f);
+            AudioManager.instance.PlayFMODSound(transform.position, WalkSoundFileName, 1f,true, true, true, 0.9f, 1.1f, 
+                true, false, null, null);
+            Invoke("SoundPlayingFalse", 0.5f);
         }
 
         void SoundPlayingFalse() // - Emily, sounds

@@ -30,9 +30,7 @@ namespace Player
         private Vector3 lastCheckOrigin;
         private Vector3 lastHalfExtents;
         private bool lastPathClear;
-
-        [Header("For Timing")]
-        public bool pushedOnce = false;
+        
         
 
         private void Awake()
@@ -46,6 +44,7 @@ namespace Player
 
             if (isPushing && pushedObj != null)
             {
+                ElephantAnim.instance.Push();
                 MovePushedObject();
             }
         }
@@ -100,7 +99,7 @@ namespace Player
                 //Debug.Log("Position clear");
                 targetPosition = proposedTarget;
                 isPushing = true;
-                PlaySoundPush();
+                //PlaySoundPush();
                 
             }
             else
@@ -123,7 +122,6 @@ namespace Player
                     Mathf.Round(targetPosition.y * 1000f) / 1000f, Mathf.Round(targetPosition.z * 1000f) / 1000f);
 
                 isPushing = false;
-                if(pushedObj == GameObject.Find("PushObj-Warehouse")) pushedOnce = true;
             }
         }
 
@@ -202,9 +200,8 @@ namespace Player
         }
         void PlaySoundPush()
         {
-            //Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PushSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1.25f, 128);
+            Debug.Log("playsound");
+            AudioManager.instance.PlayFMODSound(transform.position, PushSoundFileName, 1f,true, true, true, 1.0f, 1.0f, true, false, null, null);
         }
-
     }
 }

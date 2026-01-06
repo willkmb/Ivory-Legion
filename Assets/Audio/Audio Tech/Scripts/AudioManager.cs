@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Audio.FMOD;
 using UnityEngine;
 
 namespace Audio
@@ -13,6 +14,9 @@ namespace Audio
         [Header("Object Pool Obj")]
          public List<GameObject> audioPoolFree;
         [SerializeField] private GameObject audioPrefab;
+        
+        public List<GameObject> audioPoolFreeFMOD;
+        [SerializeField] private GameObject fmodAudioPrefab;
         
         [Header("Audio Lists of Entire Game")]
         [SerializeField] private List<AudioClip> sfxList;
@@ -38,7 +42,7 @@ namespace Audio
         }
         private void Start()
         {
-            SpawnObjectPool();
+            SpawnObjectPoolFMOD();
             
             DictionarySortingSound(sfxList);
             DictionarySortingMusic(musicList);
@@ -47,7 +51,6 @@ namespace Audio
 
             DictionarySortingCatalystAmb(ambCatalystList);
         }
-
         private void DictionarySortingSound(List<AudioClip> audioList)
         {
             foreach(var audioClip in audioList) 
@@ -88,22 +91,44 @@ namespace Audio
                 //Adds all audio Clips in the list to the sound dictionary
             }
         }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Object Pooling Functions
-        private void SpawnObjectPool()
+
+// FMOD Object Pooling Functions
+        private void SpawnObjectPoolFMOD()
         {
             for (int i = 0; i < 100; i++)
             {
-                GameObject instantiate = Instantiate(audioPrefab, transform.position, Quaternion.identity);
+                GameObject instantiate = Instantiate(fmodAudioPrefab, transform.position, Quaternion.identity);
                 instantiate.transform.SetParent(transform);
-                audioPoolFree.Add(instantiate);
+                audioPoolFreeFMOD.Add(instantiate);
                 instantiate.SetActive(false);
             }
         }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// FMOD
+        public void PlayFMODSound(Vector3 spawnPosition,string eventName, float audioLength,bool is3d,bool reverbCheck, bool alterVolume, float minVolume, float maxVolume, bool isOneShot,
+    bool isLabelledParameter, string parameterName, string parameterValue)
+        {
+            GameObject audioObj = audioPoolFreeFMOD[Random.Range(0, audioPoolFree.Count -1)];
+            audioPoolFreeFMOD.Remove(audioObj);
+            audioObj.transform.position = spawnPosition;
+            Fmod_SoundPlayer fmodSoundPlayer = audioObj.GetComponent<Fmod_SoundPlayer>();
+            if (fmodSoundPlayer == null)
+            {
+                Debug.LogError("No FMOD sound player found");
+                return;
+            }
+            audioObj.SetActive(true);
+
+            fmodSoundPlayer.PlaySound(eventName, audioLength,is3d, reverbCheck, alterVolume, minVolume, maxVolume, isOneShot, 
+                isLabelledParameter, parameterName, parameterValue);
+        }
+
+
+// Old Code
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // ReSharper disable Unity.PerformanceAnalysis
         /// Call when you want to use a sound
-        public void PlayAudio(string audioName,Vector3 spawnPosition,bool loops, bool is3d, bool ambSound,
+    /*public void PlayAudio(string audioName,Vector3 spawnPosition,bool loops, bool is3d, bool ambSound,
             float minVolume, float maxVolume, bool randomPitch, float minPitch, float maxPitch, int priority)
         {
             if (!soundDataBase.TryGetValue(audioName, out AudioClip audioClip))
@@ -122,7 +147,7 @@ namespace Audio
                 if (loops)
                 {
                     audioSource.loop = true;
-                    AudioAmbManager.instance.loopingAudioPlayersList.Add(audioSource);
+                   // AudioAmbManager.instance.loopingAudioPlayersList.Add(audioSource);
                 }
                 audioSource.spatialBlend = is3d ? 1 : 0;
             }
@@ -144,13 +169,29 @@ namespace Audio
             // Plays the audio
             audioSource.Play();
             
-            if(ambSound)
-                 AudioAmbManager.instance.FoliageSoundChecker(audioName, audioSource.clip.length);
-            
+            // if(ambSound)
+            //      AudioAmbManager.instance.FoliageSoundChecker(audioName, audioSource.clip.length);
+            //
             //Disables audio after x seconds, adding it back to the audioPoolFree list
             if (loops)
                 return;
             audioPlayer.Invoke("DisableObj", audioSource.clip.length + (delayTime - Random.Range(delayTime * 0.1f, delayTime * 0.35f)));
+            
+            
+            
+            
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Object Pooling Functions
+        private void SpawnObjectPool()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                GameObject instantiate = Instantiate(audioPrefab, transform.position, Quaternion.identity);
+                instantiate.transform.SetParent(transform);
+                audioPoolFree.Add(instantiate);
+                instantiate.SetActive(false);
+            }
         }
+        }*/
     }
 }

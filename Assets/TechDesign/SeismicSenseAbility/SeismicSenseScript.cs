@@ -55,22 +55,10 @@ namespace SeismicSense
 
         public void StartPulse()
         {
-            /*
             var particle = particleEffects.main;
             particle.loop = true;
             particleEffects.Play();
-            PlaySoundSeismic();
-            */
-            Invoke("StartPulse1", 0.5f);
-        }
-
-        void StartPulse1()
-        {
-            inProgress = true;
-            var particle = particleEffects.main;
-            particle.loop = true;
-            particleEffects.Play();
-            PlaySoundSeismic();
+            AudioManager.instance.PlayFMODSound(PlayerManager.instance.gameObject.transform.position, seismicSenseSoundFileName, 3f,false, false,false, 0, 0, true, false, null, null);
         }
 
         public void Reset()
@@ -90,6 +78,7 @@ namespace SeismicSense
             ICanBeSensed sensed = detectObj.GetComponent<ICanBeSensed>();
             if (sensed != null)
             {
+                sensed.ReturningPulse();
                 SeismicManager.instance.CallPoolObj(sensed.gameObject);
                 //Instantiate(returnPulse, _detectable.gameObject.transform.localPosition, Quaternion.identity);
                 // Spawns a pulse emitted from the location of the detectable object
@@ -113,7 +102,7 @@ namespace SeismicSense
 
         void PlaySoundSeismic()
         {
-            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 0.25f, 0.25f, true, 0.75f, 1.25f, 128);
+           // AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 1, 1, true, 0.75f, 1.25f, 128);
         }
 
 

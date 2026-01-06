@@ -5,10 +5,11 @@ namespace Audio
 {
     public class AudioFoliageReactor : MonoBehaviour
     {
-        [SerializeField] private List<string> audioList;
-        public List<string> FetchList()
+        [SerializeField] private List<string> audioEventList;
+        public string FetchList()
         {
-            return audioList;
+            string randomString = audioEventList[Random.Range(0, audioEventList.Count)];
+            return randomString;
         }
     }
 }

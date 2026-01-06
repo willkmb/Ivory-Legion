@@ -12,13 +12,13 @@ using Random = UnityEngine.Random;
 
 namespace Npc.AI
 {
-    public enum NpcState
+    
+    public enum NpcState // Data that never change
     {
         Idle, //If alwaysIdle ticked never move, otherwise this is used as part of the performingAction function(s) process
         Walking, //Walks to an available Marker Point
         SetPathingWalking, //Goes to set locations, loops around
         PerformingAction, // Certain marker points requires actions (E.G Animations) to be performed before choosing another maker point to move to
-        AvoidingPlayer, // N/A
         TalkingToPlayer, // Stops moving and talks to player
         RandomPathing, //Chooses a random point within x radius of the AI
     }
@@ -118,9 +118,6 @@ namespace Npc.AI
                     stateSaver  =  NpcState.PerformingAction;
                     _blocker = NpcEvents.instance.GetBlocker(); NpcEvents.instance.SetBlocker(transform.position, _blocker);
                     _performingAction.SubscribeToTimer();
-                    break;
-                case NpcState.AvoidingPlayer: // When the NPC is near the player, move backwards / away to avoid collision with the player.
-                    //Might not need this still testing
                     break;
                 case NpcState.TalkingToPlayer: //NPC will stop any movement and enter the dialogue with the player
                     agent.speed = 0f;
