@@ -30,7 +30,10 @@ public class ICanBeSensed : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        AudioManager.instance.PlayFMODSound(transform.position, "event:/Mechanics/Seismic Sense Hit Event", 1f,true,false,false, 0, 0, false, 
+        AudioManager.instance.PlayFMODSound(transform.position, "event:/Mechanics/Seismic Sense Hit Event", 1f,true,false,
+            false, 0, 0, 
+            true, 0.9f,1.1f,
+            false, 
             true, "Seismic Sense Hits", parameterValue);
     }
 }

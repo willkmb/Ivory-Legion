@@ -201,7 +201,11 @@ namespace Player
         void PlaySoundPush()
         {
             Debug.Log("playsound");
-            AudioManager.instance.PlayFMODSound(transform.position, PushSoundFileName, 1f,true, true, true, 1.0f, 1.0f, true, false, null, null);
+            AudioManager.instance.PlayFMODSound(transform.position, PushSoundFileName, 1f, true, true, 
+                true, 0.75f, 1.25f, 
+                false, 0, 0, 
+                true, 
+                false, null, null);
         }
     }
 }

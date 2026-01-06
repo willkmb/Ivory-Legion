@@ -20,14 +20,21 @@ namespace Audio
 
         private void Test()
         {
-            AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/WalkingTest", 1f,true, true,false, 1, 1, true, false, null, null);
+            AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/WalkingTest", 1f,true, true,
+                false, 1, 1, 
+                true, 0.9f,1.1f,
+                true, 
+                false, null, null);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             Fmod_SoundPlayer player = other.gameObject.transform.GetComponent<Fmod_SoundPlayer>();
-            player.currentReverbArea = this;
-            playersList.Add(other.gameObject.GetComponent<Fmod_SoundPlayer>());
+            if (other != null)
+            {
+                player.currentReverbArea = this;
+                playersList.Add(other.gameObject.GetComponent<Fmod_SoundPlayer>());
+            }
         }
     }
 }

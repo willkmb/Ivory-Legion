@@ -58,7 +58,10 @@ namespace SeismicSense
             var particle = particleEffects.main;
             particle.loop = true;
             particleEffects.Play();
-            AudioManager.instance.PlayFMODSound(PlayerManager.instance.gameObject.transform.position, seismicSenseSoundFileName, 3f,false, false,false, 0, 0, true, false, null, null);
+            AudioManager.instance.PlayFMODSound(PlayerManager.instance.gameObject.transform.position, seismicSenseSoundFileName, 3f,false, false,
+                false, 0, 0, 
+                true, 0.9f, 1.1f,
+                true, false, null, null);
         }
 
         public void Reset()
