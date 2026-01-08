@@ -58,7 +58,7 @@ namespace Audio
         {
             foreach (var soundName in loopingAudioEventName)
                 AudioManager.instance.PlayFMODSound(Vector3.zero, soundName, 1f,false, false,
-                    false, 0, 0, 
+                    true,false, 0, 0, 
                     false,0f,0f,
                     false, 
                     false, null, null);
@@ -82,7 +82,7 @@ namespace Audio
                 loopingAudioEventInstances.Remove(var);
                 foreach (var soundName in loopingAmbSound)
                     AudioManager.instance.PlayFMODSound(Vector3.zero, soundName, 1f,false, false,
-                        false, 0, 0, 
+                        true,false, 0, 0, 
                         false,0f,0f,
                         false, 
                         false, null, null);
@@ -141,7 +141,7 @@ namespace Audio
             
             // Plays FMOD audio
             AudioManager.instance.PlayFMODSound(location, chosenAudioName, 1f, true, false, 
-                true, minVolume, maxVolume, 
+                true,true, minVolume, maxVolume, 
                 true, 0.9f, 1.1f, 
                 true, 
                 false, null, null);
@@ -208,7 +208,7 @@ namespace Audio
            }
 
            AudioManager.instance.PlayFMODSound(audioFoliageReactor.transform.position, randomFoliageEvent, 1f, true, false, 
-               true, minVolume, maxVolume, 
+               true,true, minVolume, maxVolume, 
                true, 0.9f, 1.1f, 
                true, 
                false, null, null);

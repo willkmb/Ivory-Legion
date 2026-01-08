@@ -101,7 +101,7 @@ namespace Audio
         // ReSharper disable Unity.PerformanceAnalysis
         /// FMOD
         public void PlayFMODSound(Vector3 spawnPosition,string eventName, float audioLength,bool is3d,bool reverbCheck,
-              bool alterVolume, float minVolume, float maxVolume, 
+              bool alterVolumeOfDist,bool alterVolume, float minVolume, float maxVolume, 
               bool alterPitch, float minPitch, float maxPitch,
               bool isOneShot,
               bool isLabelledParameter, string parameterName, string parameterValue)
@@ -118,7 +118,7 @@ namespace Audio
             audioObj.SetActive(true);
 
             fmodSoundPlayer.PlaySound(eventName, audioLength, is3d, reverbCheck, 
-                alterVolume, minVolume, maxVolume, 
+                alterVolumeOfDist,alterVolume, minVolume, maxVolume, 
                 alterPitch, minPitch, maxPitch, 
                 isOneShot, 
                 isLabelledParameter, parameterName, parameterValue);

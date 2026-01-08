@@ -237,7 +237,7 @@ namespace Player {
         void PlaySound(string eventName, float audioLength)
         {
             AudioManager.instance.PlayFMODSound(transform.position, eventName, audioLength, true, true, 
-                true, 0.75f, 1.25f, 
+                true,true, 0.75f, 1.25f, 
                 false, 0, 0, 
                 true, 
                 false, null, null);
