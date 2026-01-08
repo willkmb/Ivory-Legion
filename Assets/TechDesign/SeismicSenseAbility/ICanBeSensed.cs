@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class ICanBeSensed : MonoBehaviour
 {
+    [Header("Parameters")]
     public SeismicSenseType senseType;
+    public float minVolume;
+    public float maxVolume;
+    public bool alterPitch = false;
+    public float minPitch;
+    public float maxPitch;
 
     public void ReturningPulse()
     {
@@ -31,9 +37,9 @@ public class ICanBeSensed : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
         AudioManager.instance.PlayFMODSound(transform.position, "event:/Mechanics/Seismic Sense Hit Event", 1f,true,false,
-            false,false, 0, 0, 
-            true, 0.9f,1.1f,
-            false, 
+            true,false, minVolume, maxVolume, 
+            alterPitch, minPitch,maxPitch,
+            true, 
             true, "Seismic Sense Hits", parameterValue);
     }
 }

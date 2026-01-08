@@ -11,81 +11,18 @@ namespace Audio
         [Header("Variables")]
         [Range(0.5f, 25f)] [SerializeField] private float delayTime;
         
+        // FMOD Stuff
         public List<GameObject> audioPoolFreeFMOD;
         [SerializeField] private GameObject fmodAudioPrefab;
-        
-        [Header("Audio Lists of Entire Game")]
-        [SerializeField] private List<AudioClip> sfxList;
-        [SerializeField] private List<AudioClip> musicList;
-        [SerializeField] private List<AudioClip> ambList;
-        [SerializeField] private List<AudioClip> diaList;
-        
-        [Header("Audio Lists for Catalyst Audio")]
-        [SerializeField] private List<AudioClip> ambCatalystList;
-
-        // When used to get audio, use the file name of the audio clip to reference it
-        public Dictionary<string, AudioClip> soundDataBase = new Dictionary<string, AudioClip>();
-        
-        public Dictionary<string, AudioClip> catalystAmbAudio = new Dictionary<string, AudioClip>();
         
         private void Awake()
         {
             instance ??= this;
             
             DontDestroyOnLoad(gameObject);
-        }
-        private void Start()
-        {
-            SpawnObjectPoolFMOD();
             
-            DictionarySortingSound(sfxList);
-            DictionarySortingMusic(musicList);
-            DictionarySortingAmb(ambList);
-            DictionarySortingDialogue(diaList);
-
-            DictionarySortingCatalystAmb(ambCatalystList);
+            SpawnObjectPoolFMOD();
         }
-        private void DictionarySortingSound(List<AudioClip> audioList)
-        {
-            foreach(var audioClip in audioList) 
-            {
-                soundDataBase.Add(audioClip.name, audioClip); 
-                //Adds all audio Clips in the list to the sound dictionary
-            }
-        }
-        private void DictionarySortingMusic(List<AudioClip> audioList)
-        {
-            foreach(var audioClip in audioList) 
-            {
-                soundDataBase.Add(audioClip.name, audioClip); 
-                //Adds all audio Clips in the list to the sound dictionary
-            }
-        }
-        private void DictionarySortingAmb(List<AudioClip> audioList)
-        {
-            foreach(var audioClip in audioList) 
-            {
-                soundDataBase.Add(audioClip.name, audioClip); 
-                //Adds all audio Clips in the list to the sound dictionary
-            }
-        }
-        private void DictionarySortingDialogue(List<AudioClip> audioList)
-        {
-            foreach(var audioClip in audioList) 
-            {
-                soundDataBase.Add(audioClip.name, audioClip); 
-                //Adds all audio Clips in the list to the sound dictionary
-            }
-        }
-        private void DictionarySortingCatalystAmb(List<AudioClip> audioList)
-        {
-            foreach(var audioClip in audioList) 
-            {
-                catalystAmbAudio.Add(audioClip.name, audioClip); 
-                //Adds all audio Clips in the list to the sound dictionary
-            }
-        }
-
 // FMOD Object Pooling Functions
         private void SpawnObjectPoolFMOD()
         {
@@ -123,7 +60,6 @@ namespace Audio
                 isOneShot, 
                 isLabelledParameter, parameterName, parameterValue);
         }
-
 
 // Old Code
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -193,6 +129,59 @@ namespace Audio
                 instantiate.SetActive(false);
             }
         }
+        
+               private void Start()
+        {
+            SpawnObjectPoolFMOD();
+            
+            // DictionarySortingSound(sfxList);
+            // DictionarySortingMusic(musicList);
+            // DictionarySortingAmb(ambList);
+            // DictionarySortingDialogue(diaList);
+            //
+            // DictionarySortingCatalystAmb(ambCatalystList);
+        }
+        /*private void DictionarySortingSound(List<AudioClip> audioList)
+        {
+            foreach(var audioClip in audioList) 
+            {
+                soundDataBase.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
+            }
+        }
+        private void DictionarySortingMusic(List<AudioClip> audioList)
+        {
+            foreach(var audioClip in audioList) 
+            {
+                soundDataBase.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
+            }
+        }
+        private void DictionarySortingAmb(List<AudioClip> audioList)
+        {
+            foreach(var audioClip in audioList) 
+            {
+                soundDataBase.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
+            }
+        }
+        private void DictionarySortingDialogue(List<AudioClip> audioList)
+        {
+            foreach(var audioClip in audioList) 
+            {
+                soundDataBase.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
+            }
+        }
+        private void DictionarySortingCatalystAmb(List<AudioClip> audioList)
+        {
+            foreach(var audioClip in audioList) 
+            {
+                catalystAmbAudio.Add(audioClip.name, audioClip); 
+                //Adds all audio Clips in the list to the sound dictionary
+            }
+        }* /
+
         }*/
     }
 }

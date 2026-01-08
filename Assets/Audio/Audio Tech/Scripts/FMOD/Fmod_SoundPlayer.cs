@@ -1,3 +1,4 @@
+using System.Collections;
 using FMOD.Studio;
 using UnityEngine;
 using FMODUnity;
@@ -38,7 +39,7 @@ namespace Audio.FMOD
                 rgb.freezeRotation = true;
                 Invoke("ReverbCheck",Time.deltaTime * 2);
             }
-            Invoke("Reset",audioLength + audioLength * (Time.deltaTime * 0.1f));
+            StartCoroutine(ResetAudio(audioLength + audioLength * (Time.deltaTime * 0.1f)));
             if (isLabelledParameter)
             {
                 SoundParameterLabelled(parameterName, parameterValue, alterVolumeOfDist, alterVolume, minVolume, maxVolume, alterPitch, minPitch, maxPitch);
@@ -124,9 +125,11 @@ namespace Audio.FMOD
             currentInstance.setPitch(Random.Range(minPitch, maxPitch));
         }
         // Resets the audio player to be used again
-        public void Reset()
+        IEnumerator ResetAudio(float secs)
         {
-            if (rgb != null)
+            yield return new WaitForSeconds(secs);
+            
+            if (rgb)
                 Destroy(rgb);
             
             boxCollider.enabled = false;

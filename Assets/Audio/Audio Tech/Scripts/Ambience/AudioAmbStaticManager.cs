@@ -1,0 +1,33 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Audio
+{
+    public class AudioAmbStaticManager : MonoBehaviour
+    {
+        public static AudioAmbStaticManager instance;
+        
+        public List<AudioAmbStaticObj> audioSplineAmbSounds = new List<AudioAmbStaticObj>();
+
+        private void Awake()
+        {
+            instance ??= this;
+        }
+
+        public void PlayStaticSound(float minVolume, float maxVolume)
+        {
+            int number;
+            if (audioSplineAmbSounds.Count <= 1)
+                number = 0;
+            else
+                number  =  Random.Range(0, audioSplineAmbSounds.Count);
+            
+            AudioManager.instance.PlayFMODSound(audioSplineAmbSounds[number].GetStaticPosition(), audioSplineAmbSounds[number].GetStaticEventName(), 
+                2f, true, audioSplineAmbSounds[number].ReverbCheck(), 
+                true, false, minVolume, maxVolume, 
+                true, 0.9f, 1.1f, 
+                true, false, null, null);
+        }
+    } 
+}
+

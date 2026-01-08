@@ -8,7 +8,8 @@ namespace Audio
     public class AudioAmbArea : MonoBehaviour
     {
         [SerializeField] private bool isFirstArea;
-        
+        [Header("Audio Splines")] 
+        public List<AudioSplineAmbSounds>  audioSplinesList = new List<AudioSplineAmbSounds>(); 
         [Header("All Random Amb Noises For This Area")]
         public List<string> ambList = new List<string>();
         [Header("All Looping Amb Sounds (E.G WIND)")]
@@ -17,13 +18,17 @@ namespace Audio
         public List<string> staticSoundsList = new List<string>();
         [Header("Locations for those static sounds")]
         public List<Vector3> staticLocationsList = new List<Vector3>();
-        [Header("Locations for those static sounds")]
-        public List<AudioSplineAmbSounds> splineAmbAudioList = new List<AudioSplineAmbSounds>();
 
         private void Start()
         {
             if (isFirstArea)
+            {
                 FirstArea();
+                foreach (var var in audioSplinesList)
+                {
+                    var.inUse = true;
+                }
+            }
         }
 
         private void FirstArea()
@@ -42,7 +47,18 @@ namespace Audio
                 AudioAmbManager.instance.staticAudioLocations = staticLocationsList;
             }
         }
-        
+
+        private void OnTriggerExit(Collider other)
+        {
+            Interfaces.Interfaces.IPlayer player = other.transform.GetComponent<Interfaces.Interfaces.IPlayer>();
+            if (player != null)
+            {
+                foreach (var var in audioSplinesList) 
+                {
+                    var.inUse =  false;
+                }
+            }
+        }
     }
 }
 
