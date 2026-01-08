@@ -190,7 +190,7 @@ namespace Npc.AI
                     if (audioEventNames.Count >= 1)
                     {
                         AudioManager.instance.PlayFMODSound(transform.position, audioEventNames[0], 1f, true, true, 
-                            false, 0.9f, 1.1f, 
+                            true,false, 0.9f, 1.1f, 
                             true, 0.9f, 1.1f, 
                             true, 
                             false, null, null);
@@ -200,7 +200,7 @@ namespace Npc.AI
                     
                     // Plays base Audio if there is no terrain audio
                     AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/Humans/H_Walking_Base", 1f, true, true, 
-                        true, 0.9f, 1.1f,
+                        true,true, 0.9f, 1.1f,
                         true, 0.9f, 1.1f, 
                         true, 
                         false, null, null);
