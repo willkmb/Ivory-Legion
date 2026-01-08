@@ -1,12 +1,15 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FMOD.Studio;
+using FMODUnity;
 using InputManager;
 using NUnit.Framework;
 using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Audio
 {
@@ -27,7 +30,7 @@ namespace Audio
         private float _minTime;
         private float _maxTime;
 
-        [Header("FMOD")] 
+        [Header("FMOD Event Names")] 
         public List<string>  loopingAudioEventName;
         public List<EventInstance>  loopingAudioEventInstances;
         public List<string> baseAudioNames = new List<string>(); // 0
@@ -51,17 +54,19 @@ namespace Audio
 
         private void Start()
         {
-            Invoke("StartAudio", 0.1f);
+            StartCoroutine(StartLoopingAudio(0.1f));
         }
 
-        private void StartAudio()
+        // ReSharper disable Unity.PerformanceAnalysis
+        IEnumerator StartLoopingAudio(float secs)
         {
+            yield return new WaitForSeconds(secs);
             foreach (var soundName in loopingAudioEventName)
-                AudioManager.instance.PlayFMODSound(Vector3.zero, soundName, 1f,false, false,
-                    true,false, 0, 0, 
-                    false,0f,0f,
-                    false, 
-                    false, null, null);
+            { 
+                EventInstance instance = RuntimeManager.CreateInstance(soundName);
+                loopingAudioEventInstances.Add(instance);
+                instance.start();
+            }
         }
 
         [HideInInspector] public bool summonedNoise;
@@ -80,12 +85,13 @@ namespace Audio
             {
                 var.stop(STOP_MODE.ALLOWFADEOUT);
                 loopingAudioEventInstances.Remove(var);
-                foreach (var soundName in loopingAmbSound)
-                    AudioManager.instance.PlayFMODSound(Vector3.zero, soundName, 1f,false, false,
-                        true,false, 0, 0, 
-                        false,0f,0f,
-                        false, 
-                        false, null, null);
+                var.release();
+            }
+            foreach (var soundName in loopingAmbSound)
+            {
+                EventInstance instance = RuntimeManager.CreateInstance(soundName);;
+                loopingAudioEventInstances.Add(instance);
+                instance.start();
             }
         }
         // ReSharper disable Unity.PerformanceAnalysis
@@ -93,6 +99,7 @@ namespace Audio
         private void RandomAmbNoise()
         {
             bool isCatalyst = false;
+            bool isStatic = false;
             
             string chosenAudioName = "";
             // Fetch FMOD Name Based of Audio Type Randomly Chosen
@@ -105,7 +112,7 @@ namespace Audio
                 chosenAudioName  = catalystAudioNames[Random.Range(0, catalystAudioNames.Count)];
             }
             if (randomSoundList == 2) // STATIC
-                chosenAudioName = staticAudioNames[Random.Range(0, staticAudioNames.Count)];
+                isStatic = true;
             
             Vector3 location;
             //If the random location is x% of the radius away from the player continue the script
@@ -138,9 +145,16 @@ namespace Audio
                 minVolume = 0.05f;
                 maxVolume = 0.1f;
             }
+
+            if (isStatic)
+            {
+                AudioAmbStaticManager.instance.PlayStaticSound(minVolume, maxVolume);
+                AmbTimerSetter(2.5f, isCatalyst);
+                return;
+            }
             
             // Plays FMOD audio
-            AudioManager.instance.PlayFMODSound(location, chosenAudioName, 1f, true, false, 
+            AudioManager.instance.PlayFMODSound(location, chosenAudioName, 3f, true, true, 
                 true,true, minVolume, maxVolume, 
                 true, 0.9f, 1.1f, 
                 true, 
@@ -207,7 +221,7 @@ namespace Audio
                maxVolume = 0.5f;
            }
 
-           AudioManager.instance.PlayFMODSound(audioFoliageReactor.transform.position, randomFoliageEvent, 1f, true, false, 
+           AudioManager.instance.PlayFMODSound(audioFoliageReactor.transform.position, randomFoliageEvent, 2f, audioFoliageReactor.Is3D(), audioFoliageReactor.ReverbCheck(), 
                true,true, minVolume, maxVolume, 
                true, 0.9f, 1.1f, 
                true, 
