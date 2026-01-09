@@ -98,6 +98,9 @@ namespace Audio.FMOD
         // Reverb is an echo effect
         private void ReverbCheck()
         {
+            if (currentReverbArea == null)
+                return;
+            
             var playerDistToObj = Vector3.Distance(PlayerManager.instance.transform.position, currentReverbArea.highestReverbPoint.transform.position);
             if (playerDistToObj <= currentReverbArea.playerMaxDistance)
                 reverbMultiplier = (currentReverbArea.reverbMultiplier * (currentReverbArea.playerMaxDistance / playerDistToObj)) / 10;
