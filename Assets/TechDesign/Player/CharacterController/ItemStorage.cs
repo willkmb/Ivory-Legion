@@ -55,7 +55,7 @@ namespace Player {
             
             if (itemsInStorage[(int)Storage.Trunk] == null)
             {
-                itemsInStorage[(int)Storage.Trunk] = thatObject;
+                itemsInStorage[(int)Storage.Trunk] = thatObject; // Save for further use in other scripts
 
                 itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                 itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
