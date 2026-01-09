@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -32,6 +32,7 @@ public class JournalScript : MonoBehaviour
     [Header("Numerals")]
     private int num;
     private string numRoman;
+    private string numPhoenician;
     void Update()
     {
         if(!reachedCap) { if(Input.GetKeyDown(KeyCode.Alpha1)) { InsertEntry(entryPlacements.Next, "Quest...");}} //Test example of the function getting called on a key press
@@ -60,8 +61,10 @@ public class JournalScript : MonoBehaviour
             }
 
         num = (entries.IndexOf(current) + 1); //get the number value of each entry
-        toRoman();
-        if (numRoman != null) current.GetComponent<TextMeshProUGUI>().text = numRoman + ". " + content; //add roman numeral as a prefix
+        //toRoman();
+        toPhoenician();
+        //if (numRoman != null) current.GetComponent<TextMeshProUGUI>().text = numRoman + ". " + content; //add roman numeral as a prefix
+        if (numPhoenician != null) current.GetComponent<TextMeshProUGUI>().text = numPhoenician + ". " + content; //add phoenician numeral as a prefix
         amount++;
         totalAmount++;
     }
@@ -75,9 +78,18 @@ public class JournalScript : MonoBehaviour
         numRoman = (tens[ten] + ones[one]); //combine the numbers
     }
 
+    void toPhoenician()
+    {
+        string[] ones = { "", @"\", "||", "|||", @"\|||", "|||||", "||||||", @"\||||||", "||||||||", "|||||||||" };
+        string[] tens = { "", "𐤗", "𐤘", "𐤗𐤘", "𐤘𐤘", "𐤗𐤘𐤘", "𐤘𐤘𐤘", "𐤗𐤘𐤘𐤘", "𐤘𐤘𐤘𐤘", "𐤗𐤘𐤘𐤘𐤘" };
+        int one = num % 10; //find ones value using modulo (value / 10, truncated and gives the remainder)
+        int ten = num / 10; //find tens values by / 10
+        numPhoenician = (ones[one] + tens[ten]); //combine the numbers
+    }
+
     void firstPage()
     {
-        curPage = transform.Find("ListHolderPg").gameObject;
+        curPage = transform.Find("Tablet/ListHolderPg").gameObject;
         pages.Add(curPage); //add current page to list
         index = 0; //set the index of the page
     }
@@ -97,7 +109,7 @@ public class JournalScript : MonoBehaviour
         else
         {
             pages[index].SetActive(false);
-            curPage = Instantiate(holder, this.transform);
+            curPage = Instantiate(holder, transform.Find("Tablet"));
             pages.Add(curPage);
             index++;
             curPage.SetActive(true);
