@@ -9,6 +9,7 @@ namespace Player {
     public class PickUpPutDownScript : MonoBehaviour, IInteractable
     {
         public static PickUpPutDownScript instance;
+        [SerializeField] private QuestItem questItem;
         [SerializeField] private int itemID;
         [SerializeField] private int itemAmount;
     
@@ -65,12 +66,6 @@ namespace Player {
             }
 
         }
-
-        public void Activate()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public int GetItemID()
         {
             return itemID;
