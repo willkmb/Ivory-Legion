@@ -1,0 +1,923 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8383178395438249460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Switch Bank.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Switch Bank.bank
+  Name: Switch Bank
+  StudioPath: bank:/Mechanics/Switch Bank
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-7633260011768843819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Seismic Sense Bank.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Seismic Sense Bank.bank
+  Name: Seismic Sense Bank
+  StudioPath: bank:/Mechanics/Seismic Sense Bank
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-7511866256940879861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Put Down/Put Down Object Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Put Down/Put Down Object Event
+  Guid:
+    Data1: 222594801
+    Data2: 1151719978
+    Data3: 59460029
+    Data4: 1107116382
+  Banks:
+  - {fileID: -248888096140956748}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-7069499572896078219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Amb/Amb Null Event
+  m_EditorClassIdentifier: 
+  Path: event:/Amb/Amb Null Event
+  Guid:
+    Data1: 1176150650
+    Data2: 1158863757
+    Data3: -185215827
+    Data4: -424104472
+  Banks:
+  - {fileID: 868496163663517690}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6342051860142494504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX_Elephant.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/SFX_Elephant.bank
+  Name: SFX_Elephant
+  StudioPath: bank:/SFX_Elephant
+  lastModified: 639009965580000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-4535854465303325273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Walking/Humans/H_Walking_Base
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Walking/Humans/H_Walking_Base
+  Guid:
+    Data1: 298515830
+    Data2: 1293861446
+    Data3: 709911437
+    Data4: -1782528400
+  Banks:
+  - {fileID: 5363446290586559285}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4531653306062741696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639035499760000000
+  FileSizes:
+  - Name: 
+    Value: 2564
+  Exists: 1
+--- !u!114 &-4096269627443562151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Docks.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Docks.bank
+  Name: Docks
+  StudioPath: bank:/Amb/Docks
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-4096113539777897528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Seismic Sense Hit Event/Seismic Sense Hits
+  m_EditorClassIdentifier: 
+  Name: Seismic Sense Hits
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 1
+  ID:
+    data1: 928204818
+    data2: 230106665
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Null
+  - Quest
+  - Npc Talk
+  - Quest Item
+  - Valuable
+  Exists: 1
+--- !u!114 &-3621423849049524329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Journal.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Journal.bank
+  Name: Journal
+  StudioPath: bank:/UI/Journal
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-3281047363513233974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Gisgo.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Gisgo.bank
+  Name: Gisgo
+  StudioPath: bank:/SFX/Gisgo
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-2717385601841800206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Amb/Docks/Dock Wave Event
+  m_EditorClassIdentifier: 
+  Path: event:/Amb/Docks/Dock Wave Event
+  Guid:
+    Data1: -1894574151
+    Data2: 1244400386
+    Data3: 929985210
+    Data4: -1750168672
+  Banks:
+  - {fileID: -4096269627443562151}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2237841136577963803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Walking Test.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Walking Test.bank
+  Name: Walking Test
+  StudioPath: bank:/SFX/Walking/Walking Test
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-1868325466199305067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Amb/Docks/Dock Amb Base Event
+  m_EditorClassIdentifier: 
+  Path: event:/Amb/Docks/Dock Amb Base Event
+  Guid:
+    Data1: -1062934155
+    Data2: 1301816749
+    Data3: 1066728343
+    Data4: -2110784783
+  Banks:
+  - {fileID: -4096269627443562151}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-248888096140956748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Put Down Bank.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Put Down Bank.bank
+  Name: Put Down Bank
+  StudioPath: bank:/Mechanics/Put Down Bank
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -4531653306062741696}
+  - {fileID: 6607755374509310819}
+  - {fileID: -7633260011768843819}
+  - {fileID: 868496163663517690}
+  - {fileID: -4096269627443562151}
+  - {fileID: 5154842029201005864}
+  - {fileID: 6868668630859829848}
+  - {fileID: 8262930099697065207}
+  - {fileID: 7684877613004714340}
+  - {fileID: -248888096140956748}
+  - {fileID: -8383178395438249460}
+  - {fileID: 1464942813054611183}
+  - {fileID: 6049356658291016243}
+  - {fileID: -3281047363513233974}
+  - {fileID: -3621423849049524329}
+  - {fileID: 2214591829542579785}
+  - {fileID: -2237841136577963803}
+  - {fileID: 1103466477897033884}
+  - {fileID: 5363446290586559285}
+  EditorEvents:
+  - {fileID: 5241885927937677785}
+  - {fileID: 9093187399311315942}
+  - {fileID: -7069499572896078219}
+  - {fileID: 2591265549786958723}
+  - {fileID: -1868325466199305067}
+  - {fileID: 6739149098212706243}
+  - {fileID: -2717385601841800206}
+  - {fileID: 6737495542046213320}
+  - {fileID: -7511866256940879861}
+  - {fileID: 8784750178589992769}
+  - {fileID: 238522531611517780}
+  - {fileID: 3203221894425936055}
+  - {fileID: 1882129227102835690}
+  - {fileID: 50121092582624853}
+  - {fileID: -4535854465303325273}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 6607755374509310819}
+  StringsBanks:
+  - {fileID: -4531653306062741696}
+  cacheVersion: 131857
+  cacheTime: 639035499760000000
+  SerializableEventsDict:
+  - key: event:/Mechanics/Seismic Sense/Seismic Sense Hit Event
+    index: 0
+  - key: event:/Mechanics/Seismic Sense/Seismic Sense Event
+    index: 1
+  - key: event:/Amb/Amb Null Event
+    index: 2
+  - key: event:/Amb/Docks/Dock Amb Rea Foliage Event
+    index: 3
+  - key: event:/Amb/Docks/Dock Amb Base Event
+    index: 4
+  - key: event:/Amb/Docks/Dock Amb Sta BoatCreak Event
+    index: 5
+  - key: event:/Amb/Docks/Dock Wave Event
+    index: 6
+  - key: event:/Amb/Docks/Dock Amb Cat Wind Event
+    index: 7
+  - key: event:/Mechanics/Put Down/Put Down Object Event
+    index: 8
+  - key: event:/Mechanics/Switching/Switching Object Event
+    index: 9
+  - key: event:/Mechanics/Pick Up/Put Up Object Event
+    index: 10
+  - key: event:/Mechanics/Destruction/Destruction Object Event
+    index: 11
+  - key: event:/SFX/Walking/Elephants/E_Walking_Base
+    index: 12
+  - key: event:/SFX/Walking/Elephants/E_Walking_Dirt
+    index: 13
+  - key: event:/SFX/Walking/Humans/H_Walking_Base
+    index: 14
+--- !u!114 &50121092582624853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Walking/Elephants/E_Walking_Dirt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Walking/Elephants/E_Walking_Dirt
+  Guid:
+    Data1: 189961181
+    Data2: 1179237952
+    Data3: -1538311256
+    Data4: -1515012435
+  Banks:
+  - {fileID: 1103466477897033884}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &238522531611517780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Pick Up/Put Up Object Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Pick Up/Put Up Object Event
+  Guid:
+    Data1: 81078365
+    Data2: 1109623829
+    Data3: -1414610024
+    Data4: 1903188781
+  Banks:
+  - {fileID: -248888096140956748}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &868496163663517690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Amb Misc.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Amb Misc.bank
+  Name: Amb Misc
+  StudioPath: bank:/Amb/Amb Misc
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &1103466477897033884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/E_Walking.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/E_Walking.bank
+  Name: E_Walking
+  StudioPath: bank:/SFX/Walking/E_Walking
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &1464942813054611183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Menu.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Menu.bank
+  Name: Menu
+  StudioPath: bank:/Music/Menu
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &1882129227102835690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Walking/Elephants/E_Walking_Base
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Walking/Elephants/E_Walking_Base
+  Guid:
+    Data1: -317544677
+    Data2: 1113577626
+    Data3: 1028232871
+    Data4: 1991315803
+  Banks:
+  - {fileID: -2237841136577963803}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &2214591829542579785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Main Menu.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Main Menu.bank
+  Name: Main Menu
+  StudioPath: bank:/UI/Main Menu
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &2591265549786958723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Amb/Docks/Dock Amb Rea Foliage Event
+  m_EditorClassIdentifier: 
+  Path: event:/Amb/Docks/Dock Amb Rea Foliage Event
+  Guid:
+    Data1: 462158918
+    Data2: 1151489326
+    Data3: 974342325
+    Data4: 122993833
+  Banks:
+  - {fileID: -4096269627443562151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &3203221894425936055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Destruction/Destruction Object Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Destruction/Destruction Object Event
+  Guid:
+    Data1: -864858385
+    Data2: 1168316004
+    Data3: 1337064337
+    Data4: -1086634645
+  Banks:
+  - {fileID: -248888096140956748}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &5154842029201005864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Augmentation Bank.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Augmentation Bank.bank
+  Name: Augmentation Bank
+  StudioPath: bank:/Mechanics/Augmentation Bank
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &5241885927937677785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Seismic Sense/Seismic Sense Hit Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Seismic Sense/Seismic Sense Hit Event
+  Guid:
+    Data1: 415401745
+    Data2: 1087917438
+    Data3: 1943375279
+    Data4: -1548920708
+  Banks:
+  - {fileID: -7633260011768843819}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -4096113539777897528}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5500
+--- !u!114 &5363446290586559285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/H_Walking.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/H_Walking.bank
+  Name: H_Walking
+  StudioPath: bank:/SFX/Walking/H_Walking
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &5803259036112702686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639009965580000000
+  FileSizes:
+  - Name: 
+    Value: 778
+  Exists: 1
+--- !u!114 &6049356658291016243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Elephants.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Elephants.bank
+  Name: Elephants
+  StudioPath: bank:/SFX/Elephants
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &6607755374509310819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &6737495542046213320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Amb/Docks/Dock Amb Cat Wind Event
+  m_EditorClassIdentifier: 
+  Path: event:/Amb/Docks/Dock Amb Cat Wind Event
+  Guid:
+    Data1: 959509443
+    Data2: 1288451210
+    Data3: -244491871
+    Data4: -1888584804
+  Banks:
+  - {fileID: -4096269627443562151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6739149098212706243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Amb/Docks/Dock Amb Sta BoatCreak Event
+  m_EditorClassIdentifier: 
+  Path: event:/Amb/Docks/Dock Amb Sta BoatCreak Event
+  Guid:
+    Data1: 926562182
+    Data2: 1121842780
+    Data3: -461502304
+    Data4: -1908110449
+  Banks:
+  - {fileID: -4096269627443562151}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6868668630859829848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Destruction Bank.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Destruction Bank.bank
+  Name: Destruction Bank
+  StudioPath: bank:/Mechanics/Destruction Bank
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &7684877613004714340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Pull Bank.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Pull Bank.bank
+  Name: Pull Bank
+  StudioPath: bank:/Mechanics/Pull Bank
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &8055047889799220421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639009965580000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &8262930099697065207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Pick Up Bank.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Pick Up Bank.bank
+  Name: Pick Up Bank
+  StudioPath: bank:/Mechanics/Pick Up Bank
+  lastModified: 639035499760000000
+  FileSizes: []
+  Exists: 1
+--- !u!114 &8784750178589992769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Switching/Switching Object Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Switching/Switching Object Event
+  Guid:
+    Data1: -1092331722
+    Data2: 1211955808
+    Data3: 389831089
+    Data4: -582961199
+  Banks:
+  - {fileID: -248888096140956748}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &9093187399311315942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Seismic Sense/Seismic Sense Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Seismic Sense/Seismic Sense Event
+  Guid:
+    Data1: 426611426
+    Data2: 1281487721
+    Data3: -1770961748
+    Data4: 1837236676
+  Banks:
+  - {fileID: -7633260011768843819}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2432

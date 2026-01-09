@@ -56,7 +56,7 @@ namespace Player {
             
             if (itemsInStorage[(int)Storage.Trunk] == null)
             {
-                itemsInStorage[(int)Storage.Trunk] = thatObject;
+                itemsInStorage[(int)Storage.Trunk] = thatObject; // Save for further use in other scripts
 
                 itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                 itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
@@ -230,20 +230,39 @@ namespace Player {
         void PlaySoundPickUp()
         {
             Debug.Log("playsound");
+<<<<<<< HEAD
             AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 0.65f, 0.65f, true, 1.25f, 1.5f, 128);
+=======
+            PlaySound(PickUpSoundFileName,1f);
+>>>>>>> Brandon-Lynch
         }
 
         void PlaySoundPutDown()
         {
             Debug.Log("playsound");
+<<<<<<< HEAD
             AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 0.65f, 0.65f, true, 0.75f, 1f, 128);
+=======
+            PlaySound(PutDownSoundFileName,1f);
+>>>>>>> Brandon-Lynch
         }
         void PlaySoundSwap()
         {
             Debug.Log("playsound");
+<<<<<<< HEAD
             AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 0.4f, 0.4f, true, 0.75f, 1.25f, 128);
+=======
+            PlaySound(SwapSoundFileName,1f);
         }
-
+        void PlaySound(string eventName, float audioLength)
+        {
+            AudioManager.instance.PlayFMODSound(transform.position, eventName, audioLength, true, true, 
+                true,true, 0.75f, 1.25f, 
+                false, 0, 0, 
+                true, 
+                false, null, null);
+>>>>>>> Brandon-Lynch
+        }
         /*
         public void PutDown()
         {
