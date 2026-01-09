@@ -4,6 +4,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
+using TMPro.EditorUtilities;
 
 public class JournalScript : MonoBehaviour
 {
@@ -30,16 +31,21 @@ public class JournalScript : MonoBehaviour
     private GameObject curPage;
 
     [Header("Numerals")]
+    [SerializeField] private int Toggle = 0;
     private int num;
     private string numRoman;
-    private string numPhoenician;
+
+    [Header("fonts")]
+    [SerializeField] TMP_FontAsset romanFont;
+    [SerializeField] TMP_FontAsset phonFont;
     void Update()
     {
-        if(!reachedCap) { if(Input.GetKeyDown(KeyCode.Alpha1)) { InsertEntry(entryPlacements.Next, "Quest...");}} //Test example of the function getting called on a key press
+        if (!reachedCap) { if (Input.GetKeyDown(KeyCode.Alpha1)) { InsertEntry(entryPlacements.Next, "Quest..."); } } //Test example of the function getting called on a key press
         if (amount == cap && totalAmount < 99) { reachedCap = true; cursor.SetActive(true); } //show cursor if page full
-        if(index > 0) cursorBack.SetActive(true); 
+        if (index > 0) cursorBack.SetActive(true);
         else cursorBack.SetActive(false); //show back cursor if theres a previous page
         if (Input.GetKeyDown(KeyCode.Alpha0)) ClearTemp(); //Temporary code for clearing the log on key press
+        if (Input.GetKeyDown(KeyCode.Alpha9)) Toggle = 1 - Toggle;
     }
 
     public void InsertEntry(entryPlacements placement, string content)
@@ -47,8 +53,10 @@ public class JournalScript : MonoBehaviour
         if (totalAmount >= 99) return; //cap at 99 total entries
         if (curPage == null) firstPage();
         GameObject current = Instantiate(entry, curPage.transform);
+        if (Toggle == 0) current.GetComponent<TextMeshProUGUI>().font = romanFont;
+        else current.GetComponent<TextMeshProUGUI>().font = phonFont;
 
-            switch (placement)
+        switch (placement)
             {
                 case entryPlacements.First: //put entry at the first place in the list
                     Debug.Log("First");
@@ -61,30 +69,32 @@ public class JournalScript : MonoBehaviour
             }
 
         num = (entries.IndexOf(current) + 1); //get the number value of each entry
-        //toRoman();
-        toPhoenician();
-        //if (numRoman != null) current.GetComponent<TextMeshProUGUI>().text = numRoman + ". " + content; //add roman numeral as a prefix
-        if (numPhoenician != null) current.GetComponent<TextMeshProUGUI>().text = numPhoenician + ". " + content; //add phoenician numeral as a prefix
+        toRoman();
+        if (numRoman != null) current.GetComponent<TextMeshProUGUI>().text = numRoman + ". " + content; //add roman numeral as a prefix
         amount++;
         totalAmount++;
     }
 
     void toRoman()
     {
-        string[] ones = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
-        string[] tens = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
-        int one = num % 10; //find ones value using modulo (value / 10, truncated and gives the remainder)
-        int ten = num / 10; //find tens values by / 10
-        numRoman = (tens[ten] + ones[one]); //combine the numbers
-    }
+        switch (Toggle)
+        {
+            case 0:
+                string[] ones = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+                string[] tens = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+                int one = num % 10; //find ones value using modulo (value / 10, truncated and gives the remainder)
+                int ten = num / 10; //find tens values by / 10
+                numRoman = (tens[ten] + ones[one]); //combine the numbers
+                break;
 
-    void toPhoenician()
-    {
-        string[] ones = { "", @"\", "||", "|||", @"\|||", "|||||", "||||||", @"\||||||", "||||||||", "|||||||||" };
-        string[] tens = { "", "𐤗", "𐤘", "𐤗𐤘", "𐤘𐤘", "𐤗𐤘𐤘", "𐤘𐤘𐤘", "𐤗𐤘𐤘𐤘", "𐤘𐤘𐤘𐤘", "𐤗𐤘𐤘𐤘𐤘" };
-        int one = num % 10; //find ones value using modulo (value / 10, truncated and gives the remainder)
-        int ten = num / 10; //find tens values by / 10
-        numPhoenician = (ones[one] + tens[ten]); //combine the numbers
+            case 1:
+                string[] onesP = { "", @"\", "||", "|||", @"\|||", "|||||", "||||||", @"\||||||", "||||||||", "||||||||" };
+                string[] tensP = { "", "𐤗", "𐤘", "𐤗𐤘", "𐤘𐤘", "𐤗𐤘𐤘", "𐤘𐤘𐤘", "𐤗𐤘𐤘𐤘", "𐤘𐤘𐤘𐤘", "𐤗𐤘𐤘𐤘𐤘" };
+                int oneP = num % 10;
+                int tenP = num / 10;
+                numRoman = (onesP[oneP] + tensP[tenP]);
+                break;
+        }
     }
 
     void firstPage()
@@ -103,7 +113,7 @@ public class JournalScript : MonoBehaviour
             curPage = pages[index]; //set new current
             curPage.SetActive(true);
             amount = curPage.transform.childCount; //amount of the page is set to current amount of entries on page
-            if(amount == cap) { reachedCap = true; cursor.SetActive(true); }
+            if (amount == cap) { reachedCap = true; cursor.SetActive(true); }
             else { reachedCap = false; cursor.SetActive(false); } //show/hide cursor dependant on state
         }
         else
@@ -121,7 +131,7 @@ public class JournalScript : MonoBehaviour
 
     public void prevPage()
     {
-        if(index > 0)
+        if (index > 0)
         {
             pages[index].SetActive(false);
             index--;
