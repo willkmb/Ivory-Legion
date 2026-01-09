@@ -88,12 +88,12 @@ namespace InputManager
                 {
                     PlayerMovement.instance.Movement(moveAction.ReadValue<Vector2>());
                     PlayerMovement.instance.isWalking = true;
-                    ElephantAnim.instance.Walk();
+//                    ElephantAnim.instance.Walk();
                 }
                 else if (moveAction.WasReleasedThisFrame())
                 {
                     PlayerMovement.instance.isWalking = false;
-                    ElephantAnim.instance.Idle();
+//                    ElephantAnim.instance.Idle();
                 }
 
             // Interactions

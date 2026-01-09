@@ -105,7 +105,9 @@ namespace Audio
             // Fetch FMOD Name Based of Audio Type Randomly Chosen
             int randomSoundList = Random.Range(0, 2);
             if (randomSoundList == 0) // BASE
-                chosenAudioName = baseAudioNames[Random.Range(0, baseAudioNames.Count)];
+            {
+                chosenAudioName = baseAudioNames[0];
+            }
             if (randomSoundList == 1) // CATALYST
             {
                 isCatalyst = true;
