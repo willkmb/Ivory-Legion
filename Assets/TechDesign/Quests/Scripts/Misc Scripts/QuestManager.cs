@@ -24,8 +24,8 @@ namespace Quests
         public static QuestManager instance;
         
         public Dictionary<string, bool> questDataBase = new Dictionary<string, bool>(); // A list of the quests and their completion value
-        public Dictionary<int, GameObject> questItemIDDataBase = new Dictionary<int, GameObject>(); // Used to call ID of item, to beu sed in various quests
-        public Dictionary<int, int> questPlayerInventory = new Dictionary<int, int>(); // ITEM ID : ITEM COUNT
+        public Dictionary<int, GameObject> ItemIDDataBase = new Dictionary<int, GameObject>(); // Used to call ID of item, to beu sed in various quests
+        public Dictionary<int, int> PlayerInventory = new Dictionary<int, int>(); // ITEM ID : ITEM COUNT
         
         public Dictionary<string, Mesh> playerMeshesDataBase = new Dictionary<string, Mesh>(); // ITEM ID : MESH
         
@@ -55,13 +55,7 @@ namespace Quests
         {
             questDataBase.Add(questName, value);
         }
-
-        public void SetItemDataBase(int itemID, GameObject item)
-        {
-            if (!questDataBase.ContainsKey(itemID.ToString()))
-                questItemIDDataBase.Add(itemID, item);
-        }
-
+        
         public void SetPlayerMeshDataBase(string playerID, Mesh mesh)
         {
             playerMeshesDataBase.Add(playerID, mesh);
@@ -100,22 +94,29 @@ namespace Quests
             Debug.LogError(questName + " doesn't exist");
             return false;
         }
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Can be used to grab prefabs that don't exist in the level
+        public void SetItemDataBase(int itemID, GameObject item)
+        {
+            if (!ItemIDDataBase.ContainsKey(itemID))
+                 ItemIDDataBase.Add(itemID, item);
+        }
+        // Adds items to Pocket Inv
         public void AdjustItemToQuestInventory(int itemID,int amountToAdd)
         { 
             //If the ID is already in the Quest Item DataBase +x the amount of that ID collected into the players inventory
-            if (questPlayerInventory.ContainsKey(itemID)) 
+            if (PlayerInventory.ContainsKey(itemID)) 
             {
                 // +1 to inventory amount of that quest item
-                if (questPlayerInventory.Remove((itemID), out var itemAmount))
+                if (PlayerInventory.Remove((itemID), out var itemAmount))
                 {
                     var newAmount = itemAmount + amountToAdd;
-                    questPlayerInventory.Add((itemID), newAmount);
+                    PlayerInventory.Add((itemID), newAmount);
                 }
                 return;
             }
            
-            questPlayerInventory.Add((itemID), 1); // Item ID : Item Amount
+            PlayerInventory.Add((itemID), 1); // Item ID : Item Amount
         }
     }
 }

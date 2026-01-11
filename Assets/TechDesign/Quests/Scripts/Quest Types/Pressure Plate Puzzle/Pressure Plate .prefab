@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2863647676547513274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8296288034351903894}
+  - component: {fileID: 3741001928496409026}
+  - component: {fileID: 6195062928129239349}
+  m_Layer: 0
+  m_Name: 'Pressure Plate '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8296288034351903894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863647676547513274}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2976856806118222274}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3741001928496409026
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863647676547513274}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 3063
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6195062928129239349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863647676547513274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c508c1582e94d43b7379afe9801200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressurePlatePuzzle: {fileID: 0}
+  isActive: 0
+  requiredItemID: 4
+--- !u!1001 &648905625632510269
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8296288034351903894}
+    m_Modifications:
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.059859753
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.124200106
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655931588771724442, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      propertyPath: m_Name
+      value: Temp Pressure Plate Visuals
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8655931588771724442, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3345626723836936755}
+  m_SourcePrefab: {fileID: 100100000, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+--- !u!4 &2976856806118222274 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2327951182770043135, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+  m_PrefabInstance: {fileID: 648905625632510269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8151915346987986343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8655931588771724442, guid: 53027c3d143481248bdb74b14073694e, type: 3}
+  m_PrefabInstance: {fileID: 648905625632510269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3345626723836936755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151915346987986343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907edd8031d442c4ca94522f4f908ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
