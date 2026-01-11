@@ -39,7 +39,7 @@ namespace Player {
         // on interact from player
         public void Interact()
         {
-            Debug.Log("pickup putdown interact");
+//            Debug.Log("pickup putdown interact");
             if (!isPickedUp)    // if the item is not picked up then pick it up using ItemStorage PickUp Function on player
             {
                 player.GetComponent<ItemStorage>().PickUp(this.gameObject, itemID, itemAmount);

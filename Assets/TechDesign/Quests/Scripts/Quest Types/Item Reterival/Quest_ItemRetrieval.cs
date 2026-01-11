@@ -30,7 +30,7 @@ namespace Quests
         {
             for (int i = 0; i < itemsToRetrieve.Count; i++)
             {
-                if (!QuestManager.instance.questItemIDDataBase.ContainsKey(itemValues[i])) // Stops duplication preventing two quest items having the same ID
+                if (!QuestManager.instance.ItemIDDataBase.ContainsKey(itemValues[i])) // Stops duplication preventing two quest items having the same ID
                     QuestManager.instance.SetItemDataBase(itemValues[i], itemsToRetrieve[i]);
             }
         }
@@ -50,13 +50,13 @@ namespace Quests
             {
                 int ID = CollectItemID(obj); // Gets the quest items ID
                 // If inventory contains the item's ID
-                if (QuestManager.instance.questPlayerInventory.TryGetValue(ID, out var itemAmount))
+                if (QuestManager.instance.PlayerInventory.TryGetValue(ID, out var itemAmount))
                 {
                     tempObjList.Add(obj); // Saves the quest item
                     tempIDList.Add(ID); // Saves ID of quest item
                     itemAmountList.Add(itemAmount); // Saves ID of quest item
-                    QuestManager.instance.questPlayerInventory.Remove(ID); // Allows quests require 2+ items, re-added to inventory after the checks
-                    QuestManager.instance.questPlayerInventory.Add(ID, itemAmount - 1); // Minus purely for checks
+                    QuestManager.instance.PlayerInventory.Remove(ID); // Allows quests require 2+ items, re-added to inventory after the checks
+                    QuestManager.instance.PlayerInventory.Add(ID, itemAmount - 1); // Minus purely for checks
                     itemsCollected += 1;
                 }
             }

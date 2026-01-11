@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class UIInputManager : MonoBehaviour
+    public class InputManager : MonoBehaviour
     {
-        public static UIInputManager instance;
+        public static InputManager instance;
         public int currentDialogueBoxSelected;
         public bool currentlyInDialogue;
         public global::Dialogue dialogueInUse;
