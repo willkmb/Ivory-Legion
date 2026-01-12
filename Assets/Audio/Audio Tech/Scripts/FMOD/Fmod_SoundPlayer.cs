@@ -82,6 +82,7 @@ namespace Audio.FMOD
                 AlterPitch(minPitch, maxPitch);
             if (alterVolumeOfDist) AlterVolumeOfDistance(); else currentInstance.setVolume(1f);
             
+            currentInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
             currentInstance.start();
         }
         
@@ -93,6 +94,7 @@ namespace Audio.FMOD
             if (alterPitch)
                 AlterPitch(minPitch, maxPitch);
             
+            currentInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
             currentInstance.start();
         }
         // Reverb is an echo effect

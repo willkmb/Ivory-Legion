@@ -94,13 +94,12 @@ namespace Player {
                     itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
                 }
             }
-            //PlaySoundPickUp();
+            PlaySoundPickUp();
         }
 
         // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
         public void PutDown(GameObject thatobject, int itemID, int itemAmount)
         {
-        //   Debug.Log("put down");
              if (blockPutDown)
                   return;
         
@@ -119,7 +118,7 @@ namespace Player {
                      itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (halfExtents.y *2), putDownPoint.transform.position.z);
                      itemsInStorage[(int)Storage.Trunk].transform.parent = null;
                      itemsInStorage[(int)Storage.Trunk] = null;
-                     //PlaySoundPutDown();
+                     PlaySoundPutDown();
                      return;
                  }
                  Debug.LogError("Can't put down object of type '" + thatobject.transform.name + "'.");
@@ -135,7 +134,7 @@ namespace Player {
             itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPos.x, putDownPos.y + (halfExtents.y *2), putDownPos.z);
             itemsInStorage[(int)Storage.Trunk].transform.parent = null;
             itemsInStorage[(int)Storage.Trunk] = null;
-            //PlaySoundPutDown();
+            PlaySoundPutDown();
         }
         // swaps trunk and left bag items
         public void SwapItemLeft()
@@ -158,7 +157,7 @@ namespace Player {
                     itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
                     itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
                 }
-                //PlaySoundSwap();
+                PlaySoundSwap();
             }
         }
 
@@ -202,7 +201,7 @@ namespace Player {
                         itemsInStorage[(int)Storage.Trunk] = null;
                         hatOnHead.transform.position = hatPoint.transform.position;
                         hatOnHead.transform.parent = hatPoint.transform;
-                        //PlaySoundSwap();
+                        PlaySoundSwap();
                     }
                 }
             }
@@ -214,7 +213,7 @@ namespace Player {
                     hatOnHead = null;
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    //PlaySoundSwap();
+                    PlaySoundSwap();
                 }
             }
         }
@@ -254,18 +253,15 @@ namespace Player {
         }
         void PlaySoundPickUp()
         {
-            Debug.Log("playsound");
             PlaySound(PickUpSoundFileName,1f);
         }
 
         void PlaySoundPutDown()
         {
-            Debug.Log("playsound");
             PlaySound(PutDownSoundFileName,1f);
         }
         void PlaySoundSwap()
         {
-            Debug.Log("playsound");
             PlaySound(SwapSoundFileName,1f);
         }
         void PlaySound(string eventName, float audioLength)

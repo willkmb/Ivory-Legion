@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Audio;
 using InputManager;
 using Player;
 using Quests;
@@ -21,6 +22,12 @@ namespace Chests
         [SerializeField] private List<int> idAmountsInChest = new List<int>();    
         [Header("Variables")]
         public bool giveItemPhysically;
+
+        [Header("Audio Event Names")]
+        [SerializeField] private string incorrectItemAudioEvent;
+        [SerializeField] private string giveToPlayerPhysicallyAudioEvent;
+        [SerializeField] private string giveToPocketInvAudioEvent;
+        [SerializeField] private string placeInChestAudioEvent;
         
         private void OnTriggerEnter(Collider other)
         {
@@ -61,6 +68,7 @@ namespace Chests
                 if (ItemStorage.instance.itemsInStorage[0] != null && ItemStorage.instance.itemsInStorage[1] != null && ItemStorage.instance.itemsInStorage[2] != null) 
                 { 
                     Debug.Log("No Inv space for item");
+                    PlaySound(incorrectItemAudioEvent);
                     return;
                 }
 
@@ -68,23 +76,27 @@ namespace Chests
                 {
                     GameObject item = QuestManager.instance.ItemIDDataBase[itemsInChest[0]];
                     ItemStorage.instance.PickUp(item, itemsInChest[0], 1);
+                    PlaySound(giveToPlayerPhysicallyAudioEvent);
                     return;
                 }
                 if (ItemStorage.instance.itemsInStorage[1] == null)
                 {
                     GameObject item = QuestManager.instance.ItemIDDataBase[itemsInChest[1]];
                     ItemStorage.instance.PickUp(item, itemsInChest[0], 1);
+                    PlaySound(giveToPlayerPhysicallyAudioEvent);
                     return;
                 }
                 if (ItemStorage.instance.itemsInStorage[2] == null)
                 {
                     GameObject item = QuestManager.instance.ItemIDDataBase[itemsInChest[2]];
                     ItemStorage.instance.PickUp(item, itemsInChest[0], 1);
+                    PlaySound(giveToPlayerPhysicallyAudioEvent);
                 }
             }
             else
             {
                 QuestManager.instance.AdjustItemToQuestInventory(itemsInChest[0], idAmountsInChest[0]);
+                PlaySound(giveToPocketInvAudioEvent);
             }
         }
 
@@ -96,6 +108,14 @@ namespace Chests
             {
                 
             }
+        }
+
+        private void PlaySound(string eventName)
+        {
+            AudioManager.instance.PlayFMODSound(transform.position, eventName, 2f, true, false, 
+                false, false, 1, 1, 
+                false, 0, 0, 
+                true, false, null, null);
         }
     }
 }

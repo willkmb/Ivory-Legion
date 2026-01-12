@@ -27,6 +27,10 @@ namespace NS_KeyAndLock
         [SerializeField] private int sceneNumber;
         [SerializeField] private List<GameObject> doors;
 
+        [Header("Audio Event Names")] 
+        [SerializeField] private string incorrectEventName;
+        [SerializeField] private string pickUpObjEventName;
+
         private void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.transform.GetComponent<PlayerManager>() != null)
