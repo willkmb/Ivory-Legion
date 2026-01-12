@@ -14,14 +14,10 @@ namespace Audio
         public List<string> ambList = new List<string>();
         [Header("All Looping Amb Sounds (E.G WIND)")]
         public List<string> ambLoopingList = new List<string>();
+        [Header("All Looping Amb Sounds (E.G WIND)")]
+        public List<string> catalystAudioNames = new List<string>();
         [Header("AmbList sounds that require precise locations when played")]
-        public List<string> staticSoundsList = new List<string>();
-        [Header("Locations for those static sounds")]
-        public List<Vector3> staticLocationsList = new List<Vector3>();
-<<<<<<< HEAD
-     
-=======
->>>>>>> Brandon-Lynch
+        public List<AudioAmbStaticObj> staticSoundObjList = new List<AudioAmbStaticObj>();
 
         private void Start()
         {
@@ -37,15 +33,7 @@ namespace Audio
 
         private void FirstArea()
         {
-<<<<<<< HEAD
-            AudioAmbManager.instance.ChangeLoopingAmb(ambLoopingList);
-            AudioAmbManager.instance.currentAmbSoundList = ambList;
-            AudioAmbManager.instance.staticSoundsList =  staticSoundsList;
-            AudioAmbManager.instance.staticSoundsLocations = staticLocationsList;
-=======
-            AudioAmbManager.instance.staticAudioNames =  staticSoundsList;
-            AudioAmbManager.instance.staticAudioLocations = staticLocationsList;
->>>>>>> Brandon-Lynch
+            AudioAmbStaticManager.instance.audioStaticAmbSounds = staticSoundObjList;
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -54,8 +42,8 @@ namespace Audio
             {
                 AudioAmbManager.instance.ChangeLoopingAmb(ambLoopingList);
                 AudioAmbManager.instance.baseAudioNames = ambList;
-                AudioAmbManager.instance.staticAudioNames =  staticSoundsList;
-                AudioAmbManager.instance.staticAudioLocations = staticLocationsList;
+                AudioAmbManager.instance.catalystAudioNames = catalystAudioNames;
+                AudioAmbStaticManager.instance.audioStaticAmbSounds = staticSoundObjList;
             }
         }
 

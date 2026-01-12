@@ -1,12 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FMOD.Studio;
 using FMODUnity;
 using InputManager;
-using NUnit.Framework;
-using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
@@ -32,11 +29,9 @@ namespace Audio
 
         [Header("FMOD Event Names")] 
         public List<string>  loopingAudioEventName;
-        public List<EventInstance>  loopingAudioEventInstances;
+        private readonly List<EventInstance>  loopingAudioEventInstances = new List<EventInstance>();
         public List<string> baseAudioNames = new List<string>(); // 0
         public List<string> catalystAudioNames = new List<string>(); // 1
-        public List<string> staticAudioNames = new List<string>(); // 2
-        public List<Vector3> staticAudioLocations = new List<Vector3>(); // 2
 
         private void Awake()
         {
@@ -63,9 +58,9 @@ namespace Audio
             yield return new WaitForSeconds(secs);
             foreach (var soundName in loopingAudioEventName)
             { 
-                EventInstance instance = RuntimeManager.CreateInstance(soundName);
-                loopingAudioEventInstances.Add(instance);
-                instance.start();
+                EventInstance eventInstance = RuntimeManager.CreateInstance(soundName);
+                loopingAudioEventInstances.Add(eventInstance);
+                eventInstance.start();
             }
         }
 
@@ -91,6 +86,7 @@ namespace Audio
             {
                 EventInstance instance = RuntimeManager.CreateInstance(soundName);;
                 loopingAudioEventInstances.Add(instance);
+                instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
                 instance.start();
             }
         }
@@ -114,7 +110,12 @@ namespace Audio
                 chosenAudioName  = catalystAudioNames[Random.Range(0, catalystAudioNames.Count)];
             }
             if (randomSoundList == 2) // STATIC
-                isStatic = true;
+            {
+                if (AudioAmbStaticManager.instance.audioStaticAmbSounds.Count > 0)
+                    isStatic = true;
+                else
+                    chosenAudioName = baseAudioNames[0];
+            } 
             
             Vector3 location;
             //If the random location is x% of the radius away from the player continue the script
@@ -186,6 +187,7 @@ namespace Audio
         [SerializeField] private LayerMask foliageLayerMask;
         private void FoliageSoundChecker(Vector3 location) // Might use this location later
         {
+            // Add feature where foliage only reacts to certain audio event names
             List<GameObject> newFoliageList = new List<GameObject>();
             RaycastHit[] hit = Physics.SphereCastAll( PlayerManager.instance.gameObject.transform.position, playerRadius, Vector3.down,playerRadius , foliageLayerMask.value);
             foreach (var foliage in hit)
@@ -231,44 +233,6 @@ namespace Audio
            
            AmbTimerSetter(1.5f, false);
         }
-        
-        //////////////////////////////////////////////////////////////////////////////////
-        // Old Code Storage
-                
-        // [Header("Audio Name List")]
-        // public List<string> currentAmbSoundList = new List<string>(); // Current amb names for the current area
-        // public List<string> loopingAmbSoundList = new List<string>(); //Current amb Looping names for the current area
-        //
-        // [HideInInspector] public List<AudioSource> loopingAudioPlayersList = new List<AudioSource>(); //Looping background amb audio players
-        // public List<string> staticSoundsList = new List<string>(); //Changes each area, used for sounds that require precise locations E.G Boat creak
-        // public List<Vector3> staticSoundsLocations = new List<Vector3>(); //Changes each area, used for sounds that require precise locations E.G Boat creak 
-        
-        
-        //Gets random audio
-        // if(currentAmbSoundList.Count <= 1)
-        //     chosenAudioName = currentAmbSoundList[0]; //Prevents game from breaking
-        //     else
-        // chosenAudioName = currentAmbSoundList[Random.Range(0, currentAmbSoundList.Count)];
-        
-        // Location setter based of if the audio is static
-        // if (staticSoundsList.Contains(chosenAudioName))
-        // {
-        //     var placementInList = staticSoundsList.IndexOf(chosenAudioName);
-        //     location = staticSoundsLocations[placementInList];
-        // }
-        
-        // Play Audio
-        // AudioManager.instance.PlayAudio(chosenAudioName, location,false,true, true
-        // , minVolume, maxVolume, true, 0.8f, 1.2f, priority);
-        // bool isCatalyst = !AudioManager.instance.catalystAmbAudio.TryGetValue(chosenAudioName, out var clip);
-        
-        // Folliage
-        //Add if the sound has the authority to do this stuff
-        // if (!AudioManager.instance.catalystAmbAudio.TryGetValue(soundName, out var clip))
-        // {
-        //     AmbTimerSetter(audioTime, false);
-        //     return;
-        // }
     }
 }
 

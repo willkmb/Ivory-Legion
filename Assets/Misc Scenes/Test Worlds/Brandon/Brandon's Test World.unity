@@ -4950,6 +4950,9 @@ Transform:
   - {fileID: 1573761496}
   - {fileID: 1993959321}
   - {fileID: 207704790}
+  - {fileID: 201702264}
+  - {fileID: 1712511095}
+  - {fileID: 738614874}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &65678882
@@ -10029,6 +10032,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1164175863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &201702264 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+  m_PrefabInstance: {fileID: 4062323405878144690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &207704790 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4053655988922824932, guid: 15514aa560187ef4b849303d159c5ab2, type: 3}
@@ -12620,7 +12628,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1240694571474345745, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+      propertyPath: is3d
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: audioList.Array.size
@@ -12633,6 +12645,14 @@ PrefabInstance:
     - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: 'audioList.Array.data[1]'
       value: Amb_FoliageRustle02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+      propertyPath: audioEventList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+      propertyPath: 'audioEventList.Array.data[0]'
+      value: event:/Amb/Docks/Reactor/Folliage/Dock Amb Rea Foliage Event
       objectReference: {fileID: 0}
     - target: {fileID: 3729964065965645208, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18207,6 +18227,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key
       objectReference: {fileID: 0}
+    - target: {fileID: 6036861676084668848, guid: 577c5da4e398b5d45812921fb1eb7219, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7255352793733768217, guid: 577c5da4e398b5d45812921fb1eb7219, type: 3}
       propertyPath: itemID
       value: 7
@@ -23285,7 +23309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &426939039
 Transform:
   m_ObjectHideFlags: 0
@@ -31261,7 +31285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &655484625
 Transform:
   m_ObjectHideFlags: 0
@@ -36054,7 +36078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &685982083
 Transform:
   m_ObjectHideFlags: 0
@@ -42272,6 +42296,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7489a47394d36b645866942f31dae9c7, type: 3}
   m_PrefabInstance: {fileID: 733888577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &738614873
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 57799315}
+    m_Modifications:
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.8000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4499989
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.900002
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431554758756678370, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: 'eventNames.Array.data[0]'
+      value: event:/Amb/Docks/Static/Dock Amb Sta Boat Creak Event
+      objectReference: {fileID: 0}
+    - target: {fileID: 468487971350508226, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430140481133114691, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_Name
+      value: Audio Static Obj (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+--- !u!4 &738614874 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+  m_PrefabInstance: {fileID: 738614873}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &756354298
 GameObject:
@@ -82483,6 +82577,76 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &1712511094
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 57799315}
+    m_Modifications:
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.8000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4499989
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.5000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431554758756678370, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: 'eventNames.Array.data[0]'
+      value: event:/Amb/Docks/Static/Dock Amb Sta Boat Creak Event
+      objectReference: {fileID: 0}
+    - target: {fileID: 468487971350508226, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430140481133114691, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_Name
+      value: Audio Static Obj (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+--- !u!4 &1712511095 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+  m_PrefabInstance: {fileID: 1712511094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1747911870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82559,7 +82723,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1240694571474345745, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+      propertyPath: is3d
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: audioList.Array.size
@@ -82572,6 +82740,14 @@ PrefabInstance:
     - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: 'audioList.Array.data[1]'
       value: Amb_FoliageRustle02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+      propertyPath: audioEventList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+      propertyPath: 'audioEventList.Array.data[0]'
+      value: event:/Amb/Docks/Reactor/Folliage/Dock Amb Rea Foliage Event
       objectReference: {fileID: 0}
     - target: {fileID: 3729964065965645208, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -99452,7 +99628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1993959321
 Transform:
   m_ObjectHideFlags: 0
@@ -104424,6 +104600,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 57799315}
     m_Modifications:
     - target: {fileID: 982192102104336277, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 982192102104336277, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
       propertyPath: m_LocalScale.z
       value: 43.199997
       objectReference: {fileID: 0}
@@ -104489,11 +104669,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
       propertyPath: 'ambList.Array.data[0]'
-      value: Amb_BoatCreak
+      value: event:/Amb/Docks/Base/Dock Amb Base Event
       objectReference: {fileID: 0}
     - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
       propertyPath: 'ambList.Array.data[1]'
-      value: Amb_BoatCreak
+      value: event:/Amb/Docks/Dock Amb Cat Wind Event
       objectReference: {fileID: 0}
     - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
       propertyPath: 'ambList.Array.data[2]'
@@ -104520,20 +104700,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
-      propertyPath: staticSoundsList.Array.size
+      propertyPath: audioSplinesList.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
-      propertyPath: 'ambLoopingList.Array.data[0]'
-      value: TestAudio_01
+      propertyPath: staticSoundsList.Array.size
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
+      propertyPath: 'ambLoopingList.Array.data[0]'
+      value: event:/Amb/Docks/Looping/Amb Dock Loop Wind Event
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
+      propertyPath: catalystAudioNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
+      propertyPath: 'audioSplinesList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4155184292476063768}
     - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
       propertyPath: staticLocationsList.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
       propertyPath: 'staticSoundsList.Array.data[0]'
-      value: Amb_BoatCreak
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
+      propertyPath: 'catalystAudioNames.Array.data[0]'
+      value: event:/Amb/Docks/Catalyst/Dock Amb Cat Wind Event
       objectReference: {fileID: 0}
     - target: {fileID: 4372246221666839949, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
       propertyPath: staticLocationsList.Array.data[0].x
@@ -104553,7 +104749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6756901332562149857, guid: 0acb00fb258c37647a6465392d4d8a77, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -104744,7 +104940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8864635822042748351, guid: 0815dfa88d4a372419e1af09164bbd64, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -104765,7 +104961,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1240694571474345745, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+      propertyPath: is3d
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: audioList.Array.size
@@ -104778,6 +104978,14 @@ PrefabInstance:
     - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: 'audioList.Array.data[1]'
       value: Amb_FoliageRustle02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+      propertyPath: audioEventList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426974805834653846, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+      propertyPath: 'audioEventList.Array.data[0]'
+      value: event:/Amb/Docks/Reactor/Folliage/Dock Amb Rea Foliage Event
       objectReference: {fileID: 0}
     - target: {fileID: 3729964065965645208, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -104824,6 +105032,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abb3cf8d4aaf1c8428eea8d3577a9da1, type: 3}
+--- !u!1001 &4062323405878144690
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 57799315}
+    m_Modifications:
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.8000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4499989
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.200001
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 237912641893119946, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431554758756678370, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: 'eventNames.Array.data[0]'
+      value: event:/Amb/Docks/Static/Dock Amb Sta Boat Creak Event
+      objectReference: {fileID: 0}
+    - target: {fileID: 468487971350508226, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2430140481133114691, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
+      propertyPath: m_Name
+      value: Audio Static Obj
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0761a6c258b5de438eb814790fbb67f, type: 3}
 --- !u!1001 &4155184292476063767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104838,7 +105111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3484747290749626548, guid: 90e8192f6ee0010428e3c2785346c717, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5012719617917591650, guid: 90e8192f6ee0010428e3c2785346c717, type: 3}
       propertyPath: m_LocalPosition.x
@@ -104886,11 +105159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362619047243869997, guid: 90e8192f6ee0010428e3c2785346c717, type: 3}
       propertyPath: splineSoundsList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5362619047243869997, guid: 90e8192f6ee0010428e3c2785346c717, type: 3}
       propertyPath: 'splineSoundsList.Array.data[0]'
-      value: Amb_Wave01
+      value: event:/Amb/Docks/Spline/Dock Wave Event
       objectReference: {fileID: 0}
     - target: {fileID: 5362619047243869997, guid: 90e8192f6ee0010428e3c2785346c717, type: 3}
       propertyPath: 'splineSoundsList.Array.data[1]'
@@ -105129,6 +105402,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90e8192f6ee0010428e3c2785346c717, type: 3}
+--- !u!114 &4155184292476063768 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5362619047243869997, guid: 90e8192f6ee0010428e3c2785346c717, type: 3}
+  m_PrefabInstance: {fileID: 4155184292476063767}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf9c89f815986e49a50e696543bdd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4394275969614987166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105140,6 +105424,10 @@ PrefabInstance:
     - target: {fileID: 3519805416606494181, guid: 3350549e12e7fbf4f8ef88a0db17a6c0, type: 3}
       propertyPath: m_Name
       value: KaL_Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519805416606494181, guid: 3350549e12e7fbf4f8ef88a0db17a6c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5736878472611375537, guid: 3350549e12e7fbf4f8ef88a0db17a6c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -105297,7 +105585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6630263346756134592, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
       propertyPath: player
@@ -105308,7 +105596,23 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
+      propertyPath: baseAudioNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
+      propertyPath: staticAudioNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
       propertyPath: staticSoundsList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
+      propertyPath: 'baseAudioNames.Array.data[0]'
+      value: event:/Amb/Docks/Base/Dock Amb Base Event
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
+      propertyPath: catalystAudioNames.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
@@ -105320,12 +105624,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
+      propertyPath: 'staticAudioNames.Array.data[0]'
+      value: event:/Amb/Docks/Dock Amb Sta BoatCreak Event
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
       propertyPath: 'staticSoundsList.Array.data[0]'
       value: Amb_BoatCreak
       objectReference: {fileID: 0}
     - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
+      propertyPath: 'catalystAudioNames.Array.data[0]'
+      value: event:/Amb/Docks/Catalyst/Dock Amb Cat Wind Event
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
       propertyPath: loopingAudioEventName.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
       propertyPath: staticSoundsLocations.Array.size
@@ -105358,6 +105670,10 @@ PrefabInstance:
     - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
       propertyPath: 'loopingAmbSoundList.Array.data[0]'
       value: Amb_SeaPortWind
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
+      propertyPath: 'loopingAudioEventName.Array.data[0]'
+      value: event:/Amb/Docks/Looping/Amb Dock Loop Wind Event
       objectReference: {fileID: 0}
     - target: {fileID: 8032590496346526326, guid: 086f3e65d84968243bb6049299a967ea, type: 3}
       propertyPath: staticSoundsLocations.Array.data[0].x

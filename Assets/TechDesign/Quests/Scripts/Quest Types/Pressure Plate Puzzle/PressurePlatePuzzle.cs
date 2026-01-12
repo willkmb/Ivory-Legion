@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Audio;
 using Player;
 using Quests;
 using UnityEngine;
@@ -10,6 +11,11 @@ namespace NS_PressurePlate
         public int amountOfPressurePlates;
         [SerializeField] private List<PressurePlate> activePressurePlates;
         [SerializeField] private GameObject rewardObjPrefab;
+
+        [Header("Audio Event Names")]
+        [SerializeField] private string incorrectAudioEvent;
+        [SerializeField] private string correctAudioEvent;
+        [SerializeField] private string puzzleCompletedAudioEvent;
         
         public void ActivatePressurePlate(PressurePlate pressurePlate, int itemID)
         {
@@ -20,6 +26,7 @@ namespace NS_PressurePlate
             if (go == null)
             {
                 Debug.Log("No item found in trunk position [0]");
+                PlayFMODSound(pressurePlate.transform.position,incorrectAudioEvent);
                 return;
             }
             QuestItem questItem = go.GetComponent<QuestItem>();
@@ -33,6 +40,7 @@ namespace NS_PressurePlate
                     CheckIfPuzzleComplete();
                     return;
                 }
+                PlayFMODSound(pressurePlate.transform.position,incorrectAudioEvent);
                 Debug.Log("Incorrect item");
             }
         }
@@ -45,6 +53,7 @@ namespace NS_PressurePlate
                     obj.transform.gameObject.SetActive(false);
                 
                 rewardObjPrefab.SetActive(true);
+                PlayFMODSound(transform.position,puzzleCompletedAudioEvent);
             }
         }
 
@@ -54,11 +63,15 @@ namespace NS_PressurePlate
             PickUpPutDownScript pickUpScript = questObj.GetComponent<PickUpPutDownScript>();
             if (pickUpScript != null)
                 pickUpScript.enabled = false;
+            
+            PlayFMODSound(pressurePlate.transform.position,correctAudioEvent);
         }
 
-        private void PlayFMODSound()
+        private void PlayFMODSound(Vector3 pos,string eventName)
         {
-            // Do audio stuff
+            AudioManager.instance.PlayFMODSound(pos, eventName, 1.5f, true, false, false, false, 
+                0, 0, false, 0, 0, 
+                true, false, null, null);
         }
     }
  

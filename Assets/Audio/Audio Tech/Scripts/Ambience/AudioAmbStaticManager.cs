@@ -7,7 +7,7 @@ namespace Audio
     {
         public static AudioAmbStaticManager instance;
         
-        public List<AudioAmbStaticObj> audioSplineAmbSounds = new List<AudioAmbStaticObj>();
+        public List<AudioAmbStaticObj> audioStaticAmbSounds = new List<AudioAmbStaticObj>();
 
         private void Awake()
         {
@@ -17,13 +17,13 @@ namespace Audio
         public void PlayStaticSound(float minVolume, float maxVolume)
         {
             int number;
-            if (audioSplineAmbSounds.Count <= 1)
+            if (audioStaticAmbSounds.Count <= 1)
                 number = 0;
             else
-                number  =  Random.Range(0, audioSplineAmbSounds.Count);
+                number  =  Random.Range(0, audioStaticAmbSounds.Count);
             
-            AudioManager.instance.PlayFMODSound(audioSplineAmbSounds[number].GetStaticPosition(), audioSplineAmbSounds[number].GetStaticEventName(), 
-                2f, true, audioSplineAmbSounds[number].ReverbCheck(), 
+            AudioManager.instance.PlayFMODSound(audioStaticAmbSounds[number].GetStaticPosition(), audioStaticAmbSounds[number].GetStaticEventName(), 
+                2f, true, audioStaticAmbSounds[number].ReverbCheck(), 
                 true, false, minVolume, maxVolume, 
                 true, 0.9f, 1.1f, 
                 true, false, null, null);
