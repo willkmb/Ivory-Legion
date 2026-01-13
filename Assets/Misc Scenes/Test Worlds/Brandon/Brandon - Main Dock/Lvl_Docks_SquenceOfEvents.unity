@@ -28743,6 +28743,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holder: {fileID: 349095139}
   icon: {fileID: 5826209298317074421, guid: 4fc9a3209766e2b4aa394e1cba950a61, type: 3}
+  scale: 1.25
+  incol: 0.25
+  outCol: 1
 --- !u!1001 &646100494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54797,7 +54800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2393508817684473014, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2419588285627927180, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -75771,7 +75774,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898947353}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Animation: {fileID: 7400000, guid: 7d6e77fe5ec86234eb2c039261ef805d, type: 2}
   m_Animations:
