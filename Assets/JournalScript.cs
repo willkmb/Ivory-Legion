@@ -8,8 +8,6 @@ using TMPro.EditorUtilities;
 
 public class JournalScript : MonoBehaviour
 {
-    public enum entryPlacements { First, Next };
-
     [Header("Prefabs")]
     [SerializeField] GameObject entry;
     [SerializeField] GameObject holder;
@@ -40,7 +38,7 @@ public class JournalScript : MonoBehaviour
     [SerializeField] TMP_FontAsset phonFont;
     void Update()
     {
-        if (!reachedCap) { if (Input.GetKeyDown(KeyCode.Alpha1)) { InsertEntry(entryPlacements.Next, "Quest..."); } } //Test example of the function getting called on a key press
+        if (!reachedCap) { if (Input.GetKeyDown(KeyCode.Alpha1)) { InsertEntry("Quest..."); } } //Test example of the function getting called on a key press
         if (amount == cap && totalAmount < 99) { reachedCap = true; cursor.SetActive(true); } //show cursor if page full
         if (index > 0) cursorBack.SetActive(true);
         else cursorBack.SetActive(false); //show back cursor if theres a previous page
@@ -48,25 +46,25 @@ public class JournalScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9)) Toggle = 1 - Toggle;
     }
 
-    public void InsertEntry(entryPlacements placement, string content)
+    public void InsertEntry(string content, int? placement = null)
     {
         if (totalAmount >= 99) return; //cap at 99 total entries
         if (curPage == null) firstPage();
         GameObject current = Instantiate(entry, curPage.transform);
-        if (Toggle == 0) current.GetComponent<TextMeshProUGUI>().font = romanFont;
-        else current.GetComponent<TextMeshProUGUI>().font = phonFont;
+        current.GetComponent<TextMeshProUGUI>().font = (Toggle == 0) ? romanFont : phonFont;
 
         switch (placement)
-            {
-                case entryPlacements.First: //put entry at the first place in the list
-                    Debug.Log("First");
-                    entries.Insert(0, current);
-                    break;
-                case entryPlacements.Next: //put entry in the list consecutively
-                    Debug.Log("Next");
-                    entries.Add(current);
-                    break;
-            }
+        {
+            default: //put entry at the first place in the list
+            Debug.Log("First");
+            int insertIndex = placement.Value; 
+            entries.Insert(insertIndex, current);
+            break;
+            case null: //put entry in the list consecutively
+            Debug.Log("Next");
+            entries.Add(current);
+            break;
+        }
 
         num = (entries.IndexOf(current) + 1); //get the number value of each entry
         toRoman();
