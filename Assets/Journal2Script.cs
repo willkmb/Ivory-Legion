@@ -29,8 +29,8 @@ public class Journal2Script : MonoBehaviour
         for(int i = 0; i < cap; i++) { GameObject cur = Instantiate(icon, holder.transform); entries.Add(cur); }
         for (int i = 0; i < cap; i += 2) 
         { 
-            Transform t = entries[i].transform.Find("text"); t.localPosition = new Vector3(t.localPosition.x, 45f, t.localPosition.z);
-            Transform p = entries[i].transform.Find("popUp"); p.localPosition = new Vector3(p.localPosition.x, 117f, p.localPosition.z);
+            Transform t = entries[i].transform.Find("icon/text"); t.localPosition = new Vector3(t.localPosition.x, 85f, t.localPosition.z);
+            Transform p = entries[i].transform.Find("popUp"); p.localPosition = new Vector3(p.localPosition.x, 85f, p.localPosition.z);
             p.localRotation = Quaternion.Euler(0f, 0f, 180f);
         }
         currentIndex = entries[cap/2]; index = cap/2; currentIndex.transform.localScale *= scale;
@@ -65,7 +65,7 @@ public class Journal2Script : MonoBehaviour
         if (index != questIndex - 1) changeCol(incol, entry);
         else changeCol(outCol, entry); entry.transform.Find("icon").GetComponent<Button>().enabled = false;
         ToRoman();
-        entry.transform.Find("text").GetComponent<TextMeshProUGUI>().text = numRoman + ". " + content;
+        entry.transform.Find("icon/text").GetComponent<TextMeshProUGUI>().text = numRoman + ". " + content;
     }
 
     void ToRoman()
