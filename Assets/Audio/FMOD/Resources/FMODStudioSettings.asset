@@ -413,27 +413,8 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks:
-  - Master
-  Banks:
-  - Amb Misc
-  - Augmentation Bank
-  - Chests
-  - Destruction Bank
-  - Docks
-  - E_Walking
-  - Elephants
-  - Gisgo
-  - H_Walking
-  - Item Storage
-  - Journal
-  - Main Menu
-  - Menu
-  - Pressure Plate
-  - Pull Bank
-  - Seismic Sense Bank
-  - Switch Bank
-  - Walking Test
+  MasterBanks: []
+  Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
@@ -443,7 +424,7 @@ MonoBehaviour:
   StopEventsOutsideMaxDistance: 0
   BoltUnitOptionsBuildPending: 0
   EnableErrorCallback: 0
-  SharedLibraryUpdateStage: 0
+  SharedLibraryUpdateStage: 1
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131857
   HideSetupWizard: 1

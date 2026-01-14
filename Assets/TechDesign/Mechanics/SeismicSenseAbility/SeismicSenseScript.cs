@@ -59,7 +59,6 @@ namespace SeismicSense
             var particle = particleEffects.main;
             particle.loop = true;
             particleEffects.Play();
-<<<<<<< HEAD:Assets/TechDesign/SeismicSenseAbility/SeismicSenseScript.cs
             PlaySoundSeismic();
             */
             Invoke("StartPulse1", 0.5f);
@@ -72,12 +71,10 @@ namespace SeismicSense
             particle.loop = true;
             particleEffects.Play();
             PlaySoundSeismic();
-=======
             AudioManager.instance.PlayFMODSound(PlayerManager.instance.gameObject.transform.position, seismicSenseSoundFileName, 3f,false, false,
                 true,false, 0, 0, 
                 true, 0.9f, 1.1f,
                 true, false, null, null);
->>>>>>> Brandon-Lynch:Assets/TechDesign/Mechanics/SeismicSenseAbility/SeismicSenseScript.cs
         }
 
         public void Reset()
@@ -121,11 +118,7 @@ namespace SeismicSense
 
         void PlaySoundSeismic()
         {
-<<<<<<< HEAD:Assets/TechDesign/SeismicSenseAbility/SeismicSenseScript.cs
-            AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 0.25f, 0.25f, true, 0.75f, 1.25f, 128);
-=======
            // AudioManager.instance.PlayAudio(seismicSenseSoundFileName, transform.position, false, false, false, 1, 1, true, 0.75f, 1.25f, 128);
->>>>>>> Brandon-Lynch:Assets/TechDesign/Mechanics/SeismicSenseAbility/SeismicSenseScript.cs
         }
 
 

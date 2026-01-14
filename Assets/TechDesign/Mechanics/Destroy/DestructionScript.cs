@@ -145,37 +145,22 @@ public class DestructionScript : MonoBehaviour, IInteractable
     void PlaySoundStart()
     {
         Debug.Log("playsound");
-<<<<<<< HEAD:Assets/TechDesign/Destroy/DestructionScript.cs
-        AudioManager.instance.PlayAudio(StartSoundFileName, transform.position, false, false, false, 0.5f, 0.5f, true, 1f, 1.25f, 128);
-=======
         PlaySound(StartSoundFileName, 2f);
->>>>>>> Brandon-Lynch:Assets/TechDesign/Mechanics/Destroy/DestructionScript.cs
     }
     void PlaySoundReady()
     {
         Debug.Log("playsound");
-<<<<<<< HEAD:Assets/TechDesign/Destroy/DestructionScript.cs
-        AudioManager.instance.PlayAudio(ReadySoundFileName, transform.position, false, false, false, 0.5f, 0.5f, true, 1f, 1.25f, 128);
-=======
         PlaySound(ReadySoundFileName, 2f);
->>>>>>> Brandon-Lynch:Assets/TechDesign/Mechanics/Destroy/DestructionScript.cs
         readySoundPlayed = true;
     }
     void PlaySoundDestroy()
     {
         Debug.Log("playsound");
-<<<<<<< HEAD:Assets/TechDesign/Destroy/DestructionScript.cs
-        AudioManager.instance.PlayAudio(DestroySoundFileName, transform.position, false, false, false, 0.1f, 0.1f, true, 0.75f, 1.25f, 128);
-=======
         PlaySound(DestroySoundFileName, 2f);
->>>>>>> Brandon-Lynch:Assets/TechDesign/Mechanics/Destroy/DestructionScript.cs
     }
     void PlaySoundFail()
     {
         Debug.Log("playsound");
-<<<<<<< HEAD:Assets/TechDesign/Destroy/DestructionScript.cs
-        AudioManager.instance.PlayAudio(FailSoundFileName, transform.position, false, false, false, 0.75f, 0.75f, true, 0.75f, 1f, 128);
-=======
         PlaySound(FailSoundFileName, 2f);
     }
 
@@ -186,6 +171,5 @@ public class DestructionScript : MonoBehaviour, IInteractable
             false, 0, 0, 
             true, 
             false, null, null);
->>>>>>> Brandon-Lynch:Assets/TechDesign/Mechanics/Destroy/DestructionScript.cs
     }
 }

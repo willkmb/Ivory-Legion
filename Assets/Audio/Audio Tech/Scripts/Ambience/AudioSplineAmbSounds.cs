@@ -52,29 +52,14 @@ namespace Audio
 
         private void RandomSplineSound()
         {
-<<<<<<< HEAD
-            var position = PlayerManager.instance.transform.position;
-            SplineUtility.GetNearestPoint(Spline.Spline, position, out float3 nearest, out float normalisedCurvePos);
-            float distanceFromPlayer = Vector3.Distance(position, nearest);
-            if (distanceFromPlayer > maxVolumeDistance)
-                return;
-
-            
-            string chosenAudioName;
-=======
             string chosenAudioEventName;
->>>>>>> Brandon-Lynch
             //Gets random audio
             if(splineSoundsList.Count <= 1)
                 chosenAudioEventName = splineSoundsList[0]; //Prevents game from breaking
             else
-<<<<<<< HEAD
-                chosenAudioName = splineSoundsList[Random.Range(0, splineSoundsList.Count)];
-=======
                 chosenAudioEventName = splineSoundsList[Random.Range(0, splineSoundsList.Count)];
 
             //SplineUtility.GetNearestPoint(Spline.Spline, tempPlayer.transform.position, out float3 nearest, out float normalisedCurvePos);
->>>>>>> Brandon-Lynch
             
             // Gets closest knot to the players current position
             float smallestDistance = Mathf.Infinity;

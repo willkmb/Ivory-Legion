@@ -158,10 +158,6 @@ namespace Player
         // ReSharper disable Unity.PerformanceAnalysis
         void PlaySoundWalk() // - Emily, sounds - Updated (Brandon)
         {
-<<<<<<< HEAD
-            AudioManager.instance.PlayAudio(WalkSoundFileName, transform.position, false, false, false, 0.5f, 0.6f, true, 0.5f, 1f, 128);
-            Invoke("SoundPlayingFalse", 0.75f);
-=======
                 // If npc is in a terrain area, play that audio instead
                 if (PlayerManager.instance.audioEventNames.Count >= 1)
                 {
@@ -182,7 +178,6 @@ namespace Player
                     false, null, null);
                 
             StartCoroutine(SoundPlayingFalse(1));
->>>>>>> Brandon-Lynch
         }
         IEnumerator SoundPlayingFalse(int secs)
         {

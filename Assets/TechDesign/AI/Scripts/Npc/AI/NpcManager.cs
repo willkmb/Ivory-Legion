@@ -56,11 +56,9 @@ namespace Npc.AI
         public bool patrolling; // Ticked if you want the NPC to travel between points on the SetPathingWalking
         [HideInInspector] public float minMovementCooldownTime;
         [HideInInspector] public float maxMovementCooldownTime;
-<<<<<<< HEAD
+
         [Header("Cutscene Variables")]
         public bool removeAfterCutscene;
-=======
->>>>>>> Brandon-Lynch
         public bool idleAfterCutscene;
         [HideInInspector] public Vector3 currentMovPos;
         

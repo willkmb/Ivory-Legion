@@ -202,17 +202,12 @@ namespace Player
         }
         void PlaySoundPush()
         {
-<<<<<<< HEAD:Assets/TechDesign/Pull Push/PushController.cs
-            //Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PushSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 1f, 1.25f, 128);
-=======
             Debug.Log("playsound");
             AudioManager.instance.PlayFMODSound(transform.position, PushSoundFileName, 1f, true, true, 
                 true,true, 0.75f, 1.25f, 
                 false, 0, 0, 
                 true, 
                 false, null, null);
->>>>>>> Brandon-Lynch:Assets/TechDesign/Puzzles/Pull Push/PushController.cs
         }
 
     }
