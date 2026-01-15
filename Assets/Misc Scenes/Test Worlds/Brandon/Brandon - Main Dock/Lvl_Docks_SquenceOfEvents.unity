@@ -44258,9 +44258,9 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: -2.75, y: 0, z: 31.5}
   skinList:
-  - {fileID: 2100000, guid: e82b6fd240ead7c49a7e7c0659033c72, type: 2}
-  - {fileID: 2100000, guid: 9e9ab0b1f7464c24e9822c437ccc92c3, type: 2}
-  - {fileID: 2100000, guid: fc9e9ff1d58a3ed47a45e65c8ac09a64, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentPointNumber: 0
   timeToReset: 2
 --- !u!114 &1085031015
@@ -49348,6 +49348,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3366292531632398829, guid: 0e932c0ace5dade48a95ff03a7ed0f24, type: 3}
   m_PrefabInstance: {fileID: 1027009963}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1225114418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1225114419}
+  m_Layer: 5
+  m_Name: ChildHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1225114419
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225114418}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1965290616}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -361.1, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1225134961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64680,7 +64715,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 115
+  m_Spacing: 103.3
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -78099,6 +78134,7 @@ RectTransform:
   - {fileID: 883983334}
   - {fileID: 1065670995}
   - {fileID: 1587647487}
+  - {fileID: 1225114419}
   m_Father: {fileID: 7435513045369821042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -78131,11 +78167,29 @@ MonoBehaviour:
   - entryID: 4
     parentID: 2
     hasChildren: 0
+  - entryID: 5
+    parentID: 0
+    hasChildren: 1
+  - entryID: 6
+    parentID: 5
+    hasChildren: 0
+  - entryID: 7
+    parentID: 5
+    hasChildren: 0
+  - entryID: 8
+    parentID: 0
+    hasChildren: 0
+  - entryID: 9
+    parentID: 0
+    hasChildren: 0
+  - entryID: 10
+    parentID: 0
+    hasChildren: 0
   entryPrefab: {fileID: 5826209298317074421, guid: 7a49afcbc7e480f4690db3c09f219aef, type: 3}
   holder: {fileID: 1587647486}
-  line: {fileID: 630720611898302424, guid: 187b3e5daf7e08e4da651d2e19ddd581, type: 3}
+  childHolder: {fileID: 1225114418}
+  lineObj: {fileID: 6777995308108259826, guid: 187b3e5daf7e08e4da651d2e19ddd581, type: 3}
   offsetFromParent: 60
-  thickness: 2
   isEntry: 0
   entryID: 0
   parentID: 0
@@ -84392,9 +84446,9 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0.25, y: 0, z: 31.5}
   skinList:
-  - {fileID: 2100000, guid: e82b6fd240ead7c49a7e7c0659033c72, type: 2}
-  - {fileID: 2100000, guid: 9e9ab0b1f7464c24e9822c437ccc92c3, type: 2}
-  - {fileID: 2100000, guid: fc9e9ff1d58a3ed47a45e65c8ac09a64, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentPointNumber: 0
   timeToReset: 2
 --- !u!114 &2144642220
@@ -86619,9 +86673,9 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0.25, y: 0, z: 31.5}
   skinList:
-  - {fileID: 2100000, guid: e82b6fd240ead7c49a7e7c0659033c72, type: 2}
-  - {fileID: 2100000, guid: 9e9ab0b1f7464c24e9822c437ccc92c3, type: 2}
-  - {fileID: 2100000, guid: fc9e9ff1d58a3ed47a45e65c8ac09a64, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentPointNumber: 0
   timeToReset: 2
 --- !u!65 &6469487392604805281
@@ -87369,9 +87423,9 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: -2.75, y: 0, z: 31.5}
   skinList:
-  - {fileID: 2100000, guid: e82b6fd240ead7c49a7e7c0659033c72, type: 2}
-  - {fileID: 2100000, guid: 9e9ab0b1f7464c24e9822c437ccc92c3, type: 2}
-  - {fileID: 2100000, guid: fc9e9ff1d58a3ed47a45e65c8ac09a64, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentPointNumber: 0
   timeToReset: 2
 --- !u!65 &8604184398043942214

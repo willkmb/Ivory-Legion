@@ -22,7 +22,10 @@ public class JournalTreeScript : MonoBehaviour
     [Header("Prefabs")] 
     [SerializeField] GameObject entryPrefab;
     [SerializeField] GameObject holder;
-    [SerializeField] GameObject line;
+    [SerializeField] GameObject childHolder;
+    [SerializeField] GameObject lineObj;
+
+    [Header("Spacing")]
     public float offsetFromParent = 10f;
 
     [HideInInspector] public bool isEntry = false;
@@ -34,6 +37,7 @@ public class JournalTreeScript : MonoBehaviour
     private List<GameObject> children = new List<GameObject>();
 
     private bool HeightToggle = false;
+    private bool HeightToggleLine = false;
 
     private void Awake()
     {
@@ -41,6 +45,7 @@ public class JournalTreeScript : MonoBehaviour
         for (int i = 0; i < Entries.Count; i++)
         {
             GameObject instanceEntry = Instantiate(entryPrefab, holder.transform);
+            if (!Entries[i].hasChildren) Instantiate(lineObj, instanceEntry.transform.Find("icon"));
             instanceEntry.name = "Entry" + (i + 1);
             JournalTreeScript entryInstancedScript = instanceEntry.AddComponent<JournalTreeScript>();
             entryInstancedScript.isEntry = true;
@@ -53,23 +58,46 @@ public class JournalTreeScript : MonoBehaviour
 
         for (int i = 0; i < EntryObjs.Count; i++)
         {
+
             if (EntryObjs[i].GetComponent<JournalTreeScript>().hasChildren)
             {
+                GameObject parentObj = EntryObjs[i];
+                List<GameObject> lines = new List<GameObject>();
+                GameObject line1 = Instantiate(lineObj, parentObj.transform.Find("icon")); GameObject line2 = Instantiate(lineObj, parentObj.transform.Find("icon"));
+                lines.Add(line1); lines.Add(line2);
+
+                foreach (var line in lines)
+                {
+                    HeightToggleLine = !HeightToggleLine;
+                    Transform lineRot = line.transform;
+                    if(HeightToggleLine) lineRot.Rotate(0f, 0f, 30f);
+                    else lineRot.Rotate(0f, 0f, -30f);
+                }
+                HeightToggleLine = false;
                 getChildrenOfParent(EntryObjs[i].GetComponent<JournalTreeScript>().entryID);
+
                 if (children.Count > 0)
                 {
-                    foreach (var child in children)
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(holder.GetComponent<RectTransform>());
+                    for (int c=0 ; c<children.Count; c++)
                     {
-                        Debug.Log(child.name + " ID = " + child.GetComponent<JournalTreeScript>().entryID + " / " + EntryObjs[i].name);
+                        Debug.Log(children[c].name + " ID = " + children[c].GetComponent<JournalTreeScript>().entryID + " / " + EntryObjs[i].name);
                         HeightToggle = !HeightToggle;
-                        if(HeightToggle) child.transform.Find("icon").transform.localPosition = new Vector3(child.transform.Find("icon").transform.localPosition.x, 
-                                                                                EntryObjs[i].transform.Find("icon").transform.localPosition.y + offsetFromParent,
-                                                                                child.transform.Find("icon").transform.localPosition.z);
-                        else child.transform.Find("icon").transform.localPosition = new Vector3(child.transform.Find("icon").transform.localPosition.x - holder.GetComponent<HorizontalLayoutGroup>().spacing,
-                                                                                EntryObjs[i].transform.Find("icon").transform.localPosition.y - offsetFromParent,
-                                                                                child.transform.Find("icon").transform.localPosition.z);
-                        DrawLine(EntryObjs[i].transform.Find("icon").gameObject, child.transform.Find("icon"). game);
+                        Transform childIcon = children[c].transform.Find("icon").transform; Transform parentIcon = EntryObjs[i].transform.Find("icon").transform;
+                        if (HeightToggle)
+                        {
+                            childIcon.localPosition = new Vector3(childIcon.localPosition.x, parentIcon.localPosition.y + offsetFromParent, childIcon.localPosition.z);
+                            childIcon.transform.Find("LinePrefab(Clone)").Rotate(0f, 0f, -30f);
+                        }
+                        else
+                        {
+                            children[c].AddComponent<LayoutElement>(); children[c].GetComponent<LayoutElement>().ignoreLayout = true;
+                            children[c].transform.position = new Vector3(children[0].transform.position.x, children[0].transform.position.y, children[0].transform.position.z);
+                            childIcon.transform.localPosition = new Vector3(childIcon.transform.localPosition.x, parentIcon.transform.localPosition.y - offsetFromParent, 0f);
+                            childIcon.transform.Find("LinePrefab(Clone)").Rotate(0f, 0f, 30f);
+                        }
                     }
+                    HeightToggle = false;
                 }
             }
         }
@@ -85,15 +113,6 @@ public class JournalTreeScript : MonoBehaviour
                 children.Add(EntryObjs[i]);
             }
         }
-    }
-
-    void DrawLine(GameObject parent, GameObject child)
-    {
-        GameObject curLine = Instantiate(line, holder.transform);
-        LineRenderer lineRend = curLine.GetComponent<LineRenderer>();
-        lineRend.positionCount = 2;
-        lineRend.SetPosition(0, parent.transform.position);
-        lineRend.SetPosition(1, child.transform.position);
     }
 
     [ContextMenu("Print ID values")]
