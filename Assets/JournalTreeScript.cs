@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using TMPro;
 using static Dialogue;
 
 public class JournalTreeScript : MonoBehaviour
@@ -24,9 +25,10 @@ public class JournalTreeScript : MonoBehaviour
     [SerializeField] GameObject holder;
     [SerializeField] GameObject childHolder;
     [SerializeField] GameObject lineObj;
+    [SerializeField] float scale = 2.5f;
 
     [Header("Spacing")]
-    public float offsetFromParent = 10f;
+    [SerializeField] float offsetFromParent = 10f;
 
     [HideInInspector] public bool isEntry = false;
     [HideInInspector] public int entryID;
@@ -35,38 +37,46 @@ public class JournalTreeScript : MonoBehaviour
 
     private List<GameObject> EntryObjs = new List<GameObject>();
     private List<GameObject> children = new List<GameObject>();
+    private List<Transform> flatEntries = new List<Transform>();
 
     private bool HeightToggle = false;
     private bool HeightToggleLine = false;
 
+    private int index;
+    private Transform currentIndex;
+    private string numRoman;
+
     private void Awake()
     {
-        if (isEntry) return;
+        if (isEntry) return; //don't run if its an instance
         for (int i = 0; i < Entries.Count; i++)
         {
             GameObject instanceEntry = Instantiate(entryPrefab, holder.transform);
             if (!Entries[i].hasChildren) Instantiate(lineObj, instanceEntry.transform.Find("icon"));
             instanceEntry.name = "Entry" + (i + 1);
-            JournalTreeScript entryInstancedScript = instanceEntry.AddComponent<JournalTreeScript>();
+            JournalTreeScript entryInstancedScript = instanceEntry.AddComponent<JournalTreeScript>(); //create the entry, give it a line obj, give it the script + name it
+
             entryInstancedScript.isEntry = true;
             entryInstancedScript.entryID = Entries[i].entryID;
             entryInstancedScript.parentID = Entries[i].parentID;
-            entryInstancedScript.hasChildren = Entries[i].hasChildren;
+            entryInstancedScript.hasChildren = Entries[i].hasChildren; //assign all of the object data to each entry based on class values from inspector
 
-            EntryObjs.Add(instanceEntry);
+            EntryObjs.Add(instanceEntry); //add the object ver of entry to its own list
+            Transform iconVis = instanceEntry.transform.Find("icon/iconvis");
+            flatEntries.Add(iconVis);
         }
 
         for (int i = 0; i < EntryObjs.Count; i++)
         {
 
-            if (EntryObjs[i].GetComponent<JournalTreeScript>().hasChildren)
+            if (EntryObjs[i].GetComponent<JournalTreeScript>().hasChildren) //find the parent objects
             {
                 GameObject parentObj = EntryObjs[i];
                 List<GameObject> lines = new List<GameObject>();
-                GameObject line1 = Instantiate(lineObj, parentObj.transform.Find("icon")); GameObject line2 = Instantiate(lineObj, parentObj.transform.Find("icon"));
+                GameObject line1 = Instantiate(lineObj, parentObj.transform.Find("icon")); GameObject line2 = Instantiate(lineObj, parentObj.transform.Find("icon")); //give parent objects two lines
                 lines.Add(line1); lines.Add(line2);
 
-                foreach (var line in lines)
+                foreach (var line in lines) // for each line, offset their rotation to face each of the childen objects
                 {
                     HeightToggleLine = !HeightToggleLine;
                     Transform lineRot = line.transform;
@@ -74,33 +84,80 @@ public class JournalTreeScript : MonoBehaviour
                     else lineRot.Rotate(0f, 0f, -30f);
                 }
                 HeightToggleLine = false;
-                getChildrenOfParent(EntryObjs[i].GetComponent<JournalTreeScript>().entryID);
+
+                getChildrenOfParent(EntryObjs[i].GetComponent<JournalTreeScript>().entryID); //get a list of children based on parents ID
 
                 if (children.Count > 0)
                 {
-                    LayoutRebuilder.ForceRebuildLayoutImmediate(holder.GetComponent<RectTransform>());
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(holder.GetComponent<RectTransform>()); //force the horizontal layout group to build itself before creating children
                     for (int c=0 ; c<children.Count; c++)
                     {
-                        Debug.Log(children[c].name + " ID = " + children[c].GetComponent<JournalTreeScript>().entryID + " / " + EntryObjs[i].name);
                         HeightToggle = !HeightToggle;
                         Transform childIcon = children[c].transform.Find("icon").transform; Transform parentIcon = EntryObjs[i].transform.Find("icon").transform;
-                        if (HeightToggle)
+
+                        if (HeightToggle) //position child one to be upper
                         {
                             childIcon.localPosition = new Vector3(childIcon.localPosition.x, parentIcon.localPosition.y + offsetFromParent, childIcon.localPosition.z);
-                            childIcon.transform.Find("LinePrefab(Clone)").Rotate(0f, 0f, -30f);
+                            childIcon.transform.Find("LinePrefab(Clone)").Rotate(0f, 0f, -30f); // rotate line downwards to meet the next entry
                         }
-                        else
+                        else // position child 2 to be lower
                         {
-                            children[c].AddComponent<LayoutElement>(); children[c].GetComponent<LayoutElement>().ignoreLayout = true;
-                            children[c].transform.position = new Vector3(children[0].transform.position.x, children[0].transform.position.y, children[0].transform.position.z);
-                            childIcon.transform.localPosition = new Vector3(childIcon.transform.localPosition.x, parentIcon.transform.localPosition.y - offsetFromParent, 0f);
+                            children[c].AddComponent<LayoutElement>(); children[c].GetComponent<LayoutElement>().ignoreLayout = true; //force child to ignore layout spacing
+
+                            children[c].transform.position = new Vector3(children[0].transform.position.x, children[0].transform.position.y, children[0].transform.position.z); //set its position to the first child
+                            childIcon.transform.localPosition = new Vector3(childIcon.transform.localPosition.x, parentIcon.transform.localPosition.y - offsetFromParent, 0f); //apply the offsets to the icon
                             childIcon.transform.Find("LinePrefab(Clone)").Rotate(0f, 0f, 30f);
                         }
                     }
-                    HeightToggle = false;
+                    HeightToggle = false; // reset toggle to true is always upper
                 }
             }
         }
+    }
+
+    private void Start()
+    {
+        if (isEntry) return;
+        EntryObjs[EntryObjs.Count - 1].transform.Find("icon/LinePrefab(Clone)").gameObject.SetActive(false); //remove last line from object in the list
+
+        if (!Mathf.Approximately(EntryObjs[EntryObjs.Count - 1].transform.position.y, 50f)) //checks position of entry to detect if child, if so removes line from it and the previous entry (upper child)
+        {
+            EntryObjs[EntryObjs.Count - 2].transform.Find("icon/LinePrefab(Clone)").gameObject.SetActive(false);
+        }
+
+        index = 1; currentIndex = flatEntries[index]; currentIndex.localScale *= scale;
+    }
+
+    private void Update()
+    {
+        float wheel = Input.mouseScrollDelta.y;
+        if(wheel > 0f) { ScaleIcons(0); }
+        else if(wheel < 0f) { ScaleIcons(1); }
+    }
+
+    void ScaleIcons(int state)
+    {
+        if(currentIndex != null) Debug.Log(currentIndex.gameObject.name);
+        if(currentIndex.localScale.x > 1f) currentIndex.localScale /= scale;
+        switch (state)
+        {
+            case 0: index++; break;
+            case 1: index--; break;
+        }
+        index = Mathf.Clamp(index, 0, flatEntries.Count - 1);
+        currentIndex = flatEntries[index];
+        currentIndex.localScale *= scale;
+        currentIndex.GetComponentInChildren<Animation>().Play();
+
+    }
+
+    void ToRoman()
+    {
+        string[] ones = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+        string[] tens = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+        int one = index % 10;
+        int ten = index / 10;
+        numRoman = (tens[ten] + ones[one]);
     }
 
     void getChildrenOfParent(int pID)
@@ -110,12 +167,12 @@ public class JournalTreeScript : MonoBehaviour
         {
             if (EntryObjs[i].GetComponent<JournalTreeScript>().parentID == pID)
             {
-                children.Add(EntryObjs[i]);
+                children.Add(EntryObjs[i]); //find all children with matching parent IDs for child spacing above
             }
         }
     }
 
-    [ContextMenu("Print ID values")]
+    [ContextMenu("Print ID values")] // creates a button that can be clicked on the script of entries to show their inherited ID values in the console
     private void printValue()
     {
         Debug.Log("Entry: " + entryID + " Parent: " + parentID + " Children: " + hasChildren);

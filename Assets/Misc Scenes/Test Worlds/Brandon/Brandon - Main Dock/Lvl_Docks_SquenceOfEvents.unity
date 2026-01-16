@@ -78157,15 +78157,15 @@ MonoBehaviour:
   Entries:
   - entryID: 1
     parentID: 0
-    hasChildren: 0
-  - entryID: 2
-    parentID: 0
     hasChildren: 1
+  - entryID: 2
+    parentID: 1
+    hasChildren: 0
   - entryID: 3
-    parentID: 2
+    parentID: 1
     hasChildren: 0
   - entryID: 4
-    parentID: 2
+    parentID: 0
     hasChildren: 0
   - entryID: 5
     parentID: 0
@@ -78176,19 +78176,11 @@ MonoBehaviour:
   - entryID: 7
     parentID: 5
     hasChildren: 0
-  - entryID: 8
-    parentID: 0
-    hasChildren: 0
-  - entryID: 9
-    parentID: 0
-    hasChildren: 0
-  - entryID: 10
-    parentID: 0
-    hasChildren: 0
   entryPrefab: {fileID: 5826209298317074421, guid: 7a49afcbc7e480f4690db3c09f219aef, type: 3}
   holder: {fileID: 1587647486}
   childHolder: {fileID: 1225114418}
   lineObj: {fileID: 6777995308108259826, guid: 187b3e5daf7e08e4da651d2e19ddd581, type: 3}
+  scale: 1.25
   offsetFromParent: 60
   isEntry: 0
   entryID: 0
