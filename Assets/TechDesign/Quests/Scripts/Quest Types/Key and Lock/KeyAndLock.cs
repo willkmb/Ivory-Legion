@@ -26,6 +26,7 @@ namespace NS_KeyAndLock
         public KeyUsedResult keyUsedResult;
         [SerializeField] private int sceneNumber;
         [SerializeField] private List<GameObject> doors;
+        [SerializeField] private GameObject textTrigger;
 
         [Header("Audio Event Names")] 
         [SerializeField] private string incorrectEventName;
@@ -78,6 +79,8 @@ namespace NS_KeyAndLock
 
         private void CorrectKeyPlaced()
         {
+            if (textTrigger != null)
+               textTrigger.transform.gameObject.SetActive(false);
             switch (keyUsedResult)
             {
                 case KeyUsedResult.TransferScene:

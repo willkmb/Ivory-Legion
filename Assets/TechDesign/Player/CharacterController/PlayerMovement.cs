@@ -144,7 +144,7 @@ namespace Player
                 // If npc is in a terrain area, play that audio instead
                 if (PlayerManager.instance.audioEventNames.Count >= 1)
                 {
-                    AudioManager.instance.PlayFMODSound(transform.position, PlayerManager.instance.audioEventNames[0], 1f, true, true, 
+                    AudioManager.instance.PlayFMODSound(transform.position, PlayerManager.instance.audioEventNames[0], 1f, true, true, false,
                         false,true, 0.9f, 1.1f, 
                         true, 0.9f, 1.1f, 
                         true, 
@@ -154,7 +154,7 @@ namespace Player
                 }
                     
                 // Plays base Audio if there is no terrain audio
-                AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/Elephants/E_Walking_Base", 1f, true, true, 
+                AudioManager.instance.PlayFMODSound(transform.position, "event:/SFX/Walking/Elephants/E_Walking_Base", 1f, true, true, false,
                     false,true, 0.9f, 1.1f,
                     true, 0.9f, 1.1f, 
                     true, 

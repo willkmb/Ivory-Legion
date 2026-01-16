@@ -92,7 +92,7 @@ namespace Audio
                 minVolume *= 0.75f;
                 maxVolume *= 1f;
             }
-            AudioManager.instance.PlayFMODSound(smallestPosition, chosenAudioEventName, 3f, true, false, 
+            AudioManager.instance.PlayFMODSound(smallestPosition, chosenAudioEventName, 3f, true, false, true,
                 false, true, minVolume, maxVolume, 
                 true, minPitch, maxPitch, 
                 true, false, null, null);

@@ -198,14 +198,5 @@ namespace Player
                 Gizmos.DrawWireCube(Vector3.zero, lastHalfExtents * 2);
             }
         }
-        void PlaySoundPush()
-        {
-            Debug.Log("playsound");
-            AudioManager.instance.PlayFMODSound(transform.position, PushSoundFileName, 1f, true, true, 
-                true,true, 0.75f, 1.25f, 
-                false, 0, 0, 
-                true, 
-                false, null, null);
-        }
     }
 }

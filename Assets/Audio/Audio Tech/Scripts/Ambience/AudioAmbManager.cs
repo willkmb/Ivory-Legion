@@ -37,8 +37,8 @@ namespace Audio
         {
             instance ??= this;
             
-            _closeAudioPercentage = (playerRadius * miniumSpawnDistancePercentage) * 0.30f;
-            _mediumAudioPercentage = (playerRadius * miniumSpawnDistancePercentage) * 0.60f;
+            _closeAudioPercentage = (playerRadius * miniumSpawnDistancePercentage) * 0.50f;
+            _mediumAudioPercentage = (playerRadius * miniumSpawnDistancePercentage) * 0.8f;
             _largeAudioPercentage = (playerRadius * miniumSpawnDistancePercentage);
 
             _minTime = Mathf.Clamp(_minTime, 1, 5);
@@ -60,7 +60,12 @@ namespace Audio
             { 
                 EventInstance eventInstance = RuntimeManager.CreateInstance(soundName);
                 loopingAudioEventInstances.Add(eventInstance);
+                eventInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
                 eventInstance.start();
+                AudioManager.instance.PlayFMODSound(default, soundName, 1, false, false, false, false, 
+                    false, 0, 0, false, 0, 0, 
+                    false, 
+                    false, null, null);
             }
         }
 
@@ -87,6 +92,7 @@ namespace Audio
                 EventInstance instance = RuntimeManager.CreateInstance(soundName);;
                 loopingAudioEventInstances.Add(instance);
                 instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+                instance.setVolume(1f);
                 instance.start();
             }
         }
@@ -133,20 +139,20 @@ namespace Audio
             //Distance checks for volume and priority levels
             var minVolume = 1f; var maxVolume = 1f; //var priority = 128;
             var distance = Vector3.Distance(location, PlayerManager.instance.gameObject.transform.position);
-            if (distance <= _closeAudioPercentage) // Sound is 30% of radius range
+            if (distance <= _closeAudioPercentage) 
             {
-                minVolume = 0.3f;
-                maxVolume = 0.2f;
+                minVolume = 0.5f;
+                maxVolume = 0.65f;
             }
-            if (distance <= _mediumAudioPercentage && distance >= _closeAudioPercentage) // Sound is 30% - 60% of radius range
+            if (distance <= _mediumAudioPercentage && distance >= _closeAudioPercentage) 
             {
-                minVolume = 0.1f;
-                maxVolume = 0.2f;
+                minVolume = 0.30f;
+                maxVolume = 0.5f;
             }
-            if (distance >= _largeAudioPercentage)// Sound is 60%+ of radius range
+            if (distance >= _largeAudioPercentage)
             {
-                minVolume = 0.05f;
-                maxVolume = 0.1f;
+                minVolume = 0.25f;
+                maxVolume = 0.30f;
             }
 
             if (isStatic)
@@ -155,16 +161,15 @@ namespace Audio
                 AmbTimerSetter(2.5f, isCatalyst);
                 return;
             }
-            
             // Plays FMOD audio
-            AudioManager.instance.PlayFMODSound(location, chosenAudioName, 3f, true, true, 
-                true,true, minVolume, maxVolume, 
+            AudioManager.instance.PlayFMODSound(location, chosenAudioName, 3f, true, true, true,
+                true,false, minVolume, maxVolume, 
                 true, 0.9f, 1.1f, 
                 true, 
                 false, null, null);
             
             if (isCatalyst)
-                FoliageSoundChecker(location);
+               FoliageSoundChecker();
             
             AmbTimerSetter(2.5f, isCatalyst);
         }
@@ -185,19 +190,22 @@ namespace Audio
         // Foliage Code
         [Header("Foliage Layer")]
         [SerializeField] private LayerMask foliageLayerMask;
-        private void FoliageSoundChecker(Vector3 location) // Might use this location later
+        private void FoliageSoundChecker() // Might use this location later
         {
             // Add feature where foliage only reacts to certain audio event names
-            List<GameObject> newFoliageList = new List<GameObject>();
+            List<AudioFoliageReactor> newFoliageList = new List<AudioFoliageReactor>();
             RaycastHit[] hit = Physics.SphereCastAll( PlayerManager.instance.gameObject.transform.position, playerRadius, Vector3.down,playerRadius , foliageLayerMask.value);
             foreach (var foliage in hit)
-                newFoliageList.Add(foliage.transform.gameObject);
-
+            {
+                AudioFoliageReactor audioFoliageReactor = foliage.transform.GetComponent<AudioFoliageReactor>();
+                if (audioFoliageReactor != null)
+                    newFoliageList.Add(audioFoliageReactor);
+            }
             if (newFoliageList.Count > 0)
                 FoliageAmbSounds(newFoliageList);
         }
 
-        private void FoliageAmbSounds(List<GameObject> foliageList)
+        private void FoliageAmbSounds(List<AudioFoliageReactor> foliageList)
         {
            //Gets a random foliage from list
             var foliageObj = foliageList[Random.Range(0, foliageList.Count)];
@@ -223,9 +231,9 @@ namespace Audio
            {
                minVolume = 0.3f;
                maxVolume = 0.5f;
-           }
+           } 
 
-           AudioManager.instance.PlayFMODSound(audioFoliageReactor.transform.position, randomFoliageEvent, 2f, audioFoliageReactor.Is3D(), audioFoliageReactor.ReverbCheck(), 
+           AudioManager.instance.PlayFMODSound(audioFoliageReactor.transform.position, randomFoliageEvent, 2f, audioFoliageReactor.Is3D(), audioFoliageReactor.ReverbCheck(), true,
                true,true, minVolume, maxVolume, 
                true, 0.9f, 1.1f, 
                true, 

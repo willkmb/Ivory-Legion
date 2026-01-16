@@ -16,7 +16,7 @@ namespace Player {
         // variables in inspector
         [SerializeField] GameObject PutDownPoint;
         public bool isHat;
-
+        
         // private variables
         GameObject player;
         public bool isPickedUp;
@@ -44,7 +44,7 @@ namespace Player {
             {
                 player.GetComponent<ItemStorage>().PickUp(this.gameObject, itemID, itemAmount);
                 isPickedUp = true;
-                
+         
             }
             else
             {

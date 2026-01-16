@@ -19,47 +19,49 @@ namespace Audio.FMOD
         [SerializeField] private BoxCollider boxCollider;
         private Rigidbody rgb;
         private EventInstance currentInstance;
-        private float reverbMultiplier;
         public ReverbArea currentReverbArea;
         
        // Checks what type of audio it is
        //Checks if the sounds requires reverb
-        public void PlaySound(string eventName, float audioLength, bool is3d, bool reverbCheck, 
+        public void PlaySound(string eventName, float audioLength, bool is3d, bool reverbCheck, bool isAmb, 
             bool alterVolumeOfDist, bool alterVolume, float minVolume, float maxVolume,
             bool alterPitch, float minPitch, float maxPitch,
             bool isOneShot,
             bool isLabelledParameter, string parameterName, string parameterValue)
         {
             currentInstance = RuntimeManager.CreateInstance(eventName);
+            currentInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
             if (reverbCheck)
             {
                 boxCollider.enabled = true;
                 rgb = transform.AddComponent<Rigidbody>();
                 rgb.useGravity = false;
                 rgb.freezeRotation = true;
-                Invoke("ReverbCheck",Time.deltaTime * 2);
+                //Invoke("ReverbCheck",Time.deltaTime * 2);
             }
-            StartCoroutine(ResetAudio(audioLength + audioLength * (Time.deltaTime * 0.1f)));
-            if (isLabelledParameter)
-            {
-                SoundParameterLabelled(parameterName, parameterValue, alterVolumeOfDist, alterVolume, minVolume, maxVolume, alterPitch, minPitch, maxPitch);
-                return;
-            }
-            if (isOneShot)
-            {
-                OneShotSound(alterPitch, minPitch, maxPitch, alterVolumeOfDist);
-                return;
-            }
-
+            
             if (!is3d)
             {
                 TwoDAudio(alterVolume, minVolume, maxVolume, alterPitch, minPitch, maxPitch);
                 return;
             }
+            
+            StartCoroutine(ResetAudio(audioLength + audioLength * (Time.deltaTime * 0.1f)));
+            
+            if (isLabelledParameter)
+            {
+                SoundParameterLabelled(parameterName, parameterValue, isAmb,alterVolumeOfDist, alterVolume, minVolume, maxVolume, alterPitch, minPitch, maxPitch);
+                return;
+            }
+            if (isOneShot)
+            {
+                OneShotSound(isAmb,minVolume,maxVolume,alterPitch, minPitch, maxPitch, alterVolumeOfDist);
+                return;
+            }
         }
         
         // E.G Seismic Sense Hits
-        private void SoundParameterLabelled(string parameterName, string parameterValue,
+        private void SoundParameterLabelled(string parameterName, string parameterValue, bool isAmb,
             bool alterVolumeOfDist, bool alterVolume, float minVolume, float maxVolume,
             bool randomPitch, float minPitch, float maxPitch)
         {
@@ -68,7 +70,7 @@ namespace Audio.FMOD
             
             if (randomPitch)
                 AlterPitch(minPitch, maxPitch);
-            if (alterVolumeOfDist) AlterVolumeOfDistance(); else currentInstance.setVolume(1f);
+            if (alterVolumeOfDist) AlterVolumeOfDistance(isAmb, minVolume, maxVolume); else currentInstance.setVolume(1f);
             if (alterVolume)
                 AlterVolume(minVolume, maxVolume);
             
@@ -76,11 +78,11 @@ namespace Audio.FMOD
         }
 
         // E.G Explosion
-        private void OneShotSound(bool randomPitch, float minPitch, float maxPitch, bool alterVolumeOfDist)
+        private void OneShotSound(bool isAmb, float minVolume, float maxVolume, bool randomPitch, float minPitch, float maxPitch, bool alterVolumeOfDist)
         {
             if (randomPitch)
                 AlterPitch(minPitch, maxPitch);
-            if (alterVolumeOfDist) AlterVolumeOfDistance(); else currentInstance.setVolume(1f);
+            if (alterVolumeOfDist) AlterVolumeOfDistance(isAmb, minVolume,maxVolume); else currentInstance.setVolume(1f);
             
             currentInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
             currentInstance.start();
@@ -98,19 +100,25 @@ namespace Audio.FMOD
             currentInstance.start();
         }
         // Reverb is an echo effect
-        private void ReverbCheck()
+        // private void ReverbCheck()
+        // {
+        //     if (currentReverbArea == null)
+        //         return;
+        //     
+        //     var playerDistToObj = Vector3.Distance(PlayerManager.instance.transform.position, currentReverbArea.highestReverbPoint.transform.position);
+        //     float newReverb = (currentReverbArea.reverbMultiplier * (currentReverbArea.playerMaxDistance /*/ playerDistToObj*/)) / 10;
+        //     
+        //     currentInstance.setReverbLevel(1, newReverb);
+        //     currentInstance.getReverbLevel(1, out float reverbLevel);
+        // }
+        private void AlterVolumeOfDistance(bool isAmb, float minVolume,  float maxVolume)
         {
-            if (currentReverbArea == null)
+            if (isAmb)
+            {
+                currentInstance.setVolume(Random.Range(minVolume, maxVolume));
                 return;
+            }
             
-            var playerDistToObj = Vector3.Distance(PlayerManager.instance.transform.position, currentReverbArea.highestReverbPoint.transform.position);
-            if (playerDistToObj <= currentReverbArea.playerMaxDistance)
-                reverbMultiplier = (currentReverbArea.reverbMultiplier * (currentReverbArea.playerMaxDistance / playerDistToObj)) / 10;
-            
-            currentInstance.setReverbLevel(1, reverbMultiplier);
-        }
-        private void AlterVolumeOfDistance()
-        {
             var dist = Vector3.Distance(transform.position, PlayerManager.instance.transform.position);
             var percentage = dist / SeismicSenseScript.instance.rangeMax;
             if (percentage <= 0.15f)
@@ -129,6 +137,7 @@ namespace Audio.FMOD
         {
             currentInstance.setPitch(Random.Range(minPitch, maxPitch));
         }
+        
         // Resets the audio player to be used again
         IEnumerator ResetAudio(float secs)
         {

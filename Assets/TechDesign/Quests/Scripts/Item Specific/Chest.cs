@@ -28,7 +28,23 @@ namespace Chests
         [SerializeField] private string giveToPlayerPhysicallyAudioEvent;
         [SerializeField] private string giveToPocketInvAudioEvent;
         [SerializeField] private string placeInChestAudioEvent;
-        
+
+        [Header("Juice Components")] 
+        [SerializeField] private Vector3 juicePos;
+        [SerializeField] private GameObject juicePrefab = null;
+        public bool juicing = false;
+
+        private void Start()
+        {
+            ItemAppear();
+        }
+
+        private void Update()
+        {
+            if (juicing)
+                juicePrefab.transform.Rotate(0f, 0.15f, 0f, Space.Self);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.transform.GetComponent<PlayerManager>() != null)
@@ -37,7 +53,6 @@ namespace Chests
                 PlayerManager.instance.interactAction.performed += Interact;
             }
         }
-
         private void OnTriggerExit(Collider other)
         {
             if(other.gameObject.transform.GetComponent<PlayerManager>() != null)
@@ -74,6 +89,7 @@ namespace Chests
 
                 if (ItemStorage.instance.itemsInStorage[0] == null)
                 {
+                    juicing = false;
                     GameObject item = QuestManager.instance.ItemIDDataBase[itemsInChest[0]];
                     ItemStorage.instance.PickUp(item, itemsInChest[0], 1);
                     PlaySound(giveToPlayerPhysicallyAudioEvent);
@@ -81,6 +97,7 @@ namespace Chests
                 }
                 if (ItemStorage.instance.itemsInStorage[1] == null)
                 {
+                    juicing = false;
                     GameObject item = QuestManager.instance.ItemIDDataBase[itemsInChest[1]];
                     ItemStorage.instance.PickUp(item, itemsInChest[0], 1);
                     PlaySound(giveToPlayerPhysicallyAudioEvent);
@@ -88,6 +105,7 @@ namespace Chests
                 }
                 if (ItemStorage.instance.itemsInStorage[2] == null)
                 {
+                    juicing = false;
                     GameObject item = QuestManager.instance.ItemIDDataBase[itemsInChest[2]];
                     ItemStorage.instance.PickUp(item, itemsInChest[0], 1);
                     PlaySound(giveToPlayerPhysicallyAudioEvent);
@@ -110,9 +128,17 @@ namespace Chests
             }
         }
 
+        public void ItemAppear()
+        {
+            juicePrefab = Instantiate(juicePrefab, juicePos, Quaternion.identity);
+            juicePrefab.transform.SetParent(transform);
+            juicePrefab.transform.localPosition = juicePos;
+            juicing = true;
+        }
+        
         private void PlaySound(string eventName)
         {
-            AudioManager.instance.PlayFMODSound(transform.position, eventName, 2f, true, false, 
+            AudioManager.instance.PlayFMODSound(transform.position, eventName, 2f, true, false, false,
                 false, false, 1, 1, 
                 false, 0, 0, 
                 true, false, null, null);

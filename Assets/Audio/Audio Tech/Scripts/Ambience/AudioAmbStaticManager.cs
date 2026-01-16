@@ -23,7 +23,7 @@ namespace Audio
                 number  =  Random.Range(0, audioStaticAmbSounds.Count);
             
             AudioManager.instance.PlayFMODSound(audioStaticAmbSounds[number].GetStaticPosition(), audioStaticAmbSounds[number].GetStaticEventName(), 
-                2f, true, audioStaticAmbSounds[number].ReverbCheck(), 
+                2f, true, audioStaticAmbSounds[number].ReverbCheck(), true,
                 true, false, minVolume, maxVolume, 
                 true, 0.9f, 1.1f, 
                 true, false, null, null);

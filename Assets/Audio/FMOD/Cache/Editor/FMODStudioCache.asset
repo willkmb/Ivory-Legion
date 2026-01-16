@@ -100,7 +100,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Destruction Bank.bank
   Name: Destruction Bank
   StudioPath: bank:/Mechanics/Destruction Bank
-  lastModified: 639038329360000000
+  lastModified: 639041714200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-8726348494284004756
@@ -300,10 +300,10 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639038403900000000
+  lastModified: 639041744880000000
   FileSizes:
   - Name: 
-    Value: 3162
+    Value: 4350
   Exists: 1
 --- !u!114 &-6976407440744267240
 MonoBehaviour:
@@ -333,6 +333,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6700111616504232634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Testing Event
+  m_EditorClassIdentifier: 
+  Path: event:/Testing Event
+  Guid:
+    Data1: -405466244
+    Data2: 1250655330
+    Data3: 1998306223
+    Data4: -956374344
+  Banks:
+  - {fileID: -2322226834713820194}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 446
 --- !u!114 &-6688440348952516386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,7 +403,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Pressure Plate.bank
   Name: Pressure Plate
   StudioPath: bank:/Quests/Pressure Plate
-  lastModified: 639038403900000000
+  lastModified: 639041714200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-6342051860142494504
@@ -533,7 +560,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 500
+  Length: 0
 --- !u!114 &-4947089832160053310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,6 +961,33 @@ MonoBehaviour:
   lastModified: 639035647240000000
   FileSizes: []
   Exists: 1
+--- !u!114 &-3277786888309229522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Switching/Switching Object Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Switching/Switching Object Event
+  Guid:
+    Data1: -1092331722
+    Data2: 1211955808
+    Data3: 389831089
+    Data4: -582961199
+  Banks:
+  - {fileID: 976889555455168531}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3204120186119518684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,6 +1026,33 @@ MonoBehaviour:
   - Name: 
     Value: 3680
   Exists: 1
+--- !u!114 &-2920813520488404709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Destruction/Destruction Crate Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Destruction/Destruction Crate Event
+  Guid:
+    Data1: -830055619
+    Data2: 1311119034
+    Data3: -1101520216
+    Data4: 1875658613
+  Banks:
+  - {fileID: -8800683209897612335}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2717385601841800206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,7 +1153,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639038403900000000
+  lastModified: 639041744880000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-2316871627612646100
@@ -1338,33 +1419,6 @@ MonoBehaviour:
   lastModified: 639035647240000000
   FileSizes: []
   Exists: 0
---- !u!114 &-643134797922523621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Amb/Docks/Base/Dock Amb Base Event
-  m_EditorClassIdentifier: 
-  Path: event:/Amb/Docks/Base/Dock Amb Base Event
-  Guid:
-    Data1: -1062934155
-    Data2: 1301816749
-    Data3: 1066728343
-    Data4: -2110784783
-  Banks:
-  - {fileID: 635166816878759419}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-480839492703139470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1398,7 +1452,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/H_Walking.bank
   Name: H_Walking
   StudioPath: bank:/SFX/Walking/H_Walking
-  lastModified: 639038329360000000
+  lastModified: 639041729400000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-248888096140956748
@@ -1481,10 +1535,10 @@ MonoBehaviour:
   - {fileID: 5606861733257447308}
   - {fileID: 9000610965002199200}
   - {fileID: 6151090542102290573}
+  - {fileID: 3142989554378902020}
   EditorEvents:
   - {fileID: -8938082318908642244}
   - {fileID: -8726348494284004756}
-  - {fileID: -643134797922523621}
   - {fileID: 1865269733459110861}
   - {fileID: -3833726828422065065}
   - {fileID: 4018450906873126431}
@@ -1505,60 +1559,85 @@ MonoBehaviour:
   - {fileID: 7293619135713568413}
   - {fileID: 2406769393047266467}
   - {fileID: 1649407303146252165}
+  - {fileID: 5654966367308908582}
+  - {fileID: 4855701222985349373}
+  - {fileID: -2920813520488404709}
+  - {fileID: 4135715806035625172}
+  - {fileID: -3277786888309229522}
+  - {fileID: 8780189838042944069}
+  - {fileID: 1303923235976503552}
+  - {fileID: -6700111616504232634}
+  - {fileID: 5075024499840217485}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2322226834713820194}
   StringsBanks:
   - {fileID: -6992077102245351836}
   cacheVersion: 131857
-  cacheTime: 639038403900000000
+  cacheTime: 639041744880000000
   SerializableEventsDict:
   - key: event:/Amb/Amb Null Event
     index: 0
   - key: event:/Amb/Docks/Reactor/Folliage/Dock Amb Rea Foliage Event
     index: 1
-  - key: event:/Amb/Docks/Base/Dock Amb Base Event
-    index: 2
   - key: event:/Amb/Docks/Static/Dock Amb Sta Boat Creak Event
-    index: 3
+    index: 2
   - key: event:/Amb/Docks/Spline/Dock Wave Event
-    index: 4
+    index: 3
   - key: event:/Amb/Docks/Catalyst/Dock Amb Cat Wind Event
-    index: 5
+    index: 4
   - key: event:/Mechanics/Seismic Sense/Seismic Sense Hit Event
-    index: 6
+    index: 5
   - key: event:/Amb/Docks/Looping/Amb Dock Loop Wind Event
-    index: 7
+    index: 6
   - key: event:/Mechanics/Seismic Sense/Seismic Sense Event
-    index: 8
+    index: 7
   - key: event:/SFX/Walking/Elephants/E_Walking_Dirt
-    index: 9
+    index: 8
   - key: event:/SFX/Walking/Humans/H_Walking_Base
-    index: 10
+    index: 9
   - key: event:/SFX/Walking/Elephants/E_Walking_Base
-    index: 11
+    index: 10
   - key: event:/Null Event
-    index: 12
+    index: 11
   - key: event:/Mechanics/Item Storage/Swap/Swap Inv Item Event
-    index: 13
+    index: 12
   - key: event:/Mechanics/Item Storage/Pick Up/Put Up Object Event
-    index: 14
+    index: 13
   - key: event:/Mechanics/Item Storage/Put Down/Put Down Object Event
-    index: 15
+    index: 14
   - key: event:/Quests/Pressure Plate/Pressure Plate Incorrect Event
-    index: 16
+    index: 15
   - key: event:/Quests/Chest/GITP Physically Event
-    index: 17
+    index: 16
   - key: event:/Quests/Chest/Incorrect Chest Event
-    index: 18
+    index: 17
   - key: event:/Quests/Chest/GITP Pocket Inv Event
-    index: 19
+    index: 18
   - key: event:/Quests/Chest/Place Item In Chest Event
-    index: 20
+    index: 19
   - key: event:/Quests/Pressure Plate/Pressure Plate Completed Event
-    index: 21
+    index: 20
   - key: event:/Quests/Pressure Plate/Pressure Plate Correct Event
+    index: 21
+  - key: event:/Quests/Key And Lock/KAL Correct Event
     index: 22
+  - key: event:/Quests/Key And Lock/KAL Incorrrect Event
+    index: 23
+  - key: event:/Mechanics/Destruction/Destruction Crate Event
+    index: 24
+  - key: event:/Mechanics/Destruction/Destruction Pot Event
+    index: 25
+  - key: event:/Mechanics/Switching/Switching Object Event
+    index: 26
+  - key: event:/Amb/Docks/Base/Dock Amb Base Event
+    index: 27
+  - key: event:/Mechanics/Destruction/Destruction Fail Event
+    index: 28
+  - key: event:/Testing Event
+    index: 29
+  - key: snapshot:/ReVerb
+    index: 30
 --- !u!114 &50121092582624853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,7 +1756,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1000
 --- !u!114 &635166816878759419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1693,7 +1772,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Docks.bank
   Name: Docks
   StudioPath: bank:/Amb/Docks
-  lastModified: 639038329360000000
+  lastModified: 639041744880000000
   FileSizes: []
   Exists: 1
 --- !u!114 &720194601839401425
@@ -1731,7 +1810,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Seismic Sense Bank.bank
   Name: Seismic Sense Bank
   StudioPath: bank:/Mechanics/Seismic Sense Bank
-  lastModified: 639038329360000000
+  lastModified: 639041714200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &868496163663517690
@@ -1767,7 +1846,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Switch Bank.bank
   Name: Switch Bank
   StudioPath: bank:/Mechanics/Switch Bank
-  lastModified: 639038329360000000
+  lastModified: 639041714200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &1039467048796495023
@@ -1886,6 +1965,33 @@ MonoBehaviour:
   - Quest Item
   - Valuable
   Exists: 1
+--- !u!114 &1303923235976503552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Destruction/Destruction Fail Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Destruction/Destruction Fail Event
+  Guid:
+    Data1: -611958265
+    Data2: 1279862765
+    Data3: 1916632736
+    Data4: 1385536458
+  Banks:
+  - {fileID: -8800683209897612335}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 640
 --- !u!114 &1392420396945898114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1921,7 +2027,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Amb Misc.bank
   Name: Amb Misc
   StudioPath: bank:/Amb/Amb Misc
-  lastModified: 639038329360000000
+  lastModified: 639041702980000000
   FileSizes: []
   Exists: 1
 --- !u!114 &1438425744199547759
@@ -1988,7 +2094,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1300
 --- !u!114 &1676434023115236164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2199,7 +2305,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 2369
 --- !u!114 &2591265549786958723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2227,6 +2333,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &3142989554378902020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/KAL.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/KAL.bank
+  Name: KAL
+  StudioPath: bank:/Quests/KAL
+  lastModified: 639041714200000000
+  FileSizes: []
+  Exists: 1
 --- !u!114 &3182514474770082416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2273,7 +2397,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 666
 --- !u!114 &3203221894425936055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2447,11 +2571,11 @@ MonoBehaviour:
   - {fileID: 767512306823506534}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 64000
+  Length: 0
 --- !u!114 &3872159910421563077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2492,6 +2616,33 @@ MonoBehaviour:
     Data4: -1888584804
   Banks:
   - {fileID: 635166816878759419}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &4135715806035625172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Mechanics/Destruction/Destruction Pot Event
+  m_EditorClassIdentifier: 
+  Path: event:/Mechanics/Destruction/Destruction Pot Event
+  Guid:
+    Data1: -1507650853
+    Data2: 1293723436
+    Data3: 2049145736
+    Data4: -1242910267
+  Banks:
+  - {fileID: -8800683209897612335}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2633,6 +2784,33 @@ MonoBehaviour:
   lastModified: 639038329360000000
   FileSizes: []
   Exists: 1
+--- !u!114 &4855701222985349373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Quests/Key And Lock/KAL Incorrrect Event
+  m_EditorClassIdentifier: 
+  Path: event:/Quests/Key And Lock/KAL Incorrrect Event
+  Guid:
+    Data1: -601530541
+    Data2: 1172479945
+    Data3: 1774082972
+    Data4: -1732574391
+  Banks:
+  - {fileID: 3142989554378902020}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &4868565942604558930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2651,6 +2829,33 @@ MonoBehaviour:
   lastModified: 639035647240000000
   FileSizes: []
   Exists: 0
+--- !u!114 &5075024499840217485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Reverb
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Reverb
+  Guid:
+    Data1: 600065450
+    Data2: 1092877082
+    Data3: -318066298
+    Data4: 1298191275
+  Banks:
+  - {fileID: -2322226834713820194}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &5154842029201005864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,9 +2973,36 @@ MonoBehaviour:
   Path: FMOD/Desktop/Walking Test.bank
   Name: Walking Test
   StudioPath: bank:/SFX/Walking/Walking Test
-  lastModified: 639038329360000000
+  lastModified: 639041729400000000
   FileSizes: []
   Exists: 1
+--- !u!114 &5654966367308908582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Quests/Key And Lock/KAL Correct Event
+  m_EditorClassIdentifier: 
+  Path: event:/Quests/Key And Lock/KAL Correct Event
+  Guid:
+    Data1: 1331091266
+    Data2: 1327457649
+    Data3: 1442047657
+    Data4: 638833839
+  Banks:
+  - {fileID: 3142989554378902020}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1300
 --- !u!114 &5803259036112702686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2817,7 +3049,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 640
 --- !u!114 &5876368447236347758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2833,7 +3065,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/E_Walking.bank
   Name: E_Walking
   StudioPath: bank:/SFX/Walking/E_Walking
-  lastModified: 639038329360000000
+  lastModified: 639041729400000000
   FileSizes: []
   Exists: 1
 --- !u!114 &5893879835916517728
@@ -2957,7 +3189,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Chests.bank
   Name: Chests
   StudioPath: bank:/Quests/Chests
-  lastModified: 639038375240000000
+  lastModified: 639041714200000000
   FileSizes: []
   Exists: 1
 --- !u!114 &6477486563125109135
@@ -3143,7 +3375,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 700
 --- !u!114 &7475362359164203808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3338,6 +3570,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &8780189838042944069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Amb/Docks/Base/Dock Amb Base Event
+  m_EditorClassIdentifier: 
+  Path: event:/Amb/Docks/Base/Dock Amb Base Event
+  Guid:
+    Data1: 1572598780
+    Data2: 1093470767
+    Data3: 776197295
+    Data4: 1564199296
+  Banks:
+  - {fileID: 635166816878759419}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 100
+  Length: 0
 --- !u!114 &8784750178589992769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3380,7 +3639,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Item Storage.bank
   Name: Item Storage
   StudioPath: bank:/Mechanics/Item Storage
-  lastModified: 639038366240000000
+  lastModified: 639041729400000000
   FileSizes: []
   Exists: 1
 --- !u!114 &9093187399311315942

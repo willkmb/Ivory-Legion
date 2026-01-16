@@ -50,6 +50,7 @@ MonoBehaviour:
   reverbMultiplier: 0.5
   playerMaxDistance: 15
   playersList: []
+  snapshotName: snapshot:/Reverb
 --- !u!65 &120168962402192144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60,10 +61,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 3072
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 2039
+    m_Bits: 1015
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0

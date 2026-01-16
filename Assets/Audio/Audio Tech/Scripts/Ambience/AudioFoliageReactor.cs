@@ -14,10 +14,10 @@ namespace Audio
         {
             string randomString = String.Empty;
             
-            if(audioEventList.Count <= 1)
-                randomString = audioEventList[0];
-            else
+            if(audioEventList.Count > 1)
                 randomString = audioEventList[Random.Range(0, audioEventList.Count - 1)];
+            else
+                randomString = audioEventList[0];
             
             return randomString;
         }

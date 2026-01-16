@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using Audio.FMOD;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Audio
 {
@@ -37,7 +40,7 @@ namespace Audio
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // ReSharper disable Unity.PerformanceAnalysis
         /// FMOD
-        public void PlayFMODSound(Vector3 spawnPosition,string eventName, float audioLength,bool is3d,bool reverbCheck,
+        public void PlayFMODSound(Vector3 spawnPosition,string eventName, float audioLength,bool is3d,bool reverbCheck, bool isAmb,
               bool alterVolumeOfDist,bool alterVolume, float minVolume, float maxVolume, 
               bool alterPitch, float minPitch, float maxPitch,
               bool isOneShot,
@@ -54,7 +57,7 @@ namespace Audio
             }
             audioObj.SetActive(true);
 
-            fmodSoundPlayer.PlaySound(eventName, audioLength, is3d, reverbCheck, 
+            fmodSoundPlayer.PlaySound(eventName, audioLength, is3d, reverbCheck, isAmb,
                 alterVolumeOfDist,alterVolume, minVolume, maxVolume, 
                 alterPitch, minPitch, maxPitch, 
                 isOneShot, 

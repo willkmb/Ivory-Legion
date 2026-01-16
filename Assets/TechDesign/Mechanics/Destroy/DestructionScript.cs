@@ -112,7 +112,7 @@ public class DestructionScript : MonoBehaviour, IInteractable
             //alternative functionality - removess collider and changes material instead of disabling object
             //gameObject.GetComponent<Collider>().enabled = false;
             //gameObject.GetComponent<MeshRenderer>().material = OffMaterial;
-            //PlaySoundDestroy();
+            PlaySoundDestroy();
 
         }
         else
@@ -154,7 +154,6 @@ public class DestructionScript : MonoBehaviour, IInteractable
     }
     void PlaySoundDestroy()
     {
-        Debug.Log("playsound");
         PlaySound(DestroySoundFileName, 2f);
     }
     void PlaySoundFail()
@@ -165,7 +164,7 @@ public class DestructionScript : MonoBehaviour, IInteractable
 
     void PlaySound(string eventName, float audioLength)
     {
-        AudioManager.instance.PlayFMODSound(transform.position, eventName, audioLength, true, true, 
+        AudioManager.instance.PlayFMODSound(transform.position, eventName, audioLength, true, true, false,
             true,true, 0.75f, 1.25f, 
             false, 0, 0, 
             true, 

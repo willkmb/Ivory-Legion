@@ -1,5 +1,6 @@
 using InputManager;
 using Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,9 @@ namespace  NS_PressurePlate
         [Header("Variables")]
         public bool isActive;
         [SerializeField] private int requiredItemID;
+        [Header("UI / UX")]
+        [SerializeField] private TextMeshProUGUI textToChange;
+        [SerializeField] private string text;
         private void OnTriggerEnter(Collider other)
         {
             if (isActive)
@@ -27,6 +31,7 @@ namespace  NS_PressurePlate
 
         private void OnTriggerExit(Collider other)
         {
+            textToChange.enabled = false;
             if (isActive)
                 return;
             if(other.gameObject.transform.GetComponentInParent<PlayerManager>() != null)
@@ -41,7 +46,7 @@ namespace  NS_PressurePlate
         private void Interact(InputAction.CallbackContext context)
         {
             Debug.Log("Interact");
-            pressurePlatePuzzle.ActivatePressurePlate(this, requiredItemID);
+            pressurePlatePuzzle.ActivatePressurePlate(this, requiredItemID, textToChange, text);
         }
     }
 }

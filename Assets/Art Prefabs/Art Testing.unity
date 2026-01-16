@@ -9662,6 +9662,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 2541038996375571778, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+    - target: {fileID: 2541038996375571778, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
     - target: {fileID: 3303499635637054537, guid: e5592926ab403144ea2014d094eb7ad4, type: 3}
       propertyPath: cameraTransform
       value: 
@@ -19111,6 +19119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcde067cc0f62d448dc63b36e2da087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFollow: 0
+  yMinusLevel: 0
 --- !u!1001 &1824017466
 PrefabInstance:
   m_ObjectHideFlags: 0

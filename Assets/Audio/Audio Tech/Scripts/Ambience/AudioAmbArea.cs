@@ -14,7 +14,8 @@ namespace Audio
         public List<string> ambList = new List<string>();
         [Header("All Looping Amb Sounds (E.G WIND)")]
         public List<string> ambLoopingList = new List<string>();
-        [Header("All Looping Amb Sounds (E.G WIND)")]
+        [Header("All Looping Amb Sounds (E.G WIND)")] [SerializeField]
+        private bool changeLoopingAmb = false;
         public List<string> catalystAudioNames = new List<string>();
         [Header("AmbList sounds that require precise locations when played")]
         public List<AudioAmbStaticObj> staticSoundObjList = new List<AudioAmbStaticObj>();
@@ -40,10 +41,12 @@ namespace Audio
             Interfaces.Interfaces.IPlayer player = other.transform.GetComponent<Interfaces.Interfaces.IPlayer>();
             if (player != null)
             {
-                AudioAmbManager.instance.ChangeLoopingAmb(ambLoopingList);
                 AudioAmbManager.instance.baseAudioNames = ambList;
                 AudioAmbManager.instance.catalystAudioNames = catalystAudioNames;
                 AudioAmbStaticManager.instance.audioStaticAmbSounds = staticSoundObjList;
+
+                if (changeLoopingAmb)
+                    AudioAmbManager.instance.ChangeLoopingAmb(ambLoopingList);
             }
         }
 
