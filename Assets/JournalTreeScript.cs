@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 using TMPro;
+using UnityEngine.UI;
 using static Dialogue;
 
 public class JournalTreeScript : MonoBehaviour
@@ -30,6 +30,12 @@ public class JournalTreeScript : MonoBehaviour
     [Header("Spacing")]
     [SerializeField] float offsetFromParent = 10f;
 
+    [Header("colours")]
+    [SerializeField] Color inactiveCol;
+    [SerializeField] Color inactiveColSelected;
+    [SerializeField] Color activeCol;
+    [SerializeField] Color activeColSelected;
+
     [HideInInspector] public bool isEntry = false;
     [HideInInspector] public int entryID;
     [HideInInspector] public int parentID;
@@ -44,6 +50,7 @@ public class JournalTreeScript : MonoBehaviour
 
     private int index;
     private Transform currentIndex;
+    private int questindex = 0;
     private string numRoman;
 
     private void Awake()
@@ -80,7 +87,7 @@ public class JournalTreeScript : MonoBehaviour
                 {
                     HeightToggleLine = !HeightToggleLine;
                     Transform lineRot = line.transform;
-                    if(HeightToggleLine) lineRot.Rotate(0f, 0f, 30f);
+                    if (HeightToggleLine) lineRot.Rotate(0f, 0f, 30f);
                     else lineRot.Rotate(0f, 0f, -30f);
                 }
                 HeightToggleLine = false;
@@ -90,7 +97,7 @@ public class JournalTreeScript : MonoBehaviour
                 if (children.Count > 0)
                 {
                     LayoutRebuilder.ForceRebuildLayoutImmediate(holder.GetComponent<RectTransform>()); //force the horizontal layout group to build itself before creating children
-                    for (int c=0 ; c<children.Count; c++)
+                    for (int c = 0; c < children.Count; c++)
                     {
                         HeightToggle = !HeightToggle;
                         Transform childIcon = children[c].transform.Find("icon").transform; Transform parentIcon = EntryObjs[i].transform.Find("icon").transform;
@@ -120,25 +127,40 @@ public class JournalTreeScript : MonoBehaviour
         if (isEntry) return;
         EntryObjs[EntryObjs.Count - 1].transform.Find("icon/LinePrefab(Clone)").gameObject.SetActive(false); //remove last line from object in the list
 
-        if (!Mathf.Approximately(EntryObjs[EntryObjs.Count - 1].transform.position.y, 50f)) //checks position of entry to detect if child, if so removes line from it and the previous entry (upper child)
+        if (!Mathf.Approximately(EntryObjs[EntryObjs.Count - 1].transform.position.y, 49.997f)) //checks position of entry to detect if child, if so removes line from it and the previous entry (upper child)
         {
             EntryObjs[EntryObjs.Count - 2].transform.Find("icon/LinePrefab(Clone)").gameObject.SetActive(false);
         }
 
-        index = 1; currentIndex = flatEntries[index]; currentIndex.localScale *= scale;
+        index = 1; currentIndex = flatEntries[index]; currentIndex.localScale *= scale; changeCol(1, currentIndex.gameObject);
     }
 
     private void Update()
     {
+        if (isEntry) return;
         float wheel = Input.mouseScrollDelta.y;
         if(wheel > 0f) { ScaleIcons(0); }
         else if(wheel < 0f) { ScaleIcons(1); }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            InsertEntry("Quest...");
+        }
     }
 
+    void InsertEntry(string Content)
+    {
+        if (questindex > flatEntries.Count - 1) return;
+        GameObject entry = flatEntries[questindex].gameObject;
+        questindex++;
+        entry.GetComponent<Image>().color = Color.white; changeCol(0.5f, entry.gameObject);
+        entry.transform.parent.Find("text").GetComponent<TextMeshProUGUI>().text = Content;
+    }
     void ScaleIcons(int state)
     {
         if(currentIndex != null) Debug.Log(currentIndex.gameObject.name);
-        if(currentIndex.localScale.x > 1f) currentIndex.localScale /= scale;
+        changeCol(.5f, currentIndex.gameObject);
+        if (currentIndex.localScale.x > 1f) currentIndex.localScale /= scale;
         switch (state)
         {
             case 0: index++; break;
@@ -147,8 +169,15 @@ public class JournalTreeScript : MonoBehaviour
         index = Mathf.Clamp(index, 0, flatEntries.Count - 1);
         currentIndex = flatEntries[index];
         currentIndex.localScale *= scale;
+        changeCol(1, currentIndex.gameObject);
         currentIndex.GetComponentInChildren<Animation>().Play();
 
+    }
+
+    void changeCol(float amount, GameObject obj)
+    {
+        Image img = obj.GetComponentInChildren<Image>();
+        Color curCol = img.color; curCol.a = amount; img.color = curCol;
     }
 
     void ToRoman()
