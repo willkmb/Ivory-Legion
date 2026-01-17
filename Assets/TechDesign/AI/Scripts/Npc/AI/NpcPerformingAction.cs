@@ -63,11 +63,15 @@ namespace Npc.AI
                 switch(activeMarkerPoint.GetMpNpcTarget())
                 {
                     case MarkerNpcTarget.Human:
-                        _npcManager.markerPointZone.markerPointsHumanActive.Add(activeMarkerPoint.gameObject);
+                        if(!_npcManager.markerPointZone.markerPointsHumanActive.Contains(activeMarkerPoint.gameObject))
+                              _npcManager.markerPointZone.markerPointsHumanActive.Add(activeMarkerPoint.gameObject);
+                        
                         _npcManager.markerPointZone.markerPointsHumanInactive.Remove(activeMarkerPoint.gameObject);
                         break;
                     case MarkerNpcTarget.Elephant:
-                        _npcManager.markerPointZone.markerPointsElephantActive.Add(activeMarkerPoint.gameObject);
+                        if (!_npcManager.markerPointZone.markerPointsElephantActive.Contains(activeMarkerPoint.gameObject))
+                            _npcManager.markerPointZone.markerPointsElephantActive.Add(activeMarkerPoint.gameObject);
+                        
                         _npcManager.markerPointZone.markerPointsElephantInactive.Remove(activeMarkerPoint.gameObject);
                         break;
                     default:

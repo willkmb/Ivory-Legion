@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 //using AI;
 using Player;
 using SeismicSense;
@@ -31,11 +32,15 @@ namespace InputManager
         
         // Other Bool
         [HideInInspector] public bool movementAllowed = true;
+        [HideInInspector] public bool inCutscene = false;
         [HideInInspector] public bool interactionAllowed = true;
         [HideInInspector] public bool destroyChargeInProgress = false;
         
         // Scripts
         [HideInInspector] public DestructionScript currentDestructableObject;
+        
+        // Audio
+        public List<string> audioEventNames = new List<string>();
         
         [Header("Values")]
         public float interactCooldown;
@@ -52,6 +57,7 @@ namespace InputManager
             swapItemLeftOffCooldown = true;
             swapItemRightOffCooldown = true;
             swappingHatOffCooldown = true;
+            inCutscene = false;
         }
 
         private void Start()
@@ -73,16 +79,21 @@ namespace InputManager
         // ReSharper disable Unity.PerformanceAnalysis - Ignore This 
         private void Update()
         {
+
+            if (inCutscene)
+                return;
             // Movement
             if (movementAllowed) //doesn't work for controller
                 if (moveAction.IsPressed())
                 {
                     PlayerMovement.instance.Movement(moveAction.ReadValue<Vector2>());
                     PlayerMovement.instance.isWalking = true;
+//                    ElephantAnim.instance.Walk();
                 }
                 else if (moveAction.WasReleasedThisFrame())
                 {
                     PlayerMovement.instance.isWalking = false;
+//                    ElephantAnim.instance.Idle();
                 }
 
             // Interactions
@@ -138,14 +149,19 @@ namespace InputManager
             if (seismicOffCooldown)
                 if (seismicSenseAction.IsPressed())
                 {
+                    ElephantAnim.instance.Seismic();
+                    
                     //Seismic Sense Stuff
                     SeismicSenseScript.instance.Reset(); // Resets the particles to center of player 
                     seismicOffCooldown = false;
-                    SeismicSenseScript.instance.inProgress = true; // Allows particles of SS to start expanding
+                    //SeismicSenseScript.instance.inProgress = true; // Allows particles of SS to start expanding
+                    
                     SeismicSenseScript.instance.StartPulse();
                 }
-            
+
+                
         }
+        
 
         public void setMovementAllowed(bool allowed)
         {

@@ -13,6 +13,7 @@ namespace Npc.AI.Movement
         [Header("FALSE = Start Pos, TRUE = Current Pos")]
         [SerializeField] private bool radiusOnSelf;
         private Vector3 _radiusPosition;
+        [Range(0f, 25f)] [SerializeField] private float cooldown;
         
         //Scripts
         private NpcManager _npcManager;
@@ -57,7 +58,7 @@ namespace Npc.AI.Movement
         private bool LocationNavmeshCheck(Vector3 randomPoint)
         {
             NavMeshHit hit;
-            switch (_npcManager.npcType)
+            switch (_npcManager.npcType) // Creature Type
             {
                 case NpcType.Humanoid:
                     if (NavMesh.SamplePosition(randomPoint, out hit, 1, NavMesh.AllAreas))
@@ -94,6 +95,8 @@ namespace Npc.AI.Movement
                     throw new ArgumentOutOfRangeException();
             }
             
+            _npcManager.currentMovPos = _movePos;
+            
             _npcManager.agent.SetPath(_path);
         }
 
@@ -105,7 +108,7 @@ namespace Npc.AI.Movement
                 && Math.Abs(_npcManager.agent.transform.position.z - _movePos.z) < 0.1f && Math.Abs((_npcManager.agent.transform.position.y - _movePos.y)) < 1.5f)
             {
                 NpcEvents.instance.NpcCheckArrivalEvent -= ArrivalChecker;
-                GetRandomlocation();
+                Invoke("GetRandomlocation", cooldown);
             }
         }
     }

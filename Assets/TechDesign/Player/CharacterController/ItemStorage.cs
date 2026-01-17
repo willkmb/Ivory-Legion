@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Audio;
+using NS_PressurePlate;
 using Quests;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -30,6 +31,7 @@ namespace Player {
         GameObject hatOnHead;
         [HideInInspector] public GameObject[] itemsInStorage;
         GameObject tempItemStorage0, tempItemStorage1, tempItemStorage2;
+        [HideInInspector] public bool blockPutDown = false;
     
         //Changes array int to a word for easier readability
         enum Storage : int
@@ -44,6 +46,8 @@ namespace Player {
             instance ??= this;
         
             itemsInStorage = new GameObject[3];
+            
+            blockPutDown = false;
         }
 
         // passes an object into item storage to pick it up, and childs it to a storage point
@@ -55,7 +59,7 @@ namespace Player {
             
             if (itemsInStorage[(int)Storage.Trunk] == null)
             {
-                itemsInStorage[(int)Storage.Trunk] = thatObject;
+                itemsInStorage[(int)Storage.Trunk] = thatObject; // Save for further use in other scripts
 
                 itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                 itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
@@ -90,34 +94,48 @@ namespace Player {
                     itemsInStorage[(int)Storage.Trunk].transform.rotation = new Quaternion(0, 0, 0, 0);
                 }
             }
-            //PlaySoundPickUp();
+            PlaySoundPickUp();
         }
 
-            // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
+        // checks if item in trunk, if so check if there is nothing in put down place. If put down point is clear, put down item
         public void PutDown(GameObject thatobject, int itemID, int itemAmount)
         {
-           Debug.Log("put down");
-            if (itemsInStorage[0] != null)
-            {
-                QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore;
-                Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 0.5f, -1, queryTriggerInteraction);
-                Debug.Log(intersecting.Length);
-                
-                if (intersecting.Length == 1 || intersecting.Length == 2 || QuestAreaCheck(intersecting, itemsInStorage[(int)Storage.Trunk]))
-                {
-                    Debug.Log("Put down");
-                    Collider col = itemsInStorage[(int)Storage.Trunk].GetComponent<Collider>();
-                    Vector3 halfExtents = new Vector3(col.bounds.extents.x * 0.95f, col.bounds.extents.y, col.bounds.extents.z * 0.95f);
+             if (blockPutDown)
+                  return;
+        
+             if (itemsInStorage[0] != null)
+             {
+                 QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore;
+                 Collider[] intersecting = Physics.OverlapSphere(putDownPoint.transform.position, 0.5f, -1, queryTriggerInteraction);
+                 //  Debug.Log(intersecting.Length);
+                 if (intersecting.Length == 1 || intersecting.Length == 2 || QuestAreaCheck(intersecting, itemsInStorage[(int)Storage.Trunk]))
+                 {
+                     //  Debug.Log("Put down");
+                     Collider col = itemsInStorage[(int)Storage.Trunk].GetComponent<Collider>();
+                     Vector3 halfExtents = new Vector3(col.bounds.extents.x * 0.95f, col.bounds.extents.y, col.bounds.extents.z * 0.95f);
                     
-                    itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
-                    itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (halfExtents.y *2), putDownPoint.transform.position.z);
-                    itemsInStorage[(int)Storage.Trunk].transform.parent = null;
-                    itemsInStorage[(int)Storage.Trunk] = null;
-                    //PlaySoundPutDown();
-                }
-            }
+                     itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
+                     itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPoint.transform.position.x, putDownPoint.transform.position.y + (halfExtents.y *2), putDownPoint.transform.position.z);
+                     itemsInStorage[(int)Storage.Trunk].transform.parent = null;
+                     itemsInStorage[(int)Storage.Trunk] = null;
+                     PlaySoundPutDown();
+                     return;
+                 }
+                 Debug.LogError("Can't put down object of type '" + thatobject.transform.name + "'.");
+             }
         }
 
+        public void ForcePutDownTrunkObj(Vector3 putDownPos)
+        {
+            Collider col = itemsInStorage[(int)Storage.Trunk].GetComponent<Collider>();
+            Vector3 halfExtents = new Vector3(col.bounds.extents.x * 0.95f, col.bounds.extents.y, col.bounds.extents.z * 0.95f);
+                    
+            itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isPickedUp = false;
+            itemsInStorage[(int)Storage.Trunk].transform.position = new Vector3(putDownPos.x, putDownPos.y + (halfExtents.y *2), putDownPos.z);
+            itemsInStorage[(int)Storage.Trunk].transform.parent = null;
+            itemsInStorage[(int)Storage.Trunk] = null;
+            PlaySoundPutDown();
+        }
         // swaps trunk and left bag items
         public void SwapItemLeft()
         {
@@ -139,7 +157,7 @@ namespace Player {
                     itemsInStorage[(int)Storage.BagLeft].transform.position = saddlePointLeft.transform.position;
                     itemsInStorage[(int)Storage.BagLeft].transform.parent = saddlePointLeft.transform;
                 }
-                //PlaySoundSwap();
+                PlaySoundSwap();
             }
         }
 
@@ -172,7 +190,7 @@ namespace Player {
         public void WearHat()
         {
 
-                Debug.Log("Hat attempt");
+            Debug.Log("Hat attempt");
             if (itemsInStorage[(int)Storage.Trunk] != null)
             {
                 if (itemsInStorage[(int)Storage.Trunk].GetComponent<PickUpPutDownScript>().isHat == true)
@@ -183,7 +201,7 @@ namespace Player {
                         itemsInStorage[(int)Storage.Trunk] = null;
                         hatOnHead.transform.position = hatPoint.transform.position;
                         hatOnHead.transform.parent = hatPoint.transform;
-                        //PlaySoundSwap();
+                        PlaySoundSwap();
                     }
                 }
             }
@@ -195,7 +213,7 @@ namespace Player {
                     hatOnHead = null;
                     itemsInStorage[(int)Storage.Trunk].transform.position = trunkPoint.transform.position;
                     itemsInStorage[(int)Storage.Trunk].transform.parent = trunkPoint.transform;
-                    //PlaySoundSwap();
+                    PlaySoundSwap();
                 }
             }
         }
@@ -203,39 +221,57 @@ namespace Player {
         // Don't yell at me for putting this here, don't want to clutter the top for smth quest related
         private bool QuestAreaCheck(Collider[] colliders, GameObject droppedObject)
         {
-            bool questArea = false;
             foreach (Collider coll in colliders)
             {
-                Debug.Log(coll.gameObject.name);
+                QuestCanBePlaced quest = coll.transform.GetComponent<QuestCanBePlaced>();
+                if (quest == null)
+                {
+                    quest = coll.transform.parent.GetComponent<QuestCanBePlaced>();
+                    if (quest == null)
+                    {
+                        return false;
+                    }
+                }
+               
                 Quest_AreaFill questAreaFill = coll.GetComponent<Quest_AreaFill>();
                 if (questAreaFill != null)
                 {
-                     PickUpPutDownScript pickUpPutDownScript = droppedObject.transform.GetComponent<PickUpPutDownScript>();
+                    PickUpPutDownScript pickUpPutDownScript = droppedObject.transform.GetComponent<PickUpPutDownScript>();
                     QuestManager.instance.AdjustItemToQuestInventory(pickUpPutDownScript.GetItemID(), -pickUpPutDownScript.GetItemAmount()); // Item ID : Item Amount
-                   // QuestManager.instance.CheckAreaFill(pickUpPutDownScript,pickUpPutDownScript.gameObject,pickUpPutDownScript.GetItemID()); // Checks area for a quest type - Probs should add a way to filter this in future
-                   questAreaFill.CheckItemRequired(pickUpPutDownScript,droppedObject, pickUpPutDownScript.GetItemID());
-                   return true;
+                    // QuestManager.instance.CheckAreaFill(pickUpPutDownScript,pickUpPutDownScript.gameObject,pickUpPutDownScript.GetItemID()); // Checks area for a quest type - Probs should add a way to filter this in future
+                    questAreaFill.CheckItemRequired(pickUpPutDownScript,droppedObject, pickUpPutDownScript.GetItemID());
+                    return true;
+                }
+                PressurePlate pressurePlate =  coll.transform.parent.GetComponent<PressurePlate>();
+                if (pressurePlate != null)
+                {
+                    Debug.Log("hit pressure plate");
+                    return true;
                 }
             }
             return false;
         }
         void PlaySoundPickUp()
         {
-            Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PickUpSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            PlaySound(PickUpSoundFileName,1f);
         }
 
         void PlaySoundPutDown()
         {
-            Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(PutDownSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            PlaySound(PutDownSoundFileName,1f);
         }
         void PlaySoundSwap()
         {
-            Debug.Log("playsound");
-            AudioManager.instance.PlayAudio(SwapSoundFileName, transform.position, false, false, false, 1.0f, 1.0f, true, 0.75f, 1.25f, 128);
+            PlaySound(SwapSoundFileName,1f);
         }
-
+        void PlaySound(string eventName, float audioLength)
+        {
+            AudioManager.instance.PlayFMODSound(transform.position, eventName, audioLength, true, true, 
+                true,true, 0.75f, 1.25f, 
+                false, 0, 0, 
+                true, 
+                false, null, null);
+        }
         /*
         public void PutDown()
         {
@@ -275,7 +311,7 @@ namespace Player {
                 tempItemStorage1 = null;
                 tempItemStorage2 = null;
 
-                tempItemStorage0 = itemsInStorage[(int)Storage.Trunk];            
+                tempItemStorage0 = itemsInStorage[(int)Storage.Trunk];
                 tempItemStorage1 = itemsInStorage[(int)Storage.BagRight];
                 tempItemStorage2 = itemsInStorage[(int)Storage.BagLeft];
                 itemsInStorage[(int)Storage.Trunk] = tempItemStorage2;
@@ -284,7 +320,7 @@ namespace Player {
 
 
             }
-        
+
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
 
@@ -292,7 +328,7 @@ namespace Player {
                 tempItemStorage1 = null;
                 tempItemStorage2 = null;
 
-                tempItemStorage0 = itemsInStorage[(int)Storage.Trunk];            
+                tempItemStorage0 = itemsInStorage[(int)Storage.Trunk];
                 tempItemStorage1 = itemsInStorage[(int)Storage.BagRight];
                 tempItemStorage2 = itemsInStorage[(int)Storage.BagLeft];
                 itemsInStorage[(int)Storage.Trunk] = tempItemStorage1;
@@ -300,7 +336,7 @@ namespace Player {
                 itemsInStorage[(int)Storage.BagLeft] = tempItemStorage0;
 
             }
-        
+
             */
                       
 

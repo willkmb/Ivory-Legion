@@ -1,3 +1,4 @@
+using System;
 using InputManager;
 using Player;
 using UnityEngine;
@@ -5,37 +6,91 @@ using UnityEngine.InputSystem;
 
 public class ElephantAnim : MonoBehaviour
 {
+    public static ElephantAnim instance;
     Animator anim;
-    //Animator Elephant_Anim_Contr;
-    PlayerManager PlayerManager;
-    private PlayerInput _playerInput;
+    Animator Elephant_Anim_Contr;
+    //PlayerManager PlayerManager;
+    //private PlayerInput _playerInput;
     //public PlayerInput moveAction;
-    public InputActionReference moveAction;
+    //public InputActionReference moveAction;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
        anim = GetComponent<Animator>();
     }
-    
-    void Walk()
+
+    private void Awake()
     {
-        //need to get input here to make the walking true
-        if (PlayerMovement.instance.isWalking == true)
-        {
-            anim.SetBool("isWalking", true);
-        }
+        instance ??= this;
     }
     
-    void Idle()
+    public void Default() 
     {
-        if (PlayerMovement.instance.isWalking == false)
+        anim.SetBool("isIdle", true);
+        anim.SetBool("isWalking", false);
+        anim.SetBool("canSeismic", false);
+        anim.SetBool("canStomp", false);
+        anim.SetBool("canPush", false);
+        anim.SetBool("pickUp", false);
+    }
+    
+    public void Walk()
+    {
+        anim.SetBool("isWalking", true);
+        anim.SetBool("isIdle", false);
+    }
+    
+    public void Idle()
+    {
+        anim.SetBool("isWalking", false);
+        Default();
+        
+    }
+
+    public void Seismic()
+    {
+        anim.SetBool("canSeismic", true);
+        anim.SetTrigger("canSeismicT"); 
+        //{
+          //  Default();
+        //}
+        
+        Debug.Log("SEISMIC ANIM");
+    }
+
+    public void Push()
+    {
+        anim.SetTrigger("canPushT");
         {
-            //when no input make walking bool false to make idle anim play
-            anim.SetBool("isWalking", false);
+            Default();
         }
         
     }
-    
-    
+
+    public void Stomp()
+    {
+        //need add reference
+        anim.SetTrigger("canStompT");
+        anim.SetBool("canStop", true);
+        {
+            Default();
+        }
+        //Debug.Log("STOMP ANIM");
+    }
+
+    public void Pickup()
+    {
+        anim.SetBool("pickUp", true);
+        anim.SetTrigger("pickUpT");
+    }
+
+    public void Putdown()
+    {
+        anim.SetBool("putDown", true);
+        anim.SetTrigger("putDownT");
+        //{
+          //  Default();
+        //}
+    }
 }

@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using Audio.FMOD;
+using UnityEngine;
+
+namespace Audio
+{
+    public class ReverbArea : MonoBehaviour
+    {
+        [Header("Values")]
+        public GameObject highestReverbPoint;
+        [Range(0,1)] public float reverbMultiplier;
+        [Range(0,50)] public float playerMaxDistance;
+        [Header("List of Players in Area")]
+        [SerializeField] private List<Fmod_SoundPlayer> playersList;
+        private void OnTriggerEnter(Collider other)
+        {
+            Fmod_SoundPlayer player = other.gameObject.transform.GetComponent<Fmod_SoundPlayer>();
+            if (other != null)
+            {
+                player.currentReverbArea = this;
+                playersList.Add(other.gameObject.GetComponent<Fmod_SoundPlayer>());
+            }
+        }
+    }
+}
+
