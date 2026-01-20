@@ -50,6 +50,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseColTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _tex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -86,6 +90,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
+    - _GradientAmount: -0.94
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _OpaqueCullMode: 2
@@ -97,6 +102,7 @@ Material:
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
     - _SrcBlend: 1
+    - _State: 0
     - _StencilRef: 0
     - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
@@ -123,8 +129,12 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
+    - _AlphaVert: {r: 0, g: 0, b: 0, a: 1}
+    - _Bottom_Alpha: {r: 0, g: 0, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainCol: {r: 0.09433956, g: 0.09300456, b: 0.09300456, a: 1}
+    - _MainCol: {r: 0, g: 0, b: 0, a: 1}
+    - _MainColVert: {r: 1, g: 1, b: 1, a: 0}
+    - _Top_Alpha: {r: 0.7509433, g: 0.12326793, b: 0.12326793, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
