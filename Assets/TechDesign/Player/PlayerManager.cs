@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 //using AI;
 using Player;
 using SeismicSense;
@@ -37,6 +38,9 @@ namespace InputManager
         
         // Scripts
         [HideInInspector] public DestructionScript currentDestructableObject;
+        
+        // Audio
+        public List<string> audioEventNames = new List<string>();
         
         [Header("Values")]
         public float interactCooldown;
@@ -84,12 +88,12 @@ namespace InputManager
                 {
                     PlayerMovement.instance.Movement(moveAction.ReadValue<Vector2>());
                     PlayerMovement.instance.isWalking = true;
-                    ElephantAnim.instance.Walk();
+//                    ElephantAnim.instance.Walk();
                 }
                 else if (moveAction.WasReleasedThisFrame())
                 {
                     PlayerMovement.instance.isWalking = false;
-                    ElephantAnim.instance.Idle();
+//                    ElephantAnim.instance.Idle();
                 }
 
             // Interactions

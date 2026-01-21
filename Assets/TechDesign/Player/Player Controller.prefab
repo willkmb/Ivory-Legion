@@ -9851,7 +9851,6 @@ GameObject:
   - component: {fileID: 5431063209324756674}
   - component: {fileID: 6550038877775154382}
   - component: {fileID: 7907373797328656713}
-  - component: {fileID: 4979036122374356444}
   - component: {fileID: 3549813695808335205}
   - component: {fileID: 3303499635637054537}
   - component: {fileID: 6011009514161748355}
@@ -9913,10 +9912,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 2.75, z: 3}
-  m_Center: {x: 0, y: 0.45, z: -1.25}
+  m_Size: {x: 1.5, y: 2.75, z: 3.8715496}
+  m_Center: {x: 0, y: 0.45000005, z: -0.8142252}
 --- !u!143 &5431063209324756674
 CharacterController:
   m_ObjectHideFlags: 0
@@ -10054,69 +10053,8 @@ MonoBehaviour:
   interactionAllowed: 1
   destroyChargeInProgress: 0
   currentDestructableObject: {fileID: 0}
+  audioEventNames: []
   interactCooldown: 1
---- !u!114 &4979036122374356444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393508817684473014}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266185701416dbb43a91f7612b6d8795, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentDialogueBoxSelected: 0
-  currentlyInDialogue: 0
-  dialogueInUse: {fileID: 0}
-  navigateLeftAction:
-    m_Name: Navigate Left
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 1dea4f31-2a0f-496f-acd4-0fc8a3031d62
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  navigateRightAction:
-    m_Name: Navigate Right
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 5f5cf1aa-f27f-4ff6-a5e8-399d9bad8fb0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  navigateUpAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 13820e05-dc30-4726-813a-6770583daf07
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  navigateDownAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: df00553c-6a78-4106-babf-880ee30c2a43
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  navigateInteractAction:
-    m_Name: Navigate Interact
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 7447ee3f-5ae4-440b-9075-60fdb2d29668
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  currentDialogueButtonsList: []
-  currentDialogueButton: {fileID: 0}
 --- !u!114 &3549813695808335205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10318,9 +10256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd1f830aa5adb440acfef8304dd8b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickUpSoundFileName: FillerSound
-  PutDownSoundFileName: FillerSound
-  SwapSoundFileName: FillerSound
+  PickUpSoundFileName: event:/Mechanics/Item Storage/Pick Up/Put Up Object Event
+  PutDownSoundFileName: event:/Mechanics/Item Storage/Put Down/Put Down Object Event
+  SwapSoundFileName: event:/Mechanics/Item Storage/Swap/Swap Inv Item Event
   putDownPoint: {fileID: 290369016125590851}
   trunkPoint: {fileID: 8340949297115861535}
   hatPoint: {fileID: 5214306056442883781}
@@ -10378,6 +10316,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   itemsInStorage: []
+  blockPutDown: 0
 --- !u!114 &6798780922907594705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10395,12 +10334,12 @@ MonoBehaviour:
   detectionDistance: 0.5
   pushableLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   pushableTag: Pushable
   pushSpeed: 5
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   pushedOnce: 0
 --- !u!114 &1690684890058977155
 MonoBehaviour:

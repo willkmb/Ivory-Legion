@@ -163,6 +163,10 @@ MonoBehaviour:
   idleAfterCutscene: 0
   currentMovPos: {x: 0, y: 0, z: 0}
   markerPointZone: {fileID: 0}
+  isWalking: 0
+  audioFrequencyTime: 0
+  playerHearingRange: 0
+  audioEventNames: []
   questDialogueAlterer: {fileID: 0}
 --- !u!114 &2154773815628393029
 MonoBehaviour:
@@ -179,8 +183,9 @@ MonoBehaviour:
   radius: 10
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   radiusOnSelf: 0
+  cooldown: 0
 --- !u!114 &4403973222544226020
 MonoBehaviour:
   m_ObjectHideFlags: 0
