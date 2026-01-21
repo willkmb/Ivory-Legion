@@ -57,7 +57,7 @@ public class NpcTalkTrigger : MonoBehaviour
                         string opinion = collidedWith.GetComponentInParent<NPCtrustValue>().opinionLevel;
                         text.text = "Opinion: " + opinion;
 
-                        prompt = collidedWith.GetComponentInParent<PromptScript>().thisPrompt;
+                        //prompt = collidedWith.GetComponentInParent<PromptScript>().thisPrompt;
                         handler = collidedWith.GetComponentInParent<HandlerMoveScript>();
                         if(handler != null) handler.enabled = false;
                         if(prompt != null) prompt.SetActive(false);

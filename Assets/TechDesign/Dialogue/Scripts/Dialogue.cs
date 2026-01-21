@@ -45,6 +45,9 @@ public class Dialogue : MonoBehaviour
     public int questCompletion = 2;
     public int postQuest = 3;
 
+    [Header("Wiggle")]
+    [SerializeField] float angleIntensity;
+
     [System.Serializable]
     public class dialogue // same as above but for main body text
     {
@@ -133,12 +136,13 @@ public class Dialogue : MonoBehaviour
                 }
             }
 
+            
             GameObject cursorObj = null;
-            if (branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1 && DialogueSets[DialogueStage].Dialogues[branchIndex].manualCursor == false) cursorObj = Instantiate(cursor, cursorRoot.transform); //if on the last dialogue in the list, spawn arrow that closes dialogue
+            if (DialogueSets[DialogueStage].Dialogues.Count > 1 && branchIndex == DialogueSets[DialogueStage].Dialogues.Count - 1 && DialogueSets[DialogueStage].Dialogues[branchIndex].manualCursor == false) cursorObj = Instantiate(cursor, cursorRoot.transform); //if on the last dialogue in the list, spawn arrow that closes dialogue
             if (cursorObj != null) { cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { HideDialogue(); }); return; } // set the action of the button to close dialogue 
             if (DialogueSets[DialogueStage].Dialogues[branchIndex].manualCursor) cursorObj = Instantiate(cursor, cursorRoot.transform);
             if (cursorObj != null) { cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex = DialogueSets[DialogueStage].Dialogues[branchIndex].nextBranch; ShowNextBranch(); }); return; }
-            if (DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count < 1) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
+            if (choiceRoot.transform.childCount < 1) cursorObj = Instantiate(cursor, cursorRoot.transform); // if there is no choices, spawn the arrow
             if (cursorObj != null) cursorObj.GetComponent<Button>()?.onClick.AddListener(() => { branchIndex++; ShowNextBranch(); }); // set the action of the button to go to the next branch
 
             if (branchIndex >= DialogueSets[DialogueStage].Dialogues.Count)
@@ -185,20 +189,27 @@ public class Dialogue : MonoBehaviour
         float angle = 1f;
         float flip = 1f / frequency;
 
-        while (true)
+        while (button != null)
         {
             time += Time.deltaTime;
             if(time >= flip)
             {
-                angle = angle * angle - 2f;
+                angle *= -1f;
                 time = 0f;
             }
 
-            float setAngle = angle * 12f;
+            float setAngle = angle * angleIntensity;
             button.localRotation = Quaternion.Euler(0, 0, setAngle);
             yield return null;
         }
 
+    }
+
+    private void Update()
+    {
+        Debug.Log(DialogueSets[DialogueStage].Dialogues[branchIndex].choices.Count + "choice count");
+        Debug.Log(DialogueStage + "set index");
+        Debug.Log(branchIndex + "branch index");
     }
 }
 
