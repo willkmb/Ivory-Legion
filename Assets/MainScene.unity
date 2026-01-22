@@ -917,7 +917,7 @@ MonoBehaviour:
         nextBranch: 0
         rootBranch: 0
         isBreaking: 1
-        frequency: 4
+        frequency: 8
       - choiceTextContent: '[Regular]'
         choiceTopic: 
         nextBranch: 0
@@ -938,7 +938,7 @@ MonoBehaviour:
   questInProgress: 1
   questCompletion: 2
   postQuest: 3
-  angleIntensity: 0
+  angleIntensity: 2
 --- !u!114 &1490576498
 MonoBehaviour:
   m_ObjectHideFlags: 0
