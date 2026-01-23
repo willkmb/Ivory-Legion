@@ -12,6 +12,7 @@ using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
+    Dictionary<string, string> PreviousNpcList = new Dictionary<string, string>();
     public List<DialogueSet> DialogueSets = new List<DialogueSet>(); // creates a list of the dialogues to create different interactions
 
     [Header("Dialogue Settings")]
@@ -147,8 +148,14 @@ public class Dialogue : MonoBehaviour
 
             if (branchIndex >= DialogueSets[DialogueStage].Dialogues.Count)
             {
-                // NPC state changers
-                _npcManager.npcState = pastNpcState;
+                string name = DialogueSets[DialogueStage].Dialogues[DialogueSets[DialogueStage].Dialogues.Count - 1].name;
+                if (name == "Gisgo") return;
+                else name = DialogueSets[DialogueStage].Dialogues[DialogueSets[DialogueStage].Dialogues.Count - 2].name;
+                string opinion = NPCtrustValue.opinionLevel;
+                if(!PreviousNpcList.ContainsKey(name)) PreviousNpcList.Add(name, opinion);
+
+                    // NPC state changers
+                    _npcManager.npcState = pastNpcState;
                 if (_npcManager.npcState == NpcState.SetPathingWalking)
                     _npcManager.setPathWalking.currentPointNumber -= 1;
                 _npcManager.StateChanger();
