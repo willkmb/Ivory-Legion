@@ -6,7 +6,7 @@ using TMPro;
 public class NPCtrustValue : MonoBehaviour
 {
     public int trustValue;
-    [HideInInspector] public static string opinionLevel = "Neutral";
+    [HideInInspector] public string opinionLevel = "Neutral";
     public string[] likedTopics;
     public string[] dislikedTopics;
     public TextMeshProUGUI text;

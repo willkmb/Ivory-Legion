@@ -9,6 +9,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Interfaces.Interfaces;
 
 public class Dialogue : MonoBehaviour
 {
@@ -151,8 +152,8 @@ public class Dialogue : MonoBehaviour
                 string name = DialogueSets[DialogueStage].Dialogues[DialogueSets[DialogueStage].Dialogues.Count - 1].name;
                 if (name == "Gisgo") return;
                 else name = DialogueSets[DialogueStage].Dialogues[DialogueSets[DialogueStage].Dialogues.Count - 2].name;
-                string opinion = NPCtrustValue.opinionLevel;
-                if(!PreviousNpcList.ContainsKey(name)) PreviousNpcList.Add(name, opinion);
+                string opinion = trustHolder.opinionLevel;
+                if (!PreviousNpcList.ContainsKey(name)) PreviousNpcList.Add(name, opinion);
 
                     // NPC state changers
                     _npcManager.npcState = pastNpcState;
